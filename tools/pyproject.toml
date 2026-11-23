@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "mathlint"
-version = "0.1.0"
+version = "0.2.0"
 description = "Evidence-tag linter for history-of-mathematics writing (A/S/U/F tags)."
 requires-python = ">=3.11"
 license = { text = "Apache-2.0" }
