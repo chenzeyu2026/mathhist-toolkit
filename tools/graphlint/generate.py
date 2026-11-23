@@ -155,36 +155,35 @@ def _edge_rule(sig: Signatures, esig) -> dict[str, Any]:
     }
 
 
+def _base_schema_rules(sig: Signatures) -> list[dict[str, Any]]:
+    """按 edge_schema_rules 的顺序，从条件规则里取出各自的 schema 片段。"""
+    order = sig.raw.get("edge_schema_rules") or []
+    if not order:
+        raise SystemExit("edge-signatures.yaml 缺少 edge_schema_rules")
+    by_id = {rule.get("id"): rule for rule in sig.conditional_rules}
+    rules: list[dict[str, Any]] = []
+    seen: set[str] = set()
+    for rid in order:
+        if rid in seen:
+            raise SystemExit(f"edge_schema_rules 重复引用：{rid}")
+        seen.add(rid)
+        rule = by_id.get(rid)
+        if rule is None:
+            raise SystemExit(f"edge_schema_rules 引用了不存在的条件规则：{rid}")
+        schema = rule.get("schema")
+        if not isinstance(schema, dict):
+            raise SystemExit(f"条件规则 {rid} 缺少 schema 块")
+        rules.append(schema)
+    return rules
+
+
 def build_schema(sig: Signatures) -> dict[str, Any]:
     data = json.loads(GRAPH_SCHEMA_PATH.read_text(encoding="utf-8"))
     edge_def = data.setdefault("$defs", {}).setdefault("edge", {})
     edge_def["$comment"] = SCHEMA_COMMENT
     edge_def.setdefault("properties", {}).setdefault("type", {})["enum"] = list(sig.edges)
 
-    base_rules = [
-        {
-            "anyOf": [
-                {"required": ["source"]},
-                {"properties": {"claimant": {"type": "string", "minLength": 1}},
-                 "required": ["claimant"]},
-            ]
-        },
-        {
-            "if": {"properties": {"attestation": {"const": "textbook_simplification"}},
-                   "required": ["attestation"]},
-            "then": {"properties": {"grade": {"enum": ["F", "U"]}}},
-        },
-        {
-            "if": {"properties": {"attestation": {"const": "later_report"}},
-                   "required": ["attestation"]},
-            "then": {"properties": {"grade": {"enum": ["S", "U", "F"]}}},
-        },
-        {
-            "if": {"properties": {"grade": {"const": "U"}}, "required": ["grade"]},
-            "then": {"properties": {"note": {"type": "string", "minLength": 1}},
-                     "required": ["note"]},
-        },
-    ]
+    base_rules = _base_schema_rules(sig)
     per_edge = [_edge_rule(sig, esig) for esig in sig.edges.values()]
     conditional = []
     for esig in sig.edges.values():

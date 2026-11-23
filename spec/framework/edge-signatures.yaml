@@ -35,6 +35,15 @@ node_classes:
 edge_envelope:
   required: [id, from, to, type, directed, time, grade, attestation, confidence]
 
+# 写进 graph.schema.json 的边级规则，按此顺序进入 allOf 的前段。
+# 每项引用 invariants.conditional_required.rules 里的 id；
+# 该 rule 的 schema 块是 JSON Schema 片段，generate 只搬运、不解释。
+edge_schema_rules:
+  - source_or_claimant
+  - attestation_grade_cap
+  - later_report_grade_cap
+  - unknown_grade_note
+
 # 结构性检查：不针对某一类边，而是图的物理形态。
 structural_checks:
   - id: edge_id_format
@@ -481,21 +490,52 @@ invariants:
         when: "attestation = textbook_simplification"
         require: "grade ∈ {F, U}"
         message: "attestation=textbook_simplification 时 grade 上限不满足：实得 {grade}（期望 F 或 U）。教材/科普转述不能支撑 A/S 级断言。"
+        schema:
+          if:
+            properties:
+              attestation: {const: textbook_simplification}
+            required: [attestation]
+          then:
+            properties:
+              grade: {enum: [F, U]}
       - id: later_report_grade_cap
         level: error
         when: "attestation = later_report"
         require: "grade ∈ {S, U, F}"
         message: "attestation=later_report 时 grade 不得为 A：实得 A（期望 S/U/F）。后世研究者叙述不能当作亲见原件。"
+        schema:
+          if:
+            properties:
+              attestation: {const: later_report}
+            required: [attestation]
+          then:
+            properties:
+              grade: {enum: [S, U, F]}
       - id: unknown_grade_note
         level: error
         when: "grade = U"
         require: "note 非空"
         message: "grade=U 时必须写 note：说明未核实的依据缺口与下一步查证路径。"
+        schema:
+          if:
+            properties:
+              grade: {const: U}
+            required: [grade]
+          then:
+            properties:
+              note: {type: string, minLength: 1}
+            required: [note]
       - id: source_or_claimant
         level: error
         when: "任意边"
         require: "source 存在，或 claimant 非空"
         message: "边必须给出 source 或 claimant：没有来源也没有主张者的关系不可核。"
+        schema:
+          anyOf:
+            - required: [source]
+            - properties:
+                claimant: {type: string, minLength: 1}
+              required: [claimant]
       - id: parent_weight_sum
         level: error
         when: "某节点有 parent_of 入边"

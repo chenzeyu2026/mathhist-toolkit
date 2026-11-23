@@ -85,6 +85,26 @@ py -3 -m graphlint check-all         # 四个图包是否仍为 0 error
 
 判据：新边必须能回答“它比现有 31 类边多表达了什么关系”。只是换个说法的边不加；先开 issue 说明缺口与两个真实图包中的用例。
 
+## 新增或修改边级规则 / Adding or changing edge-level rules
+
+`source` / `claimant` 二选一、`attestation` 等级上限、`grade=U` 必填 `note` 这类边级规则，schema 侧只有一处真源：`spec/framework/edge-signatures.yaml` 的 `invariants.conditional_required.rules`。
+
+1. **改 YAML**：在对应规则下维护 `when` / `require` / `message`，并补 `schema:` 块。`schema` 是 JSON Schema 片段，会被原样放进 `graph.schema.json` 的 `allOf`。
+2. **登记顺序**：新增规则时，把它的 `id` 加进顶层 `edge_schema_rules:`。列表顺序就是 `allOf` 前段的顺序；重复引用、引用不存在的 id、或规则缺少 `schema`，`generate` 都会直接报错。
+3. **跑生成与校验**：
+
+```bash
+cd tools
+py -3 -m graphlint generate
+py -3 -m graphlint generate --check
+py -3 -m graphlint check-all
+```
+
+4. **补测试**：在 `tools/tests/test_graphlint.py` 断言新规则的合法/非法样例；若引入新的失败方式，按下一节加 fixture。
+5. **不要改 `generate.py` 来加规则**：它只按 `edge_schema_rules` 搬运 `schema` 块，不再包含任何 attestation/grade 常量。
+
+运行时的错误文案与 `detail` 仍在 `checks.py`；改文案不需要动 YAML。改判定条件时，以 YAML 的 `schema` 为准，并确认 `checks.py` 的对应运行时分支与它一致。
+
 ## 改契约：先改文档还是先改表 / Doc first or table first?
 
 先问一句：**这条改动能不能被机器判定？**
