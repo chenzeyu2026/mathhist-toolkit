@@ -31,7 +31,7 @@ cd mathhist-toolkit/tools
 # 1) 文档级检查：3 个样例，全部 0 error / 0 warn / 0 info，退出码 0
 py -3 -m mathlint check ../prompts/examples
 
-# 2) 图级检查：4 个图包，30 error / 60 warning；30 条为既有跨图 ID 重叠
+# 2) 图级检查：4 个图包，0 error / 60 warning；60 条为既有节点缺字段
 py -3 -m graphlint check-all
 
 # 3) 生成物同步检查：schema 与文档表格是否与唯一真源一致，退出码 0
@@ -107,12 +107,12 @@ graphlint check-all
 | 全局不变量 | 7 |
 | 分支目录 | 62（含 proposed 扩展槽） |
 | 图包 | 4（2 样例 + 2 试点） |
-| `graphlint check-all` | **30 error / 60 warning**（30 条为既有跨图 ID 重叠，60 条 warning 为既有节点缺字段） |
-| `graphlint check-all --strict` | 90 error / 0 warning（历史欠账与重复 ID 都被提升） |
-| 单元测试 | 99 个，全部通过（`mathlint` 77 + `graphlint` 22） |
+| `graphlint check-all` | **0 error / 60 warning**（60 条为既有节点缺字段） |
+| `graphlint check-all --strict` | 60 error / 0 warning（历史欠账被提升） |
+| 单元测试 | 102 个，全部通过（`mathlint` 77 + `graphlint` 25） |
 | 受跟踪文件 | 129 |
 
-60 条 warning 集中在 `pilots/calculus`（52）、`pilots/group-theory`（7）与 `samples/group-theory`（1），都是 `chains`、`occurrences` 等历史缺字段，不是本轮引入。30 条 error 来自样例与试点共用 ID，以及 `PE:cauchy`、`PE:klein` 跨图复用；这是新判重暴露的既有数据重叠。
+60 条 warning 集中在 `pilots/calculus`（52）、`pilots/group-theory`（7）与 `samples/group-theory`（1），都是 `chains`、`occurrences` 等历史缺字段，不是本轮引入。跨图 ID 已按作用域区分：样例 `group-theory` 的非分支实体带 `.sample` 后缀，群论试点中的 `PE:cauchy`、`PE:klein` 带 `.group-theory` 后缀；`BR-*` 与 `parent_of`/`cross_class` 是 `branches.json` 的目录投影，按目录 ID 豁免判重。
 
 ## 工具
 

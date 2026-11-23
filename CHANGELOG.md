@@ -15,11 +15,13 @@ All notable changes are recorded here. Format loosely follows Keep a Changelog; 
 
 - **边级 schema 规则单源化**：`source`/`claimant`、`attestation` 等级上限、`grade=U` 必填 `note` 的 JSON Schema 片段迁入 `edge-signatures.yaml` 的 `schema` 块，由顶层 `edge_schema_rules` 排序；`generate.py` 不再含这些常量。生成物字节未变。
 - **重复 ID 文案**：单文件检查的 `NODE_ID_DUPLICATE` / `EDGE_ID_DUPLICATE` 明确写“同一图包内”，跨文件由 `check-all` 判定。
-- **测试**：新增 `Issue` 字段、单文件边 ID 判重、跨文件节点/边判重与 CLI 集成用例；总数 94 → 99。
+- **跨图 ID 去重**：样例 `group-theory` 的 11 个非分支实体加 `.sample` 作用域后缀（如 `CO:group.sample`、`TH:abel-ruffini.sample`），群论试点中共用的 `PE:cauchy`、`PE:klein` 加 `.group-theory`（微积分试点与非欧样例保留原名）；15 条重复边随端点同步改名。`BR-*` 分支节点是 `branches.json` 的目录投影，保持目录 ID 不变。
+- **分支目录投影豁免**：`check_global_ids` 按 `branches.json` 的目录 ID 豁免分支节点，以及两端都是目录分支的 `parent_of` / `cross_class` 边；其余节点与边仍要求全局唯一。`check-all` 因此回到 0 error。
+- **测试**：新增 `Issue` 字段、单文件边 ID 判重、跨文件节点/边判重与 CLI 集成用例；新增目录投影豁免用例与“全部图包全局唯一”回归断言；总数 94 → 102。
 
 ### 已知 / Known
 
-- 新增跨文件判重后，`check-all` 从 0 error / 60 warning 变为 **30 error / 60 warning**。30 条均为既有图包共享 ID：样例 `group-theory` 与同名试点共用 15 个节点/边 ID，`PE:cauchy` 同时出现在微积分与群论试点，`PE:klein` 同时出现在非欧样例与群论试点。这是数据层重叠，不是格式回归；修复需重命名或明确跨图共享节点策略。
+- `check-all` 现为 **0 error / 60 warning**。60 条 warning 是既有节点缺字段（`NODE_REQUIRED`），`--strict` 下升为 error。
 
 ## [0.2.0] — 2026-11-23
 

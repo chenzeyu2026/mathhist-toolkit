@@ -2,6 +2,7 @@
 """加载 edge-signatures.yaml —— 边签名与不变量的唯一真源。"""
 from __future__ import annotations
 
+import json
 import sys
 from dataclasses import dataclass
 from pathlib import Path
@@ -17,6 +18,7 @@ SIGNATURES_PATH = REPO_ROOT / "spec" / "framework" / "edge-signatures.yaml"
 GRAPH_SCHEMA_PATH = REPO_ROOT / "spec" / "framework" / "graph.schema.json"
 OBJECT_SCHEMA_PATH = REPO_ROOT / "spec" / "framework" / "object-model.schema.json"
 DOC_PATH = REPO_ROOT / "spec" / "object-model.md"
+BRANCHES_PATH = REPO_ROOT / "spec" / "framework" / "branches.json"
 GRAPH_DIRS = (REPO_ROOT / "spec" / "framework" / "samples",
               REPO_ROOT / "spec" / "framework" / "pilots")
 
@@ -166,6 +168,15 @@ def load(path: Path = SIGNATURES_PATH) -> Signatures:
         node_completeness=raw.get("node_completeness") or {"default_level": "warning",
                                                            "strict_level": "error"},
     )
+
+
+def load_branch_ids(path: Path = BRANCHES_PATH) -> frozenset[str]:
+    """branches.json 的分支目录 ID；图包里的 BR 节点是它的投影。"""
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return frozenset()
+    return frozenset(b.get("id") for b in (data.get("branches") or []) if b.get("id"))
 
 
 def main() -> int:  # 便于直接自检 YAML

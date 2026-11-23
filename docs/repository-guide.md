@@ -110,9 +110,9 @@ $ py -3 -m mathlint check tests/fixtures/invalid.md
 
 - **做什么**：等价于 `graphlint check spec/framework/samples spec/framework/pilots`，并额外做**跨文件 ID 判重**：同一节点/边 ID 出现在两个图包时，报 `NODE_ID_DUPLICATE` / `EDGE_ID_DUPLICATE`，消息给出两个文件与各自的 JSON Pointer。
 - **输入**：无。
-- **当前结果**：4 个图包、185 个节点、291 条边，**30 error / 60 warning**，退出码 1。60 条 warning 全部是 `NODE_REQUIRED`；30 条 error 是既有数据重叠：样例 `group-theory` 与同名试点共用 ID，另有 `PE:cauchy`、`PE:klein` 跨图复用。若只想看单文件格式问题，可对单个 `graph.json` 跑 `check`。
+- **当前结果**：4 个图包、185 个节点、291 条边，**0 error / 60 warning**，退出码 0。60 条 warning 全部是 `NODE_REQUIRED`。跨图 ID 已按作用域区分：样例 `group-theory` 的非分支实体带 `.sample`，群论试点中的 `PE:cauchy`、`PE:klein` 带 `.group-theory`；`BR-*` 与 `parent_of`/`cross_class` 是 `branches.json` 的目录投影，按目录 ID 豁免判重。
 - **汇总行**：`汇总：error N / warning N · files N / nodes N / edges N`；`--json` 的 `summary` 同名字段。
-- **`--strict`**：60 条 warning 升为 error，与 30 条重复错误合计 90 error，退出码 1。
+- **`--strict`**：60 条 warning 升为 error，合计 60 error，退出码 1。
 
 ### 4.4 `graphlint generate`：从唯一真源生成
 
@@ -140,7 +140,7 @@ $ py -3 -m mathlint check tests/fixtures/invalid.md
 
 ### 4.6 `tools/scripts/selfcheck.py`：本地等价 CI
 
-- **做什么**：跑全部单元测试（99 个：`mathlint` 77 + `graphlint` 22）+ 3 个 fixture + 3 段样例，逐项打印 `PASS/FAIL` 与期望计数。
+- **做什么**：跑全部单元测试（102 个：`mathlint` 77 + `graphlint` 25）+ 3 个 fixture + 3 段样例，逐项打印 `PASS/FAIL` 与期望计数。
 - **输入**：无。
 - **输出**：`self-check PASSED` 或失败项列表。
 - **退出码**：0 全过；1 有失败。

@@ -16,6 +16,9 @@ from .signatures import (ANY, OBJECT_SCHEMA_PATH, EdgeSig, Signatures)
 
 EDGE_ID_RE = re.compile(r"^E:[^>]+>[a-z_]+>[^>]+(#[0-9]+)?$")
 
+# 目录投影边：两端都是 branches.json 里的分支时，边由目录生成，可跨图包同名。
+CATALOG_EDGE_TYPES = frozenset({"parent_of", "cross_class"})
+
 
 @dataclass
 class Issue:
@@ -618,8 +621,14 @@ def _attach_pointers(result: Result, graph: dict[str, Any]) -> None:
             issue.pointer = ""
 
 
-def check_global_ids(items: Iterable[tuple[str, dict[str, Any]]]) -> list[Issue]:
-    """跨图包检查节点/边 ID 是否重复；单文件内重复由 check_graph 负责。"""
+def check_global_ids(items: Iterable[tuple[str, dict[str, Any]]],
+                     catalog_ids: frozenset[str] = frozenset()) -> list[Issue]:
+    """跨图包检查节点/边 ID 是否重复；单文件内重复由 check_graph 负责。
+
+    `catalog_ids` 是 branches.json 的分支目录 ID。分支节点是目录在各图包里的投影，
+    同一分支必然出现在多个图包中；按目录 ID 豁免，避免把目录投影当成数据重复。
+    `parent_of` / `cross_class` 两端都是目录分支的边同样由目录生成，一并豁免。
+    """
     issues: list[Issue] = []
     node_seen: dict[Any, tuple[str, str]] = {}
     edge_seen: dict[Any, tuple[str, str]] = {}
@@ -627,7 +636,7 @@ def check_global_ids(items: Iterable[tuple[str, dict[str, Any]]]) -> list[Issue]
     for file, graph in items:
         for i, node in enumerate(graph.get("nodes") or []):
             nid = node.get("id")
-            if not nid:
+            if not nid or nid in catalog_ids:
                 continue
             pointer = f"/nodes/{i}"
             if nid not in node_seen:
@@ -645,6 +654,9 @@ def check_global_ids(items: Iterable[tuple[str, dict[str, Any]]]) -> list[Issue]
         for i, edge in enumerate(graph.get("edges") or []):
             eid = edge.get("id")
             if not eid:
+                continue
+            if edge.get("type") in CATALOG_EDGE_TYPES \
+                    and edge.get("from") in catalog_ids and edge.get("to") in catalog_ids:
                 continue
             pointer = f"/edges/{i}"
             if eid not in edge_seen:

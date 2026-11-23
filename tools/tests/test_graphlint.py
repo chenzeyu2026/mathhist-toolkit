@@ -317,6 +317,42 @@ class GlobalIdTests(unittest.TestCase):
         self.assertIn("EDGE_ID_DUPLICATE", global_codes)
 
 
+class CatalogProjectionTests(unittest.TestCase):
+    def graph_with_branches(self, alpha: str, beta: str):
+        nodes = [node(alpha, "branch"), node(beta, "branch")]
+        return {"nodes": nodes,
+                "edges": [edge("", alpha, "parent_of", beta, weight=1.0)]}
+
+    def test_branch_catalog_projections_are_not_duplicates(self):
+        alpha, beta = "BR-FND-ALPHA", "BR-FND-BETA"
+        first = self.graph_with_branches(alpha, beta)
+        second = self.graph_with_branches(alpha, beta)
+        issues = check_global_ids([("a.json", first), ("b.json", second)],
+                                  catalog_ids=frozenset({alpha, beta}))
+        self.assertEqual(issues, [])
+
+    def test_non_catalog_ids_still_reported(self):
+        alpha, beta = "BR-FND-ALPHA", "BR-FND-BETA"
+        first = self.graph_with_branches(alpha, beta)
+        second = self.graph_with_branches(alpha, beta)
+        issues = check_global_ids([("a.json", first), ("b.json", second)])
+        self.assertEqual({i.code for i in issues},
+                         {"NODE_ID_DUPLICATE", "EDGE_ID_DUPLICATE"})
+
+
+class RepositoryGlobalIdTests(unittest.TestCase):
+    def test_all_bundles_are_globally_unique(self):
+        items = []
+        for root in signatures.GRAPH_DIRS:
+            for path in sorted(root.rglob("*.json")):
+                graph = load_graph(path)
+                if graph is not None:
+                    items.append((str(path), graph))
+        self.assertGreaterEqual(len(items), 4)
+        issues = check_global_ids(items, catalog_ids=signatures.load_branch_ids())
+        self.assertEqual([f"{i.code}: {i.message}" for i in issues], [])
+
+
 class FailureFixtureTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):

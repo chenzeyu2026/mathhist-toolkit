@@ -2,8 +2,8 @@
   "schema_version": "0.2",
   "meta": {
     "title": "群论样板（概念谱系清晰型）",
-    "scope": "只验证结构，不是完整条目；节点 12、边 13。",
-    "note": "branch.parents 一律留空：本图包中父关系只写在 edges[]，避免两处真源。完整父级目录见 branches.json。"
+    "scope": "只验证结构，不是完整条目；节点 13、边 15。",
+    "note": "branch.parents 一律留空：本图包中父关系只写在 edges[]，避免两处真源。完整父级目录见 branches.json。本图包是样板的独立副本，非分支实体 ID 一律加 `.sample` 作用域后缀，与同名试点区分；BR 节点沿用 branches.json 目录 ID。"
   },
   "nodes": [
     {
@@ -35,7 +35,7 @@
       "provenance": { "created_by": "framework-v0.2", "created_at": "2026-11-22", "sources_checked": "none", "schema_version": "0.2" }
     },
     {
-      "id": "CO:group",
+      "id": "CO:group.sample",
       "type": "concept",
       "schema_version": "0.2",
       "labels": { "zh": "群", "en": "group", "aliases": ["置換群", "groupe"] },
@@ -48,7 +48,7 @@
       ],
       "claims": [
         {
-          "id": "CLM:CO:group.1",
+          "id": "CLM:CO:group.sample.1",
           "statement": "伽罗瓦 1832 年手稿以 groupe 指置换集合，尚未给出抽象群定义。",
           "grade": "U",
           "attestation": "later_report",
@@ -59,7 +59,7 @@
       "provenance": { "created_by": "framework-v0.2", "created_at": "2026-11-22", "sources_checked": "partial", "schema_version": "0.2" }
     },
     {
-      "id": "PR:quintic-solvability",
+      "id": "PR:quintic-solvability.sample",
       "type": "problem",
       "schema_version": "0.2",
       "labels": { "zh": "五次方程根式可解性", "en": "solvability of the quintic by radicals" },
@@ -79,7 +79,7 @@
       "related_branches": ["BR-ALG-GRP"],
       "claims": [
         {
-          "id": "CLM:PR:quintic-solvability.1",
+          "id": "CLM:PR:quintic-solvability.sample.1",
           "statement": "该问题在 16–18 世纪被当作'求公式'，'是否可解'是 19 世纪群论化之后的提法。",
           "grade": "S",
           "attestation": "later_report",
@@ -89,7 +89,7 @@
       "provenance": { "created_by": "framework-v0.2", "created_at": "2026-11-22", "sources_checked": "partial", "schema_version": "0.2" }
     },
     {
-      "id": "PR:quintic-galois-criterion",
+      "id": "PR:quintic-galois-criterion.sample",
       "type": "problem",
       "schema_version": "0.2",
       "labels": { "zh": "五次方程的伽罗瓦判据", "en": "Galois criterion for solvability" },
@@ -98,7 +98,7 @@
       "original_formulation": {
         "text": "方程根式可解 iff 其伽罗瓦群可解。",
         "language": "fr",
-        "author": "PE:galois",
+        "author": "PE:galois.sample",
         "year": 1832,
         "source": { "locator": "Galois 1832 手稿；未见原页" },
         "grade": "U",
@@ -109,7 +109,7 @@
       "related_branches": ["BR-ALG-GRP"],
       "claims": [
         {
-          "id": "CLM:PR:quintic-galois-criterion.1",
+          "id": "CLM:PR:quintic-galois-criterion.sample.1",
           "statement": "该判据把'可解性'从公式构造改写为群性质判定。",
           "grade": "F",
           "attestation": "textbook_simplification",
@@ -119,7 +119,7 @@
       "provenance": { "created_by": "framework-v0.2", "created_at": "2026-11-22", "sources_checked": "partial", "schema_version": "0.2" }
     },
     {
-      "id": "TH:abel-ruffini",
+      "id": "TH:abel-ruffini.sample",
       "type": "theorem",
       "schema_version": "0.2",
       "labels": { "zh": "阿贝尔–鲁菲尼定理", "en": "Abel–Ruffini theorem" },
@@ -131,7 +131,7 @@
       "namesake_note": "鲁菲尼 1799 先发表但有缺口；阿贝尔 1824 给出完整证明；'阿贝尔–鲁菲尼'是后世合并命名。",
       "claims": [
         {
-          "id": "CLM:TH:abel-ruffini.1",
+          "id": "CLM:TH:abel-ruffini.sample.1",
           "statement": "阿贝尔 1824 证明一般五次方程无根式解；鲁菲尼 1799 的证明存在缺口。",
           "grade": "S",
           "attestation": "later_report",
@@ -141,23 +141,23 @@
       "provenance": { "created_by": "framework-v0.2", "created_at": "2026-11-22", "sources_checked": "partial", "schema_version": "0.2" }
     },
     {
-      "id": "FA:ruffini-1799-quintic",
+      "id": "FA:ruffini-1799-quintic.sample",
       "type": "failure",
       "schema_version": "0.2",
       "labels": { "zh": "鲁菲尼 1799 年五次方程证明", "en": "Ruffini's 1799 incomplete proof" },
       "status": "historical",
       "summary": "结论正确但推理不完整；当时缺少群论语言，缺口未被审出。",
       "failure_kind": "false_proof",
-      "target": "TH:abel-ruffini",
+      "target": "TH:abel-ruffini.sample",
       "flawed_step": "从置换群性质推到'一般方程不可根式解'时只覆盖部分情形，未证明对一般 n 成立。",
       "why_accepted": "结论与当时零散证据一致；缺少可检验的群论判据，审阅者难以定位缺口。",
       "current_status": "corrected",
-      "corrected_by": "PE:abel",
+      "corrected_by": "PE:abel.sample",
       "correction_event": null,
       "residue": "其置换群分类工作成为群论前史；'鲁菲尼'仍留在定理名中。",
       "claims": [
         {
-          "id": "CLM:FA:ruffini-1799-quintic.1",
+          "id": "CLM:FA:ruffini-1799-quintic.sample.1",
           "statement": "鲁菲尼 1799 的证明因一般性不足被判为不完整，而非结论错误。",
           "grade": "S",
           "attestation": "later_report",
@@ -167,7 +167,7 @@
       "provenance": { "created_by": "framework-v0.2", "created_at": "2026-11-22", "sources_checked": "partial", "schema_version": "0.2" }
     },
     {
-      "id": "ME:galois-correspondence",
+      "id": "ME:galois-correspondence.sample",
       "type": "method",
       "schema_version": "0.2",
       "labels": { "zh": "伽罗瓦对应", "en": "Galois correspondence" },
@@ -176,12 +176,12 @@
       "kind": "construction",
       "input": "域扩张 L/K 及其自同构群",
       "output": "中间域与子群的一一对应表",
-      "correctness_basis": ["CO:group"],
-      "first_use": { "by": "PE:galois", "year": 1832, "locator": "手稿；未见原页", "grade": "U" },
-      "applies_to": ["PR:quintic-galois-criterion"],
+      "correctness_basis": ["CO:group.sample"],
+      "first_use": { "by": "PE:galois.sample", "year": 1832, "locator": "手稿；未见原页", "grade": "U" },
+      "applies_to": ["PR:quintic-galois-criterion.sample"],
       "claims": [
         {
-          "id": "CLM:ME:galois-correspondence.1",
+          "id": "CLM:ME:galois-correspondence.sample.1",
           "statement": "该对应使'方程可解性'可化为群的可解性判定。",
           "grade": "S",
           "attestation": "later_report",
@@ -191,7 +191,7 @@
       "provenance": { "created_by": "framework-v0.2", "created_at": "2026-11-22", "sources_checked": "partial", "schema_version": "0.2" }
     },
     {
-      "id": "NO:group-notation",
+      "id": "NO:group-notation.sample",
       "type": "notation",
       "schema_version": "0.2",
       "labels": { "zh": "群记号", "en": "group notation" },
@@ -200,13 +200,13 @@
       "symbol_id": "term-group-notation",
       "kind": "term",
       "denotation": [
-        { "concept": "CO:group", "valid_from": 1830, "valid_to": null, "note": "从置换集合逐步抽象为结构记号" }
+        { "concept": "CO:group.sample", "valid_from": 1830, "valid_to": null, "note": "从置换集合逐步抽象为结构记号" }
       ],
-      "first_occurrence": { "by": "PE:galois", "year": 1832, "locator": "手稿；未见原页", "grade": "U" },
+      "first_occurrence": { "by": "PE:galois.sample", "year": 1832, "locator": "手稿；未见原页", "grade": "U" },
       "modern_standard": "G 表示群，(G, ·) 表示带运算的群",
       "claims": [
         {
-          "id": "CLM:NO:group-notation.1",
+          "id": "CLM:NO:group-notation.sample.1",
           "statement": "'群'作为术语在 19 世纪后期教科书固定；早期著作多写'置换组'。",
           "grade": "U",
           "attestation": "later_report",
@@ -217,7 +217,7 @@
       "provenance": { "created_by": "framework-v0.2", "created_at": "2026-11-22", "sources_checked": "partial", "schema_version": "0.2" }
     },
     {
-      "id": "PE:abel",
+      "id": "PE:abel.sample",
       "type": "person",
       "schema_version": "0.2",
       "labels": { "zh": "尼尔斯·阿贝尔", "en": "Niels Henrik Abel" },
@@ -226,7 +226,7 @@
       "name_variants": ["Abel", "N. H. Abel"],
       "claims": [
         {
-          "id": "CLM:PE:abel.1",
+          "id": "CLM:PE:abel.sample.1",
           "statement": "阿贝尔生卒 1802–1829。",
           "grade": "S",
           "attestation": "later_report",
@@ -236,7 +236,7 @@
       "provenance": { "created_by": "framework-v0.2", "created_at": "2026-11-22", "sources_checked": "partial", "schema_version": "0.2" }
     },
     {
-      "id": "PE:galois",
+      "id": "PE:galois.sample",
       "type": "person",
       "schema_version": "0.2",
       "labels": { "zh": "埃瓦里斯特·伽罗瓦", "en": "Évariste Galois" },
@@ -245,7 +245,7 @@
       "name_variants": ["Galois", "É. Galois"],
       "claims": [
         {
-          "id": "CLM:PE:galois.1",
+          "id": "CLM:PE:galois.sample.1",
           "statement": "伽罗瓦生卒 1811–1832。",
           "grade": "S",
           "attestation": "later_report",
@@ -255,7 +255,7 @@
       "provenance": { "created_by": "framework-v0.2", "created_at": "2026-11-22", "sources_checked": "partial", "schema_version": "0.2" }
     },
     {
-      "id": "PE:ruffini",
+      "id": "PE:ruffini.sample",
       "type": "person",
       "schema_version": "0.2",
       "labels": { "zh": "保罗·鲁菲尼", "en": "Paolo Ruffini" },
@@ -264,7 +264,7 @@
       "name_variants": ["Ruffini", "P. Ruffini"],
       "claims": [
         {
-          "id": "CLM:PE:ruffini.1",
+          "id": "CLM:PE:ruffini.sample.1",
           "statement": "鲁菲尼生卒 1765–1822。",
           "grade": "S",
           "attestation": "later_report",
@@ -274,17 +274,17 @@
       "provenance": { "created_by": "framework-v0.2", "created_at": "2026-11-22", "sources_checked": "partial", "schema_version": "0.2" }
     },
     {
-      "id": "EV:1799-ruffini-quintic",
+      "id": "EV:1799-ruffini-quintic.sample",
       "type": "event",
       "schema_version": "0.2",
       "labels": { "zh": "鲁菲尼发表五次方程不可解证明（1799）", "en": "Ruffini publishes his proof on the quintic (1799)" },
       "status": "historical",
       "summary": "1799 年鲁菲尼发表五次方程无根式解的证明，论证有缺口。",
-      "actors": ["PE:ruffini"],
+      "actors": ["PE:ruffini.sample"],
       "place": "意大利",
       "claims": [
         {
-          "id": "CLM:EV:1799-ruffini-quintic.1",
+          "id": "CLM:EV:1799-ruffini-quintic.sample.1",
           "statement": "鲁菲尼于 1799 年发表其五次方程证明。",
           "grade": "S",
           "attestation": "later_report",
@@ -316,9 +316,9 @@
       "note": "结构边，不是史学断言。"
     },
     {
-      "id": "E:BR-ALG-GRP>concerns>CO:group",
+      "id": "E:BR-ALG-GRP>concerns>CO:group.sample",
       "from": "BR-ALG-GRP",
-      "to": "CO:group",
+      "to": "CO:group.sample",
       "type": "concerns",
       "directed": true,
       "time": { "from": null, "to": null, "precision": "unknown" },
@@ -329,9 +329,9 @@
       "note": "索引边，不参与推理。"
     },
     {
-      "id": "E:BR-ALG-GRP>concerns>PR:quintic-solvability",
+      "id": "E:BR-ALG-GRP>concerns>PR:quintic-solvability.sample",
       "from": "BR-ALG-GRP",
-      "to": "PR:quintic-solvability",
+      "to": "PR:quintic-solvability.sample",
       "type": "concerns",
       "directed": true,
       "time": { "from": null, "to": null, "precision": "unknown" },
@@ -342,9 +342,9 @@
       "note": "群论的历史来源是方程求解，不是学科建制。"
     },
     {
-      "id": "E:CO:group>uses_notation>NO:group-notation",
-      "from": "CO:group",
-      "to": "NO:group-notation",
+      "id": "E:CO:group.sample>uses_notation>NO:group-notation.sample",
+      "from": "CO:group.sample",
+      "to": "NO:group-notation.sample",
       "type": "uses_notation",
       "directed": true,
       "time": { "from": 1830, "to": null, "precision": "decade" },
@@ -355,9 +355,9 @@
       "note": "记号使用时间取 1830 年代，原页未核。"
     },
     {
-      "id": "E:TH:abel-ruffini>depends_on>CO:group",
-      "from": "TH:abel-ruffini",
-      "to": "CO:group",
+      "id": "E:TH:abel-ruffini.sample>depends_on>CO:group.sample",
+      "from": "TH:abel-ruffini.sample",
+      "to": "CO:group.sample",
       "type": "depends_on",
       "directed": true,
       "time": { "from": 1832, "to": null, "precision": "year" },
@@ -368,47 +368,47 @@
       "note": "依赖关系是后世整理的逻辑前置，不是 1824 年证明的实际依赖。"
     },
     {
-      "id": "E:TH:abel-ruffini>resolves>PR:quintic-solvability",
-      "from": "TH:abel-ruffini",
-      "to": "PR:quintic-solvability",
+      "id": "E:TH:abel-ruffini.sample>resolves>PR:quintic-solvability.sample",
+      "from": "TH:abel-ruffini.sample",
+      "to": "PR:quintic-solvability.sample",
       "type": "resolves",
       "directed": true,
       "time": { "from": 1824, "to": 1824, "precision": "year", "basis": "阿贝尔 1824 论文" },
-      "claimant": "PE:abel",
+      "claimant": "PE:abel.sample",
       "grade": "S",
       "attestation": "later_report",
       "confidence": 0.85,
       "note": "按现代归类，阿贝尔给出的是否定答案。"
     },
     {
-      "id": "E:PR:quintic-solvability>reformulates>PR:quintic-galois-criterion",
-      "from": "PR:quintic-solvability",
-      "to": "PR:quintic-galois-criterion",
+      "id": "E:PR:quintic-solvability.sample>reformulates>PR:quintic-galois-criterion.sample",
+      "from": "PR:quintic-solvability.sample",
+      "to": "PR:quintic-galois-criterion.sample",
       "type": "reformulates",
       "directed": true,
       "time": { "from": 1832, "to": 1832, "precision": "year" },
-      "claimant": "PE:galois",
+      "claimant": "PE:galois.sample",
       "grade": "S",
       "attestation": "later_report",
       "confidence": 0.75,
       "note": "重述不等于解决：原问题问公式，新问题问群性质。"
     },
     {
-      "id": "E:PR:quintic-galois-criterion>uses_method>ME:galois-correspondence",
-      "from": "PR:quintic-galois-criterion",
-      "to": "ME:galois-correspondence",
+      "id": "E:PR:quintic-galois-criterion.sample>uses_method>ME:galois-correspondence.sample",
+      "from": "PR:quintic-galois-criterion.sample",
+      "to": "ME:galois-correspondence.sample",
       "type": "uses_method",
       "directed": true,
       "time": { "from": 1832, "to": 1832, "precision": "year" },
-      "claimant": "PE:galois",
+      "claimant": "PE:galois.sample",
       "grade": "S",
       "attestation": "later_report",
       "confidence": 0.8
     },
     {
-      "id": "E:ME:galois-correspondence>depends_on>CO:group",
-      "from": "ME:galois-correspondence",
-      "to": "CO:group",
+      "id": "E:ME:galois-correspondence.sample>depends_on>CO:group.sample",
+      "from": "ME:galois-correspondence.sample",
+      "to": "CO:group.sample",
       "type": "depends_on",
       "directed": true,
       "time": { "from": 1832, "to": null, "precision": "year" },
@@ -418,34 +418,34 @@
       "confidence": 0.85
     },
     {
-      "id": "E:FA:ruffini-1799-quintic>targets>TH:abel-ruffini",
-      "from": "FA:ruffini-1799-quintic",
-      "to": "TH:abel-ruffini",
+      "id": "E:FA:ruffini-1799-quintic.sample>targets>TH:abel-ruffini.sample",
+      "from": "FA:ruffini-1799-quintic.sample",
+      "to": "TH:abel-ruffini.sample",
       "type": "targets",
       "directed": true,
       "time": { "from": 1799, "to": 1799, "precision": "year" },
-      "claimant": "PE:ruffini",
+      "claimant": "PE:ruffini.sample",
       "grade": "S",
       "attestation": "later_report",
       "confidence": 0.85,
       "note": "失败指向的是该定理的首次证明尝试。"
     },
     {
-      "id": "E:FA:ruffini-1799-quintic>corrected_by>PE:abel",
-      "from": "FA:ruffini-1799-quintic",
-      "to": "PE:abel",
+      "id": "E:FA:ruffini-1799-quintic.sample>corrected_by>PE:abel.sample",
+      "from": "FA:ruffini-1799-quintic.sample",
+      "to": "PE:abel.sample",
       "type": "corrected_by",
       "directed": true,
       "time": { "from": 1824, "to": 1824, "precision": "year" },
-      "claimant": "PE:abel",
+      "claimant": "PE:abel.sample",
       "grade": "S",
       "attestation": "later_report",
       "confidence": 0.85
     },
     {
-      "id": "E:PE:abel>proved>TH:abel-ruffini",
-      "from": "PE:abel",
-      "to": "TH:abel-ruffini",
+      "id": "E:PE:abel.sample>proved>TH:abel-ruffini.sample",
+      "from": "PE:abel.sample",
+      "to": "TH:abel-ruffini.sample",
       "type": "proved",
       "directed": true,
       "time": { "from": 1824, "to": 1824, "precision": "year" },
@@ -455,9 +455,9 @@
       "confidence": 0.85
     },
     {
-      "id": "E:PE:galois>introduced>ME:galois-correspondence",
-      "from": "PE:galois",
-      "to": "ME:galois-correspondence",
+      "id": "E:PE:galois.sample>introduced>ME:galois-correspondence.sample",
+      "from": "PE:galois.sample",
+      "to": "ME:galois-correspondence.sample",
       "type": "introduced",
       "directed": true,
       "time": { "from": 1832, "to": 1832, "precision": "year" },
@@ -467,22 +467,22 @@
       "confidence": 0.8
     },
     {
-      "id": "E:PE:ruffini>participates_in>EV:1799-ruffini-quintic",
-      "from": "PE:ruffini",
-      "to": "EV:1799-ruffini-quintic",
+      "id": "E:PE:ruffini.sample>participates_in>EV:1799-ruffini-quintic.sample",
+      "from": "PE:ruffini.sample",
+      "to": "EV:1799-ruffini-quintic.sample",
       "type": "participates_in",
       "directed": true,
       "time": { "from": 1799, "to": 1799, "precision": "year" },
       "source": { "locator": "Ruffini 1799 年论文发表；未见原刊" },
-      "claimant": "PE:ruffini",
+      "claimant": "PE:ruffini.sample",
       "grade": "S",
       "attestation": "later_report",
       "confidence": 0.85
     },
     {
-      "id": "E:EV:1799-ruffini-quintic>part_of>FA:ruffini-1799-quintic",
-      "from": "EV:1799-ruffini-quintic",
-      "to": "FA:ruffini-1799-quintic",
+      "id": "E:EV:1799-ruffini-quintic.sample>part_of>FA:ruffini-1799-quintic.sample",
+      "from": "EV:1799-ruffini-quintic.sample",
+      "to": "FA:ruffini-1799-quintic.sample",
       "type": "part_of",
       "directed": true,
       "time": { "from": 1799, "to": 1799, "precision": "year" },

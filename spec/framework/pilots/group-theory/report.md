@@ -3,7 +3,7 @@
 - 分支：`BR-ALG-GRP`（群论），父分支 `BR-FND-AALG`（抽象代数，`kind: taxonomic`）
 - 图：`graph.json`（51 节点 / 80 边）
 - 长文本：`text.md`（7 个锚点，43 处 `graph://` 反指，40 个不同对象）
-- 校验：单文件 `graphlint check` **0 error**（另有 7 条 `NODE_REQUIRED` warning，为 `TX.chains` 等节点必填字段的历史欠账；`--strict` 下计为 error）；`check-all` 跨文件判重发现本试点与 `samples/group-theory.json` 共用 15 个节点/边 ID，故全库汇总为 30 error / 60 warning；`graph://` 引用 43/43 可解析；11 个节点带 `text_ref`，锚点全部存在
+- 校验：单文件 `graphlint check` **0 error**（另有 7 条 `NODE_REQUIRED` warning，为 `TX.chains` 等节点必填字段的历史欠账；`--strict` 下计为 error）；`check-all` 全库 **0 error / 60 warning**（本试点与 `samples/group-theory.json` 的 ID 已按作用域区分：样例带 `.sample`，本试点共用的 `PE:cauchy`/`PE:klein` 带 `.group-theory`）；`graph://` 引用 43/43 可解析；11 个节点带 `text_ref`，锚点全部存在
 - 规模：新增 51 节点、80 边、23 种边类型；未新增任何节点类型或边类型
 
 选择群论的理由：它是三个试点里唯一"问题早已关闭、研究重心转向结构"的分支。五次方程的可解性在 1830 年代被改写，此后近七十年的主要工作是把群、子群、商群、同态、作用组织成一套互相依赖的概念体。用它来检验 R3 的问题——"研究导向的差异能否由现有 14 类节点、31 类边表达"——比再用一个几何分支更有区分度。
@@ -111,7 +111,7 @@
 
 ### 3.3 具体纲领：能，用 `TY:` 承载
 
-埃尔朗根纲领有一位主张者（`PE:klein`）、一份文本（`TX:klein-1872-erlangen`）、一条可归属的主张（`ST:klein-group-geometry`）、一组可由此推出的研究任务。四点齐备，正好落在 `theory` 的定义"一套假设加上它的推论体"上，因此用 `TY:erlangen-program` 承载，配 `asserted_by`/`claimed_in`/`supports`/`part_of` 四条边即可。
+埃尔朗根纲领有一位主张者（`PE:klein.group-theory`）、一份文本（`TX:klein-1872-erlangen`）、一条可归属的主张（`ST:klein-group-geometry`）、一组可由此推出的研究任务。四点齐备，正好落在 `theory` 的定义"一套假设加上它的推论体"上，因此用 `TY:erlangen-program` 承载，配 `asserted_by`/`claimed_in`/`supports`/`part_of` 四条边即可。
 
 这与"一般导向"的差别是硬的：**有主张者、有文本、有推论体**的才建 `TY:`；只有"某学派偏重结构"这类印象的，不建节点，只记边族配比与 `affected_layers`。前者是可质疑的断言，后者是标注者的概括，两者不能混成一种对象。
 
@@ -151,7 +151,7 @@
 
 | 项目 | 结果 |
 |---|---|
-| 结构校验（单文件 `graphlint check`） | 51 节点 / 80 边，**0 error** / 7 warning（节点必填字段历史欠账）；`check-all` 因与同名样例共用 ID，汇总计为 30 error / 60 warning |
+| 结构校验（单文件 `graphlint check`） | 51 节点 / 80 边，**0 error** / 7 warning（节点必填字段历史欠账）；`check-all` 全库 **0 error / 60 warning**（跨图 ID 已按 `.sample` / `.group-theory` 作用域区分） |
 | `text.md` → `graph://` 引用 | 43 处、40 个不同对象，全部可解析 |
 | `graph.json` → `text.md` 锚点 | 11 个节点带 `text_ref`，7 个锚点全部存在 |
 | 新增节点 | 51 |

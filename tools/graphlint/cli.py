@@ -17,7 +17,7 @@ from typing import Iterable
 from . import __version__
 from .checks import Issue, Result, check_global_ids, check_graph, load_graph
 from .generate import generate
-from .signatures import GRAPH_DIRS, REPO_ROOT, Signatures, load
+from .signatures import GRAPH_DIRS, REPO_ROOT, Signatures, load, load_branch_ids
 
 
 def _rel(path: Path) -> str:
@@ -59,7 +59,7 @@ def _check(paths: Iterable[str], sig: Signatures, strict: bool,
         loaded.append((rel, graph))
     if global_ids:
         by_file = {r.file: r for r in results}
-        for issue in check_global_ids(loaded):
+        for issue in check_global_ids(loaded, catalog_ids=load_branch_ids()):
             target = by_file.get(issue.file)
             if target is not None:
                 target.add(issue)

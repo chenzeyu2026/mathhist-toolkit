@@ -31,7 +31,7 @@ cd mathhist-toolkit/tools
 # 1) Document level: 3 examples, all 0 error / 0 warn / 0 info, exit 0
 py -3 -m mathlint check ../prompts/examples
 
-# 2) Graph level: 4 bundles, 30 errors / 60 warnings; the 30 errors are pre-existing cross-bundle ID overlaps
+# 2) Graph level: 4 bundles, 0 errors / 60 warnings; the 60 warnings are pre-existing missing node fields
 py -3 -m graphlint check-all
 
 # 3) Generated artifacts in sync: exit 0
@@ -107,12 +107,12 @@ prose ──〔A/S/U/F tags〕──> mathlint
 | Global invariants | 7 |
 | Branches | 62 (including proposed extension slots) |
 | Graph bundles | 4 (2 samples + 2 pilots) |
-| `graphlint check-all` | **30 errors / 60 warnings** (30 pre-existing cross-bundle ID overlaps; 60 existing missing node fields) |
-| `graphlint check-all --strict` | 90 errors / 0 warnings (both kinds promoted) |
-| Unit tests | 99, all passing (`mathlint` 77 + `graphlint` 22) |
+| `graphlint check-all` | **0 errors / 60 warnings** (60 existing missing node fields) |
+| `graphlint check-all --strict` | 60 errors / 0 warnings (existing gaps promoted) |
+| Unit tests | 102, all passing (`mathlint` 77 + `graphlint` 25) |
 | Tracked files | 129 |
 
-The 60 warnings are in `pilots/calculus` (52), `pilots/group-theory` (7) and `samples/group-theory` (1): historical missing fields such as `chains` and `occurrences`, not introduced by the latest change. The 30 errors come from IDs shared between a sample and its pilot, plus `PE:cauchy` and `PE:klein` reused across bundles; the new duplicate check exposes pre-existing data overlap.
+The 60 warnings are in `pilots/calculus` (52), `pilots/group-theory` (7) and `samples/group-theory` (1): historical missing fields such as `chains` and `occurrences`, not introduced by the latest change. Cross-bundle IDs are now scoped: non-branch entities in the `group-theory` sample carry a `.sample` suffix, and `PE:cauchy` / `PE:klein` in the group-theory pilot carry `.group-theory`; `BR-*` nodes and `parent_of` / `cross_class` edges are catalog projections from `branches.json` and are exempted by catalog ID.
 
 ## Tools
 

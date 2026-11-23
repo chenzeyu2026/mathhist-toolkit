@@ -1050,7 +1050,7 @@
       }
     },
     {
-      "id": "PE:cauchy",
+      "id": "PE:cauchy.group-theory",
       "type": "person",
       "schema_version": "0.2",
       "labels": {
@@ -1140,7 +1140,7 @@
       }
     },
     {
-      "id": "PE:klein",
+      "id": "PE:klein.group-theory",
       "type": "person",
       "schema_version": "0.2",
       "labels": {
@@ -1396,7 +1396,7 @@
         "Vergleichende Betrachtungen über neuere geometrische Forschungen"
       ],
       "authors": [
-        "PE:klein"
+        "PE:klein.group-theory"
       ],
       "date_composition": 1872,
       "date_first_publication": 1872,
@@ -1739,7 +1739,7 @@
       },
       "place": "埃尔朗根",
       "actors": [
-        "PE:klein"
+        "PE:klein.group-theory"
       ],
       "description": "以变换群的不变量统一几何。",
       "causes": [
@@ -1818,7 +1818,7 @@
       "status": "current",
       "summary": "克莱因主张几何的对象是变换群下的不变量。",
       "claim_text": "一种几何由其变换群决定，几何命题即该群下的不变量命题。",
-      "claimant": "PE:klein",
+      "claimant": "PE:klein.group-theory",
       "claimed_at": {
         "from": 1872,
         "to": 1872,
@@ -2830,8 +2830,8 @@
       "claims": []
     },
     {
-      "id": "E:PE:cauchy>proved>TH:cauchy-theorem",
-      "from": "PE:cauchy",
+      "id": "E:PE:cauchy.group-theory>proved>TH:cauchy-theorem",
+      "from": "PE:cauchy.group-theory",
       "to": "TH:cauchy-theorem",
       "type": "proved",
       "directed": true,
@@ -3005,8 +3005,8 @@
       "claims": []
     },
     {
-      "id": "E:PE:klein>contributed_to>TX:klein-1872-erlangen",
-      "from": "PE:klein",
+      "id": "E:PE:klein.group-theory>contributed_to>TX:klein-1872-erlangen",
+      "from": "PE:klein.group-theory",
       "to": "TX:klein-1872-erlangen",
       "type": "contributed_to",
       "directed": true,
@@ -3105,8 +3105,8 @@
       "claims": []
     },
     {
-      "id": "E:PE:klein>participates_in>EV:1872-erlangen-program",
-      "from": "PE:klein",
+      "id": "E:PE:klein.group-theory>participates_in>EV:1872-erlangen-program",
+      "from": "PE:klein.group-theory",
       "to": "EV:1872-erlangen-program",
       "type": "participates_in",
       "directed": true,

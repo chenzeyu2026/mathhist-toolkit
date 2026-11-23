@@ -110,9 +110,9 @@ Common codes: `GRADE_SOURCE_MISMATCH` (grade does not fit source type), `MISSING
 
 - **What it does**: equivalent to `graphlint check spec/framework/samples spec/framework/pilots`, plus a **cross-file ID check**: when the same node/edge ID appears in two bundles, it reports `NODE_ID_DUPLICATE` / `EDGE_ID_DUPLICATE` with both file paths and JSON Pointers.
 - **Input**: none.
-- **Current result**: 4 bundles, 185 nodes, 291 edges, **30 errors / 60 warnings**, exit 1. All 60 warnings are `NODE_REQUIRED`. The 30 errors are pre-existing data overlaps: the `group-theory` sample and pilot share IDs, and `PE:cauchy` / `PE:klein` are reused across bundles. Run `check` on a single `graph.json` to see only its local format issues.
+- **Current result**: 4 bundles, 185 nodes, 291 edges, **0 errors / 60 warnings**, exit 0. All 60 warnings are `NODE_REQUIRED`. Cross-bundle IDs are scoped: non-branch entities in the `group-theory` sample carry `.sample`, and `PE:cauchy` / `PE:klein` in the group-theory pilot carry `.group-theory`; `BR-*` nodes and `parent_of` / `cross_class` edges are catalog projections from `branches.json`, exempted by catalog ID.
 - **Summary line**: `汇总：error N / warning N · files N / nodes N / edges N`; the `--json` `summary` has the same fields.
-- **`--strict`**: promotes the 60 warnings to errors, for 90 errors in total, exit 1.
+- **`--strict`**: promotes the 60 warnings to errors, for 60 errors in total, exit 1.
 
 ### 4.4 `graphlint generate`: generate from the single source
 
@@ -140,7 +140,7 @@ Run `py -3 -m audit [kernel|domain|criticality|all]` from `tools/`.
 
 ### 4.6 `tools/scripts/selfcheck.py`: local CI equivalent
 
-- **What it does**: runs the `mathlint` and `graphlint` unit tests (99 in total: 77 + 22) plus 3 fixtures and 3 sample passages, printing `PASS/FAIL` and expected counts.
+- **What it does**: runs the `mathlint` and `graphlint` unit tests (102 in total: 77 + 25) plus 3 fixtures and 3 sample passages, printing `PASS/FAIL` and expected counts.
 - **Input**: none.
 - **Output**: `self-check PASSED` or a list of failures.
 - **Exit code**: 0 all pass; 1 any failure.
