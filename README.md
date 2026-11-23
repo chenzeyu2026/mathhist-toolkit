@@ -1,5 +1,7 @@
 # mathhist-toolkit
 
+> 首次公开：2026-11-23 · 首发 commit [`eaae8c8`](https://github.com/chenzeyu2026/mathhist-toolkit/commit/eaae8c823e093f9d92023e7be01f423352bb500d) · [优先权与引用说明](PRIORITY.md)
+
 写数学史、数学思想演化时用的两件套：**证据标记规范 + 检查器**，以及**图结构本体 + 校验器**。
 
 - 文档级（v0.1，可用）：给论断挂 `A / S / U / F` 证据标记，`mathlint` 检查标记语法、来源类型与等级是否自洽。

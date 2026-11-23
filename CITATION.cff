@@ -1,0 +1,29 @@
+cff-version: 1.2.0
+message: "If you use this repository, please cite it using the metadata below."
+title: "mathhist-toolkit: evidence tags and a graph ontology for the history of mathematics"
+abstract: >-
+  mathhist-toolkit provides two layers for writing the history of mathematics:
+  an evidence-tagging specification with a linter (mathlint), and a
+  graph-structured ontology with a validator (graphlint). Code is licensed
+  under Apache-2.0; documentation and specification texts are licensed under
+  CC BY 4.0. See LICENSE and LICENSE-docs.
+authors:
+  - family-names: Chen
+    given-names: Zeyu
+    alias: chenzeyu2026
+    email: haxdy2024@qq.com
+version: "0.2.0"
+date-released: "2026-11-23"
+repository-code: "https://github.com/chenzeyu2026/mathhist-toolkit"
+url: "https://github.com/chenzeyu2026/mathhist-toolkit"
+license: "Apache-2.0"
+license-url: "https://github.com/chenzeyu2026/mathhist-toolkit/blob/main/LICENSE"
+keywords:
+  - history of mathematics
+  - knowledge graph
+  - ontology
+  - graph validation
+  - digital humanities
+type: software
+# DOI 待 Zenodo 分配后取消注释并填入，例如：
+# doi: "10.5281/zenodo.XXXXXXX"

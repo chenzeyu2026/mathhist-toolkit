@@ -1,5 +1,7 @@
 # mathhist-toolkit
 
+> First public release: 2026-11-23 · initial commit [`eaae8c8`](https://github.com/chenzeyu2026/mathhist-toolkit/commit/eaae8c823e093f9d92023e7be01f423352bb500d) · [priority and citation](PRIORITY.md)
+
 Two layers for writing the history of mathematics: **an evidence-tagging specification with a linter**, and **a graph-structured ontology with a validator**.
 
 - Document level (v0.1, usable): tag claims with `A / S / U / F`; `mathlint` checks tag syntax and whether grade and source type agree.
