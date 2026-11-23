@@ -31,7 +31,7 @@ cd mathhist-toolkit/tools
 # 1) 文档级检查：3 个样例，全部 0 error / 0 warn / 0 info，退出码 0
 py -3 -m mathlint check ../prompts/examples
 
-# 2) 图级检查：4 个图包，0 error / 60 warning，退出码 0
+# 2) 图级检查：4 个图包，30 error / 60 warning；30 条为既有跨图 ID 重叠
 py -3 -m graphlint check-all
 
 # 3) 生成物同步检查：schema 与文档表格是否与唯一真源一致，退出码 0
@@ -107,12 +107,12 @@ graphlint check-all
 | 全局不变量 | 7 |
 | 分支目录 | 62（含 proposed 扩展槽） |
 | 图包 | 4（2 样例 + 2 试点） |
-| `graphlint check-all` | **0 error / 60 warning**（warning 均为既有节点缺字段） |
-| `graphlint check-all --strict` | 60 error / 0 warning（历史欠账被提升） |
-| 单元测试 | 94 个，全部通过（`mathlint` 77 + `graphlint` 17） |
-| 受跟踪文件 | 124 |
+| `graphlint check-all` | **30 error / 60 warning**（30 条为既有跨图 ID 重叠，60 条 warning 为既有节点缺字段） |
+| `graphlint check-all --strict` | 90 error / 0 warning（历史欠账与重复 ID 都被提升） |
+| 单元测试 | 99 个，全部通过（`mathlint` 77 + `graphlint` 22） |
+| 受跟踪文件 | 129 |
 
-60 条 warning 集中在 `pilots/calculus`（52）、`pilots/group-theory`（7）与 `samples/group-theory`（1），都是 `chains`、`occurrences` 等历史缺字段，不是本轮引入。
+60 条 warning 集中在 `pilots/calculus`（52）、`pilots/group-theory`（7）与 `samples/group-theory`（1），都是 `chains`、`occurrences` 等历史缺字段，不是本轮引入。30 条 error 来自样例与试点共用 ID，以及 `PE:cauchy`、`PE:klein` 跨图复用；这是新判重暴露的既有数据重叠。
 
 ## 工具
 
@@ -120,7 +120,7 @@ graphlint check-all
 |---|---|---|---|
 | `py -3 -m mathlint check <路径>` | 文档级证据标记检查 | `.md` 文件或目录 | error/warn/info 按文件汇总；退出码 0/1/2 |
 | `py -3 -m graphlint check <路径>` | 校验单个/多个图包 | `graph.json` 或目录 | 按级别分组的违例；退出码 0/1 |
-| `py -3 -m graphlint check-all` | 校验 `samples/` 与 `pilots/` 全部图包 | 无 | 按文件与汇总计数 |
+| `py -3 -m graphlint check-all` | 校验 `samples/` 与 `pilots/` 全部图包，并做跨文件 ID 判重 | 无 | 按文件与汇总计数（含文件/节点/边总数） |
 | `py -3 -m graphlint generate [--check]` | 生成 schema 与文档表格；`--check` 只测漂移 | 无 | 写入生成物，或报告是否一致 |
 | `py -3 -m audit [kernel\|domain\|criticality\|all]` | 规则集一致性审计 | 无 | 文本表格 |
 | `py -3 tools/scripts/selfcheck.py` | 本地等价 CI：单测 + fixture + 样例 | 无 | PASS/FAIL，退出码 0/1 |

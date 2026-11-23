@@ -89,7 +89,7 @@ Common codes: `GRADE_SOURCE_MISMATCH` (grade does not fit source type), `MISSING
 
 - **What it does**: validates node-ID prefixes, edge envelope, endpoint existence and type, direction, required attributes and enums, time, evidence-grade caps, cycles, weight sums, mutex rules, isolated nodes and `claims` references.
 - **Input**: one or more `graph.json` files (JSON with `nodes` / `edges`) or directories.
-- **Output**: grouped as `== error（N）==` / `== warning（N）==`; each item gives file, edge/node ID, message, actual value, expected value and rationale; per-file and total counts at the end.
+- **Output**: grouped as `== error（N）==` / `== warning（N）==`; each item gives file, edge/node ID, `位置:` (RFC 6901 JSON Pointer), message, actual value, expected value and rationale; per-file and total counts at the end. In `--json`, every issue carries `rule_id`, `pointer` and `severity`; each file and the summary carry `nodes` / `edges` counts.
 - **Failure shape**:
 
 ```text
@@ -108,10 +108,11 @@ Common codes: `GRADE_SOURCE_MISMATCH` (grade does not fit source type), `MISSING
 
 ### 4.3 `graphlint check-all`: run every sample and pilot
 
-- **What it does**: equivalent to `graphlint check spec/framework/samples spec/framework/pilots`.
+- **What it does**: equivalent to `graphlint check spec/framework/samples spec/framework/pilots`, plus a **cross-file ID check**: when the same node/edge ID appears in two bundles, it reports `NODE_ID_DUPLICATE` / `EDGE_ID_DUPLICATE` with both file paths and JSON Pointers.
 - **Input**: none.
-- **Current result**: 4 bundles, **0 error / 60 warning**, exit 0. All 60 are `NODE_REQUIRED` (samples and pilots miss historical fields such as `chains` and `occurrences`).
-- **`--strict`**: 60 errors / 0 warnings, exit 1 — historical debt, not newly introduced.
+- **Current result**: 4 bundles, 185 nodes, 291 edges, **30 errors / 60 warnings**, exit 1. All 60 warnings are `NODE_REQUIRED`. The 30 errors are pre-existing data overlaps: the `group-theory` sample and pilot share IDs, and `PE:cauchy` / `PE:klein` are reused across bundles. Run `check` on a single `graph.json` to see only its local format issues.
+- **Summary line**: `汇总：error N / warning N · files N / nodes N / edges N`; the `--json` `summary` has the same fields.
+- **`--strict`**: promotes the 60 warnings to errors, for 90 errors in total, exit 1.
 
 ### 4.4 `graphlint generate`: generate from the single source
 
@@ -139,7 +140,7 @@ Run `py -3 -m audit [kernel|domain|criticality|all]` from `tools/`.
 
 ### 4.6 `tools/scripts/selfcheck.py`: local CI equivalent
 
-- **What it does**: runs the `mathlint` and `graphlint` unit tests (94 in total) plus 3 fixtures and 3 sample passages, printing `PASS/FAIL` and expected counts.
+- **What it does**: runs the `mathlint` and `graphlint` unit tests (99 in total: 77 + 22) plus 3 fixtures and 3 sample passages, printing `PASS/FAIL` and expected counts.
 - **Input**: none.
 - **Output**: `self-check PASSED` or a list of failures.
 - **Exit code**: 0 all pass; 1 any failure.

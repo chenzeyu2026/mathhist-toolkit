@@ -16,9 +16,10 @@ from unittest import mock
 TOOLS_DIR = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(TOOLS_DIR))
 
+from graphlint import cli  # noqa: E402
 from graphlint import generate as gen  # noqa: E402
 from graphlint import signatures  # noqa: E402
-from graphlint.checks import check_graph  # noqa: E402
+from graphlint.checks import Issue, check_global_ids, check_graph, load_graph  # noqa: E402
 from graphlint.signatures import load  # noqa: E402
 
 FIXTURES = TOOLS_DIR / "tests" / "fixtures"
@@ -244,6 +245,76 @@ class GenerateCheckTests(unittest.TestCase):
         self.assertEqual(code, 1)
         self.assertIn("不一致", out)
         self.assertIn(str(self.doc), out)
+
+
+class IssueFieldTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.sig = load()
+
+    def test_warning_exposes_rule_pointer_and_severity(self):
+        graph = {"nodes": [node("CO:pointer-fixture", "concept")], "edges": []}
+        result = check_graph(graph, self.sig, "inline.json")
+        issue = next(i for i in result.warnings if i.code == "NODE_REQUIRED")
+        self.assertEqual(issue.rule_id, "NODE_REQUIRED")
+        self.assertEqual(issue.severity, "warning")
+        self.assertEqual(issue.pointer, "/nodes/0")
+        data = issue.as_dict()
+        self.assertEqual(data["rule_id"], "NODE_REQUIRED")
+        self.assertEqual(data["severity"], "warning")
+        self.assertEqual(data["pointer"], "/nodes/0")
+
+    def test_issue_defaults_to_code_and_level(self):
+        issue = Issue(level="error", code="EDGE_ID_DUPLICATE", message="m", file="f")
+        self.assertEqual(issue.rule_id, "EDGE_ID_DUPLICATE")
+        self.assertEqual(issue.severity, "error")
+        self.assertEqual(issue.pointer, "")
+
+
+class EdgeIdDuplicateTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.sig = load()
+
+    def test_same_edge_id_twice_in_one_file(self):
+        first = edge("", "EV:fixture-event", "part_of", "PR:fixture-problem")
+        second = dict(first)
+        graph = {"nodes": [event(), problem()], "edges": [first, second]}
+        result = check_graph(graph, self.sig, "inline.json")
+        duplicates = [i for i in result.issues if i.code == "EDGE_ID_DUPLICATE"]
+        self.assertEqual(len(duplicates), 1)
+        self.assertEqual(duplicates[0].pointer, "/edges/1")
+
+
+class GlobalIdTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.sig = load()
+        cls.a = json.loads((FIXTURES / "global_dup_a.json").read_text(encoding="utf-8"))
+        cls.b = json.loads((FIXTURES / "global_dup_b.json").read_text(encoding="utf-8"))
+
+    def test_cross_file_duplicate_ids_and_paths(self):
+        issues = check_global_ids([("a.json", self.a), ("b.json", self.b)])
+        node = next(i for i in issues if i.code == "NODE_ID_DUPLICATE")
+        edge = next(i for i in issues if i.code == "EDGE_ID_DUPLICATE")
+        self.assertEqual(node.rule_id, "NODE_ID_DUPLICATE")
+        self.assertEqual(node.severity, "error")
+        self.assertEqual(node.pointer, "/nodes/0")
+        self.assertIn("a.json", node.message)
+        self.assertIn("b.json", node.message)
+        self.assertEqual(edge.pointer, "/edges/0")
+        self.assertIn("a.json", edge.message)
+        self.assertIn("b.json", edge.message)
+
+    def test_cli_check_all_style_attaches_global_issues(self):
+        results = cli._check([str(FIXTURES / "global_dup_a.json"),
+                              str(FIXTURES / "global_dup_b.json")],
+                             self.sig, False, global_ids=True)
+        self.assertEqual(len(results), 2)
+        global_codes = [i.code for r in results for i in r.errors
+                        if i.code in ("NODE_ID_DUPLICATE", "EDGE_ID_DUPLICATE")]
+        self.assertIn("NODE_ID_DUPLICATE", global_codes)
+        self.assertIn("EDGE_ID_DUPLICATE", global_codes)
 
 
 class FailureFixtureTests(unittest.TestCase):

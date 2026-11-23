@@ -1,0 +1,22 @@
+{
+  "schema_version": "0.2",
+  "nodes": [
+    {
+      "id": "CO:global-shared",
+      "type": "concept"
+    },
+    {
+      "id": "CO:global-leaf",
+      "type": "concept"
+    }
+  ],
+  "edges": [
+    {
+      "id": "E:CO:global-shared>generalizes>CO:global-leaf",
+      "from": "CO:global-shared",
+      "to": "CO:global-leaf",
+      "type": "generalizes",
+      "directed": true
+    }
+  ]
+}

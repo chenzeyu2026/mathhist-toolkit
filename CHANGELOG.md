@@ -3,6 +3,24 @@
 本文件记录对外可见的变化。格式参考 [Keep a Changelog](https://keepachangelog.com/zh-CN/1.1.0/)，版本号遵循语义化版本。
 All notable changes are recorded here. Format loosely follows Keep a Changelog; versions follow semantic versioning.
 
+## [Unreleased]
+
+### 新增 / Added
+
+- **Issue 结构化**：每条 `Issue` 增加 `rule_id`、`pointer`（RFC 6901 JSON Pointer）与 `severity`；`--json` 输出同步包含，文本输出增加一行 `位置:`。既有 60 条 warning 的 `rule_id` 全部有值。
+- **跨文件 ID 判重**：`check-all` 在单文件检查之外，检查同一节点/边 ID 是否出现在不同图包；报错信息同时给出两个文件与各自的 pointer。
+- **check-all 汇总**：文本与 `--json` 都输出文件数、节点总数、边总数与各严重级计数。
+
+### 变更 / Changed
+
+- **边级 schema 规则单源化**：`source`/`claimant`、`attestation` 等级上限、`grade=U` 必填 `note` 的 JSON Schema 片段迁入 `edge-signatures.yaml` 的 `schema` 块，由顶层 `edge_schema_rules` 排序；`generate.py` 不再含这些常量。生成物字节未变。
+- **重复 ID 文案**：单文件检查的 `NODE_ID_DUPLICATE` / `EDGE_ID_DUPLICATE` 明确写“同一图包内”，跨文件由 `check-all` 判定。
+- **测试**：新增 `Issue` 字段、单文件边 ID 判重、跨文件节点/边判重与 CLI 集成用例；总数 94 → 99。
+
+### 已知 / Known
+
+- 新增跨文件判重后，`check-all` 从 0 error / 60 warning 变为 **30 error / 60 warning**。30 条均为既有图包共享 ID：样例 `group-theory` 与同名试点共用 15 个节点/边 ID，`PE:cauchy` 同时出现在微积分与群论试点，`PE:klein` 同时出现在非欧样例与群论试点。这是数据层重叠，不是格式回归；修复需重命名或明确跨图共享节点策略。
+
 ## [0.2.0] — 2026-11-23
 
 图级规范与校验器落地。文档级 `mathlint` 的行为不变；本版新增 `graphlint` 与图包产物。

@@ -28,6 +28,17 @@ class Issue:
     actual: str | None = None
     expected: str | None = None
     detail: str | None = None
+    rule_id: str | None = None
+    pointer: str | None = None
+    severity: str | None = None
+
+    def __post_init__(self) -> None:
+        if self.rule_id is None:
+            self.rule_id = self.code
+        if self.severity is None:
+            self.severity = self.level
+        if self.pointer is None:
+            self.pointer = ""
 
     def as_dict(self) -> dict[str, Any]:
         return {k: v for k, v in self.__dict__.items() if v is not None}
@@ -38,6 +49,8 @@ class Result:
     file: str
     errors: list[Issue] = field(default_factory=list)
     warnings: list[Issue] = field(default_factory=list)
+    node_count: int = 0
+    edge_count: int = 0
 
     def add(self, issue: Issue) -> None:
         (self.errors if issue.level == "error" else self.warnings).append(issue)
@@ -372,17 +385,20 @@ def _check_attestation(edge: dict[str, Any], file: str) -> list[Issue]:
 
 def check_graph(graph: dict[str, Any], sig: Signatures, file: str,
                 strict: bool = False) -> Result:
-    result = Result(file=file)
+    result = Result(file=file, node_count=len(graph.get("nodes") or []),
+                    edge_count=len(graph.get("edges") or []))
     nodes = graph.get("nodes") or []
     edges = graph.get("edges") or []
 
     node_type: dict[str, str] = {}
-    for node in nodes:
+    for i, node in enumerate(nodes):
         nid = node.get("id")
         ntype = node.get("type")
         if nid in node_type:
             result.add(Issue(level="error", code="NODE_ID_DUPLICATE", file=file, node=nid,
-                             message=f"节点 ID 重复：{nid}", actual="重复", expected="全局唯一"))
+                             pointer=f"/nodes/{i}",
+                             message=f"节点 ID 重复：{nid}（同一图包内）",
+                             actual="重复", expected="同一图包内唯一；跨文件由 check-all 判定"))
             continue
         node_type[nid] = ntype
         cls = sig.node_classes.get(ntype)
@@ -399,9 +415,17 @@ def check_graph(graph: dict[str, Any], sig: Signatures, file: str,
         result.add(issue)
 
     symmetric_pairs: dict[tuple[str, str], list[dict[str, Any]]] = defaultdict(list)
+    edge_ids: set[Any] = set()
 
-    for edge in edges:
+    for i, edge in enumerate(edges):
         eid = edge.get("id")
+        if eid in edge_ids:
+            result.add(Issue(level="error", code="EDGE_ID_DUPLICATE", file=file, edge=eid,
+                             pointer=f"/edges/{i}",
+                             message=f"边 ID 重复：{eid}（同一图包内）",
+                             actual="重复", expected="同一图包内唯一；跨文件由 check-all 判定"))
+        else:
+            edge_ids.add(eid)
         missing = [f for f in sig.envelope_required if edge.get(f) is None]
         if missing:
             result.add(Issue(level="error", code="EDGE_REQUIRED", file=file, edge=eid,
@@ -567,7 +591,75 @@ def check_graph(graph: dict[str, Any], sig: Signatures, file: str,
         result.add(issue)
     for issue in _check_claim_sources(graph, file):
         result.add(issue)
+    _attach_pointers(result, graph)
     return result
+
+
+def _attach_pointers(result: Result, graph: dict[str, Any]) -> None:
+    """把 node/edge 标识换成 RFC 6901 JSON Pointer；文件级问题指向根。"""
+    node_index: dict[Any, int] = {}
+    for i, node in enumerate(graph.get("nodes") or []):
+        nid = node.get("id")
+        if nid not in node_index:
+            node_index[nid] = i
+    edge_index: dict[Any, int] = {}
+    for i, edge in enumerate(graph.get("edges") or []):
+        eid = edge.get("id")
+        if eid not in edge_index:
+            edge_index[eid] = i
+    for issue in result.issues:
+        if issue.pointer:
+            continue
+        if issue.edge is not None and issue.edge in edge_index:
+            issue.pointer = f"/edges/{edge_index[issue.edge]}"
+        elif issue.node is not None and issue.node in node_index:
+            issue.pointer = f"/nodes/{node_index[issue.node]}"
+        else:
+            issue.pointer = ""
+
+
+def check_global_ids(items: Iterable[tuple[str, dict[str, Any]]]) -> list[Issue]:
+    """跨图包检查节点/边 ID 是否重复；单文件内重复由 check_graph 负责。"""
+    issues: list[Issue] = []
+    node_seen: dict[Any, tuple[str, str]] = {}
+    edge_seen: dict[Any, tuple[str, str]] = {}
+
+    for file, graph in items:
+        for i, node in enumerate(graph.get("nodes") or []):
+            nid = node.get("id")
+            if not nid:
+                continue
+            pointer = f"/nodes/{i}"
+            if nid not in node_seen:
+                node_seen[nid] = (file, pointer)
+                continue
+            first_file, first_pointer = node_seen[nid]
+            if first_file == file:
+                continue
+            issues.append(Issue(
+                level="error", code="NODE_ID_DUPLICATE", file=file, node=nid, pointer=pointer,
+                message=f"节点 ID 跨文件重复：{nid}（{first_file} {first_pointer}；{file} {pointer}）",
+                actual=f"{first_file} / {file}", expected="全局唯一：同一 id 只能在一个图包中定义",
+                detail="单文件内重复由 check 判定；这里只报告跨图包重复。",
+            ))
+        for i, edge in enumerate(graph.get("edges") or []):
+            eid = edge.get("id")
+            if not eid:
+                continue
+            pointer = f"/edges/{i}"
+            if eid not in edge_seen:
+                edge_seen[eid] = (file, pointer)
+                continue
+            first_file, first_pointer = edge_seen[eid]
+            if first_file == file:
+                continue
+            issues.append(Issue(
+                level="error", code="EDGE_ID_DUPLICATE", file=file, edge=eid, pointer=pointer,
+                message=f"边 ID 跨文件重复：{eid}（{first_file} {first_pointer}；{file} {pointer}）",
+                actual=f"{first_file} / {file}", expected="全局唯一：同一 id 只能在一个图包中定义",
+                detail="单文件内重复由 check 判定；这里只报告跨图包重复。",
+            ))
+    return issues
 
 
 def _attr_expected(constraint: dict[str, Any]) -> str:

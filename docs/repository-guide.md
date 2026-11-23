@@ -89,7 +89,7 @@ $ py -3 -m mathlint check tests/fixtures/invalid.md
 
 - **做什么**：按 `edge-signatures.yaml` 校验节点 ID、边信封、端点存在与类型、方向、属性必填与枚举、时间、证据等级上限、环、权重和、互斥、孤立节点、`claims` 引用等。
 - **输入**：一个或多个 `graph.json`（含 `nodes` / `edges` 的 JSON）或目录。
-- **输出**：按 `== error（N）==` / `== warning（N）==` 分组；每条给出文件、边/节点 ID、说明、实际值、期望值、依据；末尾按文件与总计。
+- **输出**：按 `== error（N）==` / `== warning（N）==` 分组；每条给出文件、边/节点 ID、`位置:`（RFC 6901 JSON Pointer）、说明、实际值、期望值、依据；末尾按文件与总计。`--json` 每条 issue 含 `rule_id`、`pointer`、`severity`，并含 `nodes` / `edges` 计数。
 - **失败长什么样**：
 
 ```text
@@ -108,10 +108,11 @@ $ py -3 -m mathlint check tests/fixtures/invalid.md
 
 ### 4.3 `graphlint check-all`：跑全部样例与试点
 
-- **做什么**：等价于 `graphlint check spec/framework/samples spec/framework/pilots`。
+- **做什么**：等价于 `graphlint check spec/framework/samples spec/framework/pilots`，并额外做**跨文件 ID 判重**：同一节点/边 ID 出现在两个图包时，报 `NODE_ID_DUPLICATE` / `EDGE_ID_DUPLICATE`，消息给出两个文件与各自的 JSON Pointer。
 - **输入**：无。
-- **当前结果**：4 个图包，**0 error / 60 warning**，退出码 0。60 条全部是 `NODE_REQUIRED`（样例与试点缺 `chains`、`occurrences` 等历史字段）。
-- **`--strict`**：60 error / 0 warning，退出码 1——这是历史欠账，不是新引入的。
+- **当前结果**：4 个图包、185 个节点、291 条边，**30 error / 60 warning**，退出码 1。60 条 warning 全部是 `NODE_REQUIRED`；30 条 error 是既有数据重叠：样例 `group-theory` 与同名试点共用 ID，另有 `PE:cauchy`、`PE:klein` 跨图复用。若只想看单文件格式问题，可对单个 `graph.json` 跑 `check`。
+- **汇总行**：`汇总：error N / warning N · files N / nodes N / edges N`；`--json` 的 `summary` 同名字段。
+- **`--strict`**：60 条 warning 升为 error，与 30 条重复错误合计 90 error，退出码 1。
 
 ### 4.4 `graphlint generate`：从唯一真源生成
 
@@ -139,7 +140,7 @@ $ py -3 -m mathlint check tests/fixtures/invalid.md
 
 ### 4.6 `tools/scripts/selfcheck.py`：本地等价 CI
 
-- **做什么**：跑全部单元测试（94 个：`mathlint` 77 + `graphlint` 17）+ 3 个 fixture + 3 段样例，逐项打印 `PASS/FAIL` 与期望计数。
+- **做什么**：跑全部单元测试（99 个：`mathlint` 77 + `graphlint` 22）+ 3 个 fixture + 3 段样例，逐项打印 `PASS/FAIL` 与期望计数。
 - **输入**：无。
 - **输出**：`self-check PASSED` 或失败项列表。
 - **退出码**：0 全过；1 有失败。

@@ -31,7 +31,7 @@ cd mathhist-toolkit/tools
 # 1) Document level: 3 examples, all 0 error / 0 warn / 0 info, exit 0
 py -3 -m mathlint check ../prompts/examples
 
-# 2) Graph level: 4 bundles, 0 error / 60 warning, exit 0
+# 2) Graph level: 4 bundles, 30 errors / 60 warnings; the 30 errors are pre-existing cross-bundle ID overlaps
 py -3 -m graphlint check-all
 
 # 3) Generated artifacts in sync: exit 0
@@ -107,12 +107,12 @@ prose ──〔A/S/U/F tags〕──> mathlint
 | Global invariants | 7 |
 | Branches | 62 (including proposed extension slots) |
 | Graph bundles | 4 (2 samples + 2 pilots) |
-| `graphlint check-all` | **0 error / 60 warning** (all existing missing node fields) |
-| `graphlint check-all --strict` | 60 errors / 0 warnings (historical debt promoted) |
-| Unit tests | 94, all passing (`mathlint` 77 + `graphlint` 17) |
-| Tracked files | 124 |
+| `graphlint check-all` | **30 errors / 60 warnings** (30 pre-existing cross-bundle ID overlaps; 60 existing missing node fields) |
+| `graphlint check-all --strict` | 90 errors / 0 warnings (both kinds promoted) |
+| Unit tests | 99, all passing (`mathlint` 77 + `graphlint` 22) |
+| Tracked files | 129 |
 
-The 60 warnings are in `pilots/calculus` (52), `pilots/group-theory` (7) and `samples/group-theory` (1): historical missing fields such as `chains` and `occurrences`, not introduced by the latest change.
+The 60 warnings are in `pilots/calculus` (52), `pilots/group-theory` (7) and `samples/group-theory` (1): historical missing fields such as `chains` and `occurrences`, not introduced by the latest change. The 30 errors come from IDs shared between a sample and its pilot, plus `PE:cauchy` and `PE:klein` reused across bundles; the new duplicate check exposes pre-existing data overlap.
 
 ## Tools
 
@@ -120,7 +120,7 @@ The 60 warnings are in `pilots/calculus` (52), `pilots/group-theory` (7) and `sa
 |---|---|---|---|
 | `py -3 -m mathlint check <path>` | Document-level evidence check | `.md` file or directory | errors/warns/infos per file; exit 0/1/2 |
 | `py -3 -m graphlint check <path>` | Validate one or more bundles | `graph.json` or directory | violations grouped by level; exit 0/1 |
-| `py -3 -m graphlint check-all` | Validate every bundle under `samples/` and `pilots/` | none | per-file and total counts |
+| `py -3 -m graphlint check-all` | Validate every bundle under `samples/` and `pilots/`, with cross-file ID checks | none | per-file and total counts (files/nodes/edges) |
 | `py -3 -m graphlint generate [--check]` | Generate schema/doc tables; `--check` only detects drift | none | writes artifacts or reports sync |
 | `py -3 -m audit [kernel\|domain\|criticality\|all]` | Rule-set consistency audit | none | text tables |
 | `py -3 tools/scripts/selfcheck.py` | Local CI equivalent: tests + fixtures + examples | none | PASS/FAIL, exit 0/1 |

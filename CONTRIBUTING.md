@@ -73,7 +73,7 @@ py -3 -m graphlint generate
 
 ```bash
 py -3 -m graphlint generate --check   # 生成物是否最新
-py -3 -m graphlint check-all         # 四个图包是否仍为 0 error
+py -3 -m graphlint check-all         # 是否有新增错误（当前基线：30 error / 60 warning）
 ```
 
 4. **补测试**（与新增检查项同样的标准）：

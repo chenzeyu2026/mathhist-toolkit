@@ -15,7 +15,7 @@ from pathlib import Path
 from typing import Iterable
 
 from . import __version__
-from .checks import Issue, Result, check_graph, load_graph
+from .checks import Issue, Result, check_global_ids, check_graph, load_graph
 from .generate import generate
 from .signatures import GRAPH_DIRS, REPO_ROOT, Signatures, load
 
@@ -46,13 +46,23 @@ def _collect(paths: Iterable[str]) -> list[Path]:
     return out
 
 
-def _check(paths: Iterable[str], sig: Signatures, strict: bool) -> list[Result]:
+def _check(paths: Iterable[str], sig: Signatures, strict: bool,
+           global_ids: bool = False) -> list[Result]:
     results = []
+    loaded: list[tuple[str, dict]] = []
     for path in _collect(paths):
         graph = load_graph(path)
         if graph is None:
             continue
-        results.append(check_graph(graph, sig, _rel(path), strict=strict))
+        rel = _rel(path)
+        results.append(check_graph(graph, sig, rel, strict=strict))
+        loaded.append((rel, graph))
+    if global_ids:
+        by_file = {r.file: r for r in results}
+        for issue in check_global_ids(loaded):
+            target = by_file.get(issue.file)
+            if target is not None:
+                target.add(issue)
     return results
 
 
@@ -66,6 +76,8 @@ def _print_text(sig: Signatures, results: list[Result], max_items: int) -> None:
         for result, issue in shown:
             where = issue.edge or issue.node or "—"
             print(f"  [{issue.code}] {result.file} :: {where}")
+            if issue.pointer:
+                print(f"      位置: {issue.pointer}")
             print(f"      说明: {issue.message}")
             if issue.actual is not None:
                 print(f"      实际: {issue.actual}")
@@ -86,7 +98,10 @@ def _print_text(sig: Signatures, results: list[Result], max_items: int) -> None:
         print(f"  {r.file}: error {len(r.errors)} / warning {len(r.warnings)}")
     total_e = sum(len(r.errors) for r in results)
     total_w = sum(len(r.warnings) for r in results)
-    print(f"汇总：error {total_e} / warning {total_w}")
+    total_n = sum(r.node_count for r in results)
+    total_edges = sum(r.edge_count for r in results)
+    print(f"汇总：error {total_e} / warning {total_w} · files {len(results)} / "
+          f"nodes {total_n} / edges {total_edges}")
 
 
 def _json_payload(results: list[Result], strict: bool) -> dict:
@@ -96,6 +111,8 @@ def _json_payload(results: list[Result], strict: bool) -> dict:
         "files": [
             {
                 "path": r.file,
+                "nodes": r.node_count,
+                "edges": r.edge_count,
                 "errors": len(r.errors),
                 "warnings": len(r.warnings),
                 "issues": [i.as_dict() for i in r.issues],
@@ -104,6 +121,8 @@ def _json_payload(results: list[Result], strict: bool) -> dict:
         ],
         "summary": {
             "files": len(results),
+            "nodes": sum(r.node_count for r in results),
+            "edges": sum(r.edge_count for r in results),
             "errors": sum(len(r.errors) for r in results),
             "warnings": sum(len(r.warnings) for r in results),
         },
@@ -143,7 +162,7 @@ def main(argv: list[str] | None = None) -> int:
         targets = [str(p) for p in GRAPH_DIRS]
     else:
         targets = args.targets
-    results = _check(targets, sig, strict)
+    results = _check(targets, sig, strict, global_ids=(args.command == "check-all"))
     if not results:
         print("没有找到图包（含 nodes/edges 的 JSON）。", file=sys.stderr)
         return 2
