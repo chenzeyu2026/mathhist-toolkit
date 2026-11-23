@@ -25,5 +25,5 @@ keywords:
   - graph validation
   - digital humanities
 type: software
-# DOI 待 Zenodo 分配后取消注释并填入，例如：
-# doi: "10.5281/zenodo.XXXXXXX"
+doi: "10.5281/zenodo.24455228"
+# Concept DOI（指向该项目所有版本）：10.5281/zenodo.24455227

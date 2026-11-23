@@ -1,6 +1,6 @@
 # mathhist-toolkit
 
-> 首次公开：2026-11-23 · 首发 commit [`eaae8c8`](https://github.com/chenzeyu2026/mathhist-toolkit/commit/eaae8c823e093f9d92023e7be01f423352bb500d) · [优先权与引用说明](PRIORITY.md)
+> 首次公开：2026-11-23 · 首发 commit [`eaae8c8`](https://github.com/chenzeyu2026/mathhist-toolkit/commit/eaae8c823e093f9d92023e7be01f423352bb500d) · DOI [10.5281/zenodo.24455228](https://doi.org/10.5281/zenodo.24455228) · [优先权与引用说明](PRIORITY.md)
 
 写数学史、数学思想演化时用的两件套：**证据标记规范 + 检查器**，以及**图结构本体 + 校验器**。
 

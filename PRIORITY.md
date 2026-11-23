@@ -8,6 +8,8 @@
 - **公开仓库**：<https://github.com/chenzeyu2026/mathhist-toolkit>
 - **首发 commit**：`eaae8c823e093f9d92023e7be01f423352bb500d`
 - **版本**：v0.2.0
+- **DOI（v0.2.0）**：`10.5281/zenodo.24455228`
+- **Concept DOI**：`10.5281/zenodo.24455227`
 
 ## v0.2.0 的公开内容
 
@@ -19,8 +21,8 @@
 
 ## 如需引用
 
-优先使用仓库根目录的 `CITATION.cff`。Zenodo 分配 DOI 后，DOI 会回填到 `CITATION.cff` 与 README 顶部；在 DOI 可用之前，可引用：
+优先使用仓库根目录的 `CITATION.cff`。v0.2.0 的版本 DOI 为 <https://doi.org/10.5281/zenodo.24455228>，Concept DOI 为 <https://doi.org/10.5281/zenodo.24455227>。也可引用：
 
-> Chen Zeyu. *mathhist-toolkit: evidence tags and a graph ontology for the history of mathematics*. v0.2.0, 2026-11-23. <https://github.com/chenzeyu2026/mathhist-toolkit>, commit `eaae8c8`.
+> Chen Zeyu. *mathhist-toolkit: evidence tags and a graph ontology for the history of mathematics*. v0.2.0, 2026-11-23. <https://doi.org/10.5281/zenodo.24455228>.
 
 DOI 获取步骤见 [`docs/zenodo-doi.md`](docs/zenodo-doi.md)。
