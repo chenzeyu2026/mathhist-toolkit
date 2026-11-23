@@ -7,6 +7,9 @@ name: ci
 #     cd tools && python -m graphlint check-all
 #     cd tools && python -m graphlint generate --check
 
+env:
+  PYTHONUTF8: "1"
+
 on:
   push:
   pull_request:
