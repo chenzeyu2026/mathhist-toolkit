@@ -1,0 +1,21 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+build/
+dist/
+*.egg-info/
+.pytest_cache/
+
+# 他人文献：只作本地参考，不进入仓库
+literature/
+reports/literature/
+*.pdf
+
+# 二进制办公文件与临时产物
+*.docx
+~$*
+*.tmp
+*.log
+.DS_Store
+Thumbs.db

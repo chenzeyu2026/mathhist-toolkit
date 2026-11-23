@@ -1,0 +1,124 @@
+﻿@prefix sh:  <http://www.w3.org/ns/shacl#> .
+@prefix mh:  <urn:mh:> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# ============ 1. 端点白名单：from/to 的 nodeType 用序列路径直接查"值域" ============
+mh:ParentOfShape a sh:NodeShape ;
+  sh:targetClass mh:parent_of ;
+  sh:property [ sh:path ( mh:from mh:nodeType ) ; sh:in ( "branch" ) ;
+                sh:minCount 1 ; sh:maxCount 1 ;
+                sh:message "parent_of 的 from 必须是 branch" ] ;
+  sh:property [ sh:path ( mh:to mh:nodeType ) ; sh:in ( "branch" ) ;
+                sh:minCount 1 ; sh:maxCount 1 ;
+                sh:message "parent_of 的 to 必须是 branch" ] ;
+  sh:property [ sh:path mh:weight ; sh:minCount 1 ;
+                sh:message "parent_of 必须带 weight" ] ;
+  sh:property [ sh:path mh:kind ; sh:in ( "taxonomic" "historical" "institutional" ) ;
+                sh:minCount 1 ; sh:message "parent_of.kind 取值非法" ] .
+
+mh:ConcernsShape a sh:NodeShape ;
+  sh:targetClass mh:concerns ;
+  sh:property [ sh:path ( mh:from mh:nodeType ) ; sh:in ( "branch" ) ; sh:minCount 1 ;
+                sh:message "concerns 只能从 branch 出发" ] ;
+  sh:property [ sh:path ( mh:to mh:nodeType ) ;
+                sh:in ( "concept" "theorem" "problem" "theory" "text" ) ; sh:minCount 1 ;
+                sh:message "concerns 的 to 只能是 CO/TH/PR/TY/TX" ] .
+
+mh:TargetsShape a sh:NodeShape ;
+  sh:targetClass mh:targets ;
+  sh:property [ sh:path ( mh:from mh:nodeType ) ; sh:in ( "failure" ) ; sh:minCount 1 ;
+                sh:message "targets 只能从 failure 出发" ] ;
+  sh:property [ sh:path ( mh:to mh:nodeType ) ;
+                sh:in ( "theorem" "theory" "concept" "method" "problem" ) ; sh:minCount 1 ;
+                sh:message "targets 的 to 只能是 TH/TY/CO/ME/PR" ] .
+
+mh:SupportsShape a sh:NodeShape ;
+  sh:targetClass mh:supports ;
+  sh:property [ sh:path ( mh:from mh:nodeType ) ; sh:in ( "witness" "text" ) ; sh:minCount 1 ;
+                sh:message "只有 witness/text 能提供证据；失败路线与观点不能" ] .
+
+# 反向路径：每个 witness 节点必须恰好被一条 witness_of 指向
+mh:WitnessShape a sh:NodeShape ;
+  sh:targetClass mh:T_witness ;
+  sh:property [ sh:path mh:isWitnessOf ; sh:minCount 1 ; sh:maxCount 1 ;
+                sh:message "每个 TW 必须且只能挂一条 witness_of" ] .
+
+# ============ 2. 边信封：时间区间 + 证据等级（每条边） ============
+mh:EdgeEnvelope a sh:NodeShape ;
+  sh:targetClass mh:Edge ;
+  sh:property [ sh:path mh:grade ; sh:in ( "A" "S" "U" "F" ) ; sh:minCount 1 ;
+                sh:message "grade 必须是 A/S/U/F" ] ;
+  sh:property [ sh:path mh:precision ;
+                sh:in ( "exact" "year" "decade" "century" "circa" "traditional" "unknown" ) ;
+                sh:minCount 1 ; sh:message "time.precision 必填" ] ;
+  sh:property [ sh:path mh:confidence ; sh:minCount 1 ;
+                sh:message "confidence 必填" ] ;
+  sh:or ( [ sh:property [ sh:path mh:hasSource ; sh:hasValue true ] ]
+          [ sh:property [ sh:path mh:hasClaimant ; sh:hasValue true ] ] ) ;
+  sh:message "每条边必须有 source 或 claimant" .
+
+# ============ 3. 跨边约束：SHACL Core 表达不了，落到 SHACL-SPARQL ============
+mh:GeneralizesShape a sh:NodeShape ;
+  sh:targetClass mh:generalizes ;
+  sh:property [ sh:path ( mh:from mh:nodeType ) ; sh:in ( "concept" "theorem" ) ;
+                sh:message "generalizes 只在 CO/TH 内部" ] ;
+  sh:sparql [ sh:message "generalizes 不允许 CO→TH 或 TH→CO：本边 from={?ft} to={?tt}" ;
+    sh:select """
+      SELECT $this ?ft ?tt WHERE {
+        $this mh:from/mh:nodeType ?ft ; mh:to/mh:nodeType ?tt .
+        FILTER (?ft != ?tt)
+      }""" ] .
+
+mh:ParentCrossExclusive a sh:NodeShape ;
+  sh:targetClass mh:Edge ;
+  sh:sparql [ sh:message "同一对 BR 同时有 parent_of 与 cross_class：{?a} / {?b}" ;
+    sh:select """
+      SELECT $this ?a ?b WHERE {
+        $this mh:edgeType ?t .
+        FILTER (?t IN ("parent_of","cross_class"))
+        $this mh:from ?a ; mh:to ?b .
+        ?other mh:from ?a ; mh:to ?b ; mh:edgeType ?u .
+        FILTER (?u != ?t && ?u IN ("parent_of","cross_class"))
+      }""" ] .
+
+mh:ContradictsShape a sh:NodeShape ;
+  sh:targetClass mh:contradicts ;
+  sh:property [ sh:path mh:directed ; sh:hasValue false ;
+                sh:message "contradicts 必须 directed:false" ] ;
+  sh:sparql [ sh:message "对称边只存一条，from 必须是字典序较小者：{?fk} > {?tk}" ;
+    sh:select """
+      SELECT $this ?fk ?tk WHERE {
+        $this mh:from/mh:key ?fk ; mh:to/mh:key ?tk .
+        FILTER (STR(?fk) > STR(?tk))
+      }""" ] .
+
+mh:AcyclicShape a sh:NodeShape ;
+  sh:targetClass mh:Node ;
+  sh:sparql [ sh:message "depends_on 成环：{?k} 经 {?n} 条 depends_on 回到自身" ;
+    sh:select """
+      SELECT $this ?k (COUNT(?mid) AS ?n) WHERE {
+        $this mh:depNext+ ?mid . ?mid mh:depNext* $this .
+        $this mh:key ?k .
+      } GROUP BY $this ?k""" ] .
+
+mh:AttestationGrade a sh:NodeShape ;
+  sh:targetClass mh:Edge ;
+  sh:sparql [ sh:message "attestation={?a} 时 grade 上限不满足：实得 {?g}" ;
+    sh:select """
+      SELECT $this ?a ?g WHERE {
+        $this mh:attestation ?a ; mh:grade ?g .
+        FILTER (?a = "textbook_simplification" && ?g IN ("A", "S"))
+      }""" ] .
+
+mh:ParallelEdgeDup a sh:NodeShape ;
+  sh:targetClass mh:Edge ;
+  sh:sparql [ sh:message "与另一条边 from/type/to/time 完全相同，平行边必须各自可区分" ;
+    sh:select """
+      SELECT $this ?o WHERE {
+        $this mh:from ?a ; mh:to ?b ; mh:edgeType ?t .
+        ?o mh:from ?a ; mh:to ?b ; mh:edgeType ?t .
+        OPTIONAL { $this mh:timeFrom ?tf1 ; mh:timeTo ?tt1 }
+        OPTIONAL { ?o mh:timeFrom ?tf2 ; mh:timeTo ?tt2 }
+        FILTER (?o != $this && ?tf1 = ?tf2 && ?tt1 = ?tt2)
+      }""" ] .
+

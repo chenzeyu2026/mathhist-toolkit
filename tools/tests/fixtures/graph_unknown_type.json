@@ -1,0 +1,63 @@
+{
+  "schema_version": "0.2",
+  "meta": {
+    "title": "fixture: 未登记的边类型",
+    "scope": "故意违规，仅用于 graphlint 测试。"
+  },
+  "nodes": [
+    {
+      "id": "EV:fixture-publication",
+      "type": "event",
+      "schema_version": "0.2",
+      "labels": { "zh": "测试发表事件" },
+      "status": "historical",
+      "summary": "测试用事件节点。",
+      "date": { "from": 1799, "to": 1799, "precision": "year" },
+      "place": "意大利",
+      "actors": ["PE:fixture-author"],
+      "claims": [],
+      "provenance": {
+        "created_by": "graphlint-tests",
+        "created_at": "2026-11-23",
+        "schema_version": "0.2"
+      }
+    },
+    {
+      "id": "PR:fixture-problem",
+      "type": "problem",
+      "schema_version": "0.2",
+      "labels": { "zh": "测试问题" },
+      "status": "resolved",
+      "summary": "测试用问题节点。",
+      "original_formulation": {
+        "text": "测试用原始表述。",
+        "source": { "locator": "fixture" },
+        "grade": "F",
+        "attestation": "textbook_simplification"
+      },
+      "problem_kind": "solvability",
+      "asked_as": ["测试"],
+      "related_branches": [],
+      "claims": [],
+      "provenance": {
+        "created_by": "graphlint-tests",
+        "created_at": "2026-11-23",
+        "schema_version": "0.2"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "E:EV:fixture-publication>causes>PR:fixture-problem",
+      "from": "EV:fixture-publication",
+      "to": "PR:fixture-problem",
+      "type": "causes",
+      "directed": true,
+      "time": { "from": 1799, "to": 1799, "precision": "year" },
+      "source": { "locator": "fixture" },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.5
+    }
+  ]
+}

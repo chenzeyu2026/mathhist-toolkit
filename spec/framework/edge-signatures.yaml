@@ -1,0 +1,533 @@
+# 边签名与不变量：mathhist-toolkit 的唯一真源
+#
+# 本文件是 31 类边的签名、专属属性、简短释义，以及 7 类全局不变量的唯一真源。
+# 下游三件产物由它生成或驱动，禁止手改：
+#   1. spec/framework/graph.schema.json 的边 type 枚举与条件约束（generate 子命令写入）
+#   2. spec/object-model.md §5.2 边类型表、§5.6 约束表（generate 子命令写入，带 GENERATED 标记）
+#   3. tools/graphlint 的判定（每次运行直接读取本文件）
+#
+# 加一类边：只在本文件 edges 列表里加一条签名，然后
+#   cd tools && py -3 -m graphlint generate
+# 再跑
+#   cd tools && py -3 -m graphlint check-all
+# 文档表格、schema 枚举、校验器规则会一起更新；手改生成物视为错误。
+
+version: 1
+schema_version: "0.2"
+
+node_classes:
+  branch:          {abbr: "BR", prefix: "BR-", pattern: "^BR-[A-Z0-9-]+$",              label: 分支}
+  concept:         {abbr: "CO", prefix: "CO:", pattern: "^CO:[a-z0-9][a-z0-9.-]*$",     label: 概念}
+  theorem:         {abbr: "TH", prefix: "TH:", pattern: "^TH:[a-z0-9][a-z0-9.-]*$",     label: 定理}
+  problem:         {abbr: "PR", prefix: "PR:", pattern: "^PR:[a-z0-9][a-z0-9.-]*$",     label: 问题}
+  method:          {abbr: "ME", prefix: "ME:", pattern: "^ME:[a-z0-9][a-z0-9.-]*$",     label: 方法}
+  theory:          {abbr: "TY", prefix: "TY:", pattern: "^TY:[a-z0-9][a-z0-9.-]*$",     label: 理论}
+  failure:         {abbr: "FA", prefix: "FA:", pattern: "^FA:[a-z0-9][a-z0-9.-]*$",     label: 失败路线}
+  notation:        {abbr: "NO", prefix: "NO:", pattern: "^NO:[a-z0-9][a-z0-9.-]*$",     label: 记号}
+  person:          {abbr: "PE", prefix: "PE:", pattern: "^PE:[a-z0-9][a-z0-9.-]*$",     label: 人物}
+  text:            {abbr: "TX", prefix: "TX:", pattern: "^TX:[a-z0-9][a-z0-9.-]*$",     label: 文本}
+  witness:         {abbr: "TW", prefix: "TW:", pattern: "^TW:[a-z0-9][a-z0-9.-]*$",     label: 见证}
+  event:           {abbr: "EV", prefix: "EV:", pattern: "^EV:[a-z0-9][a-z0-9.-]*$",     label: 事件}
+  teaching_point:  {abbr: "TP", prefix: "TP:", pattern: "^TP:[a-z0-9][a-z0-9.-]*$",     label: 教学挂点}
+  statement:       {abbr: "ST", prefix: "ST:", pattern: "^ST:[a-z0-9][a-z0-9.-]*$",     label: 观点}
+
+# 所有边共有的信封字段。缺任一项即为 error（不属于节点完整性的历史欠账）。
+edge_envelope:
+  required: [id, from, to, type, directed, time, grade, attestation, confidence]
+
+# 结构性检查：不针对某一类边，而是图的物理形态。
+structural_checks:
+  - id: edge_id_format
+    level: error
+    rule: "id 必须是 E:<from>><type>><to>，同一 from/type/to 的第二条起加 #2、#3"
+  - id: endpoint_exists
+    level: error
+    rule: "from / to 必须是同一图包内存在的节点 ID"
+  - id: edge_type_registered
+    level: error
+    rule: "type 必须在 edges 列表中登记；禁止 related_to / see_also / associated_with 等兜底边"
+  - id: node_id_prefix
+    level: error
+    rule: "节点 ID 前缀必须与节点 type 一致（§1 编号规则）"
+
+# 节点完整性检查：字段要求来自 object-model.schema.json 本身。
+# 既有样例有历史欠账，默认按 warning 报告；--strict 时升为 error。
+node_completeness:
+  source: "object-model.schema.json"
+  default_level: warning
+  strict_level: error
+
+edges:
+  - type: parent_of
+    gloss: 分类包含、历史衍生、建制派生
+    direction: 父→子
+    from: [branch]
+    to: [branch]
+    directed: true
+    same_class: false
+    symmetric: false
+    acyclic: true
+    weight_sum: true
+    attributes:
+      kind: {required: true, enum: [taxonomic, historical, institutional]}
+      weight: {required: true, type: number, minimum: 0, maximum: 1}
+    forbid: "任何非 BR 端点；自环；成环；与同一对端点的 cross_class 并存（降级为 warning，见 B.5）"
+    mutex_with: [cross_class]
+
+  - type: cross_class
+    gloss: 跨类归属；一个分支可有多条跨类边
+    direction: 有向
+    from: [branch]
+    to: [branch]
+    directed: true
+    same_class: false
+    symmetric: false
+    acyclic: false
+    attributes:
+      kind: {required: true, enum: [overlaps, prerequisite, method_source, shared_object]}
+      weight: {required: false, type: number, minimum: 0, maximum: 1}
+    forbid: "任何非 BR 端点；自环；与同一对端点的 parent_of 并存（降级为 warning，见 B.5）"
+    mutex_with: [parent_of]
+
+  - type: prerequisite_of
+    gloss: 学习顺序，不等于从属
+    direction: 先→后
+    from: [branch]
+    to: [branch]
+    directed: true
+    same_class: false
+    symmetric: false
+    acyclic: false
+    forbid: "任何非 BR 端点；自环；与同对的 parent_of 混用（先学≠从属，见 B.5）"
+
+  - type: concerns
+    gloss: 分支的核心对象；不传递、不参与推理
+    direction: 索引
+    from: [branch]
+    to: [concept, theorem, problem, theory, text]
+    directed: true
+    same_class: false
+    symmetric: false
+    acyclic: false
+    forbid: "从 CO/TH 出发；指向 PE/EV/TP/TW/ST"
+
+  - type: generalizes
+    gloss: 与"特殊化"互逆，只写一边
+    direction: 一般→特殊
+    from: [concept, theorem]
+    to: [concept, theorem]
+    directed: true
+    same_class: true
+    symmetric: false
+    acyclic: false
+    forbid: "CO→TH、TH→CO 混类型；反向重复写"
+
+  - type: depends_on
+    gloss: 前置依赖；构成 DAG
+    direction: 后→前
+    from: [theorem, method, problem, concept, theory]
+    to: [theorem, concept, notation]
+    directed: true
+    same_class: false
+    symmetric: false
+    acyclic: true
+    forbid: "指向 PR（那是 resolves）；自环；成环"
+
+  - type: resolves
+    gloss: 一条边只表示"给出了答案"，不表示答案唯一
+    direction: 解决→问题
+    from: [theorem, method]
+    to: [problem]
+    directed: true
+    same_class: false
+    symmetric: false
+    acyclic: false
+    forbid: "从 ST/FA/CO 出发；指向非 PR"
+
+  - type: reformulates
+    gloss: 后世重新表述；不等于解决
+    direction: 旧→新
+    from: [problem]
+    to: [problem]
+    directed: true
+    same_class: false
+    symmetric: false
+    acyclic: true
+    forbid: "自环；成环；当作 resolves 使用"
+
+  - type: spawned
+    gloss: 派生问题
+    direction: 母→子
+    from: [problem]
+    to: [problem]
+    directed: true
+    same_class: false
+    symmetric: false
+    acyclic: true
+    forbid: "自环；成环；与 reformulates 混用"
+
+  - type: poses
+    gloss: 谁在何时以何表述提出
+    direction: 提出者→问题
+    from: [person, text, event]
+    to: [problem]
+    directed: true
+    same_class: false
+    symmetric: false
+    acyclic: false
+    forbid: "从 BR/CO 出发；指向非 PR"
+
+  - type: asserted_by
+    gloss: 同一对象可有多条；主张者放在 ST 节点
+    direction: 对象→观点
+    from: [theorem, concept, theory, problem, failure]
+    to: [statement]
+    directed: true
+    same_class: false
+    symmetric: false
+    acyclic: false
+    forbid: "反向写（ST→对象请用 about）；指向非 ST"
+    reverse_alias: about
+
+  - type: about
+    gloss: 观点所主张的对象
+    direction: 观点→对象
+    from: [statement]
+    to: [concept, theorem, problem, theory, notation, branch, event]
+    directed: true
+    same_class: false
+    symmetric: false
+    acyclic: false
+    forbid: "对象→观点（那是 asserted_by）；指向 PE/TX/TW/TP"
+    reverse_alias: asserted_by
+
+  - type: claimed_in
+    gloss: 该主张写在哪份文本/哪个事件里
+    direction: 观点→出处
+    from: [statement]
+    to: [text, witness, event]
+    directed: true
+    same_class: false
+    symmetric: false
+    acyclic: false
+    forbid: "从 PE/CO 出发；指向 PR/TH"
+
+  - type: contradicts
+    gloss: 互斥说法；只写一次
+    direction: 对称
+    from: [statement]
+    to: [statement]
+    directed: false
+    same_class: false
+    symmetric: true
+    acyclic: false
+    forbid: "directed: true；自环；同一关系写两条"
+
+  - type: competes_with
+    gloss: 同期竞争写法/主张
+    direction: 对称
+    from: [notation, statement]
+    to: [notation, statement]
+    directed: false
+    same_class: true
+    symmetric: true
+    acyclic: false
+    forbid: "跨类型（NO↔ST）；directed: true；写两条"
+
+  - type: denotes
+    gloss: 同一符号先后指称不同概念
+    direction: 记号→概念
+    from: [notation]
+    to: [concept]
+    directed: true
+    same_class: false
+    symmetric: false
+    acyclic: false
+    time_required: true
+    forbid: "反向（CO→NO 请用 uses_notation）；指向 TH/PR"
+    reverse_alias: uses_notation
+
+  - type: supersedes
+    gloss: 使用范围被取代，不表示概念被淘汰
+    direction: 旧→新
+    from: [notation, theory]
+    to: [notation, theory]
+    directed: true
+    same_class: true
+    symmetric: false
+    acyclic: true
+    forbid: "NO↔TY 跨类型；自环；成环"
+
+  - type: uses_notation
+    gloss: 谁用了这套记号
+    direction: 使用者→记号
+    from: [concept, theorem, method, theory]
+    to: [notation]
+    directed: true
+    same_class: false
+    symmetric: false
+    acyclic: false
+    forbid: "反向（NO→CO 请用 denotes）"
+    reverse_alias: denotes
+
+  - type: uses_method
+    gloss: 不要与方法→对象的反向边混用
+    direction: 使用者→方法
+    from: [theorem, problem, failure, theory]
+    to: [method]
+    directed: true
+    same_class: false
+    symmetric: false
+    acyclic: false
+    forbid: "从 ME 出发（反向）；从 CO 出发（实现→算法待 implementation 类型立项）"
+
+  - type: targets
+    gloss: 失败指向被主张或被取代者
+    direction: 失败→对象
+    from: [failure]
+    to: [theorem, theory, concept, method, problem]
+    directed: true
+    same_class: false
+    symmetric: false
+    acyclic: false
+    forbid: "对象→失败（反向）；指向 PE/EV/BR/TP"
+
+  - type: corrected_by
+    gloss: 纠正者可为多人，多条边
+    direction: 失败→纠错者
+    from: [failure]
+    to: [person]
+    directed: true
+    same_class: false
+    symmetric: false
+    acyclic: false
+    forbid: "反向（PE→FA）；指向 EV（事件用 part_of）"
+
+  - type: contributed_to
+    gloss: 作者、编者、译者、注家分开
+    direction: 人物→文本
+    from: [person]
+    to: [text, witness]
+    directed: true
+    same_class: false
+    symmetric: false
+    acyclic: false
+    attributes:
+      role: {required: true, enum: [author, editor, translator, commentator, compiler]}
+    forbid: "从 TX 出发；缺 role"
+
+  - type: proved
+    gloss: 与 claims[] 里的证明细节互补
+    direction: 人物→定理
+    from: [person]
+    to: [theorem]
+    directed: true
+    same_class: false
+    symmetric: false
+    acyclic: false
+    forbid: "指向 CO/PR；反向（TH→PE）"
+
+  - type: introduced
+    gloss: 只写可归属的首次引入
+    direction: 人物→对象
+    from: [person]
+    to: [concept, notation, method]
+    directed: true
+    same_class: false
+    symmetric: false
+    acyclic: false
+    forbid: "指向 TH/TX；反向（对象→PE）"
+
+  - type: participates_in
+    gloss: 角色写 note 或 kind
+    direction: 人物→事件
+    from: [person]
+    to: [event]
+    directed: true
+    same_class: false
+    symmetric: false
+    acyclic: false
+    forbid: "反向（EV→PE）"
+
+  - type: part_of
+    gloss: 事件归属；指向 CO/ME 时 note 必填
+    direction: 事件→对象
+    from: [event]
+    to: [problem, theorem, theory, failure, concept, method]
+    directed: true
+    same_class: false
+    symmetric: false
+    acyclic: true
+    require_note_when_to: [concept, method]
+    forbid: "从 BR 出发；自环；成环；指向 CO/ME 时无 note"
+
+  - type: witness_of
+    gloss: 每条见证必须且只能挂一条
+    direction: 见证→文本
+    from: [witness]
+    to: [text]
+    directed: true
+    same_class: false
+    symmetric: false
+    acyclic: false
+    forbid: "从 TX 出发；TW→TW（那是 derived_from）；一条 TW 挂两个 TX"
+
+  - type: derived_from
+    gloss: 允许一节点多子，表达并行传承
+    direction: 子→母
+    from: [witness]
+    to: [witness]
+    directed: true
+    same_class: false
+    symmetric: false
+    acyclic: true
+    forbid: "从 TX 出发；自环；成环"
+
+  - type: supports
+    gloss: 该见证或文本支撑了哪些断言/对象
+    direction: 证据→对象
+    from: [witness, text]
+    to: ["*"]
+    excluded_to: [teaching_point]
+    directed: true
+    same_class: false
+    symmetric: false
+    acyclic: false
+    forbid: "从 FA/ST/TP 出发（失败与观点不提供证据）；指向 TP"
+
+  - type: anchors
+    gloss: 教学挂点唯一的出边类型
+    direction: 挂点→对象
+    from: [teaching_point]
+    to: [concept, theorem, problem, notation, method]
+    directed: true
+    same_class: false
+    symmetric: false
+    acyclic: false
+    forbid: "TP 作为 to；TP 发出非 anchors 的边"
+
+  - type: exemplifies
+    gloss: 理论的核心概念与代表结果
+    direction: 例→理论
+    from: [concept, theorem]
+    to: [theory]
+    directed: true
+    same_class: false
+    symmetric: false
+    acyclic: false
+    forbid: "从 TY 出发；指向非 TY"
+
+# 七类全局不变量。每条写清判定方式与级别。
+invariants:
+  - id: no_self_loop
+    name: 自反（自环）
+    level: error
+    detection: "逐条边检查 from == to。任何边类型都不允许自环。"
+    rule: "自环不表达任何关系；需要'自身性质'时写节点字段，不写边。"
+    applies_to: ["*"]
+
+  - id: acyclic
+    name: 无环
+    level: error
+    detection: "对每个声明 acyclic: true 的边类型单独构子图，用 DFS 三色标记找环；报告环上节点序列。"
+    rule: "parent_of、derived_from、depends_on、part_of、reformulates、spawned、supersedes 的无环性分别判定，不合并子图。"
+    applies_to: [parent_of, derived_from, depends_on, part_of, reformulates, spawned, supersedes]
+
+  - id: homotypic
+    name: 同型
+    level: error
+    detection: "对声明 same_class: true 的边，比较两端节点的 type 是否相同；不同则报 from 类→to 类。"
+    rule: "只用节点 type 判定，不看 ID 前缀。"
+    applies_to: [generalizes, competes_with, supersedes]
+
+  - id: symmetric
+    name: 对称
+    level: error
+    detection: "对声明 symmetric: true 的边：directed 必须为 false；同一无向关系只存一条，from 必须取 ID 字典序较小者；若发现反向的另一条边，报重复。"
+    rule: "工具补反向索引，图里不写第二条。"
+    applies_to: [contradicts, competes_with]
+
+  - id: mutex
+    name: 互斥
+    level: warning
+    detection: "按 rules 逐对检查同一 from/to 上的边类型组合；命中只报 warning，不拒绝图。"
+    rule: "互斥是取景提示，不是物理错误：同一对端点可以同时承载不同类型的关系，只要语义确实不同。"
+    rules:
+      - id: parent_vs_cross_class
+        pair: [parent_of, cross_class]
+        level: warning
+        message: "同一对分支上同时有 parent_of 与 cross_class：归属重叠，请确认这是两种不同关系（分类从属 + 跨类共用），还是把同一关系写了两遍。"
+        note: "v0.2 修订（2026-11-23）由 error 降为 warning。降级后，research/ackermann-1928 里'若开第 63 支则 CO:ackermann-function 同时挂 parent_of 与 cross_class'的三处归属不再判非法，只提示归属重叠；该案例的取舍仍由人工决定。"
+      - id: prerequisite_vs_parent
+        pair: [prerequisite_of, parent_of]
+        level: warning
+        message: "同一对分支同时有 prerequisite_of 与 parent_of（或方向相反）：先学顺序与从属关系是两件事，请确认不是把从属写成了先修。"
+
+  - id: reverse_writing
+    name: 反向写法
+    level: error
+    detection: "端点类型不满足签名时，先试反向组合：若反向组合满足该类型的定义域/值域，报'方向疑似写反'并给出声明方向；若反向组合恰好符合另一登记类型（reverse_alias），点名应改用的类型。"
+    rule: "方向由签名定义，不靠约定俗成；反向写法不另设边类型。"
+    applies_to: ["*"]
+
+  - id: conditional_required
+    name: 条件必填
+    level: error
+    detection: "按 rules 逐条检查；每条规则自带 level，命中时给实际值与期望值。"
+    rule: "条件必填不设默认值：缺省即违例，不用 0/空串兜底。"
+    rules:
+      - id: attestation_grade_cap
+        level: error
+        when: "attestation = textbook_simplification"
+        require: "grade ∈ {F, U}"
+        message: "attestation=textbook_simplification 时 grade 上限不满足：实得 {grade}（期望 F 或 U）。教材/科普转述不能支撑 A/S 级断言。"
+      - id: later_report_grade_cap
+        level: error
+        when: "attestation = later_report"
+        require: "grade ∈ {S, U, F}"
+        message: "attestation=later_report 时 grade 不得为 A：实得 A（期望 S/U/F）。后世研究者叙述不能当作亲见原件。"
+      - id: unknown_grade_note
+        level: error
+        when: "grade = U"
+        require: "note 非空"
+        message: "grade=U 时必须写 note：说明未核实的依据缺口与下一步查证路径。"
+      - id: source_or_claimant
+        level: error
+        when: "任意边"
+        require: "source 存在，或 claimant 非空"
+        message: "边必须给出 source 或 claimant：没有来源也没有主张者的关系不可核。"
+      - id: parent_weight_sum
+        level: error
+        when: "某节点有 parent_of 入边"
+        require: "这些入边的 weight 之和 = 1.00（容差 ±0.01）"
+        message: "parent_of 入边权重和 {actual} ≠ 1.00：同一子节点的父边必须归一；无父的根节点不参与。"
+      - id: witness_unique
+        level: error
+        when: "节点类型为 witness"
+        require: "该 TW 恰好有一条 witness_of 出边，且只指向一个 TX"
+        message: "见证 {node} 的 witness_of 出边数为 {actual}（期望正好 1）。"
+      - id: tp_excluded
+        level: error
+        when: "边涉及 teaching_point"
+        require: "TP 只能作为 anchors 的 from；不得出现在 supports/depends_on/part_of 的任何一端"
+        message: "教学挂点只做索引：{type} 边把 TP 放在 {end} 端。"
+      - id: denotes_time
+        level: error
+        when: "边类型为 denotes"
+        require: "time.from 与 time.to 至少一端非 null；或 precision=unknown 且 note 说明原因"
+        message: "denotes 的时间至少一端非 null，或 precision=unknown 且 note 说明未知原因；实得 from={from}, to={to}, precision={precision}。"
+      - id: part_of_note
+        level: error
+        when: "边类型为 part_of 且 to 节点类型 ∈ {concept, method}"
+        require: "note 非空"
+        message: "part_of 指向 CO/ME 时 note 必填：写明为何不挂更具体的 PR/TH/TY/FA。"
+      - id: claims_text_exists
+        level: error
+        when: "节点 claim.source.text 以 TX: 开头"
+        require: "该 TX 存在于此图包；否则该 claim 的 grade 必须是 U"
+        message: "claim {claim} 引用的 {text} 不在图包内，grade 却为 {grade}（期望 U）。"
+      - id: non_isolated
+        level: error
+        when: "节点 status 不是 proposed，且 type 不是 branch"
+        require: "至少有一条入边或出边"
+        message: "节点 {node} 没有任何边：非 proposed 的非分支节点必须挂到图上。"

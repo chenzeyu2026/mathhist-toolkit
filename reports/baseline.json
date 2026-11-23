@@ -1,0 +1,2736 @@
+{
+  "tool": {
+    "name": "mathlint",
+    "version": "0.1.0"
+  },
+  "generated_at": "2026-11-13T21:50:13+08:00",
+  "mode": "offline",
+  "strict": false,
+  "files": [
+    {
+      "path": "<repo>\\corpus\\01-微积分起源.md",
+      "stats": {
+        "errors": 96,
+        "warns": 242,
+        "infos": 0,
+        "tags": 0,
+        "claims_total": 242,
+        "claims_untagged": 242
+      },
+      "issues": [
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 3,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "系列：数学思想的演化（第 1 期 / 共 9 期） 读者设定：大一计算机专业，高"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 12,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "微积分的故事通常被讲成一条直线：古代求积 → 牛顿和莱布尼茨发明微积分 → 贝克"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 14,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "这条直线里，每一步都对，但**连接方式全错**。它把一场持续两百多年、充满阵营、"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 20,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "$dx$ 和 $dy$ 在历史上到底能不能\"拆开\"用？谁在什么时候允许了这种用法"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 22,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "哪些今天教材里的标准做法，其实是某个具体学派的选择，而不是唯一可能的选择？"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 23,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "把每个节点的**地域/学派分流**写出来，并且回答\"现实需求如何塑造了这个分叉\""
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 25,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**读法建议**：第 1、2 节是史实铺底，可以快读；第 3、4、5 节是正文的"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 31,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "现代教材把\"求导\"和\"积分\"放在一起讲，还告诉你它们互逆。这是 17 世纪之后的"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 33,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "理解这一点，是理解后面一切的关键：**微积分的诞生不是\"发现了两个运算\"，而是\""
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 37,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "现存最早的\"求积\"材料是纯程序性的。巴比伦泥板上有大量面积、体积、倒数的计算程序"
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 37,
+          "col": 130,
+          "message": "旧式简写「【原】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【原】"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 39,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "这个传统很重要，因为它提出了微积分后来一直在处理的那个原始问题：**曲边图形的面"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 43,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "希腊人给出的方案是**穷竭法**（method of exhaustion），通"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 47,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "假设面积 $A$ 不等于你要证明的值 $B$，那么 $A-B$ 是一个确定的量。"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 49,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "注意这个结构：**它从头到尾没有出现\"无穷小\"这个对象**，只出现了\"小于任意给"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 51,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "阿基米德的《抛物线求积》用这套办法证明了弓形面积等于内接三角形面积的 $4/3$"
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 51,
+          "col": 42,
+          "message": "旧式简写「【原】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【原】"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 53,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "而 1906 年在君士坦丁堡发现、后来被称为\"阿基米德羊皮卷\"的《方法论》（Me"
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 53,
+          "col": 127,
+          "message": "旧式简写「【研】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【研】"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 59,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "而 19 世纪的\"严格化\"，某种意义上是在**重新执行阿基米德的自我审查**，只"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 63,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**误说**：\"《方法论》的发现证明阿基米德已经掌握了微积分。\" **纠正**："
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 64,
+          "col": 104,
+          "message": "旧式简写「【研】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【研】"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 68,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "公元 263 年，刘徽为《九章算术》作注，其中\"割圆术\"给出了用圆内接正多边形逼"
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 68,
+          "col": 106,
+          "message": "旧式简写「【原】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【原】"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 70,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "这段话的现代读法几乎就是极限定义：误差随分割加密而单调减小，且可以小于任意给定值"
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 70,
+          "col": 88,
+          "message": "旧式简写「【研】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【研】"
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 72,
+          "col": 93,
+          "message": "旧式简写「【原】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【原】"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 76,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**误说**：\"中国早就有微积分了。\" **纠正**：割圆术包含**极限思想**"
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 77,
+          "col": 158,
+          "message": "旧式简写「【研】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【研】"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 79,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "这个判断对你有直接用处：它告诉你\"有思想\"和\"有工具\"的差别在哪。你在算法竞赛里"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 83,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "14–16 世纪，印度喀拉拉学派（Kerala school）在 $\\pi$ 和"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 87,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "的最早提出者；16 世纪的《Yuktibhāṣā》（作者 Jyeṣṭhadeva"
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 87,
+          "col": 85,
+          "message": "旧式简写「【研】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【研】"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 91,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**没有证据表明这些结果传到了欧洲**。莱布尼茨、格雷戈里独立得到类似级数，目前"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 92,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "喀拉拉学派做的是**级数与逼近**，不是**微分与积分作为互逆运算**。它更接近"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 94,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**误说**：\"印度在 15 世纪就有了微积分，欧洲只是后来居上。\" **纠正*"
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 95,
+          "col": 100,
+          "message": "旧式简写「【研】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【研】"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 99,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "伊本·海赛姆（Ibn al-Haytham，拉丁名 Alhazen，965–10"
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 99,
+          "col": 143,
+          "message": "旧式简写「【研】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【研】"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 101,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "同样，这是\"具体的求和技巧\"，不是\"一般的积分运算\"。但它在方法论上跨了一步：*"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 114,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "缺的那块是同一个东西：**一套符号，使得\"对无穷小量做代数运算\"成为可能，并且这"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 122,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "17 世纪的进展可以概括为：**切线问题、极值问题、求积问题，被同一套算法吃掉了"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 126,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "开普勒 1615 年的《酒桶新立体几何》（*Nova stereometria "
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 126,
+          "col": 104,
+          "message": "旧式简写「【原】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【原】"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 128,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "这本书的方法很粗糙——把立体切成大量薄片再求和，误差控制基本靠经验。但它的意义在"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 134,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "博洛尼亚的卡瓦列里（Bonaventura Cavalieri）在《不可分几何》"
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 134,
+          "col": 180,
+          "message": "旧式简写「【原】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【原】"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 136,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "他有一条关键原则（后世称\"卡瓦列里原理\"）：**如果两个立体在每一等高处的截面面"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 138,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**它的贡献**：把\"求积\"从\"每次都要设计一个巧妙的穷竭法\"变成了\"按同一模式"
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 143,
+          "col": 50,
+          "message": "旧式简写「【研】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【研】"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 155,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "第 3 步的\"大致相等\"和第 5 步的\"令 $e$ 为零\"，在逻辑上是**互相矛"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 157,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "这个矛盾，**七十五年后被贝克莱精准地抓住**（见第 4 节）。但费马的方法在实"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 159,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "费马还独立得到了 $\\int x^n\\,dx = \\frac{x^{n+1}}{"
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 159,
+          "col": 108,
+          "message": "旧式简写「【研】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【研】"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 163,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "笛卡尔的《几何学》（*La Géométrie*，1637，作为《方法论》的附录"
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 163,
+          "col": 121,
+          "message": "旧式简写「【原】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【原】"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 165,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "这在代数上是完全严格的——没有无穷小，没有\"令其为零\"的矛盾。**代价是**：它"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 169,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**几何/代数严格但适用范围窄** vs **无穷小方法不严格但适用范围极广**"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 174,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "沃利斯的《无穷算术》（*Arithmetica infinitorum*，165"
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 174,
+          "col": 191,
+          "message": "旧式简写「【原】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【原】"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 176,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "沃利斯的方法在严格性上很糟（他对负指数、分数指数的处理基本靠类比），但在**启发"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 180,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "牛顿的老师巴罗（Isaac Barrow）在《几何讲义》（*Lectiones "
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 180,
+          "col": 132,
+          "message": "旧式简写「【原】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【原】"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 182,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "巴罗的证明是几何的、个案化的，而且他没有把这当成一个\"运算定理\"，只是当成一个几"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 184,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**常见误说**：\"微积分基本定理是牛顿和莱布尼茨发明的。\" **纠正**：定理"
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 185,
+          "col": 156,
+          "message": "旧式简写「【研】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【研】"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 191,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**第一层：手稿期（1665–1671）。** 1665–1666 年因瘟疫闭校"
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 192,
+          "col": 168,
+          "message": "旧式简写「【研】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【研】"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 194,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**第二层：小范围流通（1669–1671）。** 《运用无穷多项方程的分析》（"
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 195,
+          "col": 288,
+          "message": "旧式简写「【原】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【原】"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 197,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**第三层：公开出版（1687 起）。** 《自然哲学的数学原理》（1687）用"
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 198,
+          "col": 157,
+          "message": "旧式简写「【原】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【原】"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 202,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**误说**：\"牛顿的无穷小不严谨，所以他那一套只是直观。\" **纠正**：牛顿"
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 203,
+          "col": 178,
+          "message": "旧式简写「【原/研】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【原/研】"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 205,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**关于延迟发表，也值得说清**：这不是\"藏私\"这么简单。牛顿的发表策略与优先权"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 209,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "莱布尼茨的路径完全不同。他关心的是**\"普遍字符\"（characteristic"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 213,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**1673 年伦敦之行**：他与 Oldenburg、Collins 等人交流"
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 213,
+          "col": 152,
+          "message": "旧式简写「【研】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【研】"
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 213,
+          "col": 157,
+          "message": "旧式简写「【原】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【原】"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 214,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**1684 年 10 月**：他在《学者纪事》（*Acta Eruditoru"
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 214,
+          "col": 292,
+          "message": "旧式简写「【原】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【原】"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 216,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "这篇文章给出的是一套**规则**，而不是推导：$dx$ 表示\"量的微分\"，$d("
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 216,
+          "col": 170,
+          "message": "旧式简写「【原】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【原】"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 218,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**1686 年**：他在《论隐藏的几何与不可分量及无穷的分析》（\"De geo"
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 218,
+          "col": 168,
+          "message": "旧式简写「【原】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【原】"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 220,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "注意这里的因果顺序：**莱布尼茨先有了一套好用的记号，然后这套记号反过来塑造了他"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 222,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**这是本期第一个\"B 类\"案例**：$\\int$ 与 $d$ 这套记号在 16"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 226,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "本节按体例放在旁栏。它属于\"数学史作为独立学科\"的研究对象，**不承担本期的推理"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 228,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**三段可核查的事实**：莱布尼茨 1684 年先发表；牛顿的方法写成更早（16"
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 228,
+          "col": 132,
+          "message": "旧式简写「【研】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【研】"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 230,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**并列说法（不站队）**：英国方面认为牛顿的写作时间更早，构成事实上的优先；欧"
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 230,
+          "col": 125,
+          "message": "旧式简写「【研】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【研】"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 232,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**唯一与本期论证相关的结论**：这场争论把**记号选择身份化**了——从此\"用"
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 232,
+          "col": 147,
+          "message": "旧式简写「【研】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【研】"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 248,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**\"形式上可约分\"这一条尤其关键**。$\\frac{dy}{dx}$ 看起来像"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 254,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "这是本期最技术、也最值得慢慢读的一节。因为\"能不能拆\"这个问题，在不同年代有**"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 269,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "1684 年那篇六页半的论文里，莱布尼茨并没有说\"$dx$ 是一个无穷小量\"。数"
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 269,
+          "col": 135,
+          "message": "旧式简写「【研】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【研】"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 273,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "莱布尼茨一开始给出的是一套**关于比的算法**，而不是一套**关于无穷小实体的算"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 275,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "这跟你听到的通行说法正好相反。通行说法是\"莱布尼茨的无穷小不严谨，所以后人要补\""
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 281,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**第一步：洛必达 1696 年的教科书。** 《无穷小分析——用于理解曲线》（"
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 282,
+          "col": 152,
+          "message": "旧式简写「【原】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【原】"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 284,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "教科书的意义被严重低估了。**教科书不是研究的记录，而是\"允许你这么做\"的许可证"
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 284,
+          "col": 179,
+          "message": "旧式简写「【研】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【研】"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 286,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**第二步：伯努利家族的形式化。** 雅各布·伯努利、约翰·伯努利把 $dx$ "
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 287,
+          "col": 151,
+          "message": "旧式简写「【研】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【研】"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 289,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "这一步是决定性的：**如果 $dy/dx$ 只是一个不可拆的记号，分离变量法根本"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 291,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**第三步：欧拉 1755 年的\"双重操作\"。** 欧拉在《微分学原理》（*In"
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 292,
+          "col": 131,
+          "message": "旧式简写「【原】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【原】"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 294,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "这是逻辑上最容易被嘲笑的一步，但要注意欧拉为什么敢这么做：他真正在做的是**对解"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 296,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "这就是\"当年就是不严谨\"（A 类）与\"当年就是对的、只是说不出为什么\"（B 类）"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 298,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**第四步：柯西 1823 年把\"拆开\"挪到极限之前。** 柯西在《无穷小计算讲"
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 299,
+          "col": 208,
+          "message": "旧式简写「【原/研】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【原/研】"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 301,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "这一步很关键：它没有禁止\"拆开\"，而是给\"拆开\"划定了一个**时间窗口**——在"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 303,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**第五步：1890s 以后，$dx$ 变成线性映射。** 在微分几何里，$dx"
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 304,
+          "col": 152,
+          "message": "旧式简写「【研】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【研】"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 306,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "到这一步，\"能不能拆开\"这个问题**消失了**：$dx$ 和 $dy$ 都是合法"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 308,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**第六步：20 世纪外微分。** 嘉当（Élie Cartan）等人的外微分把"
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 309,
+          "col": 157,
+          "message": "旧式简写「【研】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【研】"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 317,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "分离变量法、微分方程、变分法这三样东西，都**在记号层面要求** $dx$、$d"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 318,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "法国 18 世纪的分析教学（见第 6 节）明确以\"给工程师可用的工具\"为目标，这"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 319,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "物理学家至今仍在\"拆\"$dx$：热力学、流体力学里的推导大量依赖这种操作，而且*"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 323,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "莱布尼茨的动机是**符号系统与普遍推理**，不是弹道。他要的是\"让推理机械化\"，"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 324,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "欧拉的形式化主要服务于**数学内部的美学与统一性**（把三角、指数、对数统一到级"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 325,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "19 世纪的严格化恰恰是**反工程取向**的：它牺牲了可操作性，换取了可检验性。"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 329,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "工程与物理提供了\"必须能拆\"的**压力**；记号系统提供了\"可以拆\"的**形式可"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 332,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "这个结论对你有一个直接的方法论价值：**当你看到一个数学操作\"用起来很顺但说不清"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 338,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**（1）偏导数不能约。** $\\frac{\\partial z}{\\parti"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 341,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "热力学里有一个经典反例，用来警告所有把偏导当分数的人：对理想气体，若把 $\\le"
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 341,
+          "col": 228,
+          "message": "旧式简写「【研】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【研】"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 343,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**（2）高阶导不是\"高阶的商\"。** $\\frac{d^2y}{dx^2}$ "
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 346,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**（3）导数为零的点，反函数会失效。** $y=x^3$ 在 $x=0$ 处 "
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 349,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**（4）偏导交换次序需要条件。** $\\frac{\\partial^2 f}{"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 352,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**（5）多变量下 $df$ 是全微分，不是\"某个方向的微分\"。** $df=\\"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 357,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**$dx$ 和 $dy$ 在历史上确实被拆开用过，而且是被教科书和微分方程的需"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 365,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**严格化没有把\"错的\"变成\"对的\"，它把\"对的但说不清为什么对\"变成了\"对的且"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 373,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "《分析家：致一位不信神的数学家》（*The Analyst: A Discour"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 375,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "以 $x^n$ 求流数为例，先让 $x$ 增加一个增量 $o$，展开 $(x+o"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 381,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "\"And what are these Fluxions? The Veloci"
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 385,
+          "col": 3,
+          "message": "旧式简写「【原】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【原】"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 387,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**必须说清的是**：贝克莱不是在玩文字游戏，他指出了**一个真实的逻辑漏洞**"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 391,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "狄德罗与达朗贝尔主编的《百科全书》中，\"微分\"条目主张把微分理解为**极限**而"
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 391,
+          "col": 105,
+          "message": "旧式简写「【研】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【研】"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 395,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "缺**量化语言**：\"无限接近\"无法被检验，只有\"小于任意给定的 $\\varep"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 399,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "拉格朗日在《解析函数论》（*Théorie des fonctions anal"
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 403,
+          "col": 62,
+          "message": "旧式简写「【原】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【原】"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 405,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "这个纲领的吸引力极大：它看起来彻底解决了贝克莱的批评——不再有\"先非零后为零\"，"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 409,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**反例一：级数不一定收敛。** 拉格朗日的定义假设 $f(x+i)$ 能展开成"
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 410,
+          "col": 133,
+          "message": "旧式简写「【研】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【研】"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 412,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**反例二：傅里叶的 heat equation（1822）。** 傅里叶在《热"
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 413,
+          "col": 109,
+          "message": "旧式简写「【原】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【原】"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 415,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "这一击是致命的，因为它不是\"某个奇怪的反例\"，而是**物理问题直接要求**的函数"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 420,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**结论**：拉格朗日纲领的失败说明，**\"取消无穷小\"不能靠\"取消极限\"来实现"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 422,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "这里有一个重要的模式，值得你记下来：**数学的严格化往往不是由\"追求严格\"驱动的"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 426,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "1821 年，柯西为综合理工学校写出《分析教程》（*Cours d'analys"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 428,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**旧语义**：无穷小是一个\"量\"，它比任何正数都小，但不是零。 **新语义**"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 431,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "用柯西的表述，大意是：一个变量，如果它的绝对值可以无限减小以至于小于任何给定的量"
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 431,
+          "col": 51,
+          "message": "旧式简写「【原/研】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【原/研】"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 435,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "贝克莱说\"$o$ 不能既非零又为零\"。柯西回答：$o$ 从来不是零，它是一个**"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 441,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "用 $\\varepsilon$ 式的语言陈述定理（\"对任意 $\\varepsil"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 443,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "第二点常被忽略。通行的说法是\"ε-δ 是魏尔斯特拉斯的发明\"，但根据 Grabi"
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 443,
+          "col": 110,
+          "message": "旧式简写「【研】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【研】"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 447,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**一致收敛**：柯西认为\"连续函数项级数的和函数连续\"。1826 年，阿贝尔给"
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 447,
+          "col": 101,
+          "message": "旧式简写「【研】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【研】"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 448,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**连续与可导**：柯西对\"连续蕴涵可导\"的处理，按 Grabiner 的分析，"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 449,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**实数**：柯西的极限需要一个完备的数系，但实数当时还没有被构造出来（1872"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 451,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**这一条很重要**：严格化是**分层推进**的，不是一次到位。柯西严格化了\"极"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 455,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "魏尔斯特拉斯（Karl Weierstrass）在柏林大学的讲座（1860s–1"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 460,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "对每个 $\\varepsilon>0$，存在 $\\delta>0$，使得只要 $"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 462,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "这句话里**没有任何\"运动\"**，没有\"趋于\"，没有\"越来越\"。它是一个关于\"存"
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 462,
+          "col": 64,
+          "message": "旧式简写「【研】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【研】"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 464,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**第二层：把量化记号系统化。** $\\forall$（对所有）与 $\\exis"
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 465,
+          "col": 174,
+          "message": "旧式简写「【原/研】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【原/研】"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 467,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**第三层：用反例摧毁几何直觉的权威。** 1872 年，魏尔斯特拉斯构造出一个"
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 468,
+          "col": 107,
+          "message": "旧式简写「【研】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【研】"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 470,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "这件事的冲击力怎么强调都不过分：在此之前，\"曲线\"意味着\"能画出来的、有切线的\""
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 474,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**康托**用有理数的基本列构造实数，并开始处理无穷集合的基数。"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 480,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**（1）改变了\"什么算证明\"。** 以前：能算出正确结果、且步骤看起来合理，就"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 492,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**（3）保留了绝大多数结果。** 牛顿、莱布尼茨、欧拉、拉格朗日算出来的东西，"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 495,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**（4）付出了代价：直觉被压制。** 严格化之后，教科书必须从 ε-δ 开始讲"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 500,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "1960 年，鲁滨逊（Abraham Robinson）用模型论的方法构造出**"
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 500,
+          "col": 124,
+          "message": "旧式简写「【原】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【原】"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 503,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "1966 年，North-Holland 出版专著《Non-Standard A"
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 503,
+          "col": 85,
+          "message": "旧式简写「【原】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【原】"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 505,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**这解决了什么？** 它给出了一种**逻辑上严格、且保留无穷小直觉**的微积分"
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 505,
+          "col": 181,
+          "message": "旧式简写「【原】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【原】"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 509,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**它不证明\"历史上的无穷小是对的\"**。它构造的是**一个新的数学模型**，这"
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 509,
+          "col": 127,
+          "message": "旧式简写「【研】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【研】"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 510,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**它不改变定理的内容**。非标准分析能证明的实数定理，标准分析也能证明（这是\""
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 511,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**它在教学中没有取代 ε-δ**。原因不是它不对，而是**成本**：教师不熟悉"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 513,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**这是本期的第二个\"B 类\"案例**：无穷小在 1684 年是\"对但说不清\"，"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 515,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**关于柯西与非标准分析的争议，还要补一句**：鲁滨逊在 1966 年那本书里提"
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 515,
+          "col": 204,
+          "message": "旧式简写「【研】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【研】"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 517,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**为什么要把这个争议写出来？** 因为它示范了一件事：**数学史的判断也会随数"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 523,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "这一节是整期最\"反教材\"的部分。下面每一条，都是今天教材里看起来天经地义、实则是"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 527,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**选择**：$f'(x)=\\lim_{h\\to 0}\\frac{f(x+h)-"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 532,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "注意：这两种选择在数学上等价（在一维），但**教学后果完全不同**。选极限路线，"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 536,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**选择 A（多数工科教材）**：先讲不定积分（反导数），再用牛顿—莱布尼茨公式"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 540,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "这三种顺序**在数学上等价，在认知上完全不同**。选 A 的人会觉得积分就是\"求"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 542,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**这不是教学法的小分歧**。选 A 会让学生形成\"积分=反导数\"的错误本体论，"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 546,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "标准分析的选择是：**实数系里没有非零的无穷小**（阿基米德性质）。于是\"无穷小"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 550,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "两种选择给出**同样的定理**（保守扩张），但**不同的直觉**。今天教材选前者"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 561,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**它们等价**（在适当条件下），但**表述成本不同**。教材选 ε-δ，是因为"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 565,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "很多人（包括一些教材的边栏）会说\"连续不一定可导，比如 $|x|$ 在 0 处\""
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 567,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "真正摧毁直觉的是魏尔斯特拉斯 1872 年的函数：**处处连续，处处不可导**。"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 569,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "而历史上，**柯西本人也曾倾向于认为连续蕴涵可导**（他试图证明它）。所以\"连续"
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 569,
+          "col": 87,
+          "message": "旧式简写「【研】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【研】"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 571,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "这条对你的意义：**教材里那些\"显然\"的警告，往往是历史上某个大人物栽过的坑**"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 583,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**没有一个是\"设计\"出来的最优解**，每一个都是\"当时够用 + 有人用 + 教"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 587,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "国内高数教材普遍是\"极限 → 连续 → 导数 → 微分 → 积分\"，且极限一节直"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 591,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**两种顺序都能培养出合格的使用者，但塑造的直觉不同**：前者先建立\"一切都要有"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 597,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "这一节是全期的\"横截面\"。每一小节都按同一个结构写：**现实需求 → 技术取向 "
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 601,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**现实需求**：牛顿的微积分是从**自然哲学**里长出来的——力学（运动、引力"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 608,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**后果（有研究支持）**：18 世纪英国数学沿着\"流数 + 几何\"的路走，符号"
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 608,
+          "col": 106,
+          "message": "旧式简写「【研】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【研】"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 610,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**转折点：1812 年的分析学会（Analytical Society）。**"
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 611,
+          "col": 129,
+          "message": "旧式简写「【研】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【研】"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 617,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "这句话之所以流传，不是因为它深刻，而是因为它准确地说出了当时的实情：**记号之争"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 621,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**误说**：\"英国因为死守点记号，落后了一百年。\" **纠正**：记号只是表层"
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 622,
+          "col": 182,
+          "message": "旧式简写「【研】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【研】"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 626,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**现实需求**：欧陆的数学共同体是**科学院 + 通信共和国**（respub"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 631,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "家族传承：伯努利家族（巴塞尔）→ 欧拉（彼得堡、柏林）→ 拉格朗日（柏林、巴黎）"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 633,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**产物**：变分法（欧拉—拉格朗日）、微分方程的系统解法、无穷级数的大规模运用"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 635,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**这一支的关键特征**：它把数学当成**可操作的符号系统**，而不是\"关于图形"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 643,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**军事**：炮兵改革（格里博瓦尔体系）需要弹道表；筑城术需要几何；测绘需要三角"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 644,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**工程**：桥梁、道路、运河（Ponts et Chaussées 学校，17"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 646,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**教育制度**：1794 年创办的**综合理工学校**（École polyt"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 650,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**教科书化**。拉克鲁瓦（S. F. Lacroix）的《微分与积分学教程》（"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 651,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**几何与分析的结合**。蒙日（Monge）的画法几何把三维问题化归为二维作图，"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 652,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**把\"分析\"当工具分配给学生**。学生是未来的工程师，不是未来的数学家，所以教"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 654,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**产物**：柯西的两本讲义（1821、1823）正是在这个制度里产生的——**"
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 654,
+          "col": 111,
+          "message": "旧式简写「【研】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【研】"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 656,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "这条因果链值得记住：**严格化不是\"数学家变严谨了\"，而是\"数学的消费者变了\"*"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 660,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**现实需求**：1810 年柏林大学建立（洪堡改革），确立了\"教学与研究统一\""
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 664,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**算术化**：把几何直觉从证明中驱逐出去，一切归到实数与集合。魏尔斯特拉斯的名"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 665,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**反例优先**：魏尔斯特拉斯处处不可导函数（1872）、黎曼可积但有无数间断点"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 666,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**公理化**：从希尔伯特《几何基础》（1899）到后来的公理化运动，把\"什么是"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 670,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**注意一个常被忽略的事实**：黎曼 1854 年的就职演讲（《关于用三角级数表"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 674,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**现实需求**：彼得堡科学院从 18 世纪起就是欧陆数学的分支机构（欧拉在此工"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 678,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**构造性逼近**：切比雪夫（Chebyshev）学派关心\"用多项式逼近函数时，"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 679,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**不等式传统**：切比雪夫不等式、马尔可夫不等式、后来的集中不等式——俄国学派"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 680,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**微分方程与稳定性**：李雅普诺夫（Lyapunov）的运动稳定性理论，直接服"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 681,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**后果**：20 世纪苏联的分析学派（索伯列夫、柯尔莫哥洛夫、格涅坚科）在概率"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 683,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**对你的意义**：计算机专业做算法分析，用的正是这套取向——**不问你\"收敛吗"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 687,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**现实需求**：意大利统一后（1861）急需统一的工程与技术教育，都灵、比萨、"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 691,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**皮亚诺（Peano）**：1889 年《算术原理》用一套新记号（$\\fora"
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 691,
+          "col": 153,
+          "message": "旧式简写「【原】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【原】"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 692,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**反例传统**：皮亚诺 1890 年构造出**填满整个正方形的连续曲线**（空"
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 692,
+          "col": 62,
+          "message": "旧式简写「【研】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【研】"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 693,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**实分析**：迪尼（Dini）的《实变函数论基础》（1878）系统处理了连续、"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 695,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**为什么这很重要**：意大利学派证明了**记号本身可以成为研究对象**。皮亚诺"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 702,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "《九章算术》（成书约公元 1 世纪）是**问题集 + 算法**的结构，每题给\"术"
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 702,
+          "col": 57,
+          "message": "旧式简写「【原】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【原】"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 703,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "刘徽 263 年注《九章》，用割圆术求圆周率，并给出\"以术驭理\"式的说明。【原】"
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 703,
+          "col": 40,
+          "message": "旧式简写「【原】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【原】"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 704,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "宋元时期出现\"天元术\"\"四元术\"——用位置表示未知数及其幂次的**符号化尝试**"
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 704,
+          "col": 79,
+          "message": "旧式简写「【研】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【研】"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 705,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "1607 年徐光启与利玛窦合译《几何原本》前六卷，引入演绎体系。【原】"
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 705,
+          "col": 35,
+          "message": "旧式简写「【原】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【原】"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 706,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**需求**：历法（授时、改历）、税收与度量、土木工程、军事。这些需求要的是**"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 710,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**伊斯兰世界**：花拉子米（al-Khwārizmī）的代数（约 820 年）"
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 710,
+          "col": 99,
+          "message": "旧式简写「【研】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【研】"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 712,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**日本**：江户时代锁国，和算独立发展。关孝和（Seki Takakazu，约"
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 712,
+          "col": 103,
+          "message": "旧式简写「【研】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【研】"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 716,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "这些传统的**取向是算法与逼近**，不是演绎与公理。这不是能力高低，是**需求结"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 739,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**最初的问题**：曲边图形/立体的面积体积，能不能有一套统一算法，不用每次重新"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 740,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**当时的限制**：没有极限概念，没有实数，无法给\"无穷多个零之和\"一个意义。"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 741,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**被迫演化**：贝克莱式的质疑（零宽度 vs 有宽度两难）→ 需要把\"和\"变成"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 742,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**今天**：以\"测度\"的形式复活——面积是集合函数，用可列可加性定义；卡瓦列里"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 746,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**最初的问题**：如何求运动物体的瞬时速度，以及曲线的切线？"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 747,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**当时的限制**：没有函数概念，没有极限定义，只能用\"消失中的量\"来描述。"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 748,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**被迫演化**：贝克莱的 $o$ 悖论 → 极限语言；同时因记号不适配任意变量"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 749,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**今天**：$\\dot{x}$ 仍用于物理与微分方程（时间导数）；\"流\"的思想"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 753,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**最初的问题**：让\"求切线/求极值\"变成一套可机械执行的符号运算。"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 754,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**当时的限制**：$dx$ 的语义未定（比值？无穷小？任意量？），三种读法并存"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 755,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**被迫演化**：微分方程要求\"拆开\"→ 教科书中固化 → 贝克莱批评 → 柯西"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 756,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**今天**：$dx$ 是余切空间的基（1-形式）；$df$ 是线性映射；\"拆开"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 762,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**被迫演化**：需要一套互逆的符号（$d$ 与 $\\int$），才能把定理变成"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 763,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**今天**：$\\int_a^b f'=f(b)-f(a)$；高维形式是斯托克斯"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 767,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**最初的问题**：如何在不违反逻辑的前提下，保留\"无穷小\"这个好用的工具？"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 768,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**当时的限制**：没有实数构造，没有量化语言（ε），没有一致收敛概念。"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 769,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**被迫演化**：贝克莱的批评 + 傅里叶的级数 + 阿贝尔的反例 → 必须把\""
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 770,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**今天**：$\\lim$ 是一切的起点；无穷小作为\"变量\"进入教材；作为\"实体"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 776,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**被迫演化**：处处连续处处不可导的函数（1872）证明直觉不可靠 → 必须静"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 777,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**今天**：所有分析教材的第一语言；也是\"算法收敛性\"证明的模板（给定 ε 找"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 781,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**最初的问题**：能不能让无穷小重新成为一个合法的数学对象？"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 783,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**被迫演化**：不是\"被逼\"，而是\"工具够了于是回头做\"——这是 B 类复活的"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 784,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**今天**：与 ε-δ 并存；在概率论、组合数学、微分方程中有局部应用；教学上"
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 792,
+          "col": 103,
+          "message": "旧式简写「【原】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【原】"
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 792,
+          "col": 121,
+          "message": "旧式简写「【研】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【研】"
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 793,
+          "col": 79,
+          "message": "旧式简写「【原】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【原】"
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 793,
+          "col": 95,
+          "message": "旧式简写「【研】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【研】"
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 794,
+          "col": 68,
+          "message": "旧式简写「【研】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【研】"
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 794,
+          "col": 84,
+          "message": "旧式简写「【原】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【原】"
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 795,
+          "col": 92,
+          "message": "旧式简写「【原】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【原】"
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 795,
+          "col": 112,
+          "message": "旧式简写「【研】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【研】"
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 796,
+          "col": 106,
+          "message": "旧式简写「【研】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【研】"
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 796,
+          "col": 118,
+          "message": "旧式简写「【原】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【原】"
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 797,
+          "col": 78,
+          "message": "旧式简写「【研】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【研】"
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 797,
+          "col": 90,
+          "message": "旧式简写「【原】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【原】"
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 798,
+          "col": 95,
+          "message": "旧式简写「【研】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【研】"
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 798,
+          "col": 135,
+          "message": "旧式简写「【研】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【研】"
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 799,
+          "col": 76,
+          "message": "旧式简写「【原】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【原】"
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 800,
+          "col": 81,
+          "message": "旧式简写「【原】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【原】"
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 800,
+          "col": 98,
+          "message": "旧式简写「【研】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【研】"
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 801,
+          "col": 78,
+          "message": "旧式简写「【研】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【研】"
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 802,
+          "col": 79,
+          "message": "旧式简写「【研】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【研】"
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 803,
+          "col": 71,
+          "message": "旧式简写「【原】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【原】"
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 803,
+          "col": 86,
+          "message": "旧式简写「【研】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【研】"
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 804,
+          "col": 97,
+          "message": "旧式简写「【研】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【研】"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 821,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "遇到 A 类，你要问\"**它错在哪、错的部分是否影响结论**\"。很多 A 类的结"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 822,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "遇到 B 类，你要问\"**它凭什么能被复用**\"。通常答案是：它抓住了一个**结"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 831,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**（1）浮点误差就是现代的\"高阶无穷小可弃\"。** 你写数值积分时用辛普森法，"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 834,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**（2）自动微分就是链式法则的工程化。** 反向传播（backprop）本质是"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 837,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**（3）收敛性 = 你必须能回答\"ε 是多少\"。** 写迭代算法（牛顿法、梯度"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 840,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**（4）记号选择塑造思维。** PyTorch 的 `Tensor` 与 Nu"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 849,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "为什么\"不可分量\"这个方法在逻辑上有问题，却仍然被用了一百多年？（§2.2、§3"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 850,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "莱布尼茨 1684 年的论文里，$dx$ 到底被定义成了什么？这个问题的答案为什"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 851,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "贝克莱的反驳具体针对哪两步操作？柯西是怎么让这两步不再冲突的？（§4.1、§4."
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 852,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "拉格朗日的纲领为什么失败？失败的直接触发因素是什么？（§4.2）"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 854,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "严格化之后，哪些结论被保留了，哪些被推翻了？请各举一例。（§4.5）"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 855,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "法国为什么成了严格化的发生地？请用\"需求 → 取向\"的链条解释，不要只报人名。（"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 856,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "举一个\"$dy/dx$ 不能当分数\"的具体反例，并说明它错在哪一步。（§3.4）"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 858,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "本期给了四个\"复活\"案例。请判断：哪一个属于 A 类，哪一个属于 B 类，判断依"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 864,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "说明：带直链的条目已核对可访问；仅给\"检索入口\"的条目，是因为该书有多个数字化版"
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 866,
+          "col": 5,
+          "message": "旧式简写「【原】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【原】"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 868,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**Newton, Isaac.** *Philosophiæ Naturali"
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 888,
+          "col": 5,
+          "message": "旧式简写「【研】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【研】"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 901,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**Katz, K. U., and M. G. Katz.** \"Cauchy"
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 903,
+          "col": 5,
+          "message": "旧式简写「【传】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【传】"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 905,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "维基百科 \"Cours d'Analyse\"、\"Analytical Socie"
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 905,
+          "col": 122,
+          "message": "旧式简写「【研】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【研】"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 906,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "各类微积分教材的\"历史注记\"边栏。（**普遍存在简化**：把\"牛顿不严谨\"\"柯西"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 907,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "科普读物中关于\"牛顿与莱布尼茨之争\"的叙述。（**戏剧化程度高**，优先权细节请"
+        },
+        {
+          "code": "LEGACY_MARKER",
+          "severity": "error",
+          "line": 907,
+          "col": 78,
+          "message": "旧式简写「【研】」不合规范：它不含出处，无法核查；应改写为 〔A｜原始文献:出处〕 等形式",
+          "evidence": "【研】"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 913,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**人物史处理**：牛顿—莱布尼茨优先权之争、伯努利与洛必达的报酬约定、赫歇尔的"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 915,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "**未核实项**：本期未出现\"未能核实\"标注的断言，均已对应到上列文献；若有读者"
+        },
+        {
+          "code": "MISSING_TAG",
+          "severity": "warn",
+          "line": 919,
+          "col": 1,
+          "message": "该段/条目是论断但没有证据标记（规范 R13）；若是过渡或评价性文字，请显式写「不承担推理」",
+          "evidence": "*本期完。下一期：《极限、实数与无穷》——为什么必须先造出实数，才能说清\"趋近\""
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "files": 1,
+    "errors": 96,
+    "warns": 242,
+    "infos": 0,
+    "exit_code": 1
+  },
+  "probes": []
+}

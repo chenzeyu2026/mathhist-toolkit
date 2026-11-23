@@ -1,0 +1,495 @@
+{
+  "schema_version": "0.2",
+  "meta": {
+    "title": "群论样板（概念谱系清晰型）",
+    "scope": "只验证结构，不是完整条目；节点 12、边 13。",
+    "note": "branch.parents 一律留空：本图包中父关系只写在 edges[]，避免两处真源。完整父级目录见 branches.json。"
+  },
+  "nodes": [
+    {
+      "id": "BR-FND-AALG",
+      "type": "branch",
+      "schema_version": "0.2",
+      "labels": { "zh": "抽象代数", "en": "abstract algebra" },
+      "status": "active",
+      "summary": "研究集合上的运算结构及其同态；群、环、域、模是其主要子结构。",
+      "view_classes": ["基础数学"],
+      "parents": [],
+      "scope_definition": "以代数结构为对象，不研究具体数系的计算技巧。",
+      "affected_layers": { "problem": "high", "failure": "medium", "notation": "medium", "text": "medium" },
+      "claims": [],
+      "provenance": { "created_by": "framework-v0.2", "created_at": "2026-11-22", "sources_checked": "none", "schema_version": "0.2" }
+    },
+    {
+      "id": "BR-ALG-GRP",
+      "type": "branch",
+      "schema_version": "0.2",
+      "labels": { "zh": "群论", "en": "group theory" },
+      "status": "active",
+      "summary": "研究群及其同态、子群、商群；历史来源是方程可解性与置换。",
+      "view_classes": ["代数与数论"],
+      "parents": [],
+      "scope_definition": "以群结构为对象；置换群、抽象群、李群分属不同阶段，不在此细分。",
+      "affected_layers": { "problem": "high", "failure": "high", "notation": "high", "text": "medium" },
+      "claims": [],
+      "provenance": { "created_by": "framework-v0.2", "created_at": "2026-11-22", "sources_checked": "none", "schema_version": "0.2" }
+    },
+    {
+      "id": "CO:group",
+      "type": "concept",
+      "schema_version": "0.2",
+      "labels": { "zh": "群", "en": "group", "aliases": ["置換群", "groupe"] },
+      "status": "active",
+      "summary": "带结合律、单位元与逆元的二元运算结构。",
+      "definition": "集合 G 与二元运算 ·，满足结合律、存在单位元 e、每个元素有逆元。",
+      "definition_source": { "grade": "F", "locator": "通行教材定义；定义本身不是历史对象" },
+      "occurrences": [
+        { "civilization": "欧洲", "region": "法国", "language": "fr", "year_from": 1830, "precision": "decade", "dating_basis": "伽罗瓦手稿使用 groupe", "independence": "independent" }
+      ],
+      "claims": [
+        {
+          "id": "CLM:CO:group.1",
+          "statement": "伽罗瓦 1832 年手稿以 groupe 指置换集合，尚未给出抽象群定义。",
+          "grade": "U",
+          "attestation": "later_report",
+          "source": { "locator": "Galois 1832 手稿；据 Wussing 1969, ch.2 转述，未见原页" },
+          "note": "需核对伽罗瓦手稿原页或校勘本页码后升 S。"
+        }
+      ],
+      "provenance": { "created_by": "framework-v0.2", "created_at": "2026-11-22", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "PR:quintic-solvability",
+      "type": "problem",
+      "schema_version": "0.2",
+      "labels": { "zh": "五次方程根式可解性", "en": "solvability of the quintic by radicals" },
+      "status": "resolved",
+      "summary": "一般五次方程能否用根式求解；16–18 世纪的形态是求公式。",
+      "original_formulation": {
+        "text": "求一般五次方程的根式解公式。",
+        "language": "la",
+        "author": null,
+        "year": null,
+        "source": { "locator": "16–18 世纪代数著作的通行问题形态；具体首见文本待核" },
+        "grade": "U",
+        "attestation": "later_report"
+      },
+      "problem_kind": "solvability",
+      "asked_as": ["求根式公式", "判定是否可解"],
+      "related_branches": ["BR-ALG-GRP"],
+      "claims": [
+        {
+          "id": "CLM:PR:quintic-solvability.1",
+          "statement": "该问题在 16–18 世纪被当作'求公式'，'是否可解'是 19 世纪群论化之后的提法。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "Wussing 1969, ch.1（章节级；页码待补）" }
+        }
+      ],
+      "provenance": { "created_by": "framework-v0.2", "created_at": "2026-11-22", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "PR:quintic-galois-criterion",
+      "type": "problem",
+      "schema_version": "0.2",
+      "labels": { "zh": "五次方程的伽罗瓦判据", "en": "Galois criterion for solvability" },
+      "status": "resolved",
+      "summary": "方程可用根式解当且仅当其伽罗瓦群可解。",
+      "original_formulation": {
+        "text": "方程根式可解 iff 其伽罗瓦群可解。",
+        "language": "fr",
+        "author": "PE:galois",
+        "year": 1832,
+        "source": { "locator": "Galois 1832 手稿；未见原页" },
+        "grade": "U",
+        "attestation": "later_report"
+      },
+      "problem_kind": "characterization",
+      "asked_as": ["判定"],
+      "related_branches": ["BR-ALG-GRP"],
+      "claims": [
+        {
+          "id": "CLM:PR:quintic-galois-criterion.1",
+          "statement": "该判据把'可解性'从公式构造改写为群性质判定。",
+          "grade": "F",
+          "attestation": "textbook_simplification",
+          "source": { "locator": "通行教材表述" }
+        }
+      ],
+      "provenance": { "created_by": "framework-v0.2", "created_at": "2026-11-22", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "TH:abel-ruffini",
+      "type": "theorem",
+      "schema_version": "0.2",
+      "labels": { "zh": "阿贝尔–鲁菲尼定理", "en": "Abel–Ruffini theorem" },
+      "status": "active",
+      "summary": "一般五次及以上方程无根式解。",
+      "statement": "次数 ≥5 的一般方程不能用根式求解。",
+      "assumptions": ["特征 0 域", "一般方程指系数为未定元"],
+      "proof_status": "proved",
+      "namesake_note": "鲁菲尼 1799 先发表但有缺口；阿贝尔 1824 给出完整证明；'阿贝尔–鲁菲尼'是后世合并命名。",
+      "claims": [
+        {
+          "id": "CLM:TH:abel-ruffini.1",
+          "statement": "阿贝尔 1824 证明一般五次方程无根式解；鲁菲尼 1799 的证明存在缺口。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "Wussing 1969, ch.2（章节级；页码待补）" }
+        }
+      ],
+      "provenance": { "created_by": "framework-v0.2", "created_at": "2026-11-22", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "FA:ruffini-1799-quintic",
+      "type": "failure",
+      "schema_version": "0.2",
+      "labels": { "zh": "鲁菲尼 1799 年五次方程证明", "en": "Ruffini's 1799 incomplete proof" },
+      "status": "historical",
+      "summary": "结论正确但推理不完整；当时缺少群论语言，缺口未被审出。",
+      "failure_kind": "false_proof",
+      "target": "TH:abel-ruffini",
+      "flawed_step": "从置换群性质推到'一般方程不可根式解'时只覆盖部分情形，未证明对一般 n 成立。",
+      "why_accepted": "结论与当时零散证据一致；缺少可检验的群论判据，审阅者难以定位缺口。",
+      "current_status": "corrected",
+      "corrected_by": "PE:abel",
+      "correction_event": null,
+      "residue": "其置换群分类工作成为群论前史；'鲁菲尼'仍留在定理名中。",
+      "claims": [
+        {
+          "id": "CLM:FA:ruffini-1799-quintic.1",
+          "statement": "鲁菲尼 1799 的证明因一般性不足被判为不完整，而非结论错误。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "Wussing 1969, ch.2（章节级；页码待补）" }
+        }
+      ],
+      "provenance": { "created_by": "framework-v0.2", "created_at": "2026-11-22", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "ME:galois-correspondence",
+      "type": "method",
+      "schema_version": "0.2",
+      "labels": { "zh": "伽罗瓦对应", "en": "Galois correspondence" },
+      "status": "active",
+      "summary": "把域扩张的中间域与伽罗瓦群的子群对应起来。",
+      "kind": "construction",
+      "input": "域扩张 L/K 及其自同构群",
+      "output": "中间域与子群的一一对应表",
+      "correctness_basis": ["CO:group"],
+      "first_use": { "by": "PE:galois", "year": 1832, "locator": "手稿；未见原页", "grade": "U" },
+      "applies_to": ["PR:quintic-galois-criterion"],
+      "claims": [
+        {
+          "id": "CLM:ME:galois-correspondence.1",
+          "statement": "该对应使'方程可解性'可化为群的可解性判定。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "Wussing 1969, ch.3（章节级；页码待补）" }
+        }
+      ],
+      "provenance": { "created_by": "framework-v0.2", "created_at": "2026-11-22", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "NO:group-notation",
+      "type": "notation",
+      "schema_version": "0.2",
+      "labels": { "zh": "群记号", "en": "group notation" },
+      "status": "active",
+      "summary": "以 G 表示群、· 表示运算；此前多直接写置换。",
+      "symbol_id": "term-group-notation",
+      "kind": "term",
+      "denotation": [
+        { "concept": "CO:group", "valid_from": 1830, "valid_to": null, "note": "从置换集合逐步抽象为结构记号" }
+      ],
+      "first_occurrence": { "by": "PE:galois", "year": 1832, "locator": "手稿；未见原页", "grade": "U" },
+      "modern_standard": "G 表示群，(G, ·) 表示带运算的群",
+      "claims": [
+        {
+          "id": "CLM:NO:group-notation.1",
+          "statement": "'群'作为术语在 19 世纪后期教科书固定；早期著作多写'置换组'。",
+          "grade": "U",
+          "attestation": "later_report",
+          "source": { "locator": "待查 19 世纪德/法教材用例；暂据 Wussing 1969 转述" },
+          "note": "中文译名'群'的定名文献另建 NO 节点，此条不涉及。"
+        }
+      ],
+      "provenance": { "created_by": "framework-v0.2", "created_at": "2026-11-22", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "PE:abel",
+      "type": "person",
+      "schema_version": "0.2",
+      "labels": { "zh": "尼尔斯·阿贝尔", "en": "Niels Henrik Abel" },
+      "status": "historical",
+      "summary": "挪威数学家，1824 年证明一般五次方程无根式解。",
+      "name_variants": ["Abel", "N. H. Abel"],
+      "claims": [
+        {
+          "id": "CLM:PE:abel.1",
+          "statement": "阿贝尔生卒 1802–1829。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "标准传记辞书条目（DSB 等）；页码待补" }
+        }
+      ],
+      "provenance": { "created_by": "framework-v0.2", "created_at": "2026-11-22", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "PE:galois",
+      "type": "person",
+      "schema_version": "0.2",
+      "labels": { "zh": "埃瓦里斯特·伽罗瓦", "en": "Évariste Galois" },
+      "status": "historical",
+      "summary": "法国数学家，以群对应研究方程可解性；手稿 1832 年。",
+      "name_variants": ["Galois", "É. Galois"],
+      "claims": [
+        {
+          "id": "CLM:PE:galois.1",
+          "statement": "伽罗瓦生卒 1811–1832。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "标准传记辞书条目（DSB 等）；页码待补" }
+        }
+      ],
+      "provenance": { "created_by": "framework-v0.2", "created_at": "2026-11-22", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "PE:ruffini",
+      "type": "person",
+      "schema_version": "0.2",
+      "labels": { "zh": "保罗·鲁菲尼", "en": "Paolo Ruffini" },
+      "status": "historical",
+      "summary": "意大利数学家，1799 年发表五次方程不可根式解的证明，一般性不足。",
+      "name_variants": ["Ruffini", "P. Ruffini"],
+      "claims": [
+        {
+          "id": "CLM:PE:ruffini.1",
+          "statement": "鲁菲尼生卒 1765–1822。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "标准传记辞书条目（DSB 等）；页码待补" }
+        }
+      ],
+      "provenance": { "created_by": "framework-v0.2", "created_at": "2026-11-22", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "EV:1799-ruffini-quintic",
+      "type": "event",
+      "schema_version": "0.2",
+      "labels": { "zh": "鲁菲尼发表五次方程不可解证明（1799）", "en": "Ruffini publishes his proof on the quintic (1799)" },
+      "status": "historical",
+      "summary": "1799 年鲁菲尼发表五次方程无根式解的证明，论证有缺口。",
+      "actors": ["PE:ruffini"],
+      "place": "意大利",
+      "claims": [
+        {
+          "id": "CLM:EV:1799-ruffini-quintic.1",
+          "statement": "鲁菲尼于 1799 年发表其五次方程证明。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "Ruffini 1799 年论文；未见原刊，页码待补" }
+        }
+      ],
+      "provenance": {
+        "created_by": "framework-v0.2",
+        "created_at": "2026-11-22",
+        "sources_checked": "partial",
+        "schema_version": "0.2"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "E:BR-FND-AALG>parent_of>BR-ALG-GRP",
+      "from": "BR-FND-AALG",
+      "to": "BR-ALG-GRP",
+      "type": "parent_of",
+      "directed": true,
+      "time": { "from": null, "to": null, "precision": "unknown", "basis": "分类关系，无发生时间" },
+      "source": { "locator": "spec/framework/branches.json" },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.95,
+      "weight": 1.0,
+      "kind": "taxonomic",
+      "note": "结构边，不是史学断言。"
+    },
+    {
+      "id": "E:BR-ALG-GRP>concerns>CO:group",
+      "from": "BR-ALG-GRP",
+      "to": "CO:group",
+      "type": "concerns",
+      "directed": true,
+      "time": { "from": null, "to": null, "precision": "unknown" },
+      "source": { "locator": "本框架分支定义" },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.95,
+      "note": "索引边，不参与推理。"
+    },
+    {
+      "id": "E:BR-ALG-GRP>concerns>PR:quintic-solvability",
+      "from": "BR-ALG-GRP",
+      "to": "PR:quintic-solvability",
+      "type": "concerns",
+      "directed": true,
+      "time": { "from": null, "to": null, "precision": "unknown" },
+      "source": { "locator": "branches.json 的 historical_origin 说明" },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.8,
+      "note": "群论的历史来源是方程求解，不是学科建制。"
+    },
+    {
+      "id": "E:CO:group>uses_notation>NO:group-notation",
+      "from": "CO:group",
+      "to": "NO:group-notation",
+      "type": "uses_notation",
+      "directed": true,
+      "time": { "from": 1830, "to": null, "precision": "decade" },
+      "source": { "locator": "伽罗瓦手稿；转引 Wussing 1969" },
+      "grade": "U",
+      "attestation": "later_report",
+      "confidence": 0.6,
+      "note": "记号使用时间取 1830 年代，原页未核。"
+    },
+    {
+      "id": "E:TH:abel-ruffini>depends_on>CO:group",
+      "from": "TH:abel-ruffini",
+      "to": "CO:group",
+      "type": "depends_on",
+      "directed": true,
+      "time": { "from": 1832, "to": null, "precision": "year" },
+      "source": { "locator": "定理的现代表述" },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.85,
+      "note": "依赖关系是后世整理的逻辑前置，不是 1824 年证明的实际依赖。"
+    },
+    {
+      "id": "E:TH:abel-ruffini>resolves>PR:quintic-solvability",
+      "from": "TH:abel-ruffini",
+      "to": "PR:quintic-solvability",
+      "type": "resolves",
+      "directed": true,
+      "time": { "from": 1824, "to": 1824, "precision": "year", "basis": "阿贝尔 1824 论文" },
+      "claimant": "PE:abel",
+      "grade": "S",
+      "attestation": "later_report",
+      "confidence": 0.85,
+      "note": "按现代归类，阿贝尔给出的是否定答案。"
+    },
+    {
+      "id": "E:PR:quintic-solvability>reformulates>PR:quintic-galois-criterion",
+      "from": "PR:quintic-solvability",
+      "to": "PR:quintic-galois-criterion",
+      "type": "reformulates",
+      "directed": true,
+      "time": { "from": 1832, "to": 1832, "precision": "year" },
+      "claimant": "PE:galois",
+      "grade": "S",
+      "attestation": "later_report",
+      "confidence": 0.75,
+      "note": "重述不等于解决：原问题问公式，新问题问群性质。"
+    },
+    {
+      "id": "E:PR:quintic-galois-criterion>uses_method>ME:galois-correspondence",
+      "from": "PR:quintic-galois-criterion",
+      "to": "ME:galois-correspondence",
+      "type": "uses_method",
+      "directed": true,
+      "time": { "from": 1832, "to": 1832, "precision": "year" },
+      "claimant": "PE:galois",
+      "grade": "S",
+      "attestation": "later_report",
+      "confidence": 0.8
+    },
+    {
+      "id": "E:ME:galois-correspondence>depends_on>CO:group",
+      "from": "ME:galois-correspondence",
+      "to": "CO:group",
+      "type": "depends_on",
+      "directed": true,
+      "time": { "from": 1832, "to": null, "precision": "year" },
+      "source": { "locator": "方法的现代表述" },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.85
+    },
+    {
+      "id": "E:FA:ruffini-1799-quintic>targets>TH:abel-ruffini",
+      "from": "FA:ruffini-1799-quintic",
+      "to": "TH:abel-ruffini",
+      "type": "targets",
+      "directed": true,
+      "time": { "from": 1799, "to": 1799, "precision": "year" },
+      "claimant": "PE:ruffini",
+      "grade": "S",
+      "attestation": "later_report",
+      "confidence": 0.85,
+      "note": "失败指向的是该定理的首次证明尝试。"
+    },
+    {
+      "id": "E:FA:ruffini-1799-quintic>corrected_by>PE:abel",
+      "from": "FA:ruffini-1799-quintic",
+      "to": "PE:abel",
+      "type": "corrected_by",
+      "directed": true,
+      "time": { "from": 1824, "to": 1824, "precision": "year" },
+      "claimant": "PE:abel",
+      "grade": "S",
+      "attestation": "later_report",
+      "confidence": 0.85
+    },
+    {
+      "id": "E:PE:abel>proved>TH:abel-ruffini",
+      "from": "PE:abel",
+      "to": "TH:abel-ruffini",
+      "type": "proved",
+      "directed": true,
+      "time": { "from": 1824, "to": 1824, "precision": "year" },
+      "source": { "locator": "Abel 1824；未见原刊" },
+      "grade": "S",
+      "attestation": "later_report",
+      "confidence": 0.85
+    },
+    {
+      "id": "E:PE:galois>introduced>ME:galois-correspondence",
+      "from": "PE:galois",
+      "to": "ME:galois-correspondence",
+      "type": "introduced",
+      "directed": true,
+      "time": { "from": 1832, "to": 1832, "precision": "year" },
+      "source": { "locator": "Galois 1832 手稿；未见原页" },
+      "grade": "S",
+      "attestation": "later_report",
+      "confidence": 0.8
+    },
+    {
+      "id": "E:PE:ruffini>participates_in>EV:1799-ruffini-quintic",
+      "from": "PE:ruffini",
+      "to": "EV:1799-ruffini-quintic",
+      "type": "participates_in",
+      "directed": true,
+      "time": { "from": 1799, "to": 1799, "precision": "year" },
+      "source": { "locator": "Ruffini 1799 年论文发表；未见原刊" },
+      "claimant": "PE:ruffini",
+      "grade": "S",
+      "attestation": "later_report",
+      "confidence": 0.85
+    },
+    {
+      "id": "E:EV:1799-ruffini-quintic>part_of>FA:ruffini-1799-quintic",
+      "from": "EV:1799-ruffini-quintic",
+      "to": "FA:ruffini-1799-quintic",
+      "type": "part_of",
+      "directed": true,
+      "time": { "from": 1799, "to": 1799, "precision": "year" },
+      "source": { "locator": "事件即该失败路线的发生节点" },
+      "grade": "S",
+      "attestation": "later_report",
+      "confidence": 0.85
+    }
+  ]
+}

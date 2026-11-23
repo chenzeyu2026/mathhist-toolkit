@@ -1,0 +1,57 @@
+{
+  "schema_version": "0.2",
+  "meta": {
+    "title": "fixture: 条件必填缺失",
+    "scope": "故意违规，仅用于 graphlint 测试。part_of 指向 concept 时 note 必填。"
+  },
+  "nodes": [
+    {
+      "id": "EV:fixture-publication",
+      "type": "event",
+      "schema_version": "0.2",
+      "labels": { "zh": "测试发表事件" },
+      "status": "historical",
+      "summary": "测试用事件节点。",
+      "date": { "from": 1799, "to": 1799, "precision": "year" },
+      "place": "意大利",
+      "actors": ["PE:fixture-author"],
+      "claims": [],
+      "provenance": {
+        "created_by": "graphlint-tests",
+        "created_at": "2026-11-23",
+        "schema_version": "0.2"
+      }
+    },
+    {
+      "id": "CO:fixture-concept",
+      "type": "concept",
+      "schema_version": "0.2",
+      "labels": { "zh": "测试概念" },
+      "status": "active",
+      "summary": "测试用概念节点。",
+      "definition": "测试用定义。",
+      "definition_source": { "grade": "F", "locator": "fixture" },
+      "occurrences": [],
+      "claims": [],
+      "provenance": {
+        "created_by": "graphlint-tests",
+        "created_at": "2026-11-23",
+        "schema_version": "0.2"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "E:EV:fixture-publication>part_of>CO:fixture-concept",
+      "from": "EV:fixture-publication",
+      "to": "CO:fixture-concept",
+      "type": "part_of",
+      "directed": true,
+      "time": { "from": 1799, "to": 1799, "precision": "year" },
+      "source": { "locator": "fixture" },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.5
+    }
+  ]
+}

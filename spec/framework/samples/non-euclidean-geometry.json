@@ -1,0 +1,1556 @@
+{
+  "schema_version": "0.2",
+  "meta": {
+    "title": "非欧几何—平行公设样板（问题→失败→记号→文本链）",
+    "scope": "结构样板，不是完整条目。branch.parents 留空，父关系只写在 edges[]。",
+    "note": "长文本侧见同目录 non-euclidean-geometry.md；图中 text_ref 与文档中 graph:// 双向互指。"
+  },
+  "nodes": [
+    {
+      "id": "BR-FND-EGEOM",
+      "type": "branch",
+      "schema_version": "0.2",
+      "labels": { "zh": "欧氏几何", "en": "Euclidean geometry" },
+      "status": "active",
+      "summary": "以《原本》五条公设为基础的公理化几何。",
+      "view_classes": ["基础数学"],
+      "parents": [],
+      "scope_definition": "以五条公设及其推论为对象；不包含解析几何与微分几何的方法。",
+      "affected_layers": { "problem": "high", "failure": "high", "notation": "medium", "text": "high" },
+      "claims": [],
+      "provenance": { "created_by": "framework-v0.2", "created_at": "2026-11-22", "sources_checked": "none", "schema_version": "0.2" }
+    },
+    {
+      "id": "BR-GEO-NONEU",
+      "type": "branch",
+      "schema_version": "0.2",
+      "labels": { "zh": "非欧几何", "en": "non-Euclidean geometry" },
+      "status": "active",
+      "summary": "不满足第五公设的几何体系总称；双曲与椭圆几何是其主要分支。",
+      "view_classes": ["几何与拓扑"],
+      "parents": [],
+      "scope_definition": "以'第五公设不成立'的体系为对象；不把'非欧'理解为'反欧'或'不严格'。",
+      "affected_layers": { "problem": "high", "failure": "high", "notation": "high", "text": "high" },
+      "claims": [],
+      "provenance": { "created_by": "framework-v0.2", "created_at": "2026-11-22", "sources_checked": "none", "schema_version": "0.2" }
+    },
+    {
+      "id": "BR-FND-AXIOSET",
+      "type": "branch",
+      "schema_version": "0.2",
+      "labels": { "zh": "公理化集合论", "en": "axiomatic set theory" },
+      "status": "active",
+      "summary": "以公理系统刻画集合与模型；独立性证明的落脚处。",
+      "view_classes": ["逻辑与基础"],
+      "parents": [],
+      "scope_definition": "以公理系统与其模型为对象；不承担具体几何命题的证明。",
+      "affected_layers": { "problem": "medium", "failure": "medium", "notation": "low", "text": "medium" },
+      "claims": [],
+      "provenance": { "created_by": "framework-v0.2", "created_at": "2026-11-22", "sources_checked": "none", "schema_version": "0.2" }
+    },
+    {
+      "id": "PR:fifth-postulate-deducibility",
+      "type": "problem",
+      "schema_version": "0.2",
+      "labels": { "zh": "第五公设的可推导性", "en": "derivability of the fifth postulate" },
+      "status": "reformulated",
+      "summary": "第五公设能否由其余四条公设推出；两千年间被反复尝试。",
+      "original_formulation": {
+        "text": "若一直线与两直线相交，且同侧内角和小于两直角，则两直线在该侧相交。",
+        "language": "grc",
+        "author": "PE:euclid",
+        "year": -300,
+        "source": { "text": "TX:euclid-elements", "witness": "TW:euclid-elements.heiberg-menge", "locator": "Book I, Postulate 5" },
+        "grade": "A",
+        "attestation": "direct"
+      },
+      "problem_kind": "solvability",
+      "asked_as": ["由其余公设证明", "判定独立性"],
+      "related_branches": ["BR-FND-EGEOM", "BR-GEO-NONEU", "BR-FND-AXIOSET"],
+      "reframings": [
+        {
+          "later_problem": "PR:independence-of-parallel-postulate",
+          "by": "PE:beltrami",
+          "year": 1868,
+          "equivalence": "相对一致性意义上的独立",
+          "equivalence_grade": "S",
+          "note": "原问题要求推导；新问题要求构造模型。两者不等价，只相关。"
+        }
+      ],
+      "claims": [
+        {
+          "id": "CLM:PR:fifth-postulate-deducibility.1",
+          "statement": "最早的第五公设批评与改写见于普罗克洛斯对《原本》第一卷的注释。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "text": "TX:proclus-commentary", "witness": "TW:proclus-commentary.friedlein-1873", "locator": "Proclus, In Eucl. I, 定义与公设部分（页码待补）" }
+        }
+      ],
+      "provenance": { "created_by": "framework-v0.2", "created_at": "2026-11-22", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "PR:independence-of-parallel-postulate",
+      "type": "problem",
+      "schema_version": "0.2",
+      "labels": { "zh": "第五公设的独立性", "en": "independence of the parallel postulate" },
+      "status": "resolved",
+      "summary": "第五公设相对其余公设不可推出；由模型构造给出答案。",
+      "original_formulation": {
+        "text": "第五公设是否独立于其余公设（不可由它们推出）？",
+        "language": "it",
+        "author": "PE:beltrami",
+        "year": 1868,
+        "source": { "text": "TX:beltrami-1868-saggio", "locator": "§1（转述）" },
+        "grade": "S",
+        "attestation": "later_report"
+      },
+      "problem_kind": "decidability",
+      "asked_as": ["独立性", "不可推出性"],
+      "related_branches": ["BR-GEO-NONEU", "BR-FND-AXIOSET"],
+      "resolutions": [
+        {
+          "by": "PE:beltrami",
+          "year": 1868,
+          "theorem": "TH:non-euclidean-relative-consistency",
+          "method": "ME:model-construction",
+          "note": "给出模型即给出相对一致性；独立性由此得到。",
+          "grade": "S"
+        }
+      ],
+      "claims": [
+        {
+          "id": "CLM:PR:independence-of-parallel-postulate.1",
+          "statement": "该问题在 19 世纪被明确为'构造满足其余公设而不满足第五公设的模型'。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "Beltrami 1868 及其后续标准史述；页码待补" }
+        }
+      ],
+      "provenance": { "created_by": "framework-v0.2", "created_at": "2026-11-22", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "TH:euclid-i32",
+      "type": "theorem",
+      "schema_version": "0.2",
+      "labels": { "zh": "三角形内角和定理", "en": "Euclid I.32" },
+      "status": "active",
+      "summary": "三角形内角和等于两直角；其证明依赖第五公设。",
+      "statement": "任意三角形的三个内角之和等于两个直角。",
+      "assumptions": ["欧氏几何公设（含第五公设）"],
+      "proof_status": "proved",
+      "claims": [
+        {
+          "id": "CLM:TH:euclid-i32.1",
+          "statement": "《原本》第一卷命题 32 给出该结论及证明。",
+          "grade": "A",
+          "attestation": "direct",
+          "source": { "text": "TX:euclid-elements", "witness": "TW:euclid-elements.heiberg-menge", "locator": "Book I, Proposition 32" }
+        }
+      ],
+      "provenance": { "created_by": "framework-v0.2", "created_at": "2026-11-22", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "TH:non-euclidean-relative-consistency",
+      "type": "theorem",
+      "schema_version": "0.2",
+      "labels": { "zh": "双曲几何的相对一致性", "en": "relative consistency of hyperbolic geometry" },
+      "status": "active",
+      "summary": "若欧氏几何一致，则双曲几何一致；由欧氏空间中的模型给出。",
+      "statement": "存在欧氏空间中的曲面模型，使双曲几何的公理在其中成立。",
+      "assumptions": ["欧氏几何的一致性（作为前提，未在本图证明）"],
+      "proof_status": "proved",
+      "claims": [
+        {
+          "id": "CLM:TH:non-euclidean-relative-consistency.1",
+          "statement": "贝尔特拉米 1868 年以伪球面实现双曲平面，给出相对一致性论证。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "text": "TX:beltrami-1868-saggio", "locator": "§1–§3（页码待补）" }
+        }
+      ],
+      "provenance": { "created_by": "framework-v0.2", "created_at": "2026-11-22", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "CO:parallel-postulate",
+      "type": "concept",
+      "schema_version": "0.2",
+      "labels": { "zh": "第五公设（平行公设）", "en": "fifth postulate / parallel postulate" },
+      "status": "active",
+      "summary": "欧氏几何五条公设中的最后一条；关于两直线相交的条件。",
+      "definition": "若一直线与两直线相交，且同侧内角和小于两直角，则两直线在该侧相交。",
+      "definition_source": { "grade": "A", "text": "TX:euclid-elements", "witness": "TW:euclid-elements.heiberg-menge", "locator": "Book I, Postulate 5" },
+      "occurrences": [
+        { "civilization": "古希腊", "region": "亚历山大", "language": "grc", "year_from": -300, "precision": "circa", "dating_basis": "《原本》成书年代通行估计", "independence": "independent" }
+      ],
+      "claims": [
+        {
+          "id": "CLM:CO:parallel-postulate.1",
+          "statement": "《原本》第一卷第 5 公设的希腊文本可核；此处采用海贝格校勘本。",
+          "grade": "S",
+          "attestation": "direct",
+          "source": { "text": "TX:euclid-elements", "witness": "TW:euclid-elements.heiberg-menge", "locator": "Book I, Postulate 5" }
+        }
+      ],
+      "provenance": { "created_by": "framework-v0.2", "created_at": "2026-11-22", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "CO:parallel-lines",
+      "type": "concept",
+      "schema_version": "0.2",
+      "labels": { "zh": "平行线", "en": "parallel lines" },
+      "status": "active",
+      "summary": "同一平面内不相交的两条直线。",
+      "definition": "同一平面内没有公共点的两条直线。",
+      "definition_source": { "grade": "F", "locator": "通行教材定义" },
+      "occurrences": [],
+      "claims": [],
+      "provenance": { "created_by": "framework-v0.2", "created_at": "2026-11-22", "sources_checked": "none", "schema_version": "0.2" }
+    },
+    {
+      "id": "CO:non-euclidean-geometry",
+      "type": "concept",
+      "schema_version": "0.2",
+      "labels": { "zh": "非欧几何", "en": "non-Euclidean geometry" },
+      "status": "active",
+      "summary": "不满足第五公设的几何体系总称。",
+      "definition": "保留欧氏几何其余公设、但不保留第五公设（或取与其矛盾的替代公设）的几何体系。",
+      "definition_source": { "grade": "F", "locator": "通行教材定义" },
+      "occurrences": [
+        { "civilization": "欧洲", "region": "俄国/匈牙利", "language": "ru/hu", "year_from": 1829, "precision": "year", "dating_basis": "罗巴切夫斯基 1829、鲍耶 1832 发表", "independence": "contested", "independence_note": "两人独立发表；高斯称更早但未刊，故首次出现记为 contested。" }
+      ],
+      "claims": [
+        {
+          "id": "CLM:CO:non-euclidean-geometry.1",
+          "statement": "1829–1832 年间出现两个独立发表的非欧几何体系。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "标准数学史著作；页码待补" }
+        }
+      ],
+      "provenance": { "created_by": "framework-v0.2", "created_at": "2026-11-22", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "CO:hyperbolic-geometry",
+      "type": "concept",
+      "schema_version": "0.2",
+      "labels": { "zh": "双曲几何", "en": "hyperbolic geometry" },
+      "status": "active",
+      "summary": "过直线外一点至少有两条平行线的几何；常负曲率。",
+      "definition": "满足'过直线外一点至少有两条不与已知直线相交的直线'的几何体系。",
+      "definition_source": { "grade": "F", "locator": "通行教材定义" },
+      "occurrences": [
+        { "civilization": "欧洲", "region": "俄国", "language": "ru", "year_from": 1829, "precision": "year", "dating_basis": "罗巴切夫斯基《论几何原理》", "independence": "independent" }
+      ],
+      "claims": [
+        {
+          "id": "CLM:CO:hyperbolic-geometry.1",
+          "statement": "该体系在 1829 年由罗巴切夫斯基以'想象几何'之名发表。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "text": "TX:lobachevsky-1829-kazan", "locator": "标题与导言（转述）" }
+        }
+      ],
+      "provenance": { "created_by": "framework-v0.2", "created_at": "2026-11-22", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "TY:euclidean-uniqueness",
+      "type": "theory",
+      "schema_version": "0.2",
+      "labels": { "zh": "欧氏几何唯一性", "en": "uniqueness of Euclidean geometry" },
+      "status": "superseded",
+      "summary": "长期被信的说法：空间几何只有欧氏一种，其余皆自相矛盾。",
+      "assumptions": ["空间几何只有一种可能的公理系统", "第五公设可由其余公设推出（或为必然真理）"],
+      "core_concepts": ["CO:parallel-postulate"],
+      "signature_results": ["TH:euclid-i32"],
+      "accepted_period": { "from": -300, "to": 1868, "precision": "year" },
+      "superseded_by": "TY:multiple-geometries",
+      "residue": "欧氏几何仍是工程与初等教学的标准体系；'唯一性'不再成立。",
+      "claims": [
+        {
+          "id": "CLM:TY:euclidean-uniqueness.1",
+          "statement": "该说法在 18 世纪仍广泛流行，直到模型构造给出反例。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "标准数学史著作；页码待补" }
+        }
+      ],
+      "provenance": { "created_by": "framework-v0.2", "created_at": "2026-11-22", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "TY:multiple-geometries",
+      "type": "theory",
+      "schema_version": "0.2",
+      "labels": { "zh": "多种几何并存", "en": "coexistence of multiple geometries" },
+      "status": "active",
+      "summary": "至少存在欧氏与双曲两种相对一致的几何；几何的真假相对于公理系统。",
+      "assumptions": ["欧氏几何一致", "存在双曲几何的欧氏模型"],
+      "core_concepts": ["CO:non-euclidean-geometry", "CO:hyperbolic-geometry"],
+      "signature_results": ["TH:non-euclidean-relative-consistency"],
+      "accepted_period": { "from": 1868, "to": null, "precision": "year" },
+      "claims": [
+        {
+          "id": "CLM:TY:multiple-geometries.1",
+          "statement": "贝尔特拉米模型之后，'几何唯一性'不再能作为默认前提。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "text": "TX:beltrami-1868-saggio", "locator": "§1（转述）" }
+        }
+      ],
+      "provenance": { "created_by": "framework-v0.2", "created_at": "2026-11-22", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "ME:proof-by-contradiction",
+      "type": "method",
+      "schema_version": "0.2",
+      "labels": { "zh": "反证法", "en": "proof by contradiction" },
+      "status": "active",
+      "summary": "假设待证命题的否定，推出矛盾。",
+      "kind": "proof_method",
+      "input": "待证命题的否定",
+      "output": "逻辑矛盾，从而原命题成立",
+      "correctness_basis": [],
+      "applies_to": ["PR:fifth-postulate-deducibility"],
+      "claims": [],
+      "provenance": { "created_by": "framework-v0.2", "created_at": "2026-11-22", "sources_checked": "none", "schema_version": "0.2" }
+    },
+    {
+      "id": "ME:model-construction",
+      "type": "method",
+      "schema_version": "0.2",
+      "labels": { "zh": "模型构造", "en": "model construction" },
+      "status": "active",
+      "summary": "在一套已知理论中构造满足另一套公理的模型，用于相对一致性。",
+      "kind": "construction",
+      "input": "一组公理",
+      "output": "满足该公理的模型（如伪球面、庞加莱圆盘）",
+      "correctness_basis": [],
+      "applies_to": ["PR:independence-of-parallel-postulate", "TH:non-euclidean-relative-consistency"],
+      "claims": [
+        {
+          "id": "CLM:ME:model-construction.1",
+          "statement": "模型构造只能给出相对一致性，不能单独证明被解释理论绝对一致。",
+          "grade": "F",
+          "attestation": "textbook_simplification",
+          "source": { "locator": "通行逻辑教材" }
+        }
+      ],
+      "provenance": { "created_by": "framework-v0.2", "created_at": "2026-11-22", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "FA:saccheri-1733",
+      "type": "failure",
+      "schema_version": "0.2",
+      "labels": { "zh": "萨凯里 1733 年反证", "en": "Saccheri's 1733 reductio" },
+      "status": "historical",
+      "summary": "试图由锐角假设推出矛盾，实际只推出与欧氏直觉不符的命题。",
+      "failure_kind": "false_proof",
+      "target": "PR:fifth-postulate-deducibility",
+      "flawed_step": "以'直线可无限延长/无限长'为由排除锐角假设；这一步引入了待证的欧氏前提。",
+      "why_accepted": "结论符合当时共识；锐角假设下的推演极长，缺少独立的模型概念来判定其一致性。",
+      "acceptance_evidence": ["TX:saccheri-1733-euclides", "TW:saccheri-1733-euclides.print"],
+      "current_status": "corrected",
+      "corrected_by": "PE:beltrami",
+      "correction_event": "EV:1868-beltrami-model",
+      "correction_text": "TX:beltrami-1868-saggio",
+      "residue": "锐角假设下的推演被视为双曲几何的先声；其反证结构仍具教学价值。",
+      "claims": [
+        {
+          "id": "CLM:FA:saccheri-1733.1",
+          "statement": "萨凯里的失败在'以欧氏直觉排除锐角情形'这一步，而非结论的算术错误。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "text": "TX:saccheri-1733-euclides", "witness": "TW:saccheri-1733-euclides.print", "locator": "Propositio XXXIII 附近（页码待补）" }
+        }
+      ],
+      "provenance": { "created_by": "framework-v0.2", "created_at": "2026-11-22", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "FA:euclid-a-priori",
+      "type": "failure",
+      "schema_version": "0.2",
+      "labels": { "zh": "欧氏几何唯一性的信念", "en": "belief in the uniqueness of Euclidean geometry" },
+      "status": "historical",
+      "summary": "把欧氏几何当作空间的唯一必然真理；被模型构造取代。",
+      "failure_kind": "superseded_theory",
+      "target": "TY:euclidean-uniqueness",
+      "flawed_step": "把'符合直觉'当作'逻辑必然'，未区分公理系统的选择与经验空间。",
+      "why_accepted": "欧氏几何在测量与工程中长期有效；缺少替代体系的可构造样例。",
+      "acceptance_evidence": ["TY:euclidean-uniqueness"],
+      "current_status": "corrected",
+      "corrected_by": "PE:beltrami",
+      "correction_event": "EV:1868-beltrami-model",
+      "correction_text": "TX:beltrami-1868-saggio",
+      "residue": "欧氏几何仍为标准工具，但'唯一性'已不成立；教科书表述中仍常见混淆。",
+      "claims": [
+        {
+          "id": "CLM:FA:euclid-a-priori.1",
+          "statement": "被取代的是'唯一性'信念，不是欧氏几何本身。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "标准数学史著作；页码待补" }
+        }
+      ],
+      "provenance": { "created_by": "framework-v0.2", "created_at": "2026-11-22", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "NO:symbol-parallel",
+      "type": "notation",
+      "schema_version": "0.2",
+      "labels": { "zh": "平行符号 ∥", "en": "parallel symbol" },
+      "status": "active",
+      "summary": "以 ∥ 表示两直线平行。",
+      "symbol_id": "parallel-symbol",
+      "kind": "symbol",
+      "glyph": { "unicode": "∥", "latex": "\\parallel", "plain": "||" },
+      "denotation": [
+        { "concept": "CO:parallel-lines", "valid_from": null, "valid_to": null, "note": "现代标准用法；首次使用文献待核" }
+      ],
+      "first_occurrence": { "by": null, "year": null, "text": null, "locator": "待查；《原本》现存文本未用该符号", "grade": "U" },
+      "modern_standard": "a ∥ b 表示两直线平行",
+      "claims": [
+        {
+          "id": "CLM:NO:symbol-parallel.1",
+          "statement": "∥ 不是欧几里得原本所用符号；其现代用法是后世约定。",
+          "grade": "U",
+          "attestation": "later_report",
+          "source": { "locator": "待查符号史专著；暂据希思英译本导言印象，未见原页" },
+          "note": "需核对符号首次出现的印刷本文献后升 S。"
+        }
+      ],
+      "provenance": { "created_by": "framework-v0.2", "created_at": "2026-11-22", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "NO:term-imaginary-geometry",
+      "type": "notation",
+      "schema_version": "0.2",
+      "labels": { "zh": "想象几何", "en": "imaginary geometry" },
+      "status": "superseded",
+      "summary": "罗巴切夫斯基 1829 年对其体系的称呼；今称双曲几何。",
+      "symbol_id": "term-imaginary-geometry",
+      "kind": "term",
+      "denotation": [
+        { "concept": "CO:hyperbolic-geometry", "valid_from": 1829, "valid_to": 1871, "note": "克莱因定名后逐渐停用" }
+      ],
+      "first_occurrence": { "by": "PE:lobachevsky", "year": 1829, "text": "TX:lobachevsky-1829-kazan", "locator": "标题", "grade": "U" },
+      "competitors": ["双曲几何", "非欧几何"],
+      "superseded_by": "NO:term-hyperbolic-geometry",
+      "modern_standard": "已不用；今称双曲几何（hyperbolic geometry）",
+      "claims": [
+        {
+          "id": "CLM:NO:term-imaginary-geometry.1",
+          "statement": "'воображаемая геометрия' 是罗巴切夫斯基自用的名称。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "text": "TX:lobachevsky-1829-kazan", "locator": "标题（转述）" }
+        }
+      ],
+      "provenance": { "created_by": "framework-v0.2", "created_at": "2026-11-22", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "NO:term-hyperbolic-geometry",
+      "type": "notation",
+      "schema_version": "0.2",
+      "labels": { "zh": "双曲几何", "en": "hyperbolic geometry" },
+      "status": "active",
+      "summary": "克莱因 1871 年定名；今为标准术语。",
+      "symbol_id": "term-hyperbolic-geometry",
+      "kind": "term",
+      "denotation": [
+        { "concept": "CO:hyperbolic-geometry", "valid_from": 1871, "valid_to": null, "note": "现代标准名" }
+      ],
+      "first_occurrence": { "by": "PE:klein", "year": 1871, "text": null, "locator": "Klein, Math. Ann. 4 (1871)，页码待核", "grade": "U" },
+      "competitors": ["想象几何", "非欧几何"],
+      "modern_standard": "hyperbolic geometry / 双曲几何",
+      "claims": [
+        {
+          "id": "CLM:NO:term-hyperbolic-geometry.1",
+          "statement": "克莱因 1871 年论文把常负曲率情形命名为'双曲的'。",
+          "grade": "U",
+          "attestation": "later_report",
+          "source": { "locator": "Klein 1871, Math. Ann. 4；未见原页，页码待核" },
+          "note": "需核对原刊页码与用语后升 S。"
+        }
+      ],
+      "provenance": { "created_by": "framework-v0.2", "created_at": "2026-11-22", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "NO:term-non-euclidean-zh",
+      "type": "notation",
+      "schema_version": "0.2",
+      "labels": { "zh": "非欧几何（中文译名）", "en": "Chinese term for non-Euclidean geometry" },
+      "status": "active",
+      "summary": "中文总称；具体体系另称双曲/椭圆几何。译名史待核。",
+      "symbol_id": "term-non-euclidean-zh",
+      "kind": "term",
+      "denotation": [
+        { "concept": "CO:non-euclidean-geometry", "valid_from": null, "valid_to": null, "note": "中文总称，涵盖双曲与椭圆" }
+      ],
+      "first_occurrence": { "by": null, "year": null, "text": null, "locator": "待查清末民初译著及《数学名词》审定本", "grade": "U" },
+      "zh_term_history": [
+        { "term": "非欧几里得几何", "source_text": null, "year": null, "grade": "U", "note": "早期较完整的译法；出处待核" },
+        { "term": "非欧几何", "source_text": null, "year": null, "grade": "U", "note": "今通行简称；定名文献待核" }
+      ],
+      "modern_standard": "非欧几何（广义）；双曲几何 / 椭圆几何（具体）",
+      "claims": [
+        {
+          "id": "CLM:NO:term-non-euclidean-zh.1",
+          "statement": "中文'非欧几何'的定名译著与年份尚未核到，暂不填。",
+          "grade": "U",
+          "attestation": "unknown",
+          "source": { "locator": "待查：清末民初数学译著、《数学名词》审定本" },
+          "note": "禁止按英文直译倒推中文定名；须见译著原页。"
+        }
+      ],
+      "provenance": { "created_by": "framework-v0.2", "created_at": "2026-11-22", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "PE:euclid",
+      "type": "person",
+      "schema_version": "0.2",
+      "labels": { "zh": "欧几里得", "en": "Euclid" },
+      "status": "historical",
+      "summary": "《原本》的作者（传统归属）；活动于托勒密一世时期。",
+      "name_variants": ["Euclid", "Εὐκλείδης"],
+      "claims": [
+        {
+          "id": "CLM:PE:euclid.1",
+          "statement": "《原本》传统归于欧几里得，其生平细节缺乏一手记载。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "标准辞书条目（DSB 等）；页码待补" }
+        }
+      ],
+      "provenance": { "created_by": "framework-v0.2", "created_at": "2026-11-22", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "PE:proclus",
+      "type": "person",
+      "schema_version": "0.2",
+      "labels": { "zh": "普罗克洛斯", "en": "Proclus" },
+      "status": "historical",
+      "summary": "5 世纪新柏拉图主义哲学家，注释《原本》第一卷，记录早期对第五公设的批评。",
+      "name_variants": ["Proclus", "Πρόκλος"],
+      "claims": [
+        {
+          "id": "CLM:PE:proclus.1",
+          "statement": "普罗克洛斯生卒约 412–485。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "标准辞书条目（DSB 等）；页码待补" }
+        }
+      ],
+      "provenance": { "created_by": "framework-v0.2", "created_at": "2026-11-22", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "PE:saccheri",
+      "type": "person",
+      "schema_version": "0.2",
+      "labels": { "zh": "吉罗拉莫·萨凯里", "en": "Giovanni Girolamo Saccheri" },
+      "status": "historical",
+      "summary": "意大利耶稣会数学家，1733 年以反证法处理第五公设。",
+      "name_variants": ["Saccheri", "G. G. Saccheri"],
+      "claims": [
+        {
+          "id": "CLM:PE:saccheri.1",
+          "statement": "萨凯里生卒 1667–1733。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "标准辞书条目（DSB 等）；页码待补" }
+        }
+      ],
+      "provenance": { "created_by": "framework-v0.2", "created_at": "2026-11-22", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "PE:gauss",
+      "type": "person",
+      "schema_version": "0.2",
+      "labels": { "zh": "卡尔·弗里德里希·高斯", "en": "Carl Friedrich Gauss" },
+      "status": "historical",
+      "summary": "德国数学家；1832 年致信称自己更早得到非欧结果但未发表。",
+      "name_variants": ["Gauss", "C. F. Gauss"],
+      "claims": [
+        {
+          "id": "CLM:PE:gauss.1",
+          "statement": "高斯生卒 1777–1855。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "标准辞书条目（DSB 等）；页码待补" }
+        }
+      ],
+      "provenance": { "created_by": "framework-v0.2", "created_at": "2026-11-22", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "PE:lobachevsky",
+      "type": "person",
+      "schema_version": "0.2",
+      "labels": { "zh": "尼古拉·罗巴切夫斯基", "en": "Nikolai Lobachevsky" },
+      "status": "historical",
+      "summary": "俄国数学家，1829 年发表非欧几何体系。",
+      "name_variants": ["Lobachevsky", "N. I. Lobachevsky"],
+      "claims": [
+        {
+          "id": "CLM:PE:lobachevsky.1",
+          "statement": "罗巴切夫斯基生卒 1792–1856。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "标准辞书条目（DSB 等）；页码待补" }
+        }
+      ],
+      "provenance": { "created_by": "framework-v0.2", "created_at": "2026-11-22", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "PE:bolyai",
+      "type": "person",
+      "schema_version": "0.2",
+      "labels": { "zh": "亚诺什·鲍耶", "en": "János Bolyai" },
+      "status": "historical",
+      "summary": "匈牙利数学家，1832 年以附录形式发表非欧几何。",
+      "name_variants": ["Bolyai", "J. Bolyai"],
+      "claims": [
+        {
+          "id": "CLM:PE:bolyai.1",
+          "statement": "鲍耶生卒 1802–1860。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "标准辞书条目（DSB 等）；页码待补" }
+        }
+      ],
+      "provenance": { "created_by": "framework-v0.2", "created_at": "2026-11-22", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "PE:beltrami",
+      "type": "person",
+      "schema_version": "0.2",
+      "labels": { "zh": "欧金尼奥·贝尔特拉米", "en": "Eugenio Beltrami" },
+      "status": "historical",
+      "summary": "意大利数学家，1868 年给出双曲几何的欧氏模型。",
+      "name_variants": ["Beltrami", "E. Beltrami"],
+      "claims": [
+        {
+          "id": "CLM:PE:beltrami.1",
+          "statement": "贝尔特拉米生卒 1835–1900。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "标准辞书条目（DSB 等）；页码待补" }
+        }
+      ],
+      "provenance": { "created_by": "framework-v0.2", "created_at": "2026-11-22", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "PE:clavius",
+      "type": "person",
+      "schema_version": "0.2",
+      "labels": { "zh": "克里斯托弗·克拉维乌斯", "en": "Christopher Clavius" },
+      "status": "historical",
+      "summary": "德国耶稣会数学家，1574 年拉丁文《原本》校注本；利玛窦与徐光启汉译的底本。",
+      "name_variants": ["Clavius", "C. Clavius"],
+      "claims": [
+        {
+          "id": "CLM:PE:clavius.1",
+          "statement": "克拉维乌斯生卒 1538–1612。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "标准辞书条目（DSB 等）；页码待补" }
+        }
+      ],
+      "provenance": { "created_by": "framework-v0.2", "created_at": "2026-11-22", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "PE:ricci",
+      "type": "person",
+      "schema_version": "0.2",
+      "labels": { "zh": "利玛窦", "en": "Matteo Ricci" },
+      "status": "historical",
+      "summary": "意大利耶稣会士；与徐光启合译《几何原本》前六卷（1607）。",
+      "name_variants": ["Ricci", "M. Ricci", "利西泰"],
+      "claims": [
+        {
+          "id": "CLM:PE:ricci.1",
+          "statement": "利玛窦生卒 1552–1610。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "标准辞书条目；页码待补" }
+        }
+      ],
+      "provenance": { "created_by": "framework-v0.2", "created_at": "2026-11-22", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "PE:xu-guangqi",
+      "type": "person",
+      "schema_version": "0.2",
+      "labels": { "zh": "徐光启", "en": "Xu Guangqi" },
+      "status": "historical",
+      "summary": "明代官员与学者；与利玛窦合译《几何原本》前六卷（1607）。",
+      "name_variants": ["Xu Guangqi", "徐子先", "玄扈"],
+      "claims": [
+        {
+          "id": "CLM:PE:xu-guangqi.1",
+          "statement": "徐光启生卒 1562–1633。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "标准辞书条目；页码待补" }
+        }
+      ],
+      "provenance": { "created_by": "framework-v0.2", "created_at": "2026-11-22", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "PE:heath",
+      "type": "person",
+      "schema_version": "0.2",
+      "labels": { "zh": "托马斯·希思", "en": "Thomas Little Heath" },
+      "status": "historical",
+      "summary": "英国数学史家，1908 年《原本》英译与注释本。",
+      "name_variants": ["Heath", "T. L. Heath"],
+      "claims": [
+        {
+          "id": "CLM:PE:heath.1",
+          "statement": "希思生卒 1861–1940。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "标准辞书条目；页码待补" }
+        }
+      ],
+      "provenance": { "created_by": "framework-v0.2", "created_at": "2026-11-22", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "PE:klein",
+      "type": "person",
+      "schema_version": "0.2",
+      "labels": { "zh": "费利克斯·克莱因", "en": "Felix Klein" },
+      "status": "historical",
+      "summary": "德国数学家，1871 年定名'双曲几何'与'椭圆几何'。",
+      "name_variants": ["Klein", "F. Klein"],
+      "claims": [
+        {
+          "id": "CLM:PE:klein.1",
+          "statement": "克莱因生卒 1849–1925。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "标准辞书条目；页码待补" }
+        }
+      ],
+      "provenance": { "created_by": "framework-v0.2", "created_at": "2026-11-22", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "TX:euclid-elements",
+      "type": "text",
+      "schema_version": "0.2",
+      "labels": { "zh": "几何原本", "en": "Euclid's Elements" },
+      "status": "active",
+      "summary": "13 卷公理化几何著作；作者手稿已佚，现存为多条传承链。",
+      "title_variants": ["Στοιχεῖα", "Elements", "几何原本"],
+      "text_type": "treatise",
+      "chains": [
+        { "stemma_branch": "greek", "root_witness": "TW:euclid-elements.original", "note": "希腊文本；作者手稿已佚" },
+        { "stemma_branch": "arabic-latin", "root_witness": "TW:euclid-elements.original", "note": "经阿拉伯译本转拉丁" },
+        { "stemma_branch": "chinese", "root_witness": "TW:euclid-elements.clavius-1574", "note": "据克拉维乌斯拉丁本译前六卷" },
+        { "stemma_branch": "english", "root_witness": "TW:euclid-elements.heiberg-menge", "note": "希思据希腊校勘本英译" }
+      ],
+      "support_claims": ["CO:parallel-postulate", "TH:euclid-i32"],
+      "claims": [
+        {
+          "id": "CLM:TX:euclid-elements.1",
+          "statement": "《原本》共 13 卷，传统归于欧几里得，成书约公元前 300 年。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "标准数学史著作；页码待补" }
+        }
+      ],
+      "provenance": { "created_by": "framework-v0.2", "created_at": "2026-11-22", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "TX:proclus-commentary",
+      "type": "text",
+      "schema_version": "0.2",
+      "labels": { "zh": "普罗克洛斯《原本》第一卷注", "en": "Proclus, Commentary on Euclid I" },
+      "status": "active",
+      "summary": "5 世纪对《原本》第一卷的注释；保存早期第五公设批评。",
+      "title_variants": ["In primum Euclidis Elementorum librum commentarii"],
+      "text_type": "commentary",
+      "chains": [
+        { "stemma_branch": "greek", "root_witness": "TW:proclus-commentary.original", "note": "希腊文本；原作已佚" }
+      ],
+      "support_claims": ["PR:fifth-postulate-deducibility"],
+      "claims": [
+        {
+          "id": "CLM:TX:proclus-commentary.1",
+          "statement": "现存文本由弗里德莱因 1873 年校勘本提供。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "witness": "TW:proclus-commentary.friedlein-1873", "locator": "Teubner 1873 版" }
+        }
+      ],
+      "provenance": { "created_by": "framework-v0.2", "created_at": "2026-11-22", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "TX:saccheri-1733-euclides",
+      "type": "text",
+      "schema_version": "0.2",
+      "labels": { "zh": "萨凯里《欧几里得无瑕获释》", "en": "Saccheri, Euclides ab omni naevo vindicatus" },
+      "status": "active",
+      "summary": "1733 年米兰刊行的反证法著作。",
+      "title_variants": ["Euclides ab omni naevo vindicatus"],
+      "text_type": "treatise",
+      "chains": [
+        { "stemma_branch": "print", "root_witness": "TW:saccheri-1733-euclides.print", "note": "1733 年初刊" }
+      ],
+      "support_claims": ["FA:saccheri-1733", "ST:saccheri-refutation"],
+      "claims": [
+        {
+          "id": "CLM:TX:saccheri-1733-euclides.1",
+          "statement": "该书 1733 年在米兰出版；原页未见。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "witness": "TW:saccheri-1733-euclides.print", "locator": "题名页（据书目著录）" }
+        }
+      ],
+      "provenance": { "created_by": "framework-v0.2", "created_at": "2026-11-22", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "TX:lobachevsky-1829-kazan",
+      "type": "text",
+      "schema_version": "0.2",
+      "labels": { "zh": "罗巴切夫斯基《论几何原理》", "en": "Lobachevsky, On the Principles of Geometry" },
+      "status": "active",
+      "summary": "1829 年《喀山通报》发表的非欧几何论文。",
+      "title_variants": ["О началах геометрии"],
+      "text_type": "article",
+      "chains": [
+        { "stemma_branch": "print", "root_witness": "TW:lobachevsky-1829-kazan.print", "note": "1829 年《喀山通报》" }
+      ],
+      "support_claims": ["CO:hyperbolic-geometry", "ST:lobachevsky-1829"],
+      "claims": [
+        {
+          "id": "CLM:TX:lobachevsky-1829-kazan.1",
+          "statement": "论文 1829 年发表于《喀山通报》；原刊未见。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "witness": "TW:lobachevsky-1829-kazan.print", "locator": "书目著录（页码待补）" }
+        }
+      ],
+      "provenance": { "created_by": "framework-v0.2", "created_at": "2026-11-22", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "TX:bolyai-1832-appendix",
+      "type": "text",
+      "schema_version": "0.2",
+      "labels": { "zh": "鲍耶《附录》", "en": "Bolyai, Appendix" },
+      "status": "active",
+      "summary": "1832 年作为其父《数学尝试》附录发表的非欧几何。",
+      "title_variants": ["Appendix scientiam spatii absolute veram exhibens"],
+      "text_type": "treatise",
+      "chains": [
+        { "stemma_branch": "print", "root_witness": "TW:bolyai-1832-appendix.print", "note": "1832 年刊本" }
+      ],
+      "support_claims": ["ST:bolyai-1832"],
+      "claims": [
+        {
+          "id": "CLM:TX:bolyai-1832-appendix.1",
+          "statement": "《附录》1832 年随《数学尝试》刊行；原页未见。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "witness": "TW:bolyai-1832-appendix.print", "locator": "书目著录（页码待补）" }
+        }
+      ],
+      "provenance": { "created_by": "framework-v0.2", "created_at": "2026-11-22", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "TX:gauss-letter-1832",
+      "type": "text",
+      "schema_version": "0.2",
+      "labels": { "zh": "高斯致鲍耶书信（1832）", "en": "Gauss to F. Bolyai, 1832" },
+      "status": "active",
+      "summary": "高斯称自己三十余年前已得同样结果的书信。",
+      "title_variants": ["Brief an F. Bolyai"],
+      "text_type": "letter",
+      "chains": [
+        { "stemma_branch": "ms", "root_witness": "TW:gauss-letter-1832.ms", "note": "书信原件；藏地待核" }
+      ],
+      "support_claims": ["ST:gauss-priority"],
+      "claims": [
+        {
+          "id": "CLM:TX:gauss-letter-1832.1",
+          "statement": "书信日期与内容据标准史述；藏地与页码待核。",
+          "grade": "U",
+          "attestation": "later_report",
+          "source": { "witness": "TW:gauss-letter-1832.ms", "locator": "藏地待核" },
+          "note": "需核对书信原件或权威校订本。"
+        }
+      ],
+      "provenance": { "created_by": "framework-v0.2", "created_at": "2026-11-22", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "TX:beltrami-1868-saggio",
+      "type": "text",
+      "schema_version": "0.2",
+      "labels": { "zh": "贝尔特拉米《非欧几何的解释》", "en": "Beltrami, Saggio di interpretazione della geometria non-euclidea" },
+      "status": "active",
+      "summary": "1868 年给出双曲几何的欧氏曲面模型。",
+      "title_variants": ["Saggio di interpretazione della geometria non-euclidea"],
+      "text_type": "article",
+      "chains": [
+        { "stemma_branch": "print", "root_witness": "TW:beltrami-1868-saggio.print", "note": "Giornale di Matematiche 6 (1868)" }
+      ],
+      "support_claims": ["TH:non-euclidean-relative-consistency", "ST:beltrami-consistency"],
+      "claims": [
+        {
+          "id": "CLM:TX:beltrami-1868-saggio.1",
+          "statement": "论文 1868 年发表于《数学杂志》第 6 卷；原页未见。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "witness": "TW:beltrami-1868-saggio.print", "locator": "Giornale di Matematiche 6 (1868)" }
+        }
+      ],
+      "provenance": { "created_by": "framework-v0.2", "created_at": "2026-11-22", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "TW:euclid-elements.original",
+      "type": "witness",
+      "schema_version": "0.2",
+      "labels": { "zh": "《原本》原作（已佚）", "en": "Elements, autograph (lost)" },
+      "status": "historical",
+      "summary": "作者手稿未存世；作为传承链的根节点保留。",
+      "witness_of": "TX:euclid-elements",
+      "witness_kind": "original",
+      "extant": false,
+      "date": { "from": -300, "to": -300, "precision": "circa" },
+      "holding": { "institution": null, "shelfmark": null, "url": null, "note": "已佚；不作为可检视见证" },
+      "derived_from": null,
+      "supports": [],
+      "claims": [
+        {
+          "id": "CLM:TW:euclid-elements.original.1",
+          "statement": "《原本》无作者手稿存世，现存文本均经抄本传承。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "标准数学史著作；页码待补" }
+        }
+      ],
+      "provenance": { "created_by": "framework-v0.2", "created_at": "2026-11-22", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "TW:euclid-elements.heiberg-menge",
+      "type": "witness",
+      "schema_version": "0.2",
+      "labels": { "zh": "海贝格–门格校勘本", "en": "Heiberg–Menge critical edition" },
+      "status": "historical",
+      "summary": "希腊文本校勘本，5 卷，1883–1888。",
+      "witness_of": "TX:euclid-elements",
+      "witness_kind": "critical_edition",
+      "extant": true,
+      "date": { "from": 1883, "to": 1888, "precision": "year" },
+      "holding": { "institution": "Teubner, Leipzig", "shelfmark": null, "url": null, "note": "5 卷本；具体册次待补" },
+      "editor": "J. L. Heiberg; H. Menge",
+      "derived_from": "TW:euclid-elements.original",
+      "supports": ["CO:parallel-postulate", "TH:euclid-i32"],
+      "claims": [
+        {
+          "id": "CLM:TW:euclid-elements.heiberg-menge.1",
+          "statement": "海贝格校勘本 1883–1888 年由 Teubner 出版。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "Teubner 出版书目；册次页码待补" }
+        }
+      ],
+      "provenance": { "created_by": "framework-v0.2", "created_at": "2026-11-22", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "TW:euclid-elements.arabic-tradition",
+      "type": "witness",
+      "schema_version": "0.2",
+      "labels": { "zh": "阿拉伯译本传统", "en": "Arabic translation tradition" },
+      "status": "historical",
+      "summary": "希腊文本经阿拉伯译本转译；具体抄本与译者待核。",
+      "witness_of": "TX:euclid-elements",
+      "witness_kind": "translation",
+      "extant": true,
+      "date": { "from": 800, "to": 900, "precision": "century" },
+      "holding": { "institution": null, "shelfmark": null, "url": null, "note": "具体抄本待核" },
+      "derived_from": "TW:euclid-elements.original",
+      "supports": [],
+      "claims": [
+        {
+          "id": "CLM:TW:euclid-elements.arabic-tradition.1",
+          "statement": "阿拉伯译本传统存在，但具体译本、抄本与年代尚未在本框架内核实。",
+          "grade": "U",
+          "attestation": "later_report",
+          "source": { "locator": "待查阿拉伯数学史专著；暂据通行史述" },
+          "note": "须核对具体抄本编号与译者后升 S。"
+        }
+      ],
+      "provenance": { "created_by": "framework-v0.2", "created_at": "2026-11-22", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "TW:euclid-elements.clavius-1574",
+      "type": "witness",
+      "schema_version": "0.2",
+      "labels": { "zh": "克拉维乌斯拉丁本（1574）", "en": "Clavius edition, 1574" },
+      "status": "historical",
+      "summary": "拉丁文校注本；徐光启、利玛窦汉译的底本。",
+      "witness_of": "TX:euclid-elements",
+      "witness_kind": "printed_edition",
+      "extant": true,
+      "date": { "from": 1574, "to": 1574, "precision": "year" },
+      "holding": { "institution": "Rome", "shelfmark": null, "url": null, "note": "Euclidis Elementorum libri XV" },
+      "editor": "C. Clavius",
+      "derived_from": "TW:euclid-elements.arabic-tradition",
+      "supports": [],
+      "claims": [
+        {
+          "id": "CLM:TW:euclid-elements.clavius-1574.1",
+          "statement": "克拉维乌斯 1574 年拉丁本；汉译据此前六卷。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "版本与汉译关系据标准史述；页码待补" }
+        }
+      ],
+      "provenance": { "created_by": "framework-v0.2", "created_at": "2026-11-22", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "TW:euclid-elements.xu-ricci-1607",
+      "type": "witness",
+      "schema_version": "0.2",
+      "labels": { "zh": "徐光启、利玛窦《几何原本》（1607）", "en": "Xu Guangqi–Ricci Chinese translation, 1607" },
+      "status": "historical",
+      "summary": "汉译前六卷；据克拉维乌斯拉丁本。",
+      "witness_of": "TX:euclid-elements",
+      "witness_kind": "translation",
+      "extant": true,
+      "date": { "from": 1607, "to": 1607, "precision": "year" },
+      "holding": { "institution": null, "shelfmark": null, "url": null, "note": "初刻本藏地待核；前六卷" },
+      "translator": "PE:xu-guangqi; PE:ricci",
+      "derived_from": "TW:euclid-elements.clavius-1574",
+      "supports": ["CO:parallel-postulate"],
+      "claims": [
+        {
+          "id": "CLM:TW:euclid-elements.xu-ricci-1607.1",
+          "statement": "《几何原本》1607 年刊行，仅前六卷；底本为克拉维乌斯拉丁本。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "版本关系据标准史述；初刻本藏地与页码待补" }
+        }
+      ],
+      "provenance": { "created_by": "framework-v0.2", "created_at": "2026-11-22", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "TW:euclid-elements.heath-1908",
+      "type": "witness",
+      "schema_version": "0.2",
+      "labels": { "zh": "希思英译本（1908）", "en": "Heath English translation, 1908" },
+      "status": "historical",
+      "summary": "据希腊校勘本的英译与注释，3 卷。",
+      "witness_of": "TX:euclid-elements",
+      "witness_kind": "translation",
+      "extant": true,
+      "date": { "from": 1908, "to": 1908, "precision": "year" },
+      "holding": { "institution": "Cambridge University Press", "shelfmark": null, "url": null, "note": "3 卷本" },
+      "translator": "PE:heath",
+      "derived_from": "TW:euclid-elements.heiberg-menge",
+      "supports": [],
+      "claims": [
+        {
+          "id": "CLM:TW:euclid-elements.heath-1908.1",
+          "statement": "希思 1908 年英译本由剑桥大学出版社出版，共 3 卷。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "CUP 出版书目；页码待补" }
+        }
+      ],
+      "provenance": { "created_by": "framework-v0.2", "created_at": "2026-11-22", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "TW:proclus-commentary.original",
+      "type": "witness",
+      "schema_version": "0.2",
+      "labels": { "zh": "普罗克洛斯注原作（已佚）", "en": "Proclus commentary, original (lost)" },
+      "status": "historical",
+      "summary": "希腊文原作未存世。",
+      "witness_of": "TX:proclus-commentary",
+      "witness_kind": "original",
+      "extant": false,
+      "date": { "from": 450, "to": 485, "precision": "circa" },
+      "holding": { "institution": null, "shelfmark": null, "url": null, "note": "已佚" },
+      "derived_from": null,
+      "supports": [],
+      "claims": [],
+      "provenance": { "created_by": "framework-v0.2", "created_at": "2026-11-22", "sources_checked": "none", "schema_version": "0.2" }
+    },
+    {
+      "id": "TW:proclus-commentary.friedlein-1873",
+      "type": "witness",
+      "schema_version": "0.2",
+      "labels": { "zh": "弗里德莱因校勘本（1873）", "en": "Friedlein edition, 1873" },
+      "status": "historical",
+      "summary": "普罗克洛斯注的希腊文本校勘本。",
+      "witness_of": "TX:proclus-commentary",
+      "witness_kind": "critical_edition",
+      "extant": true,
+      "date": { "from": 1873, "to": 1873, "precision": "year" },
+      "holding": { "institution": "Teubner, Leipzig", "shelfmark": null, "url": null, "note": "Procli Diadochi in primum Euclidis Elementorum librum commentarii" },
+      "editor": "G. Friedlein",
+      "derived_from": "TW:proclus-commentary.original",
+      "supports": ["PR:fifth-postulate-deducibility"],
+      "claims": [
+        {
+          "id": "CLM:TW:proclus-commentary.friedlein-1873.1",
+          "statement": "弗里德莱因 1873 年 Teubner 校勘本。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "Teubner 出版书目；页码待补" }
+        }
+      ],
+      "provenance": { "created_by": "framework-v0.2", "created_at": "2026-11-22", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "TW:saccheri-1733-euclides.print",
+      "type": "witness",
+      "schema_version": "0.2",
+      "labels": { "zh": "萨凯里 1733 年初刊", "en": "Saccheri 1733 first edition" },
+      "status": "historical",
+      "summary": "米兰 1733 年刊本。",
+      "witness_of": "TX:saccheri-1733-euclides",
+      "witness_kind": "printed_edition",
+      "extant": true,
+      "date": { "from": 1733, "to": 1733, "precision": "year" },
+      "holding": { "institution": "Milan", "shelfmark": null, "url": null, "note": "初刊地据书目；藏地待核" },
+      "derived_from": null,
+      "supports": ["FA:saccheri-1733"],
+      "claims": [
+        {
+          "id": "CLM:TW:saccheri-1733-euclides.print.1",
+          "statement": "1733 年米兰初刊；未见原页。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "书目著录；馆藏编号待补" }
+        }
+      ],
+      "provenance": { "created_by": "framework-v0.2", "created_at": "2026-11-22", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "TW:lobachevsky-1829-kazan.print",
+      "type": "witness",
+      "schema_version": "0.2",
+      "labels": { "zh": "罗巴切夫斯基 1829 年原刊", "en": "Lobachevsky 1829 original print" },
+      "status": "historical",
+      "summary": "《喀山通报》1829 年刊。",
+      "witness_of": "TX:lobachevsky-1829-kazan",
+      "witness_kind": "printed_edition",
+      "extant": true,
+      "date": { "from": 1829, "to": 1829, "precision": "year" },
+      "holding": { "institution": "Kazan", "shelfmark": null, "url": null, "note": "刊地据书目；藏地待核" },
+      "derived_from": null,
+      "supports": ["ST:lobachevsky-1829"],
+      "claims": [
+        {
+          "id": "CLM:TW:lobachevsky-1829-kazan.print.1",
+          "statement": "1829 年《喀山通报》刊出；未见原刊。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "书目著录；卷期页码待补" }
+        }
+      ],
+      "provenance": { "created_by": "framework-v0.2", "created_at": "2026-11-22", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "TW:bolyai-1832-appendix.print",
+      "type": "witness",
+      "schema_version": "0.2",
+      "labels": { "zh": "鲍耶《附录》1832 年刊本", "en": "Bolyai Appendix, 1832" },
+      "status": "historical",
+      "summary": "随《数学尝试》刊行的附录。",
+      "witness_of": "TX:bolyai-1832-appendix",
+      "witness_kind": "printed_edition",
+      "extant": true,
+      "date": { "from": 1832, "to": 1832, "precision": "year" },
+      "holding": { "institution": "Marosvásárhely", "shelfmark": null, "url": null, "note": "刊地据书目；藏地待核" },
+      "derived_from": null,
+      "supports": ["ST:bolyai-1832"],
+      "claims": [
+        {
+          "id": "CLM:TW:bolyai-1832-appendix.print.1",
+          "statement": "1832 年刊行；未见原页。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "书目著录；页码待补" }
+        }
+      ],
+      "provenance": { "created_by": "framework-v0.2", "created_at": "2026-11-22", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "TW:gauss-letter-1832.ms",
+      "type": "witness",
+      "schema_version": "0.2",
+      "labels": { "zh": "高斯书信原件（1832）", "en": "Gauss letter, manuscript" },
+      "status": "historical",
+      "summary": "书信原件；藏地与编号待核。",
+      "witness_of": "TX:gauss-letter-1832",
+      "witness_kind": "manuscript",
+      "extant": true,
+      "date": { "from": 1832, "to": 1832, "precision": "year" },
+      "holding": { "institution": null, "shelfmark": null, "url": null, "note": "藏地待核" },
+      "derived_from": null,
+      "supports": ["ST:gauss-priority"],
+      "claims": [
+        {
+          "id": "CLM:TW:gauss-letter-1832.ms.1",
+          "statement": "书信原件存在，但本框架尚未核对藏地与编号。",
+          "grade": "U",
+          "attestation": "later_report",
+          "source": { "locator": "待查高斯通信集或馆藏目录" },
+          "note": "需核对馆藏编号与信件日期。"
+        }
+      ],
+      "provenance": { "created_by": "framework-v0.2", "created_at": "2026-11-22", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "TW:beltrami-1868-saggio.print",
+      "type": "witness",
+      "schema_version": "0.2",
+      "labels": { "zh": "贝尔特拉米 1868 年原刊", "en": "Beltrami 1868 original print" },
+      "status": "historical",
+      "summary": "《数学杂志》第 6 卷。",
+      "witness_of": "TX:beltrami-1868-saggio",
+      "witness_kind": "printed_edition",
+      "extant": true,
+      "date": { "from": 1868, "to": 1868, "precision": "year" },
+      "holding": { "institution": "Giornale di Matematiche", "shelfmark": "vol. 6", "url": null, "note": "页码待补" },
+      "derived_from": null,
+      "supports": ["TH:non-euclidean-relative-consistency"],
+      "claims": [
+        {
+          "id": "CLM:TW:beltrami-1868-saggio.print.1",
+          "statement": "1868 年发表于《数学杂志》第 6 卷；起止页码待补。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "期刊书目；页码待补" }
+        }
+      ],
+      "provenance": { "created_by": "framework-v0.2", "created_at": "2026-11-22", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "EV:1733-saccheri-euclides",
+      "type": "event",
+      "schema_version": "0.2",
+      "labels": { "zh": "萨凯里发表《欧几里得无瑕获释》", "en": "Saccheri publishes Euclides vindicatus" },
+      "status": "historical",
+      "summary": "1733 年米兰刊行。",
+      "date": { "from": 1733, "to": 1733, "precision": "year" },
+      "place": "米兰",
+      "actors": ["PE:saccheri"],
+      "part_of": "FA:saccheri-1733",
+      "claims": [
+        {
+          "id": "CLM:EV:1733-saccheri-euclides.1",
+          "statement": "刊行年份 1733 据题名页书目著录。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "书目著录；原页未见" }
+        }
+      ],
+      "provenance": { "created_by": "framework-v0.2", "created_at": "2026-11-22", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "EV:1829-lobachevsky-kazan",
+      "type": "event",
+      "schema_version": "0.2",
+      "labels": { "zh": "罗巴切夫斯基发表非欧几何", "en": "Lobachevsky publishes non-Euclidean geometry" },
+      "status": "historical",
+      "summary": "1829 年《喀山通报》刊出。",
+      "date": { "from": 1829, "to": 1829, "precision": "year" },
+      "place": "喀山",
+      "actors": ["PE:lobachevsky"],
+      "part_of": "PR:fifth-postulate-deducibility",
+      "claims": [
+        {
+          "id": "CLM:EV:1829-lobachevsky-kazan.1",
+          "statement": "发表年份 1829 据标准史述。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "标准数学史著作；页码待补" }
+        }
+      ],
+      "provenance": { "created_by": "framework-v0.2", "created_at": "2026-11-22", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "EV:1832-bolyai-appendix",
+      "type": "event",
+      "schema_version": "0.2",
+      "labels": { "zh": "鲍耶《附录》刊行", "en": "Bolyai's Appendix published" },
+      "status": "historical",
+      "summary": "1832 年随《数学尝试》刊行。",
+      "date": { "from": 1832, "to": 1832, "precision": "year" },
+      "place": "马罗什瓦沙尔海伊",
+      "actors": ["PE:bolyai"],
+      "part_of": "PR:fifth-postulate-deducibility",
+      "claims": [
+        {
+          "id": "CLM:EV:1832-bolyai-appendix.1",
+          "statement": "刊行年份 1832 据标准史述。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "标准数学史著作；页码待补" }
+        }
+      ],
+      "provenance": { "created_by": "framework-v0.2", "created_at": "2026-11-22", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "EV:1868-beltrami-model",
+      "type": "event",
+      "schema_version": "0.2",
+      "labels": { "zh": "贝尔特拉米模型发表", "en": "Beltrami's model published" },
+      "status": "historical",
+      "summary": "1868 年给出双曲几何的欧氏模型。",
+      "date": { "from": 1868, "to": 1868, "precision": "year" },
+      "place": "博洛尼亚",
+      "actors": ["PE:beltrami"],
+      "part_of": "TH:non-euclidean-relative-consistency",
+      "claims": [
+        {
+          "id": "CLM:EV:1868-beltrami-model.1",
+          "statement": "发表年份 1868 据期刊书目。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "Giornale di Matematiche 6 (1868)；页码待补" }
+        }
+      ],
+      "provenance": { "created_by": "framework-v0.2", "created_at": "2026-11-22", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "ST:saccheri-refutation",
+      "type": "statement",
+      "schema_version": "0.2",
+      "labels": { "zh": "萨凯里的主张", "en": "Saccheri's claim" },
+      "status": "superseded",
+      "summary": "主张锐角假设导致矛盾，故第五公设可证。",
+      "claim_text": "锐角假设导致矛盾，因此第五公设可由其余公设证明。",
+      "claimant": "PE:saccheri",
+      "claimed_at": { "from": 1733, "to": 1733, "precision": "year" },
+      "claimed_in": ["TX:saccheri-1733-euclides"],
+      "about": ["PR:fifth-postulate-deducibility"],
+      "stance": "asserts",
+      "text_ref": "doc:spec/framework/samples/non-euclidean-geometry.md#saccheri",
+      "claims": [
+        {
+          "id": "CLM:ST:saccheri-refutation.1",
+          "statement": "萨凯里的排除理由不是逻辑矛盾，而是欧氏直觉前提。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "text": "TX:saccheri-1733-euclides", "witness": "TW:saccheri-1733-euclides.print", "locator": "Propositio XXXIII 附近（页码待补）" }
+        }
+      ],
+      "provenance": { "created_by": "framework-v0.2", "created_at": "2026-11-22", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "ST:lobachevsky-1829",
+      "type": "statement",
+      "schema_version": "0.2",
+      "labels": { "zh": "罗巴切夫斯基 1829 年主张", "en": "Lobachevsky's 1829 claim" },
+      "status": "current",
+      "summary": "主张存在一种几何，第五公设不成立而其余公设成立。",
+      "claim_text": "存在一种几何体系：保留其余公设，但过直线外一点可作多条平行线。",
+      "claimant": "PE:lobachevsky",
+      "claimed_at": { "from": 1829, "to": 1829, "precision": "year" },
+      "claimed_in": ["TX:lobachevsky-1829-kazan"],
+      "about": ["CO:hyperbolic-geometry", "PR:fifth-postulate-deducibility"],
+      "stance": "asserts",
+      "text_ref": "doc:spec/framework/samples/non-euclidean-geometry.md#notation",
+      "claims": [
+        {
+          "id": "CLM:ST:lobachevsky-1829.1",
+          "statement": "该主张以'想象几何'为名，1829 年公开发表。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "text": "TX:lobachevsky-1829-kazan", "locator": "标题与导言（转述）" }
+        }
+      ],
+      "provenance": { "created_by": "framework-v0.2", "created_at": "2026-11-22", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "ST:bolyai-1832",
+      "type": "statement",
+      "schema_version": "0.2",
+      "labels": { "zh": "鲍耶 1832 年主张", "en": "Bolyai's 1832 claim" },
+      "status": "current",
+      "summary": "独立于罗巴切夫斯基，主张绝对空间的非欧几何。",
+      "claim_text": "存在不依赖第五公设的绝对空间几何；欧氏几何只是其中一种情形。",
+      "claimant": "PE:bolyai",
+      "claimed_at": { "from": 1832, "to": 1832, "precision": "year" },
+      "claimed_in": ["TX:bolyai-1832-appendix"],
+      "about": ["CO:hyperbolic-geometry"],
+      "stance": "asserts",
+      "text_ref": "doc:spec/framework/samples/non-euclidean-geometry.md#notation",
+      "claims": [
+        {
+          "id": "CLM:ST:bolyai-1832.1",
+          "statement": "该主张与罗巴切夫斯基的发表相互独立，时间相差三年。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "标准数学史著作；页码待补" }
+        }
+      ],
+      "provenance": { "created_by": "framework-v0.2", "created_at": "2026-11-22", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "ST:gauss-priority",
+      "type": "statement",
+      "schema_version": "0.2",
+      "labels": { "zh": "高斯的优先权主张", "en": "Gauss's priority claim" },
+      "status": "contested",
+      "summary": "高斯称自己三十余年前已得同样结果但未发表。",
+      "claim_text": "我在三十余年前已得到这些结果，只是未发表。",
+      "claimant": "PE:gauss",
+      "claimed_at": { "from": 1832, "to": 1832, "precision": "year" },
+      "claimed_in": ["TX:gauss-letter-1832"],
+      "about": ["CO:hyperbolic-geometry"],
+      "stance": "asserts",
+      "text_ref": "doc:spec/framework/samples/non-euclidean-geometry.md#gauss-priority",
+      "claims": [
+        {
+          "id": "CLM:ST:gauss-priority.1",
+          "statement": "该主张只有书信自述支撑，未刊手稿不足以独立核实。",
+          "grade": "U",
+          "attestation": "later_report",
+          "source": { "text": "TX:gauss-letter-1832", "witness": "TW:gauss-letter-1832.ms", "locator": "藏地待核" },
+          "note": "需核对书信原件与高斯未刊手稿日期。"
+        }
+      ],
+      "provenance": { "created_by": "framework-v0.2", "created_at": "2026-11-22", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "ST:beltrami-consistency",
+      "type": "statement",
+      "schema_version": "0.2",
+      "labels": { "zh": "贝尔特拉米的一致性主张", "en": "Beltrami's consistency claim" },
+      "status": "current",
+      "summary": "主张双曲几何可在欧氏空间中构造模型，因而相对一致。",
+      "claim_text": "双曲平面可在欧氏空间中实现为常负曲率曲面，故其相对一致。",
+      "claimant": "PE:beltrami",
+      "claimed_at": { "from": 1868, "to": 1868, "precision": "year" },
+      "claimed_in": ["TX:beltrami-1868-saggio"],
+      "about": ["TH:non-euclidean-relative-consistency"],
+      "stance": "asserts",
+      "text_ref": "doc:spec/framework/samples/non-euclidean-geometry.md#beltrami",
+      "claims": [
+        {
+          "id": "CLM:ST:beltrami-consistency.1",
+          "statement": "该主张只给出相对一致性，不证明欧氏几何绝对一致。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "text": "TX:beltrami-1868-saggio", "locator": "§1（转述）" }
+        }
+      ],
+      "provenance": { "created_by": "framework-v0.2", "created_at": "2026-11-22", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "TP:geometry-parallel-postulate",
+      "type": "teaching_point",
+      "schema_version": "0.2",
+      "labels": { "zh": "非欧几何与公理方法（教学挂点）", "en": "teaching hook: non-Euclidean geometry and the axiomatic method" },
+      "status": "active",
+      "summary": "把平行公设史挂到'公理不是自明真理'这一课。",
+      "course": "高等数学 / 几何导论",
+      "chapter": "非欧几何与公理方法",
+      "learning_objective": "理解公理系统的选择性与模型的作用；能说明'不可证'不等于'假'。",
+      "history_objects": ["CO:parallel-postulate", "PR:fifth-postulate-deducibility", "NO:term-non-euclidean-zh"],
+      "student_pitfall": "把'非欧'理解为'反欧'或'不严格'；把'未能证明'当成'已证明不可能'。",
+      "evidence": ["TX:euclid-elements", "TX:beltrami-1868-saggio"],
+      "claims": [],
+      "provenance": { "created_by": "framework-v0.2", "created_at": "2026-11-22", "sources_checked": "none", "schema_version": "0.2" }
+    }
+  ],
+  "edges": [
+    {"id":"E:BR-FND-EGEOM>parent_of>BR-GEO-NONEU","from":"BR-FND-EGEOM","to":"BR-GEO-NONEU","type":"parent_of","directed":true,"time":{"from":null,"to":null,"precision":"unknown","basis":"分类衍生关系，无发生时间"},"source":{"locator":"spec/framework/branches.json"},"grade":"F","attestation":"textbook_simplification","confidence":0.9,"weight":1.0,"kind":"historical","note":"非欧几何由欧氏几何第五公设问题衍生；结构边不是史学断言。"},
+    {"id":"E:BR-GEO-NONEU>cross_class>BR-FND-AXIOSET","from":"BR-GEO-NONEU","to":"BR-FND-AXIOSET","type":"cross_class","directed":true,"time":{"from":null,"to":null,"precision":"unknown"},"source":{"locator":"spec/framework/branches.json"},"grade":"F","attestation":"textbook_simplification","confidence":0.75,"weight":0.5,"kind":"shared_object","note":"两分支共用公理系统与模型对象；跨类边不计入父子权重归一。"},
+    {"id":"E:BR-FND-EGEOM>concerns>CO:parallel-postulate","from":"BR-FND-EGEOM","to":"CO:parallel-postulate","type":"concerns","directed":true,"time":{"from":null,"to":null,"precision":"unknown"},"source":{"locator":"branches.json / key_problems"},"grade":"F","attestation":"textbook_simplification","confidence":0.95,"note":"索引边，不参与推理。"},
+    {"id":"E:BR-FND-EGEOM>concerns>TH:euclid-i32","from":"BR-FND-EGEOM","to":"TH:euclid-i32","type":"concerns","directed":true,"time":{"from":null,"to":null,"precision":"unknown"},"source":{"locator":"《原本》卷一命题 32 属该分支核心命题"},"grade":"F","attestation":"textbook_simplification","confidence":0.9},
+    {"id":"E:BR-FND-EGEOM>concerns>PR:fifth-postulate-deducibility","from":"BR-FND-EGEOM","to":"PR:fifth-postulate-deducibility","type":"concerns","directed":true,"time":{"from":null,"to":null,"precision":"unknown"},"source":{"locator":"branches.json / key_problems"},"grade":"F","attestation":"textbook_simplification","confidence":0.9},
+    {"id":"E:BR-GEO-NONEU>concerns>CO:non-euclidean-geometry","from":"BR-GEO-NONEU","to":"CO:non-euclidean-geometry","type":"concerns","directed":true,"time":{"from":null,"to":null,"precision":"unknown"},"source":{"locator":"分支自身核心概念"},"grade":"F","attestation":"textbook_simplification","confidence":0.95},
+    {"id":"E:BR-GEO-NONEU>concerns>CO:hyperbolic-geometry","from":"BR-GEO-NONEU","to":"CO:hyperbolic-geometry","type":"concerns","directed":true,"time":{"from":null,"to":null,"precision":"unknown"},"source":{"locator":"分支自身核心概念"},"grade":"F","attestation":"textbook_simplification","confidence":0.95},
+    {"id":"E:BR-GEO-NONEU>concerns>TH:non-euclidean-relative-consistency","from":"BR-GEO-NONEU","to":"TH:non-euclidean-relative-consistency","type":"concerns","directed":true,"time":{"from":null,"to":null,"precision":"unknown"},"source":{"locator":"分支标志性结果"},"grade":"F","attestation":"textbook_simplification","confidence":0.9},
+    {"id":"E:BR-FND-AXIOSET>concerns>PR:independence-of-parallel-postulate","from":"BR-FND-AXIOSET","to":"PR:independence-of-parallel-postulate","type":"concerns","directed":true,"time":{"from":null,"to":null,"precision":"unknown"},"source":{"locator":"公理化集合论/模型方法下的独立性问题"},"grade":"F","attestation":"textbook_simplification","confidence":0.85},
+    {"id":"E:PE:proclus>poses>PR:fifth-postulate-deducibility","from":"PE:proclus","to":"PR:fifth-postulate-deducibility","type":"poses","directed":true,"time":{"from":450,"to":450,"precision":"circa","basis":"Proclus 评注成书于 5 世纪中叶"},"source":{"text":"TX:proclus-commentary","witness":"TW:proclus-commentary.friedlein-1873","locator":"In Euclidem, lib. I, ad Postulatum 5"},"claimant":"PE:proclus","grade":"S","attestation":"later_report","confidence":0.85,"note":"Proclus 记录并回应前人证明尝试；其本人也提出尝试。"},
+    {"id":"E:PR:fifth-postulate-deducibility>reformulates>PR:independence-of-parallel-postulate","from":"PR:fifth-postulate-deducibility","to":"PR:independence-of-parallel-postulate","type":"reformulates","directed":true,"time":{"from":1829,"to":1868,"precision":"year","basis":"从 Lobachevsky 1829 到 Beltrami 1868 逐步转为独立性问题"},"source":{"text":"TX:beltrami-1868-saggio","witness":"TW:beltrami-1868-saggio.print","locator":"Saggio, 开篇与方法说明"},"grade":"S","attestation":"later_report","confidence":0.85,"note":"重新表述不等于原问题已被解决；原问题状态下文另记。"},
+    {"id":"E:TH:non-euclidean-relative-consistency>resolves>PR:independence-of-parallel-postulate","from":"TH:non-euclidean-relative-consistency","to":"PR:independence-of-parallel-postulate","type":"resolves","directed":true,"time":{"from":1868,"to":1868,"precision":"year"},"source":{"text":"TX:beltrami-1868-saggio","witness":"TW:beltrami-1868-saggio.print","locator":"Saggio, §§1-3"},"claimant":"PE:beltrami","grade":"S","attestation":"later_report","confidence":0.8,"note":"Beltrami 模型使双曲几何相对相容；独立性由模型存在性支撑。"},
+    {"id":"E:TH:euclid-i32>depends_on>CO:parallel-postulate","from":"TH:euclid-i32","to":"CO:parallel-postulate","type":"depends_on","directed":true,"time":{"from":-300,"to":-300,"precision":"circa","basis":"《原本》成书传统系年"},"source":{"text":"TX:euclid-elements","witness":"TW:euclid-elements.heiberg-menge","locator":"Book I, Prop. 32"},"grade":"S","attestation":"direct","confidence":0.9,"note":"I.32 的证明显式引用第五公设。"},
+    {"id":"E:TH:non-euclidean-relative-consistency>depends_on>CO:hyperbolic-geometry","from":"TH:non-euclidean-relative-consistency","to":"CO:hyperbolic-geometry","type":"depends_on","directed":true,"time":{"from":1868,"to":1868,"precision":"year"},"source":{"text":"TX:beltrami-1868-saggio","locator":"Saggio, §§1-3"},"grade":"S","attestation":"later_report","confidence":0.8},
+    {"id":"E:TH:non-euclidean-relative-consistency>uses_method>ME:model-construction","from":"TH:non-euclidean-relative-consistency","to":"ME:model-construction","type":"uses_method","directed":true,"time":{"from":1868,"to":1868,"precision":"year"},"source":{"text":"TX:beltrami-1868-saggio","locator":"Saggio, §§1-3"},"grade":"S","attestation":"later_report","confidence":0.85},
+    {"id":"E:PR:fifth-postulate-deducibility>uses_method>ME:proof-by-contradiction","from":"PR:fifth-postulate-deducibility","to":"ME:proof-by-contradiction","type":"uses_method","directed":true,"time":{"from":-300,"to":1733,"precision":"century","basis":"从《原本》注家到 Saccheri 的反证法尝试"},"source":{"text":"TX:saccheri-1733-euclides","locator":"Euclides ab omni naevo vindicatus, lib. I"},"grade":"S","attestation":"later_report","confidence":0.75,"note":"反证法是长期主流策略，不代表只有这一条路线。"},
+    {"id":"E:CO:non-euclidean-geometry>generalizes>CO:hyperbolic-geometry","from":"CO:non-euclidean-geometry","to":"CO:hyperbolic-geometry","type":"generalizes","directed":true,"time":{"from":null,"to":null,"precision":"unknown"},"source":{"locator":"概念层级：非欧几何统摄双曲/椭圆几何"},"grade":"F","attestation":"textbook_simplification","confidence":0.9,"note":"按今天的分类；19 世纪作者未必使用该统称。"},
+    {"id":"E:NO:symbol-parallel>denotes>CO:parallel-lines","from":"NO:symbol-parallel","to":"CO:parallel-lines","type":"denotes","directed":true,"time":{"from":null,"to":null,"precision":"unknown"},"source":{"locator":"现代通行记法"},"grade":"F","attestation":"textbook_simplification","confidence":0.8,"note":"∥ 号的首次使用与定型过程有争议，未在样板中判定。"},
+    {"id":"E:NO:term-imaginary-geometry>denotes>CO:hyperbolic-geometry","from":"NO:term-imaginary-geometry","to":"CO:hyperbolic-geometry","type":"denotes","directed":true,"time":{"from":1829,"to":1871,"precision":"year","basis":"Lobachevsky 1829 起使用，至 Klein 1871 改称"},"source":{"text":"TX:lobachevsky-1829-kazan","witness":"TW:lobachevsky-1829-kazan.print","locator":"标题与导言"},"claimant":"PE:lobachevsky","grade":"S","attestation":"direct","confidence":0.8},
+    {"id":"E:NO:term-hyperbolic-geometry>denotes>CO:hyperbolic-geometry","from":"NO:term-hyperbolic-geometry","to":"CO:hyperbolic-geometry","type":"denotes","directed":true,"time":{"from":1871,"to":null,"precision":"year","basis":"Klein 1871 起通行"},"source":{"locator":"Klein 1871 年论文（待补具体页码）"},"claimant":"PE:klein","grade":"U","attestation":"unknown","confidence":0.7,"note":"Klein 1871 的确切出处页码未核，待查 Mathematische Annalen 第 4 卷。"},
+    {"id":"E:NO:term-non-euclidean-zh>denotes>CO:non-euclidean-geometry","from":"NO:term-non-euclidean-zh","to":"CO:non-euclidean-geometry","type":"denotes","directed":true,"time":{"from":null,"to":null,"precision":"unknown"},"source":{"locator":"中文译名史待考"},"grade":"U","attestation":"unknown","confidence":0.5,"note":"中文「非欧几何」定名人与译著未核，待查晚清民国数学译著。"},
+    {"id":"E:NO:term-hyperbolic-geometry>supersedes>NO:term-imaginary-geometry","from":"NO:term-hyperbolic-geometry","to":"NO:term-imaginary-geometry","type":"supersedes","directed":true,"time":{"from":1871,"to":null,"precision":"year"},"source":{"locator":"Klein 1871 术语改革"},"claimant":"PE:klein","grade":"S","attestation":"later_report","confidence":0.75,"note":"旧名并非「错误」，只是被取代。"},
+    {"id":"E:NO:term-hyperbolic-geometry>competes_with>NO:term-imaginary-geometry","from":"NO:term-hyperbolic-geometry","to":"NO:term-imaginary-geometry","type":"competes_with","directed":false,"time":{"from":1829,"to":1871,"precision":"year"},"source":{"locator":"两种术语并行期"},"grade":"S","attestation":"later_report","confidence":0.8,"note":"对称边只存一条，from 取字典序较小者。"},
+    {"id":"E:FA:saccheri-1733>targets>PR:fifth-postulate-deducibility","from":"FA:saccheri-1733","to":"PR:fifth-postulate-deducibility","type":"targets","directed":true,"time":{"from":1733,"to":1733,"precision":"year"},"source":{"text":"TX:saccheri-1733-euclides","witness":"TW:saccheri-1733-euclides.print","locator":"书名页与前言"},"claimant":"PE:saccheri","grade":"S","attestation":"direct","confidence":0.9,"note":"Saccheri 自述目标是由前四条公设推出第五公设。"},
+    {"id":"E:FA:saccheri-1733>corrected_by>PE:beltrami","from":"FA:saccheri-1733","to":"PE:beltrami","type":"corrected_by","directed":true,"time":{"from":1868,"to":1868,"precision":"year"},"source":{"text":"TX:beltrami-1868-saggio","locator":"Saggio, §§1-3"},"grade":"S","attestation":"later_report","confidence":0.7,"note":"Beltrami 模型表明 Saccheri 所谓「矛盾」不成立；纠正者是后世的模型方法，不是同一问题的直接反驳。"},
+    {"id":"E:FA:saccheri-1733>uses_method>ME:proof-by-contradiction","from":"FA:saccheri-1733","to":"ME:proof-by-contradiction","type":"uses_method","directed":true,"time":{"from":1733,"to":1733,"precision":"year"},"source":{"text":"TX:saccheri-1733-euclides","locator":"Euclides vindicatus, lib. I"},"grade":"S","attestation":"direct","confidence":0.9},
+    {"id":"E:FA:euclid-a-priori>targets>TY:euclidean-uniqueness","from":"FA:euclid-a-priori","to":"TY:euclidean-uniqueness","type":"targets","directed":true,"time":{"from":-300,"to":1868,"precision":"century","basis":"从古代到 19 世纪的默认信念"},"source":{"text":"TX:beltrami-1868-saggio","locator":"Saggio, 导言对旧信念的回顾"},"grade":"S","attestation":"later_report","confidence":0.75},
+    {"id":"E:FA:euclid-a-priori>corrected_by>PE:beltrami","from":"FA:euclid-a-priori","to":"PE:beltrami","type":"corrected_by","directed":true,"time":{"from":1868,"to":1868,"precision":"year"},"source":{"text":"TX:beltrami-1868-saggio","locator":"Saggio, §§1-3"},"grade":"S","attestation":"later_report","confidence":0.7},
+    {"id":"E:TY:multiple-geometries>supersedes>TY:euclidean-uniqueness","from":"TY:multiple-geometries","to":"TY:euclidean-uniqueness","type":"supersedes","directed":true,"time":{"from":1868,"to":null,"precision":"year"},"source":{"text":"TX:beltrami-1868-saggio","locator":"Saggio 的结论"},"grade":"S","attestation":"later_report","confidence":0.8},
+    {"id":"E:PE:euclid>contributed_to>TX:euclid-elements","from":"PE:euclid","to":"TX:euclid-elements","type":"contributed_to","directed":true,"time":{"from":-300,"to":-300,"precision":"circa","basis":"传统系年"},"source":{"locator":"古代归属传统；具体成书过程有争议"},"claimant":"PE:euclid","grade":"S","attestation":"later_report","confidence":0.9,"role":"author","note":"《原本》是否全出自 Euclid 一人，学界仍有讨论。"},
+    {"id":"E:PE:proclus>contributed_to>TX:proclus-commentary","from":"PE:proclus","to":"TX:proclus-commentary","type":"contributed_to","directed":true,"time":{"from":450,"to":450,"precision":"circa"},"source":{"locator":"评注传统归属 Proclus"},"claimant":"PE:proclus","grade":"S","attestation":"later_report","confidence":0.9,"role":"commentator"},
+    {"id":"E:PE:saccheri>contributed_to>TX:saccheri-1733-euclides","from":"PE:saccheri","to":"TX:saccheri-1733-euclides","type":"contributed_to","directed":true,"time":{"from":1733,"to":1733,"precision":"year"},"source":{"text":"TX:saccheri-1733-euclides","witness":"TW:saccheri-1733-euclides.print","locator":"书名页"},"claimant":"PE:saccheri","grade":"S","attestation":"direct","confidence":0.95,"role":"author"},
+    {"id":"E:PE:lobachevsky>contributed_to>TX:lobachevsky-1829-kazan","from":"PE:lobachevsky","to":"TX:lobachevsky-1829-kazan","type":"contributed_to","directed":true,"time":{"from":1829,"to":1829,"precision":"year"},"source":{"text":"TX:lobachevsky-1829-kazan","witness":"TW:lobachevsky-1829-kazan.print","locator":"书名页"},"claimant":"PE:lobachevsky","grade":"S","attestation":"direct","confidence":0.95,"role":"author"},
+    {"id":"E:PE:bolyai>contributed_to>TX:bolyai-1832-appendix","from":"PE:bolyai","to":"TX:bolyai-1832-appendix","type":"contributed_to","directed":true,"time":{"from":1832,"to":1832,"precision":"year"},"source":{"text":"TX:bolyai-1832-appendix","witness":"TW:bolyai-1832-appendix.print","locator":"附录标题页"},"claimant":"PE:bolyai","grade":"S","attestation":"direct","confidence":0.95,"role":"author"},
+    {"id":"E:PE:gauss>contributed_to>TX:gauss-letter-1832","from":"PE:gauss","to":"TX:gauss-letter-1832","type":"contributed_to","directed":true,"time":{"from":1832,"to":1832,"precision":"year"},"source":{"text":"TX:gauss-letter-1832","witness":"TW:gauss-letter-1832.ms","locator":"书信正文"},"claimant":"PE:gauss","grade":"S","attestation":"direct","confidence":0.85,"role":"author","note":"私人书信，非公开发表；优先权主张依赖此件。"},
+    {"id":"E:PE:beltrami>contributed_to>TX:beltrami-1868-saggio","from":"PE:beltrami","to":"TX:beltrami-1868-saggio","type":"contributed_to","directed":true,"time":{"from":1868,"to":1868,"precision":"year"},"source":{"text":"TX:beltrami-1868-saggio","witness":"TW:beltrami-1868-saggio.print","locator":"标题页"},"claimant":"PE:beltrami","grade":"S","attestation":"direct","confidence":0.95,"role":"author"},
+    {"id":"E:PE:clavius>contributed_to>TW:euclid-elements.clavius-1574","from":"PE:clavius","to":"TW:euclid-elements.clavius-1574","type":"contributed_to","directed":true,"time":{"from":1574,"to":1574,"precision":"year"},"source":{"locator":"Clavius 1574 拉丁校注本"},"claimant":"PE:clavius","grade":"S","attestation":"later_report","confidence":0.9,"role":"editor"},
+    {"id":"E:PE:ricci>contributed_to>TW:euclid-elements.xu-ricci-1607","from":"PE:ricci","to":"TW:euclid-elements.xu-ricci-1607","type":"contributed_to","directed":true,"time":{"from":1607,"to":1607,"precision":"year"},"source":{"locator":"《几何原本》1607 汉译本"},"claimant":"PE:ricci","grade":"S","attestation":"later_report","confidence":0.9,"role":"translator"},
+    {"id":"E:PE:xu-guangqi>contributed_to>TW:euclid-elements.xu-ricci-1607","from":"PE:xu-guangqi","to":"TW:euclid-elements.xu-ricci-1607","type":"contributed_to","directed":true,"time":{"from":1607,"to":1607,"precision":"year"},"source":{"locator":"《几何原本》1607 汉译本"},"claimant":"PE:xu-guangqi","grade":"S","attestation":"later_report","confidence":0.9,"role":"translator","note":"徐光启笔受润色；与 Ricci 口译的分工见译本序。"},
+    {"id":"E:PE:heath>contributed_to>TW:euclid-elements.heath-1908","from":"PE:heath","to":"TW:euclid-elements.heath-1908","type":"contributed_to","directed":true,"time":{"from":1908,"to":1908,"precision":"year"},"source":{"locator":"Heath, The Thirteen Books of Euclid's Elements, 1908"},"claimant":"PE:heath","grade":"S","attestation":"later_report","confidence":0.9,"role":"translator"},
+    {"id":"E:PE:klein>introduced>NO:term-hyperbolic-geometry","from":"PE:klein","to":"NO:term-hyperbolic-geometry","type":"introduced","directed":true,"time":{"from":1871,"to":1871,"precision":"year"},"source":{"locator":"Klein 1871 术语提案（页码待补）"},"claimant":"PE:klein","grade":"U","attestation":"unknown","confidence":0.7,"note":"具体文献页码未核，暂标 U；不影响术语取代关系的结构。"},
+    {"id":"E:PE:saccheri>participates_in>EV:1733-saccheri-euclides","from":"PE:saccheri","to":"EV:1733-saccheri-euclides","type":"participates_in","directed":true,"time":{"from":1733,"to":1733,"precision":"year"},"source":{"text":"TX:saccheri-1733-euclides","witness":"TW:saccheri-1733-euclides.print","locator":"书名页"},"claimant":"PE:saccheri","grade":"S","attestation":"direct","confidence":0.95},
+    {"id":"E:PE:lobachevsky>participates_in>EV:1829-lobachevsky-kazan","from":"PE:lobachevsky","to":"EV:1829-lobachevsky-kazan","type":"participates_in","directed":true,"time":{"from":1829,"to":1829,"precision":"year"},"source":{"text":"TX:lobachevsky-1829-kazan","witness":"TW:lobachevsky-1829-kazan.print","locator":"出版信息"},"claimant":"PE:lobachevsky","grade":"S","attestation":"direct","confidence":0.95},
+    {"id":"E:PE:bolyai>participates_in>EV:1832-bolyai-appendix","from":"PE:bolyai","to":"EV:1832-bolyai-appendix","type":"participates_in","directed":true,"time":{"from":1832,"to":1832,"precision":"year"},"source":{"text":"TX:bolyai-1832-appendix","witness":"TW:bolyai-1832-appendix.print","locator":"附录标题页"},"claimant":"PE:bolyai","grade":"S","attestation":"direct","confidence":0.95},
+    {"id":"E:PE:beltrami>participates_in>EV:1868-beltrami-model","from":"PE:beltrami","to":"EV:1868-beltrami-model","type":"participates_in","directed":true,"time":{"from":1868,"to":1868,"precision":"year"},"source":{"text":"TX:beltrami-1868-saggio","witness":"TW:beltrami-1868-saggio.print","locator":"标题页"},"claimant":"PE:beltrami","grade":"S","attestation":"direct","confidence":0.95},
+    {"id":"E:EV:1733-saccheri-euclides>part_of>FA:saccheri-1733","from":"EV:1733-saccheri-euclides","to":"FA:saccheri-1733","type":"part_of","directed":true,"time":{"from":1733,"to":1733,"precision":"year"},"source":{"text":"TX:saccheri-1733-euclides","locator":"出版事件"},"grade":"S","attestation":"direct","confidence":0.9,"note":"该事件即失败路线的发生节点。"},
+    {"id":"E:EV:1829-lobachevsky-kazan>part_of>PR:fifth-postulate-deducibility","from":"EV:1829-lobachevsky-kazan","to":"PR:fifth-postulate-deducibility","type":"part_of","directed":true,"time":{"from":1829,"to":1829,"precision":"year"},"source":{"text":"TX:lobachevsky-1829-kazan","locator":"出版事件"},"grade":"S","attestation":"direct","confidence":0.85,"note":"该出版是对原问题的正面回应。"},
+    {"id":"E:EV:1832-bolyai-appendix>part_of>PR:fifth-postulate-deducibility","from":"EV:1832-bolyai-appendix","to":"PR:fifth-postulate-deducibility","type":"part_of","directed":true,"time":{"from":1832,"to":1832,"precision":"year"},"source":{"text":"TX:bolyai-1832-appendix","locator":"附录出版事件"},"grade":"S","attestation":"direct","confidence":0.85},
+    {"id":"E:EV:1868-beltrami-model>part_of>TH:non-euclidean-relative-consistency","from":"EV:1868-beltrami-model","to":"TH:non-euclidean-relative-consistency","type":"part_of","directed":true,"time":{"from":1868,"to":1868,"precision":"year"},"source":{"text":"TX:beltrami-1868-saggio","locator":"论文发表事件"},"grade":"S","attestation":"direct","confidence":0.9},
+    {"id":"E:TW:euclid-elements.original>witness_of>TX:euclid-elements","from":"TW:euclid-elements.original","to":"TX:euclid-elements","type":"witness_of","directed":true,"time":{"from":-300,"to":-300,"precision":"circa"},"source":{"locator":"原本已佚，据传抄系统重构"},"grade":"S","attestation":"later_report","confidence":0.8,"note":"extant=false 的根节点，链不断。"},
+    {"id":"E:TW:euclid-elements.heiberg-menge>witness_of>TX:euclid-elements","from":"TW:euclid-elements.heiberg-menge","to":"TX:euclid-elements","type":"witness_of","directed":true,"time":{"from":1883,"to":1888,"precision":"year","basis":"Heiberg–Menge 校勘本出版年"},"source":{"locator":"Euclidis Elementa, Teubner"},"grade":"S","attestation":"later_report","confidence":0.9},
+    {"id":"E:TW:euclid-elements.arabic-tradition>witness_of>TX:euclid-elements","from":"TW:euclid-elements.arabic-tradition","to":"TX:euclid-elements","type":"witness_of","directed":true,"time":{"from":800,"to":1000,"precision":"century"},"source":{"locator":"阿拉伯文传抄系统（al-Hajjaj 等）"},"grade":"S","attestation":"later_report","confidence":0.75,"note":"具体抄本谱系未在样板展开。"},
+    {"id":"E:TW:euclid-elements.clavius-1574>witness_of>TX:euclid-elements","from":"TW:euclid-elements.clavius-1574","to":"TX:euclid-elements","type":"witness_of","directed":true,"time":{"from":1574,"to":1574,"precision":"year"},"source":{"locator":"Clavius 拉丁校注本"},"grade":"S","attestation":"later_report","confidence":0.85},
+    {"id":"E:TW:euclid-elements.xu-ricci-1607>witness_of>TX:euclid-elements","from":"TW:euclid-elements.xu-ricci-1607","to":"TX:euclid-elements","type":"witness_of","directed":true,"time":{"from":1607,"to":1607,"precision":"year"},"source":{"locator":"《几何原本》1607 汉译本"},"grade":"S","attestation":"later_report","confidence":0.85,"note":"只译前六卷；底本一般认为是 Clavius 本。"},
+    {"id":"E:TW:euclid-elements.heath-1908>witness_of>TX:euclid-elements","from":"TW:euclid-elements.heath-1908","to":"TX:euclid-elements","type":"witness_of","directed":true,"time":{"from":1908,"to":1908,"precision":"year"},"source":{"locator":"Heath 1908 英译本"},"grade":"S","attestation":"later_report","confidence":0.9},
+    {"id":"E:TW:proclus-commentary.original>witness_of>TX:proclus-commentary","from":"TW:proclus-commentary.original","to":"TX:proclus-commentary","type":"witness_of","directed":true,"time":{"from":450,"to":450,"precision":"circa"},"source":{"locator":"希腊文原著，存世情况复杂"},"grade":"S","attestation":"later_report","confidence":0.75,"note":"extant 部分存疑，按根节点处理。"},
+    {"id":"E:TW:proclus-commentary.friedlein-1873>witness_of>TX:proclus-commentary","from":"TW:proclus-commentary.friedlein-1873","to":"TX:proclus-commentary","type":"witness_of","directed":true,"time":{"from":1873,"to":1873,"precision":"year"},"source":{"locator":"Friedlein 校勘本, Teubner"},"grade":"S","attestation":"later_report","confidence":0.9},
+    {"id":"E:TW:saccheri-1733-euclides.print>witness_of>TX:saccheri-1733-euclides","from":"TW:saccheri-1733-euclides.print","to":"TX:saccheri-1733-euclides","type":"witness_of","directed":true,"time":{"from":1733,"to":1733,"precision":"year"},"source":{"locator":"1733 年都灵刊本"},"grade":"S","attestation":"direct","confidence":0.9},
+    {"id":"E:TW:lobachevsky-1829-kazan.print>witness_of>TX:lobachevsky-1829-kazan","from":"TW:lobachevsky-1829-kazan.print","to":"TX:lobachevsky-1829-kazan","type":"witness_of","directed":true,"time":{"from":1829,"to":1829,"precision":"year"},"source":{"locator":"喀山通报 1829 刊本"},"grade":"S","attestation":"direct","confidence":0.9},
+    {"id":"E:TW:bolyai-1832-appendix.print>witness_of>TX:bolyai-1832-appendix","from":"TW:bolyai-1832-appendix.print","to":"TX:bolyai-1832-appendix","type":"witness_of","directed":true,"time":{"from":1832,"to":1832,"precision":"year"},"source":{"locator":"附录刊于 Tentamen 第一卷"},"grade":"S","attestation":"direct","confidence":0.9},
+    {"id":"E:TW:gauss-letter-1832.ms>witness_of>TX:gauss-letter-1832","from":"TW:gauss-letter-1832.ms","to":"TX:gauss-letter-1832","type":"witness_of","directed":true,"time":{"from":1832,"to":1832,"precision":"year"},"source":{"locator":"Gauss 致 Gerling 书信手稿"},"grade":"S","attestation":"direct","confidence":0.85},
+    {"id":"E:TW:beltrami-1868-saggio.print>witness_of>TX:beltrami-1868-saggio","from":"TW:beltrami-1868-saggio.print","to":"TX:beltrami-1868-saggio","type":"witness_of","directed":true,"time":{"from":1868,"to":1868,"precision":"year"},"source":{"locator":"Saggio, Giornale di Matematiche 1868"},"grade":"S","attestation":"direct","confidence":0.9},
+    {"id":"E:TW:euclid-elements.heiberg-menge>derived_from>TW:euclid-elements.original","from":"TW:euclid-elements.heiberg-menge","to":"TW:euclid-elements.original","type":"derived_from","directed":true,"time":{"from":1883,"to":1888,"precision":"year"},"source":{"locator":"Heiberg–Menge 校勘本前言所述底本系统"},"grade":"S","attestation":"later_report","confidence":0.85},
+    {"id":"E:TW:euclid-elements.arabic-tradition>derived_from>TW:euclid-elements.original","from":"TW:euclid-elements.arabic-tradition","to":"TW:euclid-elements.original","type":"derived_from","directed":true,"time":{"from":800,"to":1000,"precision":"century"},"source":{"locator":"阿拉伯文译本转译自希腊文本"},"grade":"S","attestation":"later_report","confidence":0.7,"note":"中间环节（叙利亚文等）未展开。"},
+    {"id":"E:TW:euclid-elements.clavius-1574>derived_from>TW:euclid-elements.arabic-tradition","from":"TW:euclid-elements.clavius-1574","to":"TW:euclid-elements.arabic-tradition","type":"derived_from","directed":true,"time":{"from":1574,"to":1574,"precision":"year"},"source":{"locator":"Clavius 本所据拉丁传统"},"grade":"S","attestation":"later_report","confidence":0.65,"note":"拉丁—阿拉伯—希腊的中间链有争议，此处只记结构。"},
+    {"id":"E:TW:euclid-elements.xu-ricci-1607>derived_from>TW:euclid-elements.clavius-1574","from":"TW:euclid-elements.xu-ricci-1607","to":"TW:euclid-elements.clavius-1574","type":"derived_from","directed":true,"time":{"from":1607,"to":1607,"precision":"year"},"source":{"locator":"汉译本底本一般认定为 Clavius 本"},"grade":"S","attestation":"later_report","confidence":0.8,"note":"底本判定属后世研究结论，见译本序与相关研究。"},
+    {"id":"E:TW:euclid-elements.heath-1908>derived_from>TW:euclid-elements.heiberg-menge","from":"TW:euclid-elements.heath-1908","to":"TW:euclid-elements.heiberg-menge","type":"derived_from","directed":true,"time":{"from":1908,"to":1908,"precision":"year"},"source":{"locator":"Heath 1908 英译本导言"},"grade":"S","attestation":"later_report","confidence":0.8},
+    {"id":"E:TW:proclus-commentary.friedlein-1873>derived_from>TW:proclus-commentary.original","from":"TW:proclus-commentary.friedlein-1873","to":"TW:proclus-commentary.original","type":"derived_from","directed":true,"time":{"from":1873,"to":1873,"precision":"year"},"source":{"locator":"Friedlein 校勘本前言"},"grade":"S","attestation":"later_report","confidence":0.85},
+    {"id":"E:TW:euclid-elements.heiberg-menge>supports>CO:parallel-postulate","from":"TW:euclid-elements.heiberg-menge","to":"CO:parallel-postulate","type":"supports","directed":true,"time":{"from":-300,"to":-300,"precision":"circa"},"source":{"text":"TX:euclid-elements","witness":"TW:euclid-elements.heiberg-menge","locator":"Book I, Postulate 5"},"grade":"S","attestation":"direct","confidence":0.9,"note":"见证节点支撑该概念在《原本》中的表述。"},
+    {"id":"E:TW:euclid-elements.heiberg-menge>supports>TH:euclid-i32","from":"TW:euclid-elements.heiberg-menge","to":"TH:euclid-i32","type":"supports","directed":true,"time":{"from":-300,"to":-300,"precision":"circa"},"source":{"text":"TX:euclid-elements","witness":"TW:euclid-elements.heiberg-menge","locator":"Book I, Prop. 32"},"grade":"S","attestation":"direct","confidence":0.9},
+    {"id":"E:TW:euclid-elements.xu-ricci-1607>supports>CO:parallel-postulate","from":"TW:euclid-elements.xu-ricci-1607","to":"CO:parallel-postulate","type":"supports","directed":true,"time":{"from":1607,"to":1607,"precision":"year"},"source":{"text":"TX:euclid-elements","witness":"TW:euclid-elements.xu-ricci-1607","locator":"卷一，第五公设（汉译）"},"grade":"S","attestation":"direct","confidence":0.8,"note":"汉译用词与希腊—拉丁传统不同，是译名史的独立证据。"},
+    {"id":"E:TW:proclus-commentary.friedlein-1873>supports>PR:fifth-postulate-deducibility","from":"TW:proclus-commentary.friedlein-1873","to":"PR:fifth-postulate-deducibility","type":"supports","directed":true,"time":{"from":450,"to":450,"precision":"circa"},"source":{"text":"TX:proclus-commentary","witness":"TW:proclus-commentary.friedlein-1873","locator":"Ad Postulatum 5"},"grade":"S","attestation":"later_report","confidence":0.8},
+    {"id":"E:TW:saccheri-1733-euclides.print>supports>FA:saccheri-1733","from":"TW:saccheri-1733-euclides.print","to":"FA:saccheri-1733","type":"supports","directed":true,"time":{"from":1733,"to":1733,"precision":"year"},"source":{"text":"TX:saccheri-1733-euclides","witness":"TW:saccheri-1733-euclides.print","locator":"lib. I, prop. 32 前后的反证构造"},"grade":"S","attestation":"direct","confidence":0.9,"note":"该刊本支撑「错在哪一步」的判定。"},
+    {"id":"E:TW:lobachevsky-1829-kazan.print>supports>ST:lobachevsky-1829","from":"TW:lobachevsky-1829-kazan.print","to":"ST:lobachevsky-1829","type":"supports","directed":true,"time":{"from":1829,"to":1829,"precision":"year"},"source":{"text":"TX:lobachevsky-1829-kazan","witness":"TW:lobachevsky-1829-kazan.print","locator":"导言"},"grade":"S","attestation":"direct","confidence":0.9},
+    {"id":"E:TW:bolyai-1832-appendix.print>supports>ST:bolyai-1832","from":"TW:bolyai-1832-appendix.print","to":"ST:bolyai-1832","type":"supports","directed":true,"time":{"from":1832,"to":1832,"precision":"year"},"source":{"text":"TX:bolyai-1832-appendix","witness":"TW:bolyai-1832-appendix.print","locator":"附录 §1"},"grade":"S","attestation":"direct","confidence":0.9},
+    {"id":"E:TW:gauss-letter-1832.ms>supports>ST:gauss-priority","from":"TW:gauss-letter-1832.ms","to":"ST:gauss-priority","type":"supports","directed":true,"time":{"from":1832,"to":1832,"precision":"year"},"source":{"text":"TX:gauss-letter-1832","witness":"TW:gauss-letter-1832.ms","locator":"书信正文"},"grade":"S","attestation":"direct","confidence":0.8,"note":"私人书信只证明 Gauss 有此看法，不证明公开发表优先权。"},
+    {"id":"E:TW:beltrami-1868-saggio.print>supports>TH:non-euclidean-relative-consistency","from":"TW:beltrami-1868-saggio.print","to":"TH:non-euclidean-relative-consistency","type":"supports","directed":true,"time":{"from":1868,"to":1868,"precision":"year"},"source":{"text":"TX:beltrami-1868-saggio","witness":"TW:beltrami-1868-saggio.print","locator":"Saggio, §§1-3"},"grade":"S","attestation":"direct","confidence":0.9},
+    {"id":"E:ST:saccheri-refutation>about>PR:fifth-postulate-deducibility","from":"ST:saccheri-refutation","to":"PR:fifth-postulate-deducibility","type":"about","directed":true,"time":{"from":1733,"to":1733,"precision":"year"},"source":{"text":"TX:saccheri-1733-euclides","locator":"结论部分"},"claimant":"PE:saccheri","grade":"S","attestation":"direct","confidence":0.85,"note":"Saccheri 主张已由反证法「证成」第五公设。"},
+    {"id":"E:ST:lobachevsky-1829>about>CO:hyperbolic-geometry","from":"ST:lobachevsky-1829","to":"CO:hyperbolic-geometry","type":"about","directed":true,"time":{"from":1829,"to":1829,"precision":"year"},"source":{"text":"TX:lobachevsky-1829-kazan","locator":"导言与定义"},"claimant":"PE:lobachevsky","grade":"S","attestation":"direct","confidence":0.9,"note":"主张在第五公设取否定式下仍存在自洽几何。"},
+    {"id":"E:ST:lobachevsky-1829>about>PR:fifth-postulate-deducibility","from":"ST:lobachevsky-1829","to":"PR:fifth-postulate-deducibility","type":"about","directed":true,"time":{"from":1829,"to":1829,"precision":"year"},"source":{"text":"TX:lobachevsky-1829-kazan","locator":"导言"},"claimant":"PE:lobachevsky","grade":"S","attestation":"direct","confidence":0.85,"note":"主张该问题不可能按原设想解决；这是对同一问题的相反回答。"},
+    {"id":"E:ST:bolyai-1832>about>CO:hyperbolic-geometry","from":"ST:bolyai-1832","to":"CO:hyperbolic-geometry","type":"about","directed":true,"time":{"from":1832,"to":1832,"precision":"year"},"source":{"text":"TX:bolyai-1832-appendix","locator":"附录 §1"},"claimant":"PE:bolyai","grade":"S","attestation":"direct","confidence":0.9},
+    {"id":"E:ST:gauss-priority>about>CO:hyperbolic-geometry","from":"ST:gauss-priority","to":"CO:hyperbolic-geometry","type":"about","directed":true,"time":{"from":1832,"to":1832,"precision":"year"},"source":{"text":"TX:gauss-letter-1832","witness":"TW:gauss-letter-1832.ms","locator":"书信正文"},"claimant":"PE:gauss","grade":"S","attestation":"direct","confidence":0.7,"note":"Gauss 自称早有此见但未发表；属优先权主张，不是独立发现证据。"},
+    {"id":"E:ST:beltrami-consistency>about>TH:non-euclidean-relative-consistency","from":"ST:beltrami-consistency","to":"TH:non-euclidean-relative-consistency","type":"about","directed":true,"time":{"from":1868,"to":1868,"precision":"year"},"source":{"text":"TX:beltrami-1868-saggio","locator":"Saggio, §§1-3"},"claimant":"PE:beltrami","grade":"S","attestation":"direct","confidence":0.9},{"id":"E:ST:saccheri-refutation>claimed_in>TX:saccheri-1733-euclides","from":"ST:saccheri-refutation","to":"TX:saccheri-1733-euclides","type":"claimed_in","directed":true,"time":{"from":1733,"to":1733,"precision":"year"},"source":{"text":"TX:saccheri-1733-euclides","locator":"结论部分"},"grade":"S","attestation":"direct","confidence":0.9},
+    {"id":"E:ST:lobachevsky-1829>claimed_in>TX:lobachevsky-1829-kazan","from":"ST:lobachevsky-1829","to":"TX:lobachevsky-1829-kazan","type":"claimed_in","directed":true,"time":{"from":1829,"to":1829,"precision":"year"},"source":{"text":"TX:lobachevsky-1829-kazan","locator":"导言"},"grade":"S","attestation":"direct","confidence":0.9},
+    {"id":"E:ST:bolyai-1832>claimed_in>TX:bolyai-1832-appendix","from":"ST:bolyai-1832","to":"TX:bolyai-1832-appendix","type":"claimed_in","directed":true,"time":{"from":1832,"to":1832,"precision":"year"},"source":{"text":"TX:bolyai-1832-appendix","locator":"附录 §1"},"grade":"S","attestation":"direct","confidence":0.9},
+    {"id":"E:ST:gauss-priority>claimed_in>TX:gauss-letter-1832","from":"ST:gauss-priority","to":"TX:gauss-letter-1832","type":"claimed_in","directed":true,"time":{"from":1832,"to":1832,"precision":"year"},"source":{"text":"TX:gauss-letter-1832","witness":"TW:gauss-letter-1832.ms","locator":"书信正文"},"grade":"S","attestation":"direct","confidence":0.85},
+    {"id":"E:ST:beltrami-consistency>claimed_in>TX:beltrami-1868-saggio","from":"ST:beltrami-consistency","to":"TX:beltrami-1868-saggio","type":"claimed_in","directed":true,"time":{"from":1868,"to":1868,"precision":"year"},"source":{"text":"TX:beltrami-1868-saggio","locator":"Saggio, §§1-3"},"grade":"S","attestation":"direct","confidence":0.9},
+    {"id":"E:ST:lobachevsky-1829>contradicts>ST:saccheri-refutation","from":"ST:lobachevsky-1829","to":"ST:saccheri-refutation","type":"contradicts","directed":false,"time":{"from":1829,"to":1829,"precision":"year"},"source":{"text":"TX:lobachevsky-1829-kazan","locator":"导言"},"grade":"S","attestation":"later_report","confidence":0.85,"note":"两种主张不可同真；平行边保留双方立场。"},
+    {"id":"E:ST:gauss-priority>competes_with>ST:lobachevsky-1829","from":"ST:gauss-priority","to":"ST:lobachevsky-1829","type":"competes_with","directed":false,"time":{"from":1832,"to":1832,"precision":"year"},"source":{"text":"TX:gauss-letter-1832","locator":"书信正文"},"grade":"S","attestation":"later_report","confidence":0.6,"note":"竞争的是优先权主张，不是数学结论；争论至今未定。"},
+    {"id":"E:TP:geometry-parallel-postulate>anchors>CO:parallel-postulate","from":"TP:geometry-parallel-postulate","to":"CO:parallel-postulate","type":"anchors","directed":true,"time":{"from":null,"to":null,"precision":"unknown"},"source":{"locator":"教学挂点定义"},"grade":"F","attestation":"textbook_simplification","confidence":0.9},
+    {"id":"E:TP:geometry-parallel-postulate>anchors>PR:fifth-postulate-deducibility","from":"TP:geometry-parallel-postulate","to":"PR:fifth-postulate-deducibility","type":"anchors","directed":true,"time":{"from":null,"to":null,"precision":"unknown"},"source":{"locator":"教学挂点定义"},"grade":"F","attestation":"textbook_simplification","confidence":0.9},
+    {"id":"E:TP:geometry-parallel-postulate>anchors>NO:term-non-euclidean-zh","from":"TP:geometry-parallel-postulate","to":"NO:term-non-euclidean-zh","type":"anchors","directed":true,"time":{"from":null,"to":null,"precision":"unknown"},"source":{"locator":"教学挂点定义：术语辨析"},"grade":"F","attestation":"textbook_simplification","confidence":0.85},
+    {"id":"E:TH:non-euclidean-relative-consistency>asserted_by>ST:beltrami-consistency","from":"TH:non-euclidean-relative-consistency","to":"ST:beltrami-consistency","type":"asserted_by","directed":true,"time":{"from":1868,"to":1868,"precision":"year"},"source":{"text":"TX:beltrami-1868-saggio","locator":"Saggio, §§1-3"},"claimant":"PE:beltrami","grade":"S","attestation":"direct","confidence":0.9}
+  ]
+}

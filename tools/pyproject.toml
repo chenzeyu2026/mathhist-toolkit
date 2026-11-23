@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mathlint"
+version = "0.1.0"
+description = "Evidence-tag linter for history-of-mathematics writing (A/S/U/F tags)."
+requires-python = ">=3.11"
+license = { text = "Apache-2.0" }
+authors = [{ name = "mathlint contributors" }]
+keywords = ["history-of-mathematics", "citations", "lint", "evidence"]
+classifiers = [
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "License :: OSI Approved :: Apache Software License",
+]
+dependencies = ["PyYAML>=6.0"]
+
+[project.scripts]
+mathlint = "mathlint.cli:main"
+graphlint = "graphlint.cli:main"
+
+[tool.setuptools]
+packages = ["mathlint", "graphlint"]

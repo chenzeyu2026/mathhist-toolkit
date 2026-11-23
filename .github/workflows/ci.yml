@@ -1,0 +1,53 @@
+name: ci
+
+# NOTE: this workflow has never been executed (the project has no remote and
+# this machine has no network). Treat it as untested until the first push.
+# Local equivalents, which *have* been run:
+#     python tools/scripts/selfcheck.py
+#     cd tools && python -m graphlint check-all
+#     cd tools && python -m graphlint generate --check
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: ${{ matrix.os }} / py${{ matrix.python }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        python: ["3.11", "3.12", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+
+      - name: Install dependencies
+        run: python -m pip install "PyYAML>=6.0"
+        working-directory: tools
+
+      - name: Unit tests
+        run: python -m unittest discover -s tests -v
+        working-directory: tools
+
+      - name: Acceptance checks (fixtures + examples)
+        run: python scripts/selfcheck.py
+        working-directory: tools
+
+      - name: Graph checks (samples + pilots)
+        run: python -m graphlint check-all --max-items 0
+        working-directory: tools
+
+      - name: Generated artifacts in sync
+        run: python -m graphlint generate --check
+        working-directory: tools
+
+      - name: CLI smoke test
+        run: python -m mathlint check tests/fixtures/valid.md --strict
+        working-directory: tools

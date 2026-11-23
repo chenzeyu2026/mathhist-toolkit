@@ -1,0 +1,13 @@
+﻿==============================================================================
+group-theory/graph.json: conforms=False, results=1
+severity: {'Violation': 1}
+message: {'attestation=textbook_simplification 时 grade 上限不满足：实得 S': 1}
+    ('Violation', 'attestation=textbook_simplification 时 grade 上限不满足：实得 S', 'urn:mh:edge:50', 'urn:mh:edge:50')
+==============================================================================
+calculus/graph.json: conforms=True, results=0
+severity: {}
+message: {}
+==============================================================================
+samples/non-euclidean-geometry.json: conforms=True, results=0
+severity: {}
+message: {}

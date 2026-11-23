@@ -1,0 +1,26 @@
+﻿==============================================================================
+[parent_of 的 from 是概念] conforms=False results=2
+  - Violation | attestation=textbook_simplification 时 grade 上限不满足：实得 S | focus=urn:mh:edge:50 value=urn:mh:edge:50
+  - Violation | parent_of 的 from 必须是 branch | focus=urn:mh:edge:80 value=concept
+==============================================================================
+[generalizes 跨 CO/TH] conforms=False results=2
+  - Violation | attestation=textbook_simplification 时 grade 上限不满足：实得 S | focus=urn:mh:edge:50 value=urn:mh:edge:50
+  - Violation | generalizes 不允许 CO→TH 或 TH→CO：本边 from=concept to=theorem | focus=urn:mh:edge:80 value=urn:mh:edge:80
+==============================================================================
+[同对同时有 parent_of 和 cross_class] conforms=False results=3
+  - Violation | attestation=textbook_simplification 时 grade 上限不满足：实得 S | focus=urn:mh:edge:50 value=urn:mh:edge:50
+  - Violation | 同一对 BR 同时有 parent_of 与 cross_class：urn:mh:node:BR-FND-AALG / urn:mh:node:BR-ALG-GRP | focus=urn:mh:edge:80 value=urn:mh:edge:80
+  - Violation | 同一对 BR 同时有 parent_of 与 cross_class：urn:mh:node:BR-FND-AALG / urn:mh:node:BR-ALG-GRP | focus=urn:mh:edge:0 value=urn:mh:edge:0
+==============================================================================
+[depends_on 成环] conforms=False results=3
+  - Violation | attestation=textbook_simplification 时 grade 上限不满足：实得 S | focus=urn:mh:edge:50 value=urn:mh:edge:50
+  - Violation | depends_on 成环：TH:lagrange-theorem 经 3 条 depends_on 回到自身 | focus=urn:mh:node:TH:lagrange-theorem value=urn:mh:node:TH:lagrange-theorem
+  - Violation | depends_on 成环：TH:cauchy-theorem 经 3 条 depends_on 回到自身 | focus=urn:mh:node:TH:cauchy-theorem value=urn:mh:node:TH:cauchy-theorem
+==============================================================================
+[contradicts 写成有向且方向反] conforms=False results=2
+  - Violation | attestation=textbook_simplification 时 grade 上限不满足：实得 S | focus=urn:mh:edge:50 value=urn:mh:edge:50
+  - Violation | contradicts 必须 directed:false | focus=urn:mh:edge:80 value=None
+==============================================================================
+[失败路线提供证据] conforms=False results=2
+  - Violation | attestation=textbook_simplification 时 grade 上限不满足：实得 S | focus=urn:mh:edge:50 value=urn:mh:edge:50
+  - Violation | 只有 witness/text 能提供证据；失败路线与观点不能 | focus=urn:mh:edge:80 value=failure

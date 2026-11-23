@@ -1,0 +1,1508 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local/mathhist-toolkit/spec/framework/graph.schema.json",
+  "title": "mathhist graph bundle v0.2",
+  "description": "图包：nodes 复用 object-model.schema.json，edges 由本文件约束。人读规范见 spec/object-model.md §5。JSON Schema 只能校验单条边的形状；端点是否存在、类型是否匹配、是否成环、权重是否归一等跨对象约束需由校验脚本执行（§5.6）。 边 type 枚举与 if/then 条件约束由 spec/framework/edge-signatures.yaml 生成（tools/graphlint generate），勿手改。",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "nodes",
+    "edges"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "0.2"
+    },
+    "meta": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "scope": {
+          "type": "string"
+        },
+        "generated_by": {
+          "type": "string"
+        },
+        "note": {
+          "type": "string"
+        }
+      }
+    },
+    "nodes": {
+      "type": "array",
+      "items": {
+        "$ref": "./object-model.schema.json"
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/edge"
+      }
+    }
+  },
+  "$defs": {
+    "time": {
+      "type": "object",
+      "required": [
+        "from",
+        "to",
+        "precision"
+      ],
+      "properties": {
+        "from": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "to": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "precision": {
+          "enum": [
+            "exact",
+            "year",
+            "decade",
+            "century",
+            "circa",
+            "traditional",
+            "unknown"
+          ]
+        },
+        "basis": {
+          "type": "string"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "from": {
+                "type": "null"
+              },
+              "to": {
+                "type": "null"
+              }
+            },
+            "required": [
+              "from",
+              "to"
+            ]
+          },
+          "then": {
+            "properties": {
+              "precision": {
+                "const": "unknown"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "source": {
+      "type": "object",
+      "required": [
+        "locator"
+      ],
+      "properties": {
+        "text": {
+          "type": "string",
+          "pattern": "^TX:[a-z0-9][a-z0-9.-]*$"
+        },
+        "witness": {
+          "type": "string",
+          "pattern": "^TW:[a-z0-9][a-z0-9.-]*$"
+        },
+        "locator": {
+          "type": "string",
+          "minLength": 1
+        },
+        "url": {
+          "type": "string",
+          "pattern": "^(https?://|ark:/|DOI:)"
+        }
+      }
+    },
+    "edge": {
+      "type": "object",
+      "required": [
+        "id",
+        "from",
+        "to",
+        "type",
+        "directed",
+        "time",
+        "grade",
+        "attestation",
+        "confidence"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^E:[^>]+>[a-z_]+>[^>]+(#[0-9]+)?$"
+        },
+        "from": {
+          "type": "string",
+          "minLength": 1
+        },
+        "to": {
+          "type": "string",
+          "minLength": 1
+        },
+        "type": {
+          "enum": [
+            "parent_of",
+            "cross_class",
+            "prerequisite_of",
+            "concerns",
+            "generalizes",
+            "depends_on",
+            "resolves",
+            "reformulates",
+            "spawned",
+            "poses",
+            "asserted_by",
+            "about",
+            "claimed_in",
+            "contradicts",
+            "competes_with",
+            "denotes",
+            "supersedes",
+            "uses_notation",
+            "uses_method",
+            "targets",
+            "corrected_by",
+            "contributed_to",
+            "proved",
+            "introduced",
+            "participates_in",
+            "part_of",
+            "witness_of",
+            "derived_from",
+            "supports",
+            "anchors",
+            "exemplifies"
+          ]
+        },
+        "directed": {
+          "type": "boolean"
+        },
+        "time": {
+          "$ref": "#/$defs/time"
+        },
+        "source": {
+          "$ref": "#/$defs/source"
+        },
+        "claimant": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "grade": {
+          "enum": [
+            "A",
+            "S",
+            "U",
+            "F"
+          ]
+        },
+        "attestation": {
+          "enum": [
+            "direct",
+            "contemporary_report",
+            "later_report",
+            "textbook_simplification",
+            "unknown"
+          ]
+        },
+        "confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "weight": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "exclusiveMinimum": 0,
+          "maximum": 1
+        },
+        "kind": {
+          "enum": [
+            "taxonomic",
+            "historical",
+            "institutional",
+            "overlaps",
+            "prerequisite",
+            "method_source",
+            "shared_object",
+            null
+          ]
+        },
+        "role": {
+          "enum": [
+            "author",
+            "editor",
+            "translator",
+            "commentator",
+            "compiler",
+            null
+          ]
+        },
+        "text_ref": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^doc:.+#.+$"
+        },
+        "note": {
+          "type": "string",
+          "maxLength": 280
+        },
+        "claims": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^CLM:[A-Za-z0-9:._-]+\\.[0-9]+$"
+          }
+        }
+      },
+      "allOf": [
+        {
+          "anyOf": [
+            {
+              "required": [
+                "source"
+              ]
+            },
+            {
+              "properties": {
+                "claimant": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "claimant"
+              ]
+            }
+          ]
+        },
+        {
+          "if": {
+            "properties": {
+              "attestation": {
+                "const": "textbook_simplification"
+              }
+            },
+            "required": [
+              "attestation"
+            ]
+          },
+          "then": {
+            "properties": {
+              "grade": {
+                "enum": [
+                  "F",
+                  "U"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "attestation": {
+                "const": "later_report"
+              }
+            },
+            "required": [
+              "attestation"
+            ]
+          },
+          "then": {
+            "properties": {
+              "grade": {
+                "enum": [
+                  "S",
+                  "U",
+                  "F"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "grade": {
+                "const": "U"
+              }
+            },
+            "required": [
+              "grade"
+            ]
+          },
+          "then": {
+            "properties": {
+              "note": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "note"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "parent_of"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "directed": {
+                "const": true
+              },
+              "from": {
+                "pattern": "^BR-[A-Z0-9-]+$"
+              },
+              "to": {
+                "pattern": "^BR-[A-Z0-9-]+$"
+              },
+              "kind": {
+                "enum": [
+                  "taxonomic",
+                  "historical",
+                  "institutional"
+                ]
+              },
+              "weight": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              }
+            },
+            "required": [
+              "kind",
+              "weight"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "cross_class"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "directed": {
+                "const": true
+              },
+              "from": {
+                "pattern": "^BR-[A-Z0-9-]+$"
+              },
+              "to": {
+                "pattern": "^BR-[A-Z0-9-]+$"
+              },
+              "kind": {
+                "enum": [
+                  "overlaps",
+                  "prerequisite",
+                  "method_source",
+                  "shared_object"
+                ]
+              },
+              "weight": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              }
+            },
+            "required": [
+              "kind"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "prerequisite_of"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "directed": {
+                "const": true
+              },
+              "from": {
+                "pattern": "^BR-[A-Z0-9-]+$"
+              },
+              "to": {
+                "pattern": "^BR-[A-Z0-9-]+$"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "concerns"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "directed": {
+                "const": true
+              },
+              "from": {
+                "pattern": "^BR-[A-Z0-9-]+$"
+              },
+              "to": {
+                "anyOf": [
+                  {
+                    "pattern": "^CO:[a-z0-9][a-z0-9.-]*$"
+                  },
+                  {
+                    "pattern": "^TH:[a-z0-9][a-z0-9.-]*$"
+                  },
+                  {
+                    "pattern": "^PR:[a-z0-9][a-z0-9.-]*$"
+                  },
+                  {
+                    "pattern": "^TY:[a-z0-9][a-z0-9.-]*$"
+                  },
+                  {
+                    "pattern": "^TX:[a-z0-9][a-z0-9.-]*$"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "generalizes"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "directed": {
+                "const": true
+              },
+              "from": {
+                "anyOf": [
+                  {
+                    "pattern": "^CO:[a-z0-9][a-z0-9.-]*$"
+                  },
+                  {
+                    "pattern": "^TH:[a-z0-9][a-z0-9.-]*$"
+                  }
+                ]
+              },
+              "to": {
+                "anyOf": [
+                  {
+                    "pattern": "^CO:[a-z0-9][a-z0-9.-]*$"
+                  },
+                  {
+                    "pattern": "^TH:[a-z0-9][a-z0-9.-]*$"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "depends_on"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "directed": {
+                "const": true
+              },
+              "from": {
+                "anyOf": [
+                  {
+                    "pattern": "^TH:[a-z0-9][a-z0-9.-]*$"
+                  },
+                  {
+                    "pattern": "^ME:[a-z0-9][a-z0-9.-]*$"
+                  },
+                  {
+                    "pattern": "^PR:[a-z0-9][a-z0-9.-]*$"
+                  },
+                  {
+                    "pattern": "^CO:[a-z0-9][a-z0-9.-]*$"
+                  },
+                  {
+                    "pattern": "^TY:[a-z0-9][a-z0-9.-]*$"
+                  }
+                ]
+              },
+              "to": {
+                "anyOf": [
+                  {
+                    "pattern": "^TH:[a-z0-9][a-z0-9.-]*$"
+                  },
+                  {
+                    "pattern": "^CO:[a-z0-9][a-z0-9.-]*$"
+                  },
+                  {
+                    "pattern": "^NO:[a-z0-9][a-z0-9.-]*$"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "resolves"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "directed": {
+                "const": true
+              },
+              "from": {
+                "anyOf": [
+                  {
+                    "pattern": "^TH:[a-z0-9][a-z0-9.-]*$"
+                  },
+                  {
+                    "pattern": "^ME:[a-z0-9][a-z0-9.-]*$"
+                  }
+                ]
+              },
+              "to": {
+                "pattern": "^PR:[a-z0-9][a-z0-9.-]*$"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "reformulates"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "directed": {
+                "const": true
+              },
+              "from": {
+                "pattern": "^PR:[a-z0-9][a-z0-9.-]*$"
+              },
+              "to": {
+                "pattern": "^PR:[a-z0-9][a-z0-9.-]*$"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "spawned"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "directed": {
+                "const": true
+              },
+              "from": {
+                "pattern": "^PR:[a-z0-9][a-z0-9.-]*$"
+              },
+              "to": {
+                "pattern": "^PR:[a-z0-9][a-z0-9.-]*$"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "poses"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "directed": {
+                "const": true
+              },
+              "from": {
+                "anyOf": [
+                  {
+                    "pattern": "^PE:[a-z0-9][a-z0-9.-]*$"
+                  },
+                  {
+                    "pattern": "^TX:[a-z0-9][a-z0-9.-]*$"
+                  },
+                  {
+                    "pattern": "^EV:[a-z0-9][a-z0-9.-]*$"
+                  }
+                ]
+              },
+              "to": {
+                "pattern": "^PR:[a-z0-9][a-z0-9.-]*$"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "asserted_by"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "directed": {
+                "const": true
+              },
+              "from": {
+                "anyOf": [
+                  {
+                    "pattern": "^TH:[a-z0-9][a-z0-9.-]*$"
+                  },
+                  {
+                    "pattern": "^CO:[a-z0-9][a-z0-9.-]*$"
+                  },
+                  {
+                    "pattern": "^TY:[a-z0-9][a-z0-9.-]*$"
+                  },
+                  {
+                    "pattern": "^PR:[a-z0-9][a-z0-9.-]*$"
+                  },
+                  {
+                    "pattern": "^FA:[a-z0-9][a-z0-9.-]*$"
+                  }
+                ]
+              },
+              "to": {
+                "pattern": "^ST:[a-z0-9][a-z0-9.-]*$"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "about"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "directed": {
+                "const": true
+              },
+              "from": {
+                "pattern": "^ST:[a-z0-9][a-z0-9.-]*$"
+              },
+              "to": {
+                "anyOf": [
+                  {
+                    "pattern": "^CO:[a-z0-9][a-z0-9.-]*$"
+                  },
+                  {
+                    "pattern": "^TH:[a-z0-9][a-z0-9.-]*$"
+                  },
+                  {
+                    "pattern": "^PR:[a-z0-9][a-z0-9.-]*$"
+                  },
+                  {
+                    "pattern": "^TY:[a-z0-9][a-z0-9.-]*$"
+                  },
+                  {
+                    "pattern": "^NO:[a-z0-9][a-z0-9.-]*$"
+                  },
+                  {
+                    "pattern": "^BR-[A-Z0-9-]+$"
+                  },
+                  {
+                    "pattern": "^EV:[a-z0-9][a-z0-9.-]*$"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "claimed_in"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "directed": {
+                "const": true
+              },
+              "from": {
+                "pattern": "^ST:[a-z0-9][a-z0-9.-]*$"
+              },
+              "to": {
+                "anyOf": [
+                  {
+                    "pattern": "^TX:[a-z0-9][a-z0-9.-]*$"
+                  },
+                  {
+                    "pattern": "^TW:[a-z0-9][a-z0-9.-]*$"
+                  },
+                  {
+                    "pattern": "^EV:[a-z0-9][a-z0-9.-]*$"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "contradicts"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "directed": {
+                "const": false
+              },
+              "from": {
+                "pattern": "^ST:[a-z0-9][a-z0-9.-]*$"
+              },
+              "to": {
+                "pattern": "^ST:[a-z0-9][a-z0-9.-]*$"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "competes_with"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "directed": {
+                "const": false
+              },
+              "from": {
+                "anyOf": [
+                  {
+                    "pattern": "^NO:[a-z0-9][a-z0-9.-]*$"
+                  },
+                  {
+                    "pattern": "^ST:[a-z0-9][a-z0-9.-]*$"
+                  }
+                ]
+              },
+              "to": {
+                "anyOf": [
+                  {
+                    "pattern": "^NO:[a-z0-9][a-z0-9.-]*$"
+                  },
+                  {
+                    "pattern": "^ST:[a-z0-9][a-z0-9.-]*$"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "denotes"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "directed": {
+                "const": true
+              },
+              "from": {
+                "pattern": "^NO:[a-z0-9][a-z0-9.-]*$"
+              },
+              "to": {
+                "pattern": "^CO:[a-z0-9][a-z0-9.-]*$"
+              },
+              "time": {
+                "anyOf": [
+                  {
+                    "properties": {
+                      "from": {
+                        "type": "integer"
+                      }
+                    }
+                  },
+                  {
+                    "properties": {
+                      "to": {
+                        "type": "integer"
+                      }
+                    }
+                  },
+                  {
+                    "properties": {
+                      "precision": {
+                        "const": "unknown"
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "supersedes"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "directed": {
+                "const": true
+              },
+              "from": {
+                "anyOf": [
+                  {
+                    "pattern": "^NO:[a-z0-9][a-z0-9.-]*$"
+                  },
+                  {
+                    "pattern": "^TY:[a-z0-9][a-z0-9.-]*$"
+                  }
+                ]
+              },
+              "to": {
+                "anyOf": [
+                  {
+                    "pattern": "^NO:[a-z0-9][a-z0-9.-]*$"
+                  },
+                  {
+                    "pattern": "^TY:[a-z0-9][a-z0-9.-]*$"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "uses_notation"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "directed": {
+                "const": true
+              },
+              "from": {
+                "anyOf": [
+                  {
+                    "pattern": "^CO:[a-z0-9][a-z0-9.-]*$"
+                  },
+                  {
+                    "pattern": "^TH:[a-z0-9][a-z0-9.-]*$"
+                  },
+                  {
+                    "pattern": "^ME:[a-z0-9][a-z0-9.-]*$"
+                  },
+                  {
+                    "pattern": "^TY:[a-z0-9][a-z0-9.-]*$"
+                  }
+                ]
+              },
+              "to": {
+                "pattern": "^NO:[a-z0-9][a-z0-9.-]*$"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "uses_method"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "directed": {
+                "const": true
+              },
+              "from": {
+                "anyOf": [
+                  {
+                    "pattern": "^TH:[a-z0-9][a-z0-9.-]*$"
+                  },
+                  {
+                    "pattern": "^PR:[a-z0-9][a-z0-9.-]*$"
+                  },
+                  {
+                    "pattern": "^FA:[a-z0-9][a-z0-9.-]*$"
+                  },
+                  {
+                    "pattern": "^TY:[a-z0-9][a-z0-9.-]*$"
+                  }
+                ]
+              },
+              "to": {
+                "pattern": "^ME:[a-z0-9][a-z0-9.-]*$"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "targets"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "directed": {
+                "const": true
+              },
+              "from": {
+                "pattern": "^FA:[a-z0-9][a-z0-9.-]*$"
+              },
+              "to": {
+                "anyOf": [
+                  {
+                    "pattern": "^TH:[a-z0-9][a-z0-9.-]*$"
+                  },
+                  {
+                    "pattern": "^TY:[a-z0-9][a-z0-9.-]*$"
+                  },
+                  {
+                    "pattern": "^CO:[a-z0-9][a-z0-9.-]*$"
+                  },
+                  {
+                    "pattern": "^ME:[a-z0-9][a-z0-9.-]*$"
+                  },
+                  {
+                    "pattern": "^PR:[a-z0-9][a-z0-9.-]*$"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "corrected_by"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "directed": {
+                "const": true
+              },
+              "from": {
+                "pattern": "^FA:[a-z0-9][a-z0-9.-]*$"
+              },
+              "to": {
+                "pattern": "^PE:[a-z0-9][a-z0-9.-]*$"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "contributed_to"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "directed": {
+                "const": true
+              },
+              "from": {
+                "pattern": "^PE:[a-z0-9][a-z0-9.-]*$"
+              },
+              "to": {
+                "anyOf": [
+                  {
+                    "pattern": "^TX:[a-z0-9][a-z0-9.-]*$"
+                  },
+                  {
+                    "pattern": "^TW:[a-z0-9][a-z0-9.-]*$"
+                  }
+                ]
+              },
+              "role": {
+                "enum": [
+                  "author",
+                  "editor",
+                  "translator",
+                  "commentator",
+                  "compiler"
+                ]
+              }
+            },
+            "required": [
+              "role"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "proved"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "directed": {
+                "const": true
+              },
+              "from": {
+                "pattern": "^PE:[a-z0-9][a-z0-9.-]*$"
+              },
+              "to": {
+                "pattern": "^TH:[a-z0-9][a-z0-9.-]*$"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "introduced"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "directed": {
+                "const": true
+              },
+              "from": {
+                "pattern": "^PE:[a-z0-9][a-z0-9.-]*$"
+              },
+              "to": {
+                "anyOf": [
+                  {
+                    "pattern": "^CO:[a-z0-9][a-z0-9.-]*$"
+                  },
+                  {
+                    "pattern": "^NO:[a-z0-9][a-z0-9.-]*$"
+                  },
+                  {
+                    "pattern": "^ME:[a-z0-9][a-z0-9.-]*$"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "participates_in"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "directed": {
+                "const": true
+              },
+              "from": {
+                "pattern": "^PE:[a-z0-9][a-z0-9.-]*$"
+              },
+              "to": {
+                "pattern": "^EV:[a-z0-9][a-z0-9.-]*$"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "part_of"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "directed": {
+                "const": true
+              },
+              "from": {
+                "pattern": "^EV:[a-z0-9][a-z0-9.-]*$"
+              },
+              "to": {
+                "anyOf": [
+                  {
+                    "pattern": "^PR:[a-z0-9][a-z0-9.-]*$"
+                  },
+                  {
+                    "pattern": "^TH:[a-z0-9][a-z0-9.-]*$"
+                  },
+                  {
+                    "pattern": "^TY:[a-z0-9][a-z0-9.-]*$"
+                  },
+                  {
+                    "pattern": "^FA:[a-z0-9][a-z0-9.-]*$"
+                  },
+                  {
+                    "pattern": "^CO:[a-z0-9][a-z0-9.-]*$"
+                  },
+                  {
+                    "pattern": "^ME:[a-z0-9][a-z0-9.-]*$"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "witness_of"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "directed": {
+                "const": true
+              },
+              "from": {
+                "pattern": "^TW:[a-z0-9][a-z0-9.-]*$"
+              },
+              "to": {
+                "pattern": "^TX:[a-z0-9][a-z0-9.-]*$"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "derived_from"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "directed": {
+                "const": true
+              },
+              "from": {
+                "pattern": "^TW:[a-z0-9][a-z0-9.-]*$"
+              },
+              "to": {
+                "pattern": "^TW:[a-z0-9][a-z0-9.-]*$"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "supports"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "directed": {
+                "const": true
+              },
+              "from": {
+                "anyOf": [
+                  {
+                    "pattern": "^TW:[a-z0-9][a-z0-9.-]*$"
+                  },
+                  {
+                    "pattern": "^TX:[a-z0-9][a-z0-9.-]*$"
+                  }
+                ]
+              },
+              "to": {
+                "pattern": "^(?!(?:TP:))"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "anchors"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "directed": {
+                "const": true
+              },
+              "from": {
+                "pattern": "^TP:[a-z0-9][a-z0-9.-]*$"
+              },
+              "to": {
+                "anyOf": [
+                  {
+                    "pattern": "^CO:[a-z0-9][a-z0-9.-]*$"
+                  },
+                  {
+                    "pattern": "^TH:[a-z0-9][a-z0-9.-]*$"
+                  },
+                  {
+                    "pattern": "^PR:[a-z0-9][a-z0-9.-]*$"
+                  },
+                  {
+                    "pattern": "^NO:[a-z0-9][a-z0-9.-]*$"
+                  },
+                  {
+                    "pattern": "^ME:[a-z0-9][a-z0-9.-]*$"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "exemplifies"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "directed": {
+                "const": true
+              },
+              "from": {
+                "anyOf": [
+                  {
+                    "pattern": "^CO:[a-z0-9][a-z0-9.-]*$"
+                  },
+                  {
+                    "pattern": "^TH:[a-z0-9][a-z0-9.-]*$"
+                  }
+                ]
+              },
+              "to": {
+                "pattern": "^TY:[a-z0-9][a-z0-9.-]*$"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "part_of"
+              },
+              "to": {
+                "anyOf": [
+                  {
+                    "pattern": "^CO:[a-z0-9][a-z0-9.-]*$"
+                  },
+                  {
+                    "pattern": "^ME:[a-z0-9][a-z0-9.-]*$"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "type",
+              "to"
+            ]
+          },
+          "then": {
+            "required": [
+              "note"
+            ],
+            "properties": {
+              "note": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      ],
+      "$comment": "GENERATED by tools/graphlint generate from spec/framework/edge-signatures.yaml —— 勿手改；改表后重新生成。"
+    }
+  }
+}

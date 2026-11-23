@@ -1,0 +1,61 @@
+{
+  "schema_version": "0.2",
+  "meta": {
+    "title": "fixture: 端点类型不合法",
+    "scope": "故意违规，仅用于 graphlint 测试。part_of 的 from 只能是 event。"
+  },
+  "nodes": [
+    {
+      "id": "PE:fixture-author",
+      "type": "person",
+      "schema_version": "0.2",
+      "labels": { "zh": "测试作者" },
+      "status": "historical",
+      "summary": "测试用人物节点。",
+      "name_variants": ["Fixture Author"],
+      "claims": [],
+      "provenance": {
+        "created_by": "graphlint-tests",
+        "created_at": "2026-11-23",
+        "schema_version": "0.2"
+      }
+    },
+    {
+      "id": "PR:fixture-problem",
+      "type": "problem",
+      "schema_version": "0.2",
+      "labels": { "zh": "测试问题" },
+      "status": "resolved",
+      "summary": "测试用问题节点。",
+      "original_formulation": {
+        "text": "测试用原始表述。",
+        "source": { "locator": "fixture" },
+        "grade": "F",
+        "attestation": "textbook_simplification"
+      },
+      "problem_kind": "solvability",
+      "asked_as": ["测试"],
+      "related_branches": [],
+      "claims": [],
+      "provenance": {
+        "created_by": "graphlint-tests",
+        "created_at": "2026-11-23",
+        "schema_version": "0.2"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "E:PE:fixture-author>part_of>PR:fixture-problem",
+      "from": "PE:fixture-author",
+      "to": "PR:fixture-problem",
+      "type": "part_of",
+      "directed": true,
+      "time": { "from": null, "to": null, "precision": "unknown" },
+      "source": { "locator": "fixture" },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.5
+    }
+  ]
+}

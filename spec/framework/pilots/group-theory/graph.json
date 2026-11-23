@@ -1,0 +1,3890 @@
+{
+  "schema_version": "0.2",
+  "meta": {
+    "title": "群论分支试点（BR-ALG-GRP）",
+    "scope": "结构试点：用来检验'研究导向'能否由现有 14 类节点、31 类边表达，不是群论通史，也不是校勘本。",
+    "note": "所有 S 级边只到'二次研究+章节级定位'，章次页码待补；U 级边在 note 写明缺口。本文不声称 A 级。"
+  },
+  "nodes": [
+    {
+      "id": "BR-FND-AALG",
+      "type": "branch",
+      "schema_version": "0.2",
+      "labels": {
+        "zh": "抽象代数",
+        "en": "abstract algebra"
+      },
+      "status": "active",
+      "summary": "研究集合上的运算结构及其同态；群、环、域、模是其主要子结构。",
+      "view_classes": [
+        "基础数学"
+      ],
+      "parents": [],
+      "scope_definition": "以代数结构为对象，不研究具体数系的计算技巧。",
+      "affected_layers": {
+        "problem": "high",
+        "failure": "medium",
+        "notation": "medium",
+        "text": "medium"
+      },
+      "claims": [
+        {
+          "id": "CLM:BR-FND-AALG.1",
+          "statement": "抽象代数作为分支名在 20 世纪前期随结构主义教材通行。",
+          "grade": "F",
+          "attestation": "textbook_simplification",
+          "source": {
+            "locator": "通行教材与学科史概述；具体首见待核"
+          },
+          "note": ""
+        }
+      ],
+      "provenance": {
+        "created_by": "agent",
+        "created_at": "2026-11-22",
+        "sources_checked": "partial",
+        "schema_version": "0.2"
+      }
+    },
+    {
+      "id": "BR-ALG-GRP",
+      "type": "branch",
+      "schema_version": "0.2",
+      "labels": {
+        "zh": "群论",
+        "en": "group theory"
+      },
+      "status": "active",
+      "summary": "研究群及其同态、子群、商群；历史来源是方程可解性与置换。",
+      "view_classes": [
+        "代数与数论"
+      ],
+      "parents": [],
+      "scope_definition": "以群结构为对象；置换群、抽象群、李群分属不同阶段，不在此细分。",
+      "affected_layers": {
+        "problem": "high",
+        "failure": "medium",
+        "notation": "high",
+        "text": "high"
+      },
+      "claims": [
+        {
+          "id": "CLM:BR-ALG-GRP.1",
+          "statement": "群论在 19 世纪后期从置换群研究扩展为独立的代数分支。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": {
+            "locator": "Wussing 1984（章次页码待补）"
+          },
+          "note": ""
+        }
+      ],
+      "provenance": {
+        "created_by": "agent",
+        "created_at": "2026-11-22",
+        "sources_checked": "partial",
+        "schema_version": "0.2"
+      },
+      "text_ref": "doc:spec/framework/pilots/group-theory/text.md#orientation"
+    },
+    {
+      "id": "CO:group",
+      "type": "concept",
+      "schema_version": "0.2",
+      "labels": {
+        "zh": "群",
+        "en": "group"
+      },
+      "status": "active",
+      "summary": "带结合律、单位元与逆元的二元运算结构。",
+      "definition": "集合 G 与二元运算 ·，满足结合律、存在单位元 e、每个元素有逆元。",
+      "definition_source": {
+        "grade": "F",
+        "locator": "通行教材定义；定义本身不是历史对象"
+      },
+      "occurrences": [
+        {
+          "civilization": "欧洲",
+          "region": "法国",
+          "language": "fr",
+          "year_from": 1830,
+          "precision": "decade",
+          "dating_basis": "伽罗瓦手稿使用 groupe",
+          "independence": "independent"
+        }
+      ],
+      "claims": [
+        {
+          "id": "CLM:CO:group.1",
+          "statement": "伽罗瓦 1832 年手稿以 groupe 指置换集合，尚未给出抽象群定义。",
+          "grade": "U",
+          "attestation": "later_report",
+          "source": {
+            "locator": "Galois 1832 手稿；据 Wussing 1984 转述，未见原页"
+          },
+          "note": "需核对原页后升 S。"
+        }
+      ],
+      "provenance": {
+        "created_by": "agent",
+        "created_at": "2026-11-22",
+        "sources_checked": "partial",
+        "schema_version": "0.2"
+      },
+      "text_ref": "doc:spec/framework/pilots/group-theory/text.md#cayley"
+    },
+    {
+      "id": "CO:permutation-group",
+      "type": "concept",
+      "schema_version": "0.2",
+      "labels": {
+        "zh": "置换群",
+        "en": "permutation group"
+      },
+      "status": "active",
+      "summary": "一组置换在复合运算下构成的群；19 世纪群论的主要研究对象。",
+      "definition": "对称群的子群，元素为集合上的双射。",
+      "definition_source": {
+        "grade": "F",
+        "locator": "通行教材定义"
+      },
+      "occurrences": [
+        {
+          "civilization": "欧洲",
+          "region": "法国",
+          "language": "fr",
+          "year_from": 1815,
+          "precision": "decade",
+          "dating_basis": "柯西 1815 年起发表置换论文",
+          "independence": "unknown"
+        }
+      ],
+      "claims": [
+        {
+          "id": "CLM:CO:permutation-group.1",
+          "statement": "置换群在 19 世纪前期已是独立研究对象，早于抽象群定义。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": {
+            "locator": "Wussing 1984（章次页码待补）"
+          },
+          "note": ""
+        }
+      ],
+      "provenance": {
+        "created_by": "agent",
+        "created_at": "2026-11-22",
+        "sources_checked": "partial",
+        "schema_version": "0.2"
+      }
+    },
+    {
+      "id": "CO:subgroup",
+      "type": "concept",
+      "schema_version": "0.2",
+      "labels": {
+        "zh": "子群",
+        "en": "subgroup"
+      },
+      "status": "active",
+      "summary": "群 G 的子集 H，在同一运算下自身构成群。",
+      "definition": "H⊆G，且 H 对 G 的运算封闭、含单位元、每个元素在 H 内有逆。",
+      "definition_source": {
+        "grade": "F",
+        "locator": "通行教材定义"
+      },
+      "occurrences": [],
+      "claims": [
+        {
+          "id": "CLM:CO:subgroup.1",
+          "statement": "子群概念在 19 世纪后期随置换群的结构研究逐步明确。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": {
+            "locator": "Wussing 1984（章次页码待补）"
+          },
+          "note": ""
+        }
+      ],
+      "provenance": {
+        "created_by": "agent",
+        "created_at": "2026-11-22",
+        "sources_checked": "partial",
+        "schema_version": "0.2"
+      }
+    },
+    {
+      "id": "CO:normal-subgroup",
+      "type": "concept",
+      "schema_version": "0.2",
+      "labels": {
+        "zh": "正规子群",
+        "en": "normal subgroup"
+      },
+      "status": "active",
+      "summary": "对群内所有共轭保持不变子群；商群存在的前提。",
+      "definition": "H≤G，且对任意 g∈G 有 gHg⁻¹=H。",
+      "definition_source": {
+        "grade": "F",
+        "locator": "通行教材定义"
+      },
+      "occurrences": [],
+      "claims": [
+        {
+          "id": "CLM:CO:normal-subgroup.1",
+          "statement": "正规子群与商群的联系在伽罗瓦理论中被实质使用，术语后定。",
+          "grade": "U",
+          "attestation": "later_report",
+          "source": {
+            "locator": "Wussing 1984（章次页码待补）"
+          },
+          "note": "术语首见时间待核。"
+        }
+      ],
+      "provenance": {
+        "created_by": "agent",
+        "created_at": "2026-11-22",
+        "sources_checked": "partial",
+        "schema_version": "0.2"
+      }
+    },
+    {
+      "id": "CO:quotient-group",
+      "type": "concept",
+      "schema_version": "0.2",
+      "labels": {
+        "zh": "商群",
+        "en": "quotient group"
+      },
+      "status": "active",
+      "summary": "群 G 对正规子群 N 的陪集构成的群 G/N。",
+      "definition": "G/N 的元素为陪集 gN，运算由代表元相乘定义，要求 N 正规。",
+      "definition_source": {
+        "grade": "F",
+        "locator": "通行教材定义"
+      },
+      "occurrences": [],
+      "claims": [
+        {
+          "id": "CLM:CO:quotient-group.1",
+          "statement": "商群作为独立概念的明确表述晚于伽罗瓦的工作。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": {
+            "locator": "Wussing 1984（章次页码待补）"
+          },
+          "note": ""
+        }
+      ],
+      "provenance": {
+        "created_by": "agent",
+        "created_at": "2026-11-22",
+        "sources_checked": "partial",
+        "schema_version": "0.2"
+      }
+    },
+    {
+      "id": "CO:solvable-group",
+      "type": "concept",
+      "schema_version": "0.2",
+      "labels": {
+        "zh": "可解群",
+        "en": "solvable group"
+      },
+      "status": "active",
+      "summary": "存在有限正规列使各商群为阿贝尔群的群。",
+      "definition": "存在 1=G₀◁G₁◁…◁Gₙ=G，使每个 Gᵢ₊₁/Gᵢ 为阿贝尔群。",
+      "definition_source": {
+        "grade": "F",
+        "locator": "通行教材定义"
+      },
+      "occurrences": [],
+      "claims": [
+        {
+          "id": "CLM:CO:solvable-group.1",
+          "statement": "可解性由方程的根式可解性抽象而来，后成为群的内在性质。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": {
+            "locator": "Wussing 1984（章次页码待补）"
+          },
+          "note": ""
+        }
+      ],
+      "provenance": {
+        "created_by": "agent",
+        "created_at": "2026-11-22",
+        "sources_checked": "partial",
+        "schema_version": "0.2"
+      }
+    },
+    {
+      "id": "CO:group-homomorphism",
+      "type": "concept",
+      "schema_version": "0.2",
+      "labels": {
+        "zh": "群同态",
+        "en": "group homomorphism"
+      },
+      "status": "active",
+      "summary": "保持运算的映射；同构与核的基础。",
+      "definition": "映射 φ:G→H，满足 φ(ab)=φ(a)φ(b)。",
+      "definition_source": {
+        "grade": "F",
+        "locator": "通行教材定义"
+      },
+      "occurrences": [],
+      "claims": [
+        {
+          "id": "CLM:CO:group-homomorphism.1",
+          "statement": "同态作为结构保持映射的明确表述是 19 世纪末至 20 世纪初的事。",
+          "grade": "U",
+          "attestation": "later_report",
+          "source": {
+            "locator": "Wussing 1984（章次页码待补）"
+          },
+          "note": "首见文本待核。"
+        }
+      ],
+      "provenance": {
+        "created_by": "agent",
+        "created_at": "2026-11-22",
+        "sources_checked": "partial",
+        "schema_version": "0.2"
+      }
+    },
+    {
+      "id": "CO:group-action",
+      "type": "concept",
+      "schema_version": "0.2",
+      "labels": {
+        "zh": "群作用",
+        "en": "group action"
+      },
+      "status": "active",
+      "summary": "群在集合上的作用；把群与几何、组合对象连接起来。",
+      "definition": "映射 G×X→X，满足单位元恒等与结合律相容。",
+      "definition_source": {
+        "grade": "F",
+        "locator": "通行教材定义"
+      },
+      "occurrences": [],
+      "claims": [
+        {
+          "id": "CLM:CO:group-action.1",
+          "statement": "克莱因 1872 年以变换群统一几何时，实质使用了群作用的想法，术语后定。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": {
+            "locator": "Klein 1872；Wussing 1984（章次页码待补）"
+          },
+          "note": ""
+        }
+      ],
+      "provenance": {
+        "created_by": "agent",
+        "created_at": "2026-11-22",
+        "sources_checked": "partial",
+        "schema_version": "0.2"
+      }
+    },
+    {
+      "id": "CO:sylow-subgroup",
+      "type": "concept",
+      "schema_version": "0.2",
+      "labels": {
+        "zh": "西罗子群",
+        "en": "Sylow subgroup"
+      },
+      "status": "active",
+      "summary": "阶为素数幂且极大的子群。",
+      "definition": "若 |G|=p^a·m 且 p∤m，则阶为 p^a 的子群称为西罗 p-子群。",
+      "definition_source": {
+        "grade": "F",
+        "locator": "通行教材定义"
+      },
+      "occurrences": [],
+      "claims": [
+        {
+          "id": "CLM:CO:sylow-subgroup.1",
+          "statement": "西罗子群以 1872 年的三条定理进入群论。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": {
+            "locator": "Sylow 1872；Wussing 1984（章次页码待补）"
+          },
+          "note": ""
+        }
+      ],
+      "provenance": {
+        "created_by": "agent",
+        "created_at": "2026-11-22",
+        "sources_checked": "partial",
+        "schema_version": "0.2"
+      }
+    },
+    {
+      "id": "TH:abel-ruffini",
+      "type": "theorem",
+      "schema_version": "0.2",
+      "labels": {
+        "zh": "阿贝尔–鲁菲尼定理",
+        "en": "Abel–Ruffini theorem"
+      },
+      "status": "active",
+      "summary": "一般五次及以上方程无根式解。",
+      "statement": "次数 ≥5 的一般方程不能用根式求解。",
+      "assumptions": [
+        "特征 0 域",
+        "一般方程指系数为未定元"
+      ],
+      "proof_status": "proved",
+      "claims": [
+        {
+          "id": "CLM:TH:abel-ruffini.1",
+          "statement": "阿贝尔 1824 年给出证明；鲁菲尼 1799 年的证明有缺口。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": {
+            "locator": "Wussing 1984（章次页码待补）"
+          },
+          "note": ""
+        }
+      ],
+      "provenance": {
+        "created_by": "agent",
+        "created_at": "2026-11-22",
+        "sources_checked": "partial",
+        "schema_version": "0.2"
+      }
+    },
+    {
+      "id": "TH:lagrange-theorem",
+      "type": "theorem",
+      "schema_version": "0.2",
+      "labels": {
+        "zh": "拉格朗日定理",
+        "en": "Lagrange's theorem"
+      },
+      "status": "active",
+      "summary": "有限群的子群阶整除群阶。",
+      "statement": "若 H≤G 且 G 有限，则 |H| 整除 |G|。",
+      "assumptions": [
+        "G 有限"
+      ],
+      "proof_status": "proved",
+      "claims": [
+        {
+          "id": "CLM:TH:lagrange-theorem.1",
+          "statement": "以子群语言表述的这一定理是后世的；拉格朗日 1770–1771 年的工作是方程 resolvent 与置换阶数限制，二者不能直接等同。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": {
+            "locator": "Wussing 1984（章次页码待补）"
+          },
+          "note": "写成'拉格朗日证明了子群阶整除群阶'属时代错置。"
+        }
+      ],
+      "provenance": {
+        "created_by": "agent",
+        "created_at": "2026-11-22",
+        "sources_checked": "partial",
+        "schema_version": "0.2"
+      }
+    },
+    {
+      "id": "TH:cauchy-theorem",
+      "type": "theorem",
+      "schema_version": "0.2",
+      "labels": {
+        "zh": "柯西定理",
+        "en": "Cauchy's theorem"
+      },
+      "status": "active",
+      "summary": "若素数 p 整除群阶，则群含 p 阶元。",
+      "statement": "p | |G| ⇒ 存在 g∈G 使 ord(g)=p。",
+      "assumptions": [
+        "G 有限",
+        "p 为素数"
+      ],
+      "proof_status": "proved",
+      "claims": [
+        {
+          "id": "CLM:TH:cauchy-theorem.1",
+          "statement": "柯西 1845 年给出该定理。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": {
+            "locator": "Wussing 1984（章次页码待补）"
+          },
+          "note": ""
+        }
+      ],
+      "provenance": {
+        "created_by": "agent",
+        "created_at": "2026-11-22",
+        "sources_checked": "partial",
+        "schema_version": "0.2"
+      }
+    },
+    {
+      "id": "TH:sylow-theorems",
+      "type": "theorem",
+      "schema_version": "0.2",
+      "labels": {
+        "zh": "西罗定理",
+        "en": "Sylow theorems"
+      },
+      "status": "active",
+      "summary": "西罗 p-子群的存在、共轭与计数。",
+      "statement": "设 |G|=p^a·m，(p,m)=1，则：存在阶 p^a 的子群；任两个西罗 p-子群共轭；其个数 ≡1 mod p 且整除 m。",
+      "assumptions": [
+        "G 有限",
+        "p 为素数"
+      ],
+      "proof_status": "proved",
+      "claims": [
+        {
+          "id": "CLM:TH:sylow-theorems.1",
+          "statement": "三条定理发表于 1872 年，是有限群结构研究的关键工具。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": {
+            "locator": "Sylow 1872；Wussing 1984（章次页码待补）"
+          },
+          "note": ""
+        }
+      ],
+      "provenance": {
+        "created_by": "agent",
+        "created_at": "2026-11-22",
+        "sources_checked": "partial",
+        "schema_version": "0.2"
+      }
+    },
+    {
+      "id": "TH:burnside-pq",
+      "type": "theorem",
+      "schema_version": "0.2",
+      "labels": {
+        "zh": "伯恩赛德 p^a q^b 定理",
+        "en": "Burnside's p^a q^b theorem"
+      },
+      "status": "active",
+      "summary": "阶为两个素数幂之积的群可解。",
+      "statement": "若 |G|=p^a q^b，则 G 可解。",
+      "assumptions": [
+        "G 有限",
+        "p,q 为素数"
+      ],
+      "proof_status": "proved",
+      "claims": [
+        {
+          "id": "CLM:TH:burnside-pq.1",
+          "statement": "伯恩赛德 1904 年证明该定理，用到了特征标方法。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": {
+            "locator": "Burnside 1904；Wussing 1984（章次页码待补）"
+          },
+          "note": ""
+        }
+      ],
+      "provenance": {
+        "created_by": "agent",
+        "created_at": "2026-11-22",
+        "sources_checked": "partial",
+        "schema_version": "0.2"
+      }
+    },
+    {
+      "id": "PR:quintic-solvability",
+      "type": "problem",
+      "schema_version": "0.2",
+      "labels": {
+        "zh": "五次方程根式可解性",
+        "en": "solvability of the quintic by radicals"
+      },
+      "status": "resolved",
+      "summary": "一般五次方程能否用根式求解；16–18 世纪的形态是求公式。",
+      "original_formulation": {
+        "text": "求一般五次方程的根式解公式。",
+        "language": "la",
+        "author": null,
+        "year": null,
+        "source": {
+          "locator": "16–18 世纪代数著作的通行问题形态；具体首见文本待核"
+        },
+        "grade": "U",
+        "attestation": "later_report"
+      },
+      "problem_kind": "solvability",
+      "asked_as": [
+        "求根式公式",
+        "判定是否可解"
+      ],
+      "related_branches": [
+        "BR-ALG-GRP"
+      ],
+      "claims": [
+        {
+          "id": "CLM:PR:quintic-solvability.1",
+          "statement": "该问题在 16–18 世纪被当作'求公式'，'是否可解'是 19 世纪群论化之后的提法。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": {
+            "locator": "Wussing 1984（章次页码待补）"
+          },
+          "note": ""
+        }
+      ],
+      "provenance": {
+        "created_by": "agent",
+        "created_at": "2026-11-22",
+        "sources_checked": "partial",
+        "schema_version": "0.2"
+      },
+      "text_ref": "doc:spec/framework/pilots/group-theory/text.md#quintic"
+    },
+    {
+      "id": "PR:quintic-galois-criterion",
+      "type": "problem",
+      "schema_version": "0.2",
+      "labels": {
+        "zh": "五次方程的伽罗瓦判据",
+        "en": "Galois criterion for solvability"
+      },
+      "status": "resolved",
+      "summary": "方程可用根式解当且仅当其伽罗瓦群可解。",
+      "original_formulation": {
+        "text": "方程根式可解 iff 其伽罗瓦群可解。",
+        "language": "fr",
+        "author": "PE:galois",
+        "year": 1832,
+        "source": {
+          "locator": "Galois 1832 手稿；未见原页"
+        },
+        "grade": "U",
+        "attestation": "later_report"
+      },
+      "problem_kind": "characterization",
+      "asked_as": [
+        "判定"
+      ],
+      "related_branches": [
+        "BR-ALG-GRP"
+      ],
+      "claims": [
+        {
+          "id": "CLM:PR:quintic-galois-criterion.1",
+          "statement": "该判据把'可解性'从公式构造改写为群性质判定。",
+          "grade": "F",
+          "attestation": "textbook_simplification",
+          "source": {
+            "locator": "通行教材表述"
+          },
+          "note": ""
+        }
+      ],
+      "provenance": {
+        "created_by": "agent",
+        "created_at": "2026-11-22",
+        "sources_checked": "partial",
+        "schema_version": "0.2"
+      },
+      "text_ref": "doc:spec/framework/pilots/group-theory/text.md#galois"
+    },
+    {
+      "id": "TY:abstract-group-theory",
+      "type": "theory",
+      "schema_version": "0.2",
+      "labels": {
+        "zh": "抽象群论",
+        "en": "abstract group theory"
+      },
+      "status": "active",
+      "summary": "以群公理为起点、研究结构而非具体置换对象的理论体。",
+      "assumptions": [
+        "群公理（结合律、单位元、逆元）",
+        "同态与商结构"
+      ],
+      "core_concepts": [
+        "CO:group",
+        "CO:subgroup",
+        "CO:normal-subgroup",
+        "CO:quotient-group"
+      ],
+      "signature_results": [
+        "TH:sylow-theorems",
+        "TH:burnside-pq"
+      ],
+      "accepted_period": {
+        "from": 1890,
+        "to": null,
+        "precision": "decade"
+      },
+      "claims": [
+        {
+          "id": "CLM:TY:abstract-group-theory.1",
+          "statement": "抽象群论在 1890 年代前后成形，标志是从置换对象转向公理与结构。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": {
+            "locator": "Wussing 1984（章次页码待补）"
+          },
+          "note": "成形的确切年份有争议，本文按十年记。"
+        }
+      ],
+      "provenance": {
+        "created_by": "agent",
+        "created_at": "2026-11-22",
+        "sources_checked": "partial",
+        "schema_version": "0.2"
+      },
+      "text_ref": "doc:spec/framework/pilots/group-theory/text.md#systematic"
+    },
+    {
+      "id": "TY:erlangen-program",
+      "type": "theory",
+      "schema_version": "0.2",
+      "labels": {
+        "zh": "埃尔朗根纲领",
+        "en": "Erlangen program"
+      },
+      "status": "active",
+      "summary": "以变换群的不变量统一并分类几何的纲领。",
+      "assumptions": [
+        "几何=变换群下的不变量理论",
+        "不同几何对应不同变换群"
+      ],
+      "core_concepts": [
+        "CO:group",
+        "CO:group-action"
+      ],
+      "accepted_period": {
+        "from": 1872,
+        "to": null,
+        "precision": "year"
+      },
+      "claims": [
+        {
+          "id": "CLM:TY:erlangen-program.1",
+          "statement": "克莱因 1872 年在埃尔朗根就职演讲中提出以变换群分类几何。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": {
+            "locator": "Klein 1872；Wussing 1984（章次页码待补）"
+          },
+          "note": ""
+        }
+      ],
+      "provenance": {
+        "created_by": "agent",
+        "created_at": "2026-11-22",
+        "sources_checked": "partial",
+        "schema_version": "0.2"
+      },
+      "text_ref": "doc:spec/framework/pilots/group-theory/text.md#erlangen"
+    },
+    {
+      "id": "ME:galois-correspondence",
+      "type": "method",
+      "schema_version": "0.2",
+      "labels": {
+        "zh": "伽罗瓦对应",
+        "en": "Galois correspondence"
+      },
+      "status": "active",
+      "summary": "把域扩张的中间域与伽罗瓦群的子群对应起来。",
+      "kind": "construction",
+      "input": "多项式及其分裂域",
+      "output": "群与中间域的一一对应",
+      "correctness_basis": [
+        "CO:normal-subgroup",
+        "CO:group"
+      ],
+      "applies_to": [
+        "PR:quintic-galois-criterion"
+      ],
+      "claims": [
+        {
+          "id": "CLM:ME:galois-correspondence.1",
+          "statement": "对应关系在伽罗瓦手稿中以置换语言出现，现代形式为后人所加。",
+          "grade": "U",
+          "attestation": "later_report",
+          "source": {
+            "locator": "Wussing 1984（章次页码待补）"
+          },
+          "note": "现代形式的定名与表述出处待核。"
+        }
+      ],
+      "provenance": {
+        "created_by": "agent",
+        "created_at": "2026-11-22",
+        "sources_checked": "partial",
+        "schema_version": "0.2"
+      },
+      "text_ref": "doc:spec/framework/pilots/group-theory/text.md#galois"
+    },
+    {
+      "id": "ME:axiomatic-method",
+      "type": "method",
+      "schema_version": "0.2",
+      "labels": {
+        "zh": "公理化方法",
+        "en": "axiomatic method"
+      },
+      "status": "active",
+      "summary": "从公理与定义出发推演结构性质的方法。",
+      "kind": "proof_method",
+      "input": "公理集与定义",
+      "output": "可推演的命题体系",
+      "correctness_basis": [],
+      "applies_to": [
+        "TY:abstract-group-theory"
+      ],
+      "claims": [
+        {
+          "id": "CLM:ME:axiomatic-method.1",
+          "statement": "公理化方法在 19 世纪末至 20 世纪初成为代数的标准组织方式。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": {
+            "locator": "Wussing 1984（章次页码待补）"
+          },
+          "note": ""
+        }
+      ],
+      "provenance": {
+        "created_by": "agent",
+        "created_at": "2026-11-22",
+        "sources_checked": "partial",
+        "schema_version": "0.2"
+      }
+    },
+    {
+      "id": "NO:group-notation",
+      "type": "notation",
+      "schema_version": "0.2",
+      "labels": {
+        "zh": "群记号",
+        "en": "group notation"
+      },
+      "status": "current",
+      "summary": "群的符号与记法（G、·、e、H≤G 等）的历史层次。",
+      "symbol_id": "group-notation",
+      "kind": "symbol",
+      "glyph": {
+        "unicode": "G, ·, e, ≤",
+        "latex": "G,\\cdot,e,\\le",
+        "plain": "G, ., e, <="
+      },
+      "denotation": [
+        {
+          "concept": "CO:group",
+          "valid_from": 1870,
+          "valid_to": null,
+          "note": "抽象群记号在 19 世纪后期逐步定型"
+        }
+      ],
+      "first_occurrence": {
+        "text": "TX:cayley-1854",
+        "witness": null,
+        "locator": "Cayley 1854（具体页待补）",
+        "year": 1854,
+        "grade": "U"
+      },
+      "modern_standard": {
+        "form": "G 表群，e 表单位元，H≤G 表子群",
+        "scope": "通行抽象代数教材",
+        "note": ""
+      },
+      "claims": [
+        {
+          "id": "CLM:NO:group-notation.1",
+          "statement": "现代群记号不是一次定型，而是从置换记号与运算记号中逐步收敛。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": {
+            "locator": "Wussing 1984（章次页码待补）"
+          },
+          "note": ""
+        }
+      ],
+      "provenance": {
+        "created_by": "agent",
+        "created_at": "2026-11-22",
+        "sources_checked": "partial",
+        "schema_version": "0.2"
+      }
+    },
+    {
+      "id": "FA:ruffini-1799-quintic",
+      "type": "failure",
+      "schema_version": "0.2",
+      "labels": {
+        "zh": "鲁菲尼 1799 年五次方程证明",
+        "en": "Ruffini's 1799 proof attempt"
+      },
+      "status": "active",
+      "summary": "鲁菲尼试图证明五次方程不可根式解，证明存在缺口。",
+      "failure_kind": "false_proof",
+      "target": "TH:abel-ruffini",
+      "flawed_step": "关键处默认了'置换的阶数限制足以排除所有情形'，缺少对完整置换群的穷尽论证。",
+      "why_accepted": "当时缺少群论语言，审阅者难以定位缺口；结论方向正确，故被部分接受。",
+      "acceptance_evidence": [
+        "EV:1799-ruffini-quintic"
+      ],
+      "corrected_by": "PE:abel",
+      "correction_event": null,
+      "correction_text": "TX:galois-manuscript-1832",
+      "current_status": "corrected",
+      "claims": [
+        {
+          "id": "CLM:FA:ruffini-1799-quintic.1",
+          "statement": "该证明的缺口在阿贝尔 1824 年的工作中被补上。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": {
+            "locator": "Wussing 1984（章次页码待补）"
+          },
+          "note": "缺口的具体位置有不同表述，本文只记'穷尽性不足'。"
+        }
+      ],
+      "provenance": {
+        "created_by": "agent",
+        "created_at": "2026-11-22",
+        "sources_checked": "partial",
+        "schema_version": "0.2"
+      },
+      "text_ref": "doc:spec/framework/pilots/group-theory/text.md#ruffini"
+    },
+    {
+      "id": "PE:ruffini",
+      "type": "person",
+      "schema_version": "0.2",
+      "labels": {
+        "zh": "保罗·鲁菲尼",
+        "en": "Paolo Ruffini"
+      },
+      "status": "active",
+      "summary": "保罗·鲁菲尼（1765–1822）。",
+      "name_variants": [
+        "Paolo Ruffini",
+        "鲁菲尼"
+      ],
+      "dates": {
+        "birth": 1765,
+        "death": 1822,
+        "precision": "year"
+      },
+      "roles": [
+        "author"
+      ],
+      "claims": [],
+      "provenance": {
+        "created_by": "agent",
+        "created_at": "2026-11-22",
+        "sources_checked": "partial",
+        "schema_version": "0.2"
+      }
+    },
+    {
+      "id": "PE:abel",
+      "type": "person",
+      "schema_version": "0.2",
+      "labels": {
+        "zh": "尼尔斯·阿贝尔",
+        "en": "Niels Henrik Abel"
+      },
+      "status": "active",
+      "summary": "尼尔斯·阿贝尔（1802–1829）。",
+      "name_variants": [
+        "Niels Henrik Abel",
+        "阿贝尔"
+      ],
+      "dates": {
+        "birth": 1802,
+        "death": 1829,
+        "precision": "year"
+      },
+      "roles": [
+        "author"
+      ],
+      "claims": [],
+      "provenance": {
+        "created_by": "agent",
+        "created_at": "2026-11-22",
+        "sources_checked": "partial",
+        "schema_version": "0.2"
+      }
+    },
+    {
+      "id": "PE:galois",
+      "type": "person",
+      "schema_version": "0.2",
+      "labels": {
+        "zh": "埃瓦里斯特·伽罗瓦",
+        "en": "Évariste Galois"
+      },
+      "status": "active",
+      "summary": "埃瓦里斯特·伽罗瓦（1811–1832）。",
+      "name_variants": [
+        "Évariste Galois",
+        "伽罗瓦"
+      ],
+      "dates": {
+        "birth": 1811,
+        "death": 1832,
+        "precision": "year"
+      },
+      "roles": [
+        "author"
+      ],
+      "claims": [],
+      "provenance": {
+        "created_by": "agent",
+        "created_at": "2026-11-22",
+        "sources_checked": "partial",
+        "schema_version": "0.2"
+      }
+    },
+    {
+      "id": "PE:cauchy",
+      "type": "person",
+      "schema_version": "0.2",
+      "labels": {
+        "zh": "奥古斯丁-路易·柯西",
+        "en": "Augustin-Louis Cauchy"
+      },
+      "status": "active",
+      "summary": "奥古斯丁-路易·柯西（1789–1857）。",
+      "name_variants": [
+        "Augustin-Louis Cauchy",
+        "柯西"
+      ],
+      "dates": {
+        "birth": 1789,
+        "death": 1857,
+        "precision": "year"
+      },
+      "roles": [
+        "author"
+      ],
+      "claims": [],
+      "provenance": {
+        "created_by": "agent",
+        "created_at": "2026-11-22",
+        "sources_checked": "partial",
+        "schema_version": "0.2"
+      }
+    },
+    {
+      "id": "PE:sylow",
+      "type": "person",
+      "schema_version": "0.2",
+      "labels": {
+        "zh": "路德维希·西罗",
+        "en": "Ludwig Sylow"
+      },
+      "status": "active",
+      "summary": "路德维希·西罗（1832–1918）。",
+      "name_variants": [
+        "Ludwig Sylow",
+        "西罗"
+      ],
+      "dates": {
+        "birth": 1832,
+        "death": 1918,
+        "precision": "year"
+      },
+      "roles": [
+        "author"
+      ],
+      "claims": [],
+      "provenance": {
+        "created_by": "agent",
+        "created_at": "2026-11-22",
+        "sources_checked": "partial",
+        "schema_version": "0.2"
+      }
+    },
+    {
+      "id": "PE:cayley",
+      "type": "person",
+      "schema_version": "0.2",
+      "labels": {
+        "zh": "阿瑟·凯莱",
+        "en": "Arthur Cayley"
+      },
+      "status": "active",
+      "summary": "阿瑟·凯莱（1821–1895）。",
+      "name_variants": [
+        "Arthur Cayley",
+        "凯莱"
+      ],
+      "dates": {
+        "birth": 1821,
+        "death": 1895,
+        "precision": "year"
+      },
+      "roles": [
+        "author"
+      ],
+      "claims": [],
+      "provenance": {
+        "created_by": "agent",
+        "created_at": "2026-11-22",
+        "sources_checked": "partial",
+        "schema_version": "0.2"
+      }
+    },
+    {
+      "id": "PE:klein",
+      "type": "person",
+      "schema_version": "0.2",
+      "labels": {
+        "zh": "菲利克斯·克莱因",
+        "en": "Felix Klein"
+      },
+      "status": "active",
+      "summary": "菲利克斯·克莱因（1849–1925）。",
+      "name_variants": [
+        "Felix Klein",
+        "克莱因"
+      ],
+      "dates": {
+        "birth": 1849,
+        "death": 1925,
+        "precision": "year"
+      },
+      "roles": [
+        "author"
+      ],
+      "claims": [],
+      "provenance": {
+        "created_by": "agent",
+        "created_at": "2026-11-22",
+        "sources_checked": "partial",
+        "schema_version": "0.2"
+      }
+    },
+    {
+      "id": "PE:jordan",
+      "type": "person",
+      "schema_version": "0.2",
+      "labels": {
+        "zh": "卡米尔·若尔当",
+        "en": "Camille Jordan"
+      },
+      "status": "active",
+      "summary": "卡米尔·若尔当（1838–1922）。",
+      "name_variants": [
+        "Camille Jordan",
+        "若尔当"
+      ],
+      "dates": {
+        "birth": 1838,
+        "death": 1922,
+        "precision": "year"
+      },
+      "roles": [
+        "author"
+      ],
+      "claims": [],
+      "provenance": {
+        "created_by": "agent",
+        "created_at": "2026-11-22",
+        "sources_checked": "partial",
+        "schema_version": "0.2"
+      }
+    },
+    {
+      "id": "PE:burnside",
+      "type": "person",
+      "schema_version": "0.2",
+      "labels": {
+        "zh": "威廉·伯恩赛德",
+        "en": "William Burnside"
+      },
+      "status": "active",
+      "summary": "威廉·伯恩赛德（1852–1927）。",
+      "name_variants": [
+        "William Burnside",
+        "伯恩赛德"
+      ],
+      "dates": {
+        "birth": 1852,
+        "death": 1927,
+        "precision": "year"
+      },
+      "roles": [
+        "author"
+      ],
+      "claims": [],
+      "provenance": {
+        "created_by": "agent",
+        "created_at": "2026-11-22",
+        "sources_checked": "partial",
+        "schema_version": "0.2"
+      }
+    },
+    {
+      "id": "TX:galois-manuscript-1832",
+      "type": "text",
+      "schema_version": "0.2",
+      "labels": {
+        "zh": "伽罗瓦 1832 年手稿",
+        "en": "Galois manuscript (1832)"
+      },
+      "status": "active",
+      "summary": "伽罗瓦去世前写下的方程论手稿，1846 年由刘维尔刊布。",
+      "title_variants": [
+        "Mémoire sur les conditions de résolubilité des équations par radicaux"
+      ],
+      "authors": [
+        "PE:galois"
+      ],
+      "date_composition": 1832,
+      "date_first_publication": 1846,
+      "language": "fr",
+      "genre": "论文手稿",
+      "text_type": "original",
+      "reliability_note": "原稿不存全；现存为刊布本与抄件。",
+      "claims": [
+        {
+          "id": "CLM:TX:galois-manuscript-1832.1",
+          "statement": "手稿 1832 年写成，1846 年由刘维尔在《纯粹与应用数学杂志》刊布。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": {
+            "locator": "Wussing 1984（章次页码待补）"
+          },
+          "note": ""
+        }
+      ],
+      "provenance": {
+        "created_by": "agent",
+        "created_at": "2026-11-22",
+        "sources_checked": "partial",
+        "schema_version": "0.2"
+      }
+    },
+    {
+      "id": "TX:cayley-1854",
+      "type": "text",
+      "schema_version": "0.2",
+      "labels": {
+        "zh": "凯莱 1854 年群论论文",
+        "en": "Cayley 1854 on groups"
+      },
+      "status": "active",
+      "summary": "以符号方程 θ^n=1 定义群，给出抽象群的早期表述。",
+      "title_variants": [
+        "On the theory of groups, as depending on the symbolic equation θ^n=1"
+      ],
+      "authors": [
+        "PE:cayley"
+      ],
+      "date_composition": 1853,
+      "date_first_publication": 1854,
+      "language": "en",
+      "genre": "期刊论文",
+      "text_type": "original",
+      "reliability_note": "Philosophical Magazine 7 (1854): 40–47。",
+      "claims": [
+        {
+          "id": "CLM:TX:cayley-1854.1",
+          "statement": "该文载于 Philosophical Magazine 第 7 卷（1854），页 40–47。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": {
+            "locator": "Philosophical Magazine 7 (1854): 40–47（二次文献核对）"
+          },
+          "note": ""
+        }
+      ],
+      "provenance": {
+        "created_by": "agent",
+        "created_at": "2026-11-22",
+        "sources_checked": "partial",
+        "schema_version": "0.2"
+      }
+    },
+    {
+      "id": "TX:jordan-1870",
+      "type": "text",
+      "schema_version": "0.2",
+      "labels": {
+        "zh": "若尔当《置换论》",
+        "en": "Jordan, Traité des substitutions (1870)"
+      },
+      "status": "active",
+      "summary": "系统整理置换群与可解方程的专著。",
+      "title_variants": [
+        "Traité des substitutions et des équations solvables"
+      ],
+      "authors": [
+        "PE:jordan"
+      ],
+      "date_composition": 1870,
+      "date_first_publication": 1870,
+      "language": "fr",
+      "genre": "专著",
+      "text_type": "original",
+      "reliability_note": "Paris: Gauthier-Villars, 1870。",
+      "claims": [],
+      "provenance": {
+        "created_by": "agent",
+        "created_at": "2026-11-22",
+        "sources_checked": "partial",
+        "schema_version": "0.2"
+      }
+    },
+    {
+      "id": "TX:sylow-1872",
+      "type": "text",
+      "schema_version": "0.2",
+      "labels": {
+        "zh": "西罗 1872 年论文",
+        "en": "Sylow 1872"
+      },
+      "status": "active",
+      "summary": "给出西罗三条定理的论文。",
+      "title_variants": [
+        "Théorèmes sur les groupes de substitutions"
+      ],
+      "authors": [
+        "PE:sylow"
+      ],
+      "date_composition": 1872,
+      "date_first_publication": 1872,
+      "language": "fr",
+      "genre": "期刊论文",
+      "text_type": "original",
+      "reliability_note": "Mathematische Annalen 5 (1872): 584–594。",
+      "claims": [
+        {
+          "id": "CLM:TX:sylow-1872.1",
+          "statement": "该文载于 Mathematische Annalen 第 5 卷（1872），页 584–594。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": {
+            "locator": "Mathematische Annalen 5 (1872): 584–594（二次文献核对）"
+          },
+          "note": ""
+        }
+      ],
+      "provenance": {
+        "created_by": "agent",
+        "created_at": "2026-11-22",
+        "sources_checked": "partial",
+        "schema_version": "0.2"
+      }
+    },
+    {
+      "id": "TX:klein-1872-erlangen",
+      "type": "text",
+      "schema_version": "0.2",
+      "labels": {
+        "zh": "克莱因《埃尔朗根纲领》",
+        "en": "Klein, Erlangen Programm (1872)"
+      },
+      "status": "active",
+      "summary": "以变换群分类几何的纲领性文本。",
+      "title_variants": [
+        "Vergleichende Betrachtungen über neuere geometrische Forschungen"
+      ],
+      "authors": [
+        "PE:klein"
+      ],
+      "date_composition": 1872,
+      "date_first_publication": 1872,
+      "language": "de",
+      "genre": "就职演讲/纲领",
+      "text_type": "original",
+      "reliability_note": "Erlangen: Verlag von Andreas Deichert, 1872。",
+      "claims": [],
+      "provenance": {
+        "created_by": "agent",
+        "created_at": "2026-11-22",
+        "sources_checked": "partial",
+        "schema_version": "0.2"
+      }
+    },
+    {
+      "id": "TX:burnside-1897",
+      "type": "text",
+      "schema_version": "0.2",
+      "labels": {
+        "zh": "伯恩赛德《有限群论》",
+        "en": "Burnside, Theory of Groups (1897)"
+      },
+      "status": "active",
+      "summary": "有限群理论的早期系统教科书。",
+      "title_variants": [
+        "The Theory of Groups of Finite Order"
+      ],
+      "authors": [
+        "PE:burnside"
+      ],
+      "date_composition": 1897,
+      "date_first_publication": 1897,
+      "language": "en",
+      "genre": "教科书",
+      "text_type": "textbook",
+      "reliability_note": "Cambridge: Cambridge University Press, 1897。",
+      "claims": [],
+      "provenance": {
+        "created_by": "agent",
+        "created_at": "2026-11-22",
+        "sources_checked": "partial",
+        "schema_version": "0.2"
+      }
+    },
+    {
+      "id": "TX:wussing-1984",
+      "type": "text",
+      "schema_version": "0.2",
+      "labels": {
+        "zh": "Wussing《抽象群概念的起源》",
+        "en": "Wussing 1984"
+      },
+      "status": "active",
+      "summary": "抽象群概念形成史的二手研究，本文群论部分的主要依据。",
+      "title_variants": [
+        "The Genesis of the Abstract Group Concept"
+      ],
+      "authors": [],
+      "date_composition": 1969,
+      "date_first_publication": 1984,
+      "language": "en",
+      "genre": "史学专著",
+      "text_type": "commentary",
+      "reliability_note": "德文原版 1969；英文版 Cambridge, MA: MIT Press, 1984。章次页码待补。",
+      "claims": [],
+      "provenance": {
+        "created_by": "agent",
+        "created_at": "2026-11-22",
+        "sources_checked": "partial",
+        "schema_version": "0.2"
+      }
+    },
+    {
+      "id": "TW:cayley-1854.print",
+      "type": "witness",
+      "schema_version": "0.2",
+      "labels": {
+        "zh": "凯莱 1854 年期刊印本",
+        "en": "Cayley 1854 print"
+      },
+      "status": "active",
+      "summary": "Philosophical Magazine 第 7 卷印本。",
+      "witness_kind": "original",
+      "extant": true,
+      "date": 1854,
+      "editor": null,
+      "translator": null,
+      "derived_from": null,
+      "holding": {
+        "institution": "待核",
+        "shelfmark": "待核"
+      },
+      "completeness": "完整",
+      "stemma_branch": "期刊印本",
+      "supports": [
+        "CO:group"
+      ],
+      "claims": [
+        {
+          "id": "CLM:TW:cayley-1854.print.1",
+          "statement": "本文未亲见印本，馆藏与页码据二次文献。",
+          "grade": "U",
+          "attestation": "unknown",
+          "source": {
+            "locator": "未检索馆藏目录"
+          },
+          "note": "需查馆藏后升 S。"
+        }
+      ],
+      "provenance": {
+        "created_by": "agent",
+        "created_at": "2026-11-22",
+        "sources_checked": "partial",
+        "schema_version": "0.2"
+      }
+    },
+    {
+      "id": "TW:burnside-1897.print",
+      "type": "witness",
+      "schema_version": "0.2",
+      "labels": {
+        "zh": "伯恩赛德 1897 年印本",
+        "en": "Burnside 1897 print"
+      },
+      "status": "active",
+      "summary": "Cambridge University Press 1897 年印本。",
+      "witness_kind": "original",
+      "extant": true,
+      "date": 1897,
+      "editor": null,
+      "translator": null,
+      "derived_from": null,
+      "holding": {
+        "institution": "待核",
+        "shelfmark": "待核"
+      },
+      "completeness": "完整",
+      "stemma_branch": "初版印本",
+      "supports": [
+        "TY:abstract-group-theory"
+      ],
+      "claims": [
+        {
+          "id": "CLM:TW:burnside-1897.print.1",
+          "statement": "本文未亲见印本，版次与出版社据二次文献。",
+          "grade": "U",
+          "attestation": "unknown",
+          "source": {
+            "locator": "未检索馆藏目录"
+          },
+          "note": "需查馆藏后升 S。"
+        }
+      ],
+      "provenance": {
+        "created_by": "agent",
+        "created_at": "2026-11-22",
+        "sources_checked": "partial",
+        "schema_version": "0.2"
+      }
+    },
+    {
+      "id": "EV:1799-ruffini-quintic",
+      "type": "event",
+      "schema_version": "0.2",
+      "labels": {
+        "zh": "鲁菲尼发表五次方程证明（1799）",
+        "en": "Ruffini 1799"
+      },
+      "status": "active",
+      "summary": "鲁菲尼发表其五次方程不可解证明。",
+      "date": {
+        "from": 1799,
+        "to": 1799,
+        "precision": "year"
+      },
+      "place": "意大利",
+      "actors": [
+        "PE:ruffini"
+      ],
+      "description": "发表《方程的一般理论》，含不可解性证明尝试。",
+      "causes": [
+        "五次方程求根公式长期未得"
+      ],
+      "consequences": [
+        "暴露穷尽性论证的困难"
+      ],
+      "sources": [
+        {
+          "text": "TX:wussing-1984",
+          "locator": "章次页码待补"
+        }
+      ],
+      "part_of": "FA:ruffini-1799-quintic",
+      "claims": [],
+      "provenance": {
+        "created_by": "agent",
+        "created_at": "2026-11-22",
+        "sources_checked": "partial",
+        "schema_version": "0.2"
+      }
+    },
+    {
+      "id": "EV:1832-galois-manuscript",
+      "type": "event",
+      "schema_version": "0.2",
+      "labels": {
+        "zh": "伽罗瓦写下方程论手稿（1832）",
+        "en": "Galois manuscript 1832"
+      },
+      "status": "active",
+      "summary": "伽罗瓦在决斗前写下方程可解性手稿。",
+      "date": {
+        "from": 1832,
+        "to": 1832,
+        "precision": "year"
+      },
+      "place": "巴黎",
+      "actors": [
+        "PE:galois"
+      ],
+      "description": "手稿以置换群语言讨论方程可解性。",
+      "causes": [
+        "方程论与置换研究"
+      ],
+      "consequences": [
+        "1846 年刊布，成为伽罗瓦理论的起点"
+      ],
+      "sources": [
+        {
+          "text": "TX:galois-manuscript-1832",
+          "locator": "手稿"
+        }
+      ],
+      "part_of": "PR:quintic-galois-criterion",
+      "claims": [],
+      "provenance": {
+        "created_by": "agent",
+        "created_at": "2026-11-22",
+        "sources_checked": "partial",
+        "schema_version": "0.2"
+      }
+    },
+    {
+      "id": "EV:1854-cayley-groups",
+      "type": "event",
+      "schema_version": "0.2",
+      "labels": {
+        "zh": "凯莱发表抽象群论文（1854）",
+        "en": "Cayley 1854"
+      },
+      "status": "active",
+      "summary": "凯莱以符号方程定义群。",
+      "date": {
+        "from": 1853,
+        "to": 1854,
+        "precision": "year"
+      },
+      "place": "英国",
+      "actors": [
+        "PE:cayley"
+      ],
+      "description": "1853 年 11 月 2 日定稿，1854 年刊于 Philosophical Magazine。",
+      "causes": [
+        "置换群与符号运算研究"
+      ],
+      "consequences": [
+        "抽象群定义的早期表述"
+      ],
+      "sources": [
+        {
+          "text": "TX:cayley-1854",
+          "locator": "p.40–47"
+        }
+      ],
+      "part_of": "TY:abstract-group-theory",
+      "claims": [],
+      "provenance": {
+        "created_by": "agent",
+        "created_at": "2026-11-22",
+        "sources_checked": "partial",
+        "schema_version": "0.2"
+      }
+    },
+    {
+      "id": "EV:1872-sylow-theorems",
+      "type": "event",
+      "schema_version": "0.2",
+      "labels": {
+        "zh": "西罗发表三条定理（1872）",
+        "en": "Sylow 1872"
+      },
+      "status": "active",
+      "summary": "西罗在 Mathematische Annalen 发表三条定理。",
+      "date": {
+        "from": 1872,
+        "to": 1872,
+        "precision": "year"
+      },
+      "place": "挪威/德国",
+      "actors": [
+        "PE:sylow"
+      ],
+      "description": "给出西罗 p-子群的存在、共轭与计数。",
+      "causes": [
+        "有限群结构研究"
+      ],
+      "consequences": [
+        "有限群理论的核心工具"
+      ],
+      "sources": [
+        {
+          "text": "TX:sylow-1872",
+          "locator": "p.584–594"
+        }
+      ],
+      "part_of": "TH:sylow-theorems",
+      "claims": [],
+      "provenance": {
+        "created_by": "agent",
+        "created_at": "2026-11-22",
+        "sources_checked": "partial",
+        "schema_version": "0.2"
+      }
+    },
+    {
+      "id": "EV:1872-erlangen-program",
+      "type": "event",
+      "schema_version": "0.2",
+      "labels": {
+        "zh": "克莱因提出埃尔朗根纲领（1872）",
+        "en": "Erlangen 1872"
+      },
+      "status": "active",
+      "summary": "克莱因在埃尔朗根就职演讲中提出以变换群分类几何。",
+      "date": {
+        "from": 1872,
+        "to": 1872,
+        "precision": "year"
+      },
+      "place": "埃尔朗根",
+      "actors": [
+        "PE:klein"
+      ],
+      "description": "以变换群的不变量统一几何。",
+      "causes": [
+        "射影几何与群论的发展"
+      ],
+      "consequences": [
+        "几何分类的群论框架"
+      ],
+      "sources": [
+        {
+          "text": "TX:klein-1872-erlangen",
+          "locator": "全文"
+        }
+      ],
+      "part_of": "TY:erlangen-program",
+      "claims": [],
+      "provenance": {
+        "created_by": "agent",
+        "created_at": "2026-11-22",
+        "sources_checked": "partial",
+        "schema_version": "0.2"
+      }
+    },
+    {
+      "id": "ST:cayley-abstract-group",
+      "type": "statement",
+      "schema_version": "0.2",
+      "labels": {
+        "zh": "凯莱：群可由生成元与关系定义",
+        "en": "Cayley's abstract group claim"
+      },
+      "status": "current",
+      "summary": "凯莱主张群可以脱离具体置换对象、由符号关系定义。",
+      "claim_text": "群可以由生成元及其满足的符号关系定义，而不必先给定一个置换集合。",
+      "claimant": "PE:cayley",
+      "claimed_at": {
+        "from": 1853,
+        "to": 1854,
+        "precision": "year"
+      },
+      "claimed_in": [
+        "TX:cayley-1854"
+      ],
+      "about": [
+        "CO:group"
+      ],
+      "stance": "asserts",
+      "text_ref": "doc:spec/framework/pilots/group-theory/text.md#cayley",
+      "claims": [
+        {
+          "id": "CLM:ST:cayley-abstract-group.1",
+          "statement": "该主张是抽象群概念形成中的关键一步。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": {
+            "locator": "Wussing 1984（章次页码待补）"
+          },
+          "note": ""
+        }
+      ],
+      "provenance": {
+        "created_by": "agent",
+        "created_at": "2026-11-22",
+        "sources_checked": "partial",
+        "schema_version": "0.2"
+      }
+    },
+    {
+      "id": "ST:klein-group-geometry",
+      "type": "statement",
+      "schema_version": "0.2",
+      "labels": {
+        "zh": "克莱因：几何即变换群的不变量理论",
+        "en": "Klein's group-geometry claim"
+      },
+      "status": "current",
+      "summary": "克莱因主张几何的对象是变换群下的不变量。",
+      "claim_text": "一种几何由其变换群决定，几何命题即该群下的不变量命题。",
+      "claimant": "PE:klein",
+      "claimed_at": {
+        "from": 1872,
+        "to": 1872,
+        "precision": "year"
+      },
+      "claimed_in": [
+        "TX:klein-1872-erlangen"
+      ],
+      "about": [
+        "TY:erlangen-program"
+      ],
+      "stance": "asserts",
+      "text_ref": "doc:spec/framework/pilots/group-theory/text.md#erlangen",
+      "claims": [
+        {
+          "id": "CLM:ST:klein-group-geometry.1",
+          "statement": "该主张把几何分类转化为群分类，是纲领性而非定理性的断言。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": {
+            "locator": "Klein 1872；Wussing 1984（章次页码待补）"
+          },
+          "note": ""
+        }
+      ],
+      "provenance": {
+        "created_by": "agent",
+        "created_at": "2026-11-22",
+        "sources_checked": "partial",
+        "schema_version": "0.2"
+      }
+    },
+    {
+      "id": "ST:jordan-systematic",
+      "type": "statement",
+      "schema_version": "0.2",
+      "labels": {
+        "zh": "若尔当：置换群应作为整体系统处理",
+        "en": "Jordan's systematic claim"
+      },
+      "status": "current",
+      "summary": "若尔当主张置换群应作为整体对象系统研究，而不是逐题处理。",
+      "claim_text": "置换群应当作为整体对象系统研究，其结构性质优先于单个方程技巧。",
+      "claimant": "PE:jordan",
+      "claimed_at": {
+        "from": 1870,
+        "to": 1870,
+        "precision": "year"
+      },
+      "claimed_in": [
+        "TX:jordan-1870"
+      ],
+      "about": [
+        "BR-ALG-GRP"
+      ],
+      "stance": "asserts",
+      "text_ref": "doc:spec/framework/pilots/group-theory/text.md#systematic",
+      "claims": [
+        {
+          "id": "CLM:ST:jordan-systematic.1",
+          "statement": "该主张体现从问题技巧向体系化处理的转向。",
+          "grade": "U",
+          "attestation": "later_report",
+          "source": {
+            "locator": "TX:jordan-1870 序言；未见原页"
+          },
+          "note": "序言原文待核。"
+        }
+      ],
+      "provenance": {
+        "created_by": "agent",
+        "created_at": "2026-11-22",
+        "sources_checked": "partial",
+        "schema_version": "0.2"
+      }
+    },
+    {
+      "id": "TP:abstract-algebra-group",
+      "type": "teaching_point",
+      "schema_version": "0.2",
+      "labels": {
+        "zh": "抽象代数课程：群的定义",
+        "en": "Abstract algebra: group axioms"
+      },
+      "status": "active",
+      "summary": "抽象代数第一章的群定义与例子。",
+      "course": "抽象代数",
+      "textbook": {
+        "title": "待定",
+        "edition": "待定"
+      },
+      "chapter": "群的定义与例子",
+      "learning_objective": "能从公理验证具体对象是否成群，并区分群与置换群。",
+      "prerequisite_concepts": [
+        "CO:group",
+        "CO:permutation-group"
+      ],
+      "common_misconception": "把'群'等同于'置换群'，忽略抽象群可脱离具体置换对象。",
+      "history_objects": [
+        "CO:group",
+        "CO:permutation-group",
+        "ST:cayley-abstract-group"
+      ],
+      "output_form": "card",
+      "evidence": "not_applicable",
+      "basis": "curriculum",
+      "claims": [],
+      "provenance": {
+        "created_by": "agent",
+        "created_at": "2026-11-22",
+        "sources_checked": "partial",
+        "schema_version": "0.2"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "E:BR-FND-AALG>parent_of>BR-ALG-GRP",
+      "from": "BR-FND-AALG",
+      "to": "BR-ALG-GRP",
+      "type": "parent_of",
+      "directed": true,
+      "time": {
+        "from": null,
+        "to": null,
+        "precision": "unknown"
+      },
+      "source": {
+        "locator": "通行教材定义/结构约定"
+      },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.9,
+      "weight": 1.0,
+      "kind": "taxonomic",
+      "role": null,
+      "text_ref": null,
+      "note": "",
+      "claims": []
+    },
+    {
+      "id": "E:CO:group>generalizes>CO:permutation-group",
+      "from": "CO:group",
+      "to": "CO:permutation-group",
+      "type": "generalizes",
+      "directed": true,
+      "time": {
+        "from": null,
+        "to": null,
+        "precision": "unknown"
+      },
+      "source": {
+        "locator": "通行教材定义/结构约定"
+      },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.9,
+      "weight": null,
+      "kind": null,
+      "role": null,
+      "text_ref": null,
+      "note": "",
+      "claims": []
+    },
+    {
+      "id": "E:CO:subgroup>depends_on>CO:group",
+      "from": "CO:subgroup",
+      "to": "CO:group",
+      "type": "depends_on",
+      "directed": true,
+      "time": {
+        "from": null,
+        "to": null,
+        "precision": "unknown"
+      },
+      "source": {
+        "locator": "通行教材定义/结构约定"
+      },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.9,
+      "weight": null,
+      "kind": null,
+      "role": null,
+      "text_ref": null,
+      "note": "",
+      "claims": []
+    },
+    {
+      "id": "E:CO:normal-subgroup>depends_on>CO:subgroup",
+      "from": "CO:normal-subgroup",
+      "to": "CO:subgroup",
+      "type": "depends_on",
+      "directed": true,
+      "time": {
+        "from": null,
+        "to": null,
+        "precision": "unknown"
+      },
+      "source": {
+        "locator": "通行教材定义/结构约定"
+      },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.9,
+      "weight": null,
+      "kind": null,
+      "role": null,
+      "text_ref": null,
+      "note": "",
+      "claims": []
+    },
+    {
+      "id": "E:CO:quotient-group>depends_on>CO:normal-subgroup",
+      "from": "CO:quotient-group",
+      "to": "CO:normal-subgroup",
+      "type": "depends_on",
+      "directed": true,
+      "time": {
+        "from": null,
+        "to": null,
+        "precision": "unknown"
+      },
+      "source": {
+        "locator": "通行教材定义/结构约定"
+      },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.9,
+      "weight": null,
+      "kind": null,
+      "role": null,
+      "text_ref": null,
+      "note": "",
+      "claims": []
+    },
+    {
+      "id": "E:CO:solvable-group>depends_on>CO:quotient-group",
+      "from": "CO:solvable-group",
+      "to": "CO:quotient-group",
+      "type": "depends_on",
+      "directed": true,
+      "time": {
+        "from": null,
+        "to": null,
+        "precision": "unknown"
+      },
+      "source": {
+        "locator": "通行教材定义/结构约定"
+      },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.9,
+      "weight": null,
+      "kind": null,
+      "role": null,
+      "text_ref": null,
+      "note": "",
+      "claims": []
+    },
+    {
+      "id": "E:CO:group-homomorphism>depends_on>CO:group",
+      "from": "CO:group-homomorphism",
+      "to": "CO:group",
+      "type": "depends_on",
+      "directed": true,
+      "time": {
+        "from": null,
+        "to": null,
+        "precision": "unknown"
+      },
+      "source": {
+        "locator": "通行教材定义/结构约定"
+      },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.9,
+      "weight": null,
+      "kind": null,
+      "role": null,
+      "text_ref": null,
+      "note": "",
+      "claims": []
+    },
+    {
+      "id": "E:CO:group-action>depends_on>CO:group",
+      "from": "CO:group-action",
+      "to": "CO:group",
+      "type": "depends_on",
+      "directed": true,
+      "time": {
+        "from": null,
+        "to": null,
+        "precision": "unknown"
+      },
+      "source": {
+        "locator": "通行教材定义/结构约定"
+      },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.9,
+      "weight": null,
+      "kind": null,
+      "role": null,
+      "text_ref": null,
+      "note": "",
+      "claims": []
+    },
+    {
+      "id": "E:CO:sylow-subgroup>depends_on>CO:subgroup",
+      "from": "CO:sylow-subgroup",
+      "to": "CO:subgroup",
+      "type": "depends_on",
+      "directed": true,
+      "time": {
+        "from": null,
+        "to": null,
+        "precision": "unknown"
+      },
+      "source": {
+        "locator": "通行教材定义/结构约定"
+      },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.9,
+      "weight": null,
+      "kind": null,
+      "role": null,
+      "text_ref": null,
+      "note": "",
+      "claims": []
+    },
+    {
+      "id": "E:CO:group>uses_notation>NO:group-notation",
+      "from": "CO:group",
+      "to": "NO:group-notation",
+      "type": "uses_notation",
+      "directed": true,
+      "time": {
+        "from": null,
+        "to": null,
+        "precision": "unknown"
+      },
+      "source": {
+        "locator": "通行教材定义/结构约定"
+      },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.9,
+      "weight": null,
+      "kind": null,
+      "role": null,
+      "text_ref": null,
+      "note": "",
+      "claims": []
+    },
+    {
+      "id": "E:NO:group-notation>denotes>CO:group",
+      "from": "NO:group-notation",
+      "to": "CO:group",
+      "type": "denotes",
+      "directed": true,
+      "time": {
+        "from": null,
+        "to": null,
+        "precision": "unknown"
+      },
+      "source": {
+        "locator": "通行教材定义/结构约定"
+      },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.9,
+      "weight": null,
+      "kind": null,
+      "role": null,
+      "text_ref": null,
+      "note": "",
+      "claims": []
+    },
+    {
+      "id": "E:TH:lagrange-theorem>depends_on>CO:subgroup",
+      "from": "TH:lagrange-theorem",
+      "to": "CO:subgroup",
+      "type": "depends_on",
+      "directed": true,
+      "time": {
+        "from": null,
+        "to": null,
+        "precision": "unknown"
+      },
+      "source": {
+        "locator": "通行教材定义/结构约定"
+      },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.9,
+      "weight": null,
+      "kind": null,
+      "role": null,
+      "text_ref": null,
+      "note": "",
+      "claims": []
+    },
+    {
+      "id": "E:TH:cauchy-theorem>depends_on>CO:group",
+      "from": "TH:cauchy-theorem",
+      "to": "CO:group",
+      "type": "depends_on",
+      "directed": true,
+      "time": {
+        "from": null,
+        "to": null,
+        "precision": "unknown"
+      },
+      "source": {
+        "locator": "通行教材定义/结构约定"
+      },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.9,
+      "weight": null,
+      "kind": null,
+      "role": null,
+      "text_ref": null,
+      "note": "",
+      "claims": []
+    },
+    {
+      "id": "E:TH:sylow-theorems>depends_on>CO:sylow-subgroup",
+      "from": "TH:sylow-theorems",
+      "to": "CO:sylow-subgroup",
+      "type": "depends_on",
+      "directed": true,
+      "time": {
+        "from": null,
+        "to": null,
+        "precision": "unknown"
+      },
+      "source": {
+        "locator": "通行教材定义/结构约定"
+      },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.9,
+      "weight": null,
+      "kind": null,
+      "role": null,
+      "text_ref": null,
+      "note": "",
+      "claims": []
+    },
+    {
+      "id": "E:TH:sylow-theorems>depends_on>TH:cauchy-theorem",
+      "from": "TH:sylow-theorems",
+      "to": "TH:cauchy-theorem",
+      "type": "depends_on",
+      "directed": true,
+      "time": {
+        "from": null,
+        "to": null,
+        "precision": "unknown"
+      },
+      "source": {
+        "locator": "通行教材定义/结构约定"
+      },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.9,
+      "weight": null,
+      "kind": null,
+      "role": null,
+      "text_ref": null,
+      "note": "",
+      "claims": []
+    },
+    {
+      "id": "E:TH:burnside-pq>depends_on>CO:group",
+      "from": "TH:burnside-pq",
+      "to": "CO:group",
+      "type": "depends_on",
+      "directed": true,
+      "time": {
+        "from": null,
+        "to": null,
+        "precision": "unknown"
+      },
+      "source": {
+        "locator": "通行教材定义/结构约定"
+      },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.9,
+      "weight": null,
+      "kind": null,
+      "role": null,
+      "text_ref": null,
+      "note": "",
+      "claims": []
+    },
+    {
+      "id": "E:TH:abel-ruffini>depends_on>CO:group",
+      "from": "TH:abel-ruffini",
+      "to": "CO:group",
+      "type": "depends_on",
+      "directed": true,
+      "time": {
+        "from": null,
+        "to": null,
+        "precision": "unknown"
+      },
+      "source": {
+        "locator": "通行教材定义/结构约定"
+      },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.9,
+      "weight": null,
+      "kind": null,
+      "role": null,
+      "text_ref": null,
+      "note": "",
+      "claims": []
+    },
+    {
+      "id": "E:TH:abel-ruffini>resolves>PR:quintic-solvability",
+      "from": "TH:abel-ruffini",
+      "to": "PR:quintic-solvability",
+      "type": "resolves",
+      "directed": true,
+      "time": {
+        "from": 1824,
+        "to": 1824,
+        "precision": "year"
+      },
+      "source": {
+        "locator": "通行教材定义/结构约定"
+      },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.9,
+      "weight": null,
+      "kind": null,
+      "role": null,
+      "text_ref": null,
+      "note": "",
+      "claims": []
+    },
+    {
+      "id": "E:CO:group>exemplifies>TY:abstract-group-theory",
+      "from": "CO:group",
+      "to": "TY:abstract-group-theory",
+      "type": "exemplifies",
+      "directed": true,
+      "time": {
+        "from": null,
+        "to": null,
+        "precision": "unknown"
+      },
+      "source": {
+        "locator": "通行教材定义/结构约定"
+      },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.9,
+      "weight": null,
+      "kind": null,
+      "role": null,
+      "text_ref": null,
+      "note": "",
+      "claims": []
+    },
+    {
+      "id": "E:TH:sylow-theorems>exemplifies>TY:abstract-group-theory",
+      "from": "TH:sylow-theorems",
+      "to": "TY:abstract-group-theory",
+      "type": "exemplifies",
+      "directed": true,
+      "time": {
+        "from": null,
+        "to": null,
+        "precision": "unknown"
+      },
+      "source": {
+        "locator": "通行教材定义/结构约定"
+      },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.9,
+      "weight": null,
+      "kind": null,
+      "role": null,
+      "text_ref": null,
+      "note": "",
+      "claims": []
+    },
+    {
+      "id": "E:TH:lagrange-theorem>exemplifies>TY:abstract-group-theory",
+      "from": "TH:lagrange-theorem",
+      "to": "TY:abstract-group-theory",
+      "type": "exemplifies",
+      "directed": true,
+      "time": {
+        "from": null,
+        "to": null,
+        "precision": "unknown"
+      },
+      "source": {
+        "locator": "通行教材定义/结构约定"
+      },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.9,
+      "weight": null,
+      "kind": null,
+      "role": null,
+      "text_ref": null,
+      "note": "",
+      "claims": []
+    },
+    {
+      "id": "E:CO:solvable-group>exemplifies>TY:abstract-group-theory",
+      "from": "CO:solvable-group",
+      "to": "TY:abstract-group-theory",
+      "type": "exemplifies",
+      "directed": true,
+      "time": {
+        "from": null,
+        "to": null,
+        "precision": "unknown"
+      },
+      "source": {
+        "locator": "通行教材定义/结构约定"
+      },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.9,
+      "weight": null,
+      "kind": null,
+      "role": null,
+      "text_ref": null,
+      "note": "",
+      "claims": []
+    },
+    {
+      "id": "E:TY:abstract-group-theory>uses_method>ME:axiomatic-method",
+      "from": "TY:abstract-group-theory",
+      "to": "ME:axiomatic-method",
+      "type": "uses_method",
+      "directed": true,
+      "time": {
+        "from": null,
+        "to": null,
+        "precision": "unknown"
+      },
+      "source": {
+        "locator": "通行教材定义/结构约定"
+      },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.9,
+      "weight": null,
+      "kind": null,
+      "role": null,
+      "text_ref": null,
+      "note": "",
+      "claims": []
+    },
+    {
+      "id": "E:TY:erlangen-program>depends_on>CO:group",
+      "from": "TY:erlangen-program",
+      "to": "CO:group",
+      "type": "depends_on",
+      "directed": true,
+      "time": {
+        "from": null,
+        "to": null,
+        "precision": "unknown"
+      },
+      "source": {
+        "locator": "通行教材定义/结构约定"
+      },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.9,
+      "weight": null,
+      "kind": null,
+      "role": null,
+      "text_ref": null,
+      "note": "",
+      "claims": []
+    },
+    {
+      "id": "E:TY:erlangen-program>depends_on>CO:group-action",
+      "from": "TY:erlangen-program",
+      "to": "CO:group-action",
+      "type": "depends_on",
+      "directed": true,
+      "time": {
+        "from": null,
+        "to": null,
+        "precision": "unknown"
+      },
+      "source": {
+        "locator": "通行教材定义/结构约定"
+      },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.9,
+      "weight": null,
+      "kind": null,
+      "role": null,
+      "text_ref": null,
+      "note": "",
+      "claims": []
+    },
+    {
+      "id": "E:CO:group-action>exemplifies>TY:erlangen-program",
+      "from": "CO:group-action",
+      "to": "TY:erlangen-program",
+      "type": "exemplifies",
+      "directed": true,
+      "time": {
+        "from": null,
+        "to": null,
+        "precision": "unknown"
+      },
+      "source": {
+        "locator": "通行教材定义/结构约定"
+      },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.9,
+      "weight": null,
+      "kind": null,
+      "role": null,
+      "text_ref": null,
+      "note": "",
+      "claims": []
+    },
+    {
+      "id": "E:ME:galois-correspondence>depends_on>CO:group",
+      "from": "ME:galois-correspondence",
+      "to": "CO:group",
+      "type": "depends_on",
+      "directed": true,
+      "time": {
+        "from": null,
+        "to": null,
+        "precision": "unknown"
+      },
+      "source": {
+        "locator": "通行教材定义/结构约定"
+      },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.9,
+      "weight": null,
+      "kind": null,
+      "role": null,
+      "text_ref": null,
+      "note": "",
+      "claims": []
+    },
+    {
+      "id": "E:ME:galois-correspondence>depends_on>CO:normal-subgroup",
+      "from": "ME:galois-correspondence",
+      "to": "CO:normal-subgroup",
+      "type": "depends_on",
+      "directed": true,
+      "time": {
+        "from": null,
+        "to": null,
+        "precision": "unknown"
+      },
+      "source": {
+        "locator": "通行教材定义/结构约定"
+      },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.9,
+      "weight": null,
+      "kind": null,
+      "role": null,
+      "text_ref": null,
+      "note": "",
+      "claims": []
+    },
+    {
+      "id": "E:PR:quintic-solvability>reformulates>PR:quintic-galois-criterion",
+      "from": "PR:quintic-solvability",
+      "to": "PR:quintic-galois-criterion",
+      "type": "reformulates",
+      "directed": true,
+      "time": {
+        "from": 1832,
+        "to": 1832,
+        "precision": "year"
+      },
+      "source": {
+        "locator": "通行教材定义/结构约定"
+      },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.9,
+      "weight": null,
+      "kind": null,
+      "role": null,
+      "text_ref": null,
+      "note": "",
+      "claims": []
+    },
+    {
+      "id": "E:PR:quintic-galois-criterion>uses_method>ME:galois-correspondence",
+      "from": "PR:quintic-galois-criterion",
+      "to": "ME:galois-correspondence",
+      "type": "uses_method",
+      "directed": true,
+      "time": {
+        "from": 1832,
+        "to": 1832,
+        "precision": "year"
+      },
+      "source": {
+        "locator": "通行教材定义/结构约定"
+      },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.9,
+      "weight": null,
+      "kind": null,
+      "role": null,
+      "text_ref": null,
+      "note": "",
+      "claims": []
+    },
+    {
+      "id": "E:ME:galois-correspondence>resolves>PR:quintic-galois-criterion",
+      "from": "ME:galois-correspondence",
+      "to": "PR:quintic-galois-criterion",
+      "type": "resolves",
+      "directed": true,
+      "time": {
+        "from": 1832,
+        "to": 1832,
+        "precision": "year"
+      },
+      "source": {
+        "locator": "通行教材定义/结构约定"
+      },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.9,
+      "weight": null,
+      "kind": null,
+      "role": null,
+      "text_ref": null,
+      "note": "",
+      "claims": []
+    },
+    {
+      "id": "E:FA:ruffini-1799-quintic>targets>TH:abel-ruffini",
+      "from": "FA:ruffini-1799-quintic",
+      "to": "TH:abel-ruffini",
+      "type": "targets",
+      "directed": true,
+      "time": {
+        "from": 1799,
+        "to": 1799,
+        "precision": "year"
+      },
+      "source": {
+        "text": "TX:wussing-1984",
+        "locator": "Wussing 1984（章次页码待补）"
+      },
+      "grade": "S",
+      "attestation": "later_report",
+      "confidence": 0.8,
+      "weight": null,
+      "kind": null,
+      "role": null,
+      "text_ref": null,
+      "note": "",
+      "claims": []
+    },
+    {
+      "id": "E:FA:ruffini-1799-quintic>corrected_by>PE:abel",
+      "from": "FA:ruffini-1799-quintic",
+      "to": "PE:abel",
+      "type": "corrected_by",
+      "directed": true,
+      "time": {
+        "from": 1824,
+        "to": 1824,
+        "precision": "year"
+      },
+      "source": {
+        "text": "TX:wussing-1984",
+        "locator": "Wussing 1984（章次页码待补）"
+      },
+      "grade": "S",
+      "attestation": "later_report",
+      "confidence": 0.8,
+      "weight": null,
+      "kind": null,
+      "role": null,
+      "text_ref": null,
+      "note": "",
+      "claims": []
+    },
+    {
+      "id": "E:PE:abel>proved>TH:abel-ruffini",
+      "from": "PE:abel",
+      "to": "TH:abel-ruffini",
+      "type": "proved",
+      "directed": true,
+      "time": {
+        "from": 1824,
+        "to": 1824,
+        "precision": "year"
+      },
+      "source": {
+        "text": "TX:wussing-1984",
+        "locator": "Wussing 1984（章次页码待补）"
+      },
+      "grade": "S",
+      "attestation": "later_report",
+      "confidence": 0.8,
+      "weight": null,
+      "kind": null,
+      "role": null,
+      "text_ref": null,
+      "note": "",
+      "claims": []
+    },
+    {
+      "id": "E:PE:galois>introduced>ME:galois-correspondence",
+      "from": "PE:galois",
+      "to": "ME:galois-correspondence",
+      "type": "introduced",
+      "directed": true,
+      "time": {
+        "from": 1832,
+        "to": 1832,
+        "precision": "year"
+      },
+      "source": {
+        "text": "TX:wussing-1984",
+        "locator": "Wussing 1984（章次页码待补）"
+      },
+      "grade": "S",
+      "attestation": "later_report",
+      "confidence": 0.8,
+      "weight": null,
+      "kind": null,
+      "role": null,
+      "text_ref": null,
+      "note": "",
+      "claims": []
+    },
+    {
+      "id": "E:PE:ruffini>participates_in>EV:1799-ruffini-quintic",
+      "from": "PE:ruffini",
+      "to": "EV:1799-ruffini-quintic",
+      "type": "participates_in",
+      "directed": true,
+      "time": {
+        "from": 1799,
+        "to": 1799,
+        "precision": "year"
+      },
+      "source": {
+        "text": "TX:wussing-1984",
+        "locator": "Wussing 1984（章次页码待补）"
+      },
+      "grade": "S",
+      "attestation": "later_report",
+      "confidence": 0.9,
+      "weight": null,
+      "kind": null,
+      "role": null,
+      "text_ref": null,
+      "note": "",
+      "claims": []
+    },
+    {
+      "id": "E:EV:1799-ruffini-quintic>part_of>FA:ruffini-1799-quintic",
+      "from": "EV:1799-ruffini-quintic",
+      "to": "FA:ruffini-1799-quintic",
+      "type": "part_of",
+      "directed": true,
+      "time": {
+        "from": 1799,
+        "to": 1799,
+        "precision": "year"
+      },
+      "source": {
+        "text": "TX:wussing-1984",
+        "locator": "Wussing 1984（章次页码待补）"
+      },
+      "grade": "S",
+      "attestation": "later_report",
+      "confidence": 0.9,
+      "weight": null,
+      "kind": null,
+      "role": null,
+      "text_ref": null,
+      "note": "",
+      "claims": []
+    },
+    {
+      "id": "E:PE:cauchy>proved>TH:cauchy-theorem",
+      "from": "PE:cauchy",
+      "to": "TH:cauchy-theorem",
+      "type": "proved",
+      "directed": true,
+      "time": {
+        "from": 1845,
+        "to": 1845,
+        "precision": "year"
+      },
+      "source": {
+        "text": "TX:wussing-1984",
+        "locator": "Wussing 1984（章次页码待补）"
+      },
+      "grade": "S",
+      "attestation": "later_report",
+      "confidence": 0.8,
+      "weight": null,
+      "kind": null,
+      "role": null,
+      "text_ref": null,
+      "note": "",
+      "claims": []
+    },
+    {
+      "id": "E:PE:sylow>proved>TH:sylow-theorems",
+      "from": "PE:sylow",
+      "to": "TH:sylow-theorems",
+      "type": "proved",
+      "directed": true,
+      "time": {
+        "from": 1872,
+        "to": 1872,
+        "precision": "year"
+      },
+      "source": {
+        "text": "TX:wussing-1984",
+        "locator": "Wussing 1984（章次页码待补）"
+      },
+      "grade": "S",
+      "attestation": "later_report",
+      "confidence": 0.8,
+      "weight": null,
+      "kind": null,
+      "role": null,
+      "text_ref": null,
+      "note": "",
+      "claims": []
+    },
+    {
+      "id": "E:PE:cayley>introduced>CO:group",
+      "from": "PE:cayley",
+      "to": "CO:group",
+      "type": "introduced",
+      "directed": true,
+      "time": {
+        "from": 1854,
+        "to": 1854,
+        "precision": "year"
+      },
+      "source": {
+        "text": "TX:wussing-1984",
+        "locator": "Wussing 1984（章次页码待补）"
+      },
+      "grade": "S",
+      "attestation": "later_report",
+      "confidence": 0.8,
+      "weight": null,
+      "kind": null,
+      "role": null,
+      "text_ref": null,
+      "note": "",
+      "claims": []
+    },
+    {
+      "id": "E:PE:burnside>proved>TH:burnside-pq",
+      "from": "PE:burnside",
+      "to": "TH:burnside-pq",
+      "type": "proved",
+      "directed": true,
+      "time": {
+        "from": 1904,
+        "to": 1904,
+        "precision": "year"
+      },
+      "source": {
+        "text": "TX:wussing-1984",
+        "locator": "Wussing 1984（章次页码待补）"
+      },
+      "grade": "S",
+      "attestation": "later_report",
+      "confidence": 0.8,
+      "weight": null,
+      "kind": null,
+      "role": null,
+      "text_ref": null,
+      "note": "",
+      "claims": []
+    },
+    {
+      "id": "E:PE:jordan>contributed_to>TX:jordan-1870",
+      "from": "PE:jordan",
+      "to": "TX:jordan-1870",
+      "type": "contributed_to",
+      "directed": true,
+      "time": {
+        "from": 1870,
+        "to": 1870,
+        "precision": "year"
+      },
+      "source": {
+        "text": "TX:wussing-1984",
+        "locator": "Wussing 1984（章次页码待补）"
+      },
+      "grade": "S",
+      "attestation": "later_report",
+      "confidence": 0.8,
+      "weight": null,
+      "kind": null,
+      "role": "author",
+      "text_ref": null,
+      "note": "",
+      "claims": []
+    },
+    {
+      "id": "E:PE:cayley>contributed_to>TX:cayley-1854",
+      "from": "PE:cayley",
+      "to": "TX:cayley-1854",
+      "type": "contributed_to",
+      "directed": true,
+      "time": {
+        "from": 1854,
+        "to": 1854,
+        "precision": "year"
+      },
+      "source": {
+        "text": "TX:wussing-1984",
+        "locator": "Wussing 1984（章次页码待补）"
+      },
+      "grade": "S",
+      "attestation": "later_report",
+      "confidence": 0.8,
+      "weight": null,
+      "kind": null,
+      "role": "author",
+      "text_ref": null,
+      "note": "",
+      "claims": []
+    },
+    {
+      "id": "E:PE:sylow>contributed_to>TX:sylow-1872",
+      "from": "PE:sylow",
+      "to": "TX:sylow-1872",
+      "type": "contributed_to",
+      "directed": true,
+      "time": {
+        "from": 1872,
+        "to": 1872,
+        "precision": "year"
+      },
+      "source": {
+        "text": "TX:wussing-1984",
+        "locator": "Wussing 1984（章次页码待补）"
+      },
+      "grade": "S",
+      "attestation": "later_report",
+      "confidence": 0.8,
+      "weight": null,
+      "kind": null,
+      "role": "author",
+      "text_ref": null,
+      "note": "",
+      "claims": []
+    },
+    {
+      "id": "E:PE:klein>contributed_to>TX:klein-1872-erlangen",
+      "from": "PE:klein",
+      "to": "TX:klein-1872-erlangen",
+      "type": "contributed_to",
+      "directed": true,
+      "time": {
+        "from": 1872,
+        "to": 1872,
+        "precision": "year"
+      },
+      "source": {
+        "text": "TX:wussing-1984",
+        "locator": "Wussing 1984（章次页码待补）"
+      },
+      "grade": "S",
+      "attestation": "later_report",
+      "confidence": 0.8,
+      "weight": null,
+      "kind": null,
+      "role": "author",
+      "text_ref": null,
+      "note": "",
+      "claims": []
+    },
+    {
+      "id": "E:PE:burnside>contributed_to>TX:burnside-1897",
+      "from": "PE:burnside",
+      "to": "TX:burnside-1897",
+      "type": "contributed_to",
+      "directed": true,
+      "time": {
+        "from": 1897,
+        "to": 1897,
+        "precision": "year"
+      },
+      "source": {
+        "text": "TX:wussing-1984",
+        "locator": "Wussing 1984（章次页码待补）"
+      },
+      "grade": "S",
+      "attestation": "later_report",
+      "confidence": 0.8,
+      "weight": null,
+      "kind": null,
+      "role": "author",
+      "text_ref": null,
+      "note": "",
+      "claims": []
+    },
+    {
+      "id": "E:PE:galois>participates_in>EV:1832-galois-manuscript",
+      "from": "PE:galois",
+      "to": "EV:1832-galois-manuscript",
+      "type": "participates_in",
+      "directed": true,
+      "time": {
+        "from": 1832,
+        "to": 1832,
+        "precision": "year"
+      },
+      "source": {
+        "text": "TX:wussing-1984",
+        "locator": "Wussing 1984（章次页码待补）"
+      },
+      "grade": "S",
+      "attestation": "later_report",
+      "confidence": 0.9,
+      "weight": null,
+      "kind": null,
+      "role": null,
+      "text_ref": null,
+      "note": "",
+      "claims": []
+    },
+    {
+      "id": "E:PE:cayley>participates_in>EV:1854-cayley-groups",
+      "from": "PE:cayley",
+      "to": "EV:1854-cayley-groups",
+      "type": "participates_in",
+      "directed": true,
+      "time": {
+        "from": 1854,
+        "to": 1854,
+        "precision": "year"
+      },
+      "source": {
+        "text": "TX:wussing-1984",
+        "locator": "Wussing 1984（章次页码待补）"
+      },
+      "grade": "S",
+      "attestation": "later_report",
+      "confidence": 0.9,
+      "weight": null,
+      "kind": null,
+      "role": null,
+      "text_ref": null,
+      "note": "",
+      "claims": []
+    },
+    {
+      "id": "E:PE:klein>participates_in>EV:1872-erlangen-program",
+      "from": "PE:klein",
+      "to": "EV:1872-erlangen-program",
+      "type": "participates_in",
+      "directed": true,
+      "time": {
+        "from": 1872,
+        "to": 1872,
+        "precision": "year"
+      },
+      "source": {
+        "text": "TX:wussing-1984",
+        "locator": "Wussing 1984（章次页码待补）"
+      },
+      "grade": "S",
+      "attestation": "later_report",
+      "confidence": 0.9,
+      "weight": null,
+      "kind": null,
+      "role": null,
+      "text_ref": null,
+      "note": "",
+      "claims": []
+    },
+    {
+      "id": "E:PE:sylow>participates_in>EV:1872-sylow-theorems",
+      "from": "PE:sylow",
+      "to": "EV:1872-sylow-theorems",
+      "type": "participates_in",
+      "directed": true,
+      "time": {
+        "from": 1872,
+        "to": 1872,
+        "precision": "year"
+      },
+      "source": {
+        "text": "TX:wussing-1984",
+        "locator": "Wussing 1984（章次页码待补）"
+      },
+      "grade": "S",
+      "attestation": "later_report",
+      "confidence": 0.9,
+      "weight": null,
+      "kind": null,
+      "role": null,
+      "text_ref": null,
+      "note": "",
+      "claims": []
+    },
+    {
+      "id": "E:TW:cayley-1854.print>witness_of>TX:cayley-1854",
+      "from": "TW:cayley-1854.print",
+      "to": "TX:cayley-1854",
+      "type": "witness_of",
+      "directed": true,
+      "time": {
+        "from": 1854,
+        "to": 1854,
+        "precision": "year"
+      },
+      "source": {
+        "text": "TX:cayley-1854",
+        "locator": "p.40–47"
+      },
+      "grade": "S",
+      "attestation": "later_report",
+      "confidence": 0.9,
+      "weight": null,
+      "kind": null,
+      "role": null,
+      "text_ref": null,
+      "note": "未亲见原刊；卷页与馆藏据二次文献核对（见 TW:cayley-1854.print 的 claims）。",
+      "claims": []
+    },
+    {
+      "id": "E:TW:cayley-1854.print>supports>CO:group",
+      "from": "TW:cayley-1854.print",
+      "to": "CO:group",
+      "type": "supports",
+      "directed": true,
+      "time": {
+        "from": 1854,
+        "to": 1854,
+        "precision": "year"
+      },
+      "source": {
+        "text": "TX:cayley-1854",
+        "locator": "p.40–47"
+      },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.9,
+      "weight": null,
+      "kind": null,
+      "role": null,
+      "text_ref": null,
+      "note": "",
+      "claims": []
+    },
+    {
+      "id": "E:TW:burnside-1897.print>witness_of>TX:burnside-1897",
+      "from": "TW:burnside-1897.print",
+      "to": "TX:burnside-1897",
+      "type": "witness_of",
+      "directed": true,
+      "time": {
+        "from": 1897,
+        "to": 1897,
+        "precision": "year"
+      },
+      "source": {
+        "text": "TX:burnside-1897",
+        "locator": "初版"
+      },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.9,
+      "weight": null,
+      "kind": null,
+      "role": null,
+      "text_ref": null,
+      "note": "",
+      "claims": []
+    },
+    {
+      "id": "E:TW:burnside-1897.print>supports>TY:abstract-group-theory",
+      "from": "TW:burnside-1897.print",
+      "to": "TY:abstract-group-theory",
+      "type": "supports",
+      "directed": true,
+      "time": {
+        "from": 1897,
+        "to": 1897,
+        "precision": "year"
+      },
+      "source": {
+        "text": "TX:burnside-1897",
+        "locator": "初版"
+      },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.9,
+      "weight": null,
+      "kind": null,
+      "role": null,
+      "text_ref": null,
+      "note": "",
+      "claims": []
+    },
+    {
+      "id": "E:TX:cayley-1854>supports>CO:group",
+      "from": "TX:cayley-1854",
+      "to": "CO:group",
+      "type": "supports",
+      "directed": true,
+      "time": {
+        "from": 1854,
+        "to": 1854,
+        "precision": "year"
+      },
+      "source": {
+        "text": "TX:cayley-1854",
+        "locator": "p.40–47"
+      },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.9,
+      "weight": null,
+      "kind": null,
+      "role": null,
+      "text_ref": null,
+      "note": "",
+      "claims": []
+    },
+    {
+      "id": "E:TX:cayley-1854>supports>ST:cayley-abstract-group",
+      "from": "TX:cayley-1854",
+      "to": "ST:cayley-abstract-group",
+      "type": "supports",
+      "directed": true,
+      "time": {
+        "from": 1854,
+        "to": 1854,
+        "precision": "year"
+      },
+      "source": {
+        "text": "TX:cayley-1854",
+        "locator": "p.40–47"
+      },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.9,
+      "weight": null,
+      "kind": null,
+      "role": null,
+      "text_ref": null,
+      "note": "",
+      "claims": []
+    },
+    {
+      "id": "E:TX:jordan-1870>supports>TY:abstract-group-theory",
+      "from": "TX:jordan-1870",
+      "to": "TY:abstract-group-theory",
+      "type": "supports",
+      "directed": true,
+      "time": {
+        "from": 1870,
+        "to": 1870,
+        "precision": "year"
+      },
+      "source": {
+        "text": "TX:jordan-1870",
+        "locator": "全书"
+      },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.9,
+      "weight": null,
+      "kind": null,
+      "role": null,
+      "text_ref": null,
+      "note": "",
+      "claims": []
+    },
+    {
+      "id": "E:TX:sylow-1872>supports>TH:sylow-theorems",
+      "from": "TX:sylow-1872",
+      "to": "TH:sylow-theorems",
+      "type": "supports",
+      "directed": true,
+      "time": {
+        "from": 1872,
+        "to": 1872,
+        "precision": "year"
+      },
+      "source": {
+        "text": "TX:sylow-1872",
+        "locator": "p.584–594"
+      },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.9,
+      "weight": null,
+      "kind": null,
+      "role": null,
+      "text_ref": null,
+      "note": "",
+      "claims": []
+    },
+    {
+      "id": "E:TX:klein-1872-erlangen>supports>TY:erlangen-program",
+      "from": "TX:klein-1872-erlangen",
+      "to": "TY:erlangen-program",
+      "type": "supports",
+      "directed": true,
+      "time": {
+        "from": 1872,
+        "to": 1872,
+        "precision": "year"
+      },
+      "source": {
+        "text": "TX:klein-1872-erlangen",
+        "locator": "全文"
+      },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.9,
+      "weight": null,
+      "kind": null,
+      "role": null,
+      "text_ref": null,
+      "note": "",
+      "claims": []
+    },
+    {
+      "id": "E:TX:burnside-1897>supports>TY:abstract-group-theory",
+      "from": "TX:burnside-1897",
+      "to": "TY:abstract-group-theory",
+      "type": "supports",
+      "directed": true,
+      "time": {
+        "from": 1897,
+        "to": 1897,
+        "precision": "year"
+      },
+      "source": {
+        "text": "TX:burnside-1897",
+        "locator": "初版"
+      },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.9,
+      "weight": null,
+      "kind": null,
+      "role": null,
+      "text_ref": null,
+      "note": "",
+      "claims": []
+    },
+    {
+      "id": "E:TX:galois-manuscript-1832>supports>ME:galois-correspondence",
+      "from": "TX:galois-manuscript-1832",
+      "to": "ME:galois-correspondence",
+      "type": "supports",
+      "directed": true,
+      "time": {
+        "from": 1832,
+        "to": 1832,
+        "precision": "year"
+      },
+      "source": {
+        "text": "TX:galois-manuscript-1832",
+        "locator": "手稿"
+      },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.9,
+      "weight": null,
+      "kind": null,
+      "role": null,
+      "text_ref": null,
+      "note": "",
+      "claims": []
+    },
+    {
+      "id": "E:TX:wussing-1984>supports>TY:abstract-group-theory",
+      "from": "TX:wussing-1984",
+      "to": "TY:abstract-group-theory",
+      "type": "supports",
+      "directed": true,
+      "time": {
+        "from": 1984,
+        "to": 1984,
+        "precision": "year"
+      },
+      "source": {
+        "text": "TX:wussing-1984",
+        "locator": "全书"
+      },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.9,
+      "weight": null,
+      "kind": null,
+      "role": null,
+      "text_ref": null,
+      "note": "",
+      "claims": []
+    },
+    {
+      "id": "E:ST:cayley-abstract-group>about>CO:group",
+      "from": "ST:cayley-abstract-group",
+      "to": "CO:group",
+      "type": "about",
+      "directed": true,
+      "time": {
+        "from": 1854,
+        "to": 1854,
+        "precision": "year"
+      },
+      "source": {
+        "locator": "通行教材定义/结构约定"
+      },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.9,
+      "weight": null,
+      "kind": null,
+      "role": null,
+      "text_ref": null,
+      "note": "",
+      "claims": []
+    },
+    {
+      "id": "E:ST:cayley-abstract-group>claimed_in>TX:cayley-1854",
+      "from": "ST:cayley-abstract-group",
+      "to": "TX:cayley-1854",
+      "type": "claimed_in",
+      "directed": true,
+      "time": {
+        "from": 1854,
+        "to": 1854,
+        "precision": "year"
+      },
+      "source": {
+        "locator": "通行教材定义/结构约定"
+      },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.9,
+      "weight": null,
+      "kind": null,
+      "role": null,
+      "text_ref": null,
+      "note": "",
+      "claims": []
+    },
+    {
+      "id": "E:CO:group>asserted_by>ST:cayley-abstract-group",
+      "from": "CO:group",
+      "to": "ST:cayley-abstract-group",
+      "type": "asserted_by",
+      "directed": true,
+      "time": {
+        "from": 1854,
+        "to": 1854,
+        "precision": "year"
+      },
+      "source": {
+        "locator": "通行教材定义/结构约定"
+      },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.9,
+      "weight": null,
+      "kind": null,
+      "role": null,
+      "text_ref": null,
+      "note": "",
+      "claims": []
+    },
+    {
+      "id": "E:ST:klein-group-geometry>about>TY:erlangen-program",
+      "from": "ST:klein-group-geometry",
+      "to": "TY:erlangen-program",
+      "type": "about",
+      "directed": true,
+      "time": {
+        "from": 1872,
+        "to": 1872,
+        "precision": "year"
+      },
+      "source": {
+        "locator": "通行教材定义/结构约定"
+      },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.9,
+      "weight": null,
+      "kind": null,
+      "role": null,
+      "text_ref": null,
+      "note": "",
+      "claims": []
+    },
+    {
+      "id": "E:ST:klein-group-geometry>claimed_in>TX:klein-1872-erlangen",
+      "from": "ST:klein-group-geometry",
+      "to": "TX:klein-1872-erlangen",
+      "type": "claimed_in",
+      "directed": true,
+      "time": {
+        "from": 1872,
+        "to": 1872,
+        "precision": "year"
+      },
+      "source": {
+        "locator": "通行教材定义/结构约定"
+      },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.9,
+      "weight": null,
+      "kind": null,
+      "role": null,
+      "text_ref": null,
+      "note": "",
+      "claims": []
+    },
+    {
+      "id": "E:TY:erlangen-program>asserted_by>ST:klein-group-geometry",
+      "from": "TY:erlangen-program",
+      "to": "ST:klein-group-geometry",
+      "type": "asserted_by",
+      "directed": true,
+      "time": {
+        "from": 1872,
+        "to": 1872,
+        "precision": "year"
+      },
+      "source": {
+        "locator": "通行教材定义/结构约定"
+      },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.9,
+      "weight": null,
+      "kind": null,
+      "role": null,
+      "text_ref": null,
+      "note": "",
+      "claims": []
+    },
+    {
+      "id": "E:ST:jordan-systematic>about>BR-ALG-GRP",
+      "from": "ST:jordan-systematic",
+      "to": "BR-ALG-GRP",
+      "type": "about",
+      "directed": true,
+      "time": {
+        "from": 1870,
+        "to": 1870,
+        "precision": "year"
+      },
+      "source": {
+        "locator": "通行教材定义/结构约定"
+      },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.9,
+      "weight": null,
+      "kind": null,
+      "role": null,
+      "text_ref": null,
+      "note": "",
+      "claims": []
+    },
+    {
+      "id": "E:ST:jordan-systematic>claimed_in>TX:jordan-1870",
+      "from": "ST:jordan-systematic",
+      "to": "TX:jordan-1870",
+      "type": "claimed_in",
+      "directed": true,
+      "time": {
+        "from": 1870,
+        "to": 1870,
+        "precision": "year"
+      },
+      "source": {
+        "locator": "通行教材定义/结构约定"
+      },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.9,
+      "weight": null,
+      "kind": null,
+      "role": null,
+      "text_ref": null,
+      "note": "",
+      "claims": []
+    },
+    {
+      "id": "E:EV:1832-galois-manuscript>part_of>PR:quintic-galois-criterion",
+      "from": "EV:1832-galois-manuscript",
+      "to": "PR:quintic-galois-criterion",
+      "type": "part_of",
+      "directed": true,
+      "time": {
+        "from": 1832,
+        "to": 1832,
+        "precision": "year"
+      },
+      "source": {
+        "locator": "通行教材定义/结构约定"
+      },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.9,
+      "weight": null,
+      "kind": null,
+      "role": null,
+      "text_ref": null,
+      "note": "",
+      "claims": []
+    },
+    {
+      "id": "E:EV:1854-cayley-groups>part_of>TY:abstract-group-theory",
+      "from": "EV:1854-cayley-groups",
+      "to": "TY:abstract-group-theory",
+      "type": "part_of",
+      "directed": true,
+      "time": {
+        "from": 1854,
+        "to": 1854,
+        "precision": "year"
+      },
+      "source": {
+        "locator": "通行教材定义/结构约定"
+      },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.9,
+      "weight": null,
+      "kind": null,
+      "role": null,
+      "text_ref": null,
+      "note": "",
+      "claims": []
+    },
+    {
+      "id": "E:EV:1872-sylow-theorems>part_of>TH:sylow-theorems",
+      "from": "EV:1872-sylow-theorems",
+      "to": "TH:sylow-theorems",
+      "type": "part_of",
+      "directed": true,
+      "time": {
+        "from": 1872,
+        "to": 1872,
+        "precision": "year"
+      },
+      "source": {
+        "locator": "通行教材定义/结构约定"
+      },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.9,
+      "weight": null,
+      "kind": null,
+      "role": null,
+      "text_ref": null,
+      "note": "",
+      "claims": []
+    },
+    {
+      "id": "E:EV:1872-erlangen-program>part_of>TY:erlangen-program",
+      "from": "EV:1872-erlangen-program",
+      "to": "TY:erlangen-program",
+      "type": "part_of",
+      "directed": true,
+      "time": {
+        "from": 1872,
+        "to": 1872,
+        "precision": "year"
+      },
+      "source": {
+        "locator": "通行教材定义/结构约定"
+      },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.9,
+      "weight": null,
+      "kind": null,
+      "role": null,
+      "text_ref": null,
+      "note": "",
+      "claims": []
+    },
+    {
+      "id": "E:BR-ALG-GRP>concerns>CO:group",
+      "from": "BR-ALG-GRP",
+      "to": "CO:group",
+      "type": "concerns",
+      "directed": true,
+      "time": {
+        "from": null,
+        "to": null,
+        "precision": "unknown"
+      },
+      "source": {
+        "locator": "通行教材定义/结构约定"
+      },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.9,
+      "weight": null,
+      "kind": null,
+      "role": null,
+      "text_ref": null,
+      "note": "",
+      "claims": []
+    },
+    {
+      "id": "E:BR-ALG-GRP>concerns>PR:quintic-solvability",
+      "from": "BR-ALG-GRP",
+      "to": "PR:quintic-solvability",
+      "type": "concerns",
+      "directed": true,
+      "time": {
+        "from": null,
+        "to": null,
+        "precision": "unknown"
+      },
+      "source": {
+        "locator": "通行教材定义/结构约定"
+      },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.9,
+      "weight": null,
+      "kind": null,
+      "role": null,
+      "text_ref": null,
+      "note": "",
+      "claims": []
+    },
+    {
+      "id": "E:BR-ALG-GRP>concerns>TY:abstract-group-theory",
+      "from": "BR-ALG-GRP",
+      "to": "TY:abstract-group-theory",
+      "type": "concerns",
+      "directed": true,
+      "time": {
+        "from": null,
+        "to": null,
+        "precision": "unknown"
+      },
+      "source": {
+        "locator": "通行教材定义/结构约定"
+      },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.9,
+      "weight": null,
+      "kind": null,
+      "role": null,
+      "text_ref": null,
+      "note": "",
+      "claims": []
+    },
+    {
+      "id": "E:BR-ALG-GRP>concerns>TY:erlangen-program",
+      "from": "BR-ALG-GRP",
+      "to": "TY:erlangen-program",
+      "type": "concerns",
+      "directed": true,
+      "time": {
+        "from": null,
+        "to": null,
+        "precision": "unknown"
+      },
+      "source": {
+        "locator": "通行教材定义/结构约定"
+      },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.9,
+      "weight": null,
+      "kind": null,
+      "role": null,
+      "text_ref": null,
+      "note": "",
+      "claims": []
+    },
+    {
+      "id": "E:BR-ALG-GRP>concerns>TX:jordan-1870",
+      "from": "BR-ALG-GRP",
+      "to": "TX:jordan-1870",
+      "type": "concerns",
+      "directed": true,
+      "time": {
+        "from": null,
+        "to": null,
+        "precision": "unknown"
+      },
+      "source": {
+        "locator": "通行教材定义/结构约定"
+      },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.9,
+      "weight": null,
+      "kind": null,
+      "role": null,
+      "text_ref": null,
+      "note": "",
+      "claims": []
+    },
+    {
+      "id": "E:TP:abstract-algebra-group>anchors>CO:group",
+      "from": "TP:abstract-algebra-group",
+      "to": "CO:group",
+      "type": "anchors",
+      "directed": true,
+      "time": {
+        "from": null,
+        "to": null,
+        "precision": "unknown"
+      },
+      "source": {
+        "locator": "通行教材定义/结构约定"
+      },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.9,
+      "weight": null,
+      "kind": null,
+      "role": null,
+      "text_ref": null,
+      "note": "",
+      "claims": []
+    }
+  ]
+}

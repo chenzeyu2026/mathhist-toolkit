@@ -1,0 +1,12 @@
+规模试验输出（pyshacl 0.40.2 + rdflib 7.6.0）
+方法：把 group-theory 样板图整体复制 N 份（节点/边 ID 加 ~i 后缀），
+形状集为 shacl-shapes.ttl，inference="none"。
+
+   节点     边 | 转换   | 校验     | conforms
+     51     80 | 0.01s |   1.54s | False（含 1 处真实违例）
+   1020   1600 | 0.20s |  34.41s | False
+   3060   4800 | 0.73s | 114.29s | False
+   5100   8000 | 1.54s | 194.32s | False
+
+约 24 ms/边，主要开销为 6 条 SPARQL 形状的逐边求值；
+重复边检查为 O(n²)，更大规模会转为超线性。
