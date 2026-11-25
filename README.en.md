@@ -31,7 +31,7 @@ cd mathhist-toolkit/tools
 # 1) Document level: 3 examples, all 0 error / 0 warn / 0 info, exit 0
 py -3 -m mathlint check ../prompts/examples
 
-# 2) Graph level: 7 bundles, 0 errors / 60 warnings; the 60 warnings are pre-existing missing node fields
+# 2) Graph level: 10 bundles, 0 errors / 60 warnings; the 60 warnings are pre-existing missing node fields
 py -3 -m graphlint check-all
 
 # 3) Generated artifacts in sync: exit 0
@@ -106,13 +106,13 @@ prose ──〔A/S/U/F tags〕──> mathlint
 | Edge types | 31 |
 | Global invariants | 7 |
 | Branches | 62 (including proposed extension slots) |
-| Graph bundles | 7 (2 samples + 5 pilots) |
+| Graph bundles | 10 (2 samples + 8 pilots) |
 | `graphlint check-all` | **0 errors / 60 warnings** (60 existing missing node fields) |
 | `graphlint check-all --strict` | 60 errors / 0 warnings (existing gaps promoted) |
 | Unit tests | 102, all passing (`mathlint` 77 + `graphlint` 25) |
-| Tracked files | 132 |
+| Tracked files | 135 |
 
-The 60 warnings are in `pilots/calculus` (52), `pilots/group-theory` (7) and `samples/group-theory` (1): historical missing fields such as `chains` and `occurrences`, not introduced by the latest change; the newly added `pilots/pde`, `pilots/variational-calculus` and `pilots/dynamical-systems` all report 0 errors / 0 warnings. Cross-bundle IDs are now scoped: non-branch entities in the `group-theory` sample carry a `.sample` suffix, and `PE:cauchy` / `PE:klein` in the group-theory pilot carry `.group-theory`; `BR-*` nodes and `parent_of` / `cross_class` edges are catalog projections from `branches.json` and are exempted by catalog ID.
+The 60 warnings are in `pilots/calculus` (52), `pilots/group-theory` (7) and `samples/group-theory` (1): historical missing fields such as `chains` and `occurrences`, not introduced by the latest change; the newly added `pilots/pde`, `pilots/variational-calculus`, `pilots/dynamical-systems`, `pilots/lie-groups`, `pilots/stochastic-analysis` and `pilots/non-classical-logic` all report 0 errors / 0 warnings. Cross-bundle IDs are now scoped: non-branch entities in the `group-theory` sample carry a `.sample` suffix, and `PE:cauchy` / `PE:klein` in the group-theory pilot carry `.group-theory`; `BR-*` nodes and `parent_of` / `cross_class` edges are catalog projections from `branches.json` and are exempted by catalog ID.
 
 ## Tools
 

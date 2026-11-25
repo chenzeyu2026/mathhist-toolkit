@@ -1,0 +1,287 @@
+{
+  "schema_version": "0.2",
+  "meta": {
+    "title": "随机分析（第二批扩建：从 Itô 积分与 Itô 公式向过去取景）",
+    "scope": "只验证结构，不是完整条目；节点 12、边 20。",
+    "note": "BR-PROB-ITOCALC 在 branches.json 中为 proposed 扩展槽，不进 62 计数；branch.parents 留空，父关系只写在 edges[]。原始文本定位到论文一级，未见原刊，claim 按 S 或 U 定级。"
+  },
+  "nodes": [
+    {
+      "id": "BR-PROB-ITOCALC",
+      "type": "branch",
+      "schema_version": "0.2",
+      "labels": { "zh": "随机分析", "en": "stochastic analysis" },
+      "status": "proposed",
+      "summary": "对随机过程做积分与微分、并研究随机微分方程的理论。",
+      "view_classes": ["概率与统计"],
+      "parents": [],
+      "scope_definition": "以随机积分、随机微分方程与马氏过程的路径分析为对象；一般随机过程结构仍归随机过程。",
+      "affected_layers": { "problem": "high", "failure": "medium", "notation": "high", "text": "medium" },
+      "claims": [],
+      "provenance": { "created_by": "branch-expansion-batch2", "created_at": "2026-11-25", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "PR:stochastic-integral",
+      "type": "problem",
+      "schema_version": "0.2",
+      "labels": { "zh": "随机积分问题", "en": "stochastic integration" },
+      "status": "resolved",
+      "summary": "布朗运动路径几乎必然不可求导且二次变差非零，如何定义沿它的积分。",
+      "original_formulation": {
+        "text": "给定布朗运动 B_t 与适应过程 H_t，如何定义 ∫ H dB，使积分保持鞅性等性质。",
+        "language": "en",
+        "author": "PE:ito",
+        "year": 1944,
+        "source": { "locator": "Itô 1944, Stochastic integral, Proc. Imp. Acad. Tokyo 20, 519–524", "grade": "S", "attestation": "later_report" },
+        "grade": "S",
+        "attestation": "later_report"
+      },
+      "problem_kind": "construction",
+      "asked_as": ["怎么对布朗运动积分", "随机积分怎么定义"],
+      "related_branches": ["BR-PROB-ITOCALC"],
+      "claims": [
+        {
+          "id": "CLM:PR:stochastic-integral.1",
+          "statement": "Itô 1944 年论文给出随机积分的构造，是随机分析作为独立领域的起点。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "Itô 1944, Proc. Imp. Acad. Tokyo 20；据通行数学史转述" }
+        }
+      ],
+      "provenance": { "created_by": "branch-expansion-batch2", "created_at": "2026-11-25", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "TH:ito-formula",
+      "type": "theorem",
+      "schema_version": "0.2",
+      "labels": { "zh": "Itô 公式", "en": "Itô's formula" },
+      "status": "active",
+      "summary": "随机过程复合函数的链式法则，比经典链式法则多出二阶变差项。",
+      "statement": "若 X_t 满足 dX = μ dt + σ dB，f 光滑，则 df(X_t) = f′ dX + ½ f″ σ² dt。",
+      "assumptions": ["X 为 Itô 过程", "f 二阶连续可微", "积分按 Itô 意义"],
+      "proof_status": "proved",
+      "namesake_note": "1944 年论文给出积分；1951 年论文给出微分公式的完整表述。",
+      "claims": [
+        {
+          "id": "CLM:TH:ito-formula.1",
+          "statement": "Itô 1951 年论文给出随机微分与复合函数公式，后称 Itô 公式。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "Itô 1951, On a formula concerning stochastic differentials, Nagoya Math. J. 3, 55–65" }
+        }
+      ],
+      "provenance": { "created_by": "branch-expansion-batch2", "created_at": "2026-11-25", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "ME:ito-integral",
+      "type": "method",
+      "schema_version": "0.2",
+      "labels": { "zh": "Itô 积分构造", "en": "Itô integral construction" },
+      "status": "active",
+      "summary": "先对简单适应过程定义积分，再用 L² 极限推广到一般适应过程。",
+      "kind": "construction",
+      "input": "布朗运动与适应过程",
+      "output": "保持鞅性的随机积分",
+      "first_use": { "by": "PE:ito", "year": 1944, "locator": "Itô 1944；未见原刊", "grade": "S" },
+      "applies_to": ["PR:stochastic-integral"],
+      "claims": [],
+      "provenance": { "created_by": "branch-expansion-batch2", "created_at": "2026-11-25", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "CO:brownian-motion",
+      "type": "concept",
+      "schema_version": "0.2",
+      "labels": { "zh": "布朗运动", "en": "Brownian motion" },
+      "status": "active",
+      "summary": "连续时间、独立平稳增量的高斯过程；路径连续但几乎必然处处不可导。",
+      "definition": "满足 B_0=0、独立增量、增量服从 N(0,t−s) 且路径连续的随机过程。",
+      "definition_source": { "grade": "F", "locator": "通行教材定义；定义本身不是历史对象" },
+      "occurrences": [
+        { "civilization": "欧洲", "region": "美国/法国", "language": "en", "year_from": 1923, "precision": "year", "dating_basis": "Wiener 1923 年构造", "independence": "independent" }
+      ],
+      "claims": [
+        {
+          "id": "CLM:CO:brownian-motion.1",
+          "statement": "Wiener 1923 年给出布朗运动的严格数学构造，故亦称维纳过程。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "Wiener 1923, Differential space, J. Math. Phys. 2, 131–174；页码待补" }
+        }
+      ],
+      "provenance": { "created_by": "branch-expansion-batch2", "created_at": "2026-11-25", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "CO:quadratic-variation",
+      "type": "concept",
+      "schema_version": "0.2",
+      "labels": { "zh": "二次变差", "en": "quadratic variation" },
+      "status": "active",
+      "summary": "沿时间分割的增量平方和极限；布朗运动的二次变差等于时间长度。",
+      "definition": "对过程 X，[X]_t = lim_{‖π‖→0} Σ (X_{t_{i+1}} − X_{t_i})²。",
+      "definition_source": { "grade": "F", "locator": "通行教材定义；定义本身不是历史对象" },
+      "occurrences": [
+        { "civilization": "欧洲", "region": "日本/美国", "language": "en", "year_from": 1944, "precision": "decade", "dating_basis": "Itô 1944 与后续随机分析文献", "independence": "independent" }
+      ],
+      "claims": [
+        {
+          "id": "CLM:CO:quadratic-variation.1",
+          "statement": "布朗运动的二次变差不为零，是其路径不可求导、经典链式法则失效的根源。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "通行随机分析教材；原始文献页码待补" }
+        }
+      ],
+      "provenance": { "created_by": "branch-expansion-batch2", "created_at": "2026-11-25", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "CO:martingale",
+      "type": "concept",
+      "schema_version": "0.2",
+      "labels": { "zh": "鞅", "en": "martingale" },
+      "status": "active",
+      "summary": "给定当前信息，未来条件期望等于当前值的随机过程。",
+      "definition": "若 E[X_{t+1} | F_t] = X_t，则称 X 关于滤子 F 为鞅。",
+      "definition_source": { "grade": "F", "locator": "通行教材定义；定义本身不是历史对象" },
+      "occurrences": [
+        { "civilization": "欧洲", "region": "法国", "language": "fr", "year_from": 1939, "precision": "year", "dating_basis": "Ville 1939 的鞅论表述", "independence": "independent" }
+      ],
+      "claims": [
+        {
+          "id": "CLM:CO:martingale.1",
+          "statement": "'martingale' 作为概率概念由 Ville 1939 系统使用；Doob 1953 将其发展为一般理论。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "Ville 1939；Doob 1953, Stochastic Processes；页码待补" }
+        }
+      ],
+      "provenance": { "created_by": "branch-expansion-batch2", "created_at": "2026-11-25", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "PE:ito",
+      "type": "person",
+      "schema_version": "0.2",
+      "labels": { "zh": "伊藤清", "en": "Kiyosi Itô" },
+      "status": "historical",
+      "summary": "日本数学家；随机积分与 Itô 公式的创立者。",
+      "name_variants": ["Kiyosi Itô", "Kiyoshi Ito", "伊藤清"],
+      "dates": { "birth": 1915, "death": 2008, "precision": "year" },
+      "claims": [
+        {
+          "id": "CLM:PE:ito.1",
+          "statement": "伊藤清生卒 1915–2008。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "通行传记资料；DSB 未收，页码待补" }
+        }
+      ],
+      "provenance": { "created_by": "branch-expansion-batch2", "created_at": "2026-11-25", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "PE:wiener",
+      "type": "person",
+      "schema_version": "0.2",
+      "labels": { "zh": "诺伯特·维纳", "en": "Norbert Wiener" },
+      "status": "historical",
+      "summary": "美国数学家；1923 年给出布朗运动的严格构造。",
+      "name_variants": ["Norbert Wiener", "N. Wiener", "维纳"],
+      "dates": { "birth": 1894, "death": 1964, "precision": "year" },
+      "claims": [
+        {
+          "id": "CLM:PE:wiener.1",
+          "statement": "维纳生卒 1894–1964。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "DSB 'Wiener, Norbert' 条目；页码待补" }
+        }
+      ],
+      "provenance": { "created_by": "branch-expansion-batch2", "created_at": "2026-11-25", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "TX:ito-1944",
+      "type": "text",
+      "schema_version": "0.2",
+      "labels": { "zh": "伊藤清《随机积分》（1944）", "en": "Itô, Stochastic integral (1944)" },
+      "status": "historical",
+      "summary": "随机积分构造的原始论文，载于日本帝国科学院纪事；本图未见原刊。",
+      "title_variants": ["Stochastic integral", "確率積分"],
+      "text_type": "article",
+      "chains": [
+        { "stemma_branch": "printed", "note": "Proc. Imp. Acad. Tokyo 20 (1944), 519–524；本图未取得原刊影像" }
+      ],
+      "claims": [
+        {
+          "id": "CLM:TX:ito-1944.1",
+          "statement": "该文 1944 年刊于 Proceedings of the Imperial Academy (Tokyo) 第 20 卷。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "Proc. Imp. Acad. Tokyo 20 (1944)；卷页据通行书目，待核原刊" }
+        }
+      ],
+      "provenance": { "created_by": "branch-expansion-batch2", "created_at": "2026-11-25", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "TX:ito-1951",
+      "type": "text",
+      "schema_version": "0.2",
+      "labels": { "zh": "伊藤清《关于随机微分的一个公式》（1951）", "en": "Itô, On a formula concerning stochastic differentials (1951)" },
+      "status": "historical",
+      "summary": "给出 Itô 公式完整表述的论文；本图未见原刊。",
+      "title_variants": ["On a formula concerning stochastic differentials"],
+      "text_type": "article",
+      "chains": [
+        { "stemma_branch": "printed", "note": "Nagoya Mathematical Journal 3 (1951), 55–65；本图未取得原刊影像" }
+      ],
+      "claims": [
+        {
+          "id": "CLM:TX:ito-1951.1",
+          "statement": "该文 1951 年刊于 Nagoya Mathematical Journal 第 3 卷。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "Nagoya Math. J. 3 (1951)；卷页据通行书目，待核原刊" }
+        }
+      ],
+      "provenance": { "created_by": "branch-expansion-batch2", "created_at": "2026-11-25", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "TP:quadratic-variation",
+      "type": "teaching_point",
+      "schema_version": "0.2",
+      "labels": { "zh": "随机积分不能逐轨线用黎曼积分", "en": "stochastic integrals are not pathwise Riemann integrals" },
+      "status": "active",
+      "summary": "挂在随机过程/随机分析入门；纠正'积分就是求原函数'的直觉。",
+      "course": "随机过程（或随机分析初步）",
+      "textbook": { "title": "随机过程（通行教材）", "edition": "以本校选用版为准" },
+      "chapter": "布朗运动与随机积分",
+      "learning_objective": "能说明布朗运动二次变差非零，并解释 Itô 公式多出的那一项从哪来。",
+      "prerequisite_concepts": ["CO:brownian-motion", "CO:quadratic-variation"],
+      "common_misconception": "随机积分可以像普通积分那样逐条路径求原函数。",
+      "history_objects": ["PR:stochastic-integral", "ME:ito-integral", "TH:ito-formula"],
+      "output_form": "card",
+      "evidence": { "status": "not_applicable", "basis": "curriculum" },
+      "claims": [],
+      "provenance": { "created_by": "branch-expansion-batch2", "created_at": "2026-11-25", "sources_checked": "none", "schema_version": "0.2" }
+    }
+  ],
+  "edges": [
+    { "id": "E:BR-PROB-ITOCALC>concerns>PR:stochastic-integral", "from": "BR-PROB-ITOCALC", "to": "PR:stochastic-integral", "type": "concerns", "directed": true, "time": { "from": null, "to": null, "precision": "unknown" }, "source": { "locator": "本框架分支定义" }, "grade": "F", "attestation": "textbook_simplification", "confidence": 0.95, "note": "索引边，不参与推理。" },
+    { "id": "E:BR-PROB-ITOCALC>concerns>CO:brownian-motion", "from": "BR-PROB-ITOCALC", "to": "CO:brownian-motion", "type": "concerns", "directed": true, "time": { "from": null, "to": null, "precision": "unknown" }, "source": { "locator": "本框架分支定义" }, "grade": "F", "attestation": "textbook_simplification", "confidence": 0.95, "note": "索引边，不参与推理。" },
+    { "id": "E:BR-PROB-ITOCALC>concerns>CO:quadratic-variation", "from": "BR-PROB-ITOCALC", "to": "CO:quadratic-variation", "type": "concerns", "directed": true, "time": { "from": null, "to": null, "precision": "unknown" }, "source": { "locator": "本框架分支定义" }, "grade": "F", "attestation": "textbook_simplification", "confidence": 0.9, "note": "索引边，不参与推理。" },
+    { "id": "E:TH:ito-formula>resolves>PR:stochastic-integral", "from": "TH:ito-formula", "to": "PR:stochastic-integral", "type": "resolves", "directed": true, "time": { "from": 1951, "to": 1951, "precision": "year" }, "claimant": "PE:ito", "grade": "S", "attestation": "later_report", "confidence": 0.8, "note": "公式解决的是'怎么算'，积分存在性由 1944 年构造解决。" },
+    { "id": "E:TH:ito-formula>depends_on>CO:quadratic-variation", "from": "TH:ito-formula", "to": "CO:quadratic-variation", "type": "depends_on", "directed": true, "time": { "from": null, "to": null, "precision": "unknown" }, "source": { "locator": "定理的现代表述" }, "grade": "F", "attestation": "textbook_simplification", "confidence": 0.9 },
+    { "id": "E:TH:ito-formula>depends_on>CO:brownian-motion", "from": "TH:ito-formula", "to": "CO:brownian-motion", "type": "depends_on", "directed": true, "time": { "from": null, "to": null, "precision": "unknown" }, "source": { "locator": "定理的现代表述" }, "grade": "F", "attestation": "textbook_simplification", "confidence": 0.9 },
+    { "id": "E:PR:stochastic-integral>uses_method>ME:ito-integral", "from": "PR:stochastic-integral", "to": "ME:ito-integral", "type": "uses_method", "directed": true, "time": { "from": 1944, "to": 1944, "precision": "year" }, "claimant": "PE:ito", "grade": "S", "attestation": "later_report", "confidence": 0.85 },
+    { "id": "E:ME:ito-integral>depends_on>CO:brownian-motion", "from": "ME:ito-integral", "to": "CO:brownian-motion", "type": "depends_on", "directed": true, "time": { "from": null, "to": null, "precision": "unknown" }, "source": { "locator": "方法的现代表述" }, "grade": "F", "attestation": "textbook_simplification", "confidence": 0.9 },
+    { "id": "E:ME:ito-integral>depends_on>CO:martingale", "from": "ME:ito-integral", "to": "CO:martingale", "type": "depends_on", "directed": true, "time": { "from": null, "to": null, "precision": "unknown" }, "source": { "locator": "方法的现代表述" }, "grade": "F", "attestation": "textbook_simplification", "confidence": 0.8, "note": "伊藤积分保持鞅性，是该方法的核心性质。" },
+    { "id": "E:PE:wiener>introduced>CO:brownian-motion", "from": "PE:wiener", "to": "CO:brownian-motion", "type": "introduced", "directed": true, "time": { "from": 1923, "to": 1923, "precision": "year" }, "source": { "locator": "Wiener 1923, Differential space" }, "grade": "S", "attestation": "later_report", "confidence": 0.85, "note": "指严格构造，不是首次提出布朗运动。" },
+    { "id": "E:PE:ito>poses>PR:stochastic-integral", "from": "PE:ito", "to": "PR:stochastic-integral", "type": "poses", "directed": true, "time": { "from": 1944, "to": 1944, "precision": "year" }, "source": { "locator": "Itô 1944；未见原刊" }, "grade": "S", "attestation": "later_report", "confidence": 0.85 },
+    { "id": "E:PE:ito>proved>TH:ito-formula", "from": "PE:ito", "to": "TH:ito-formula", "type": "proved", "directed": true, "time": { "from": 1951, "to": 1951, "precision": "year" }, "source": { "locator": "Itô 1951；未见原刊" }, "grade": "S", "attestation": "later_report", "confidence": 0.85 },
+    { "id": "E:PE:ito>introduced>ME:ito-integral", "from": "PE:ito", "to": "ME:ito-integral", "type": "introduced", "directed": true, "time": { "from": 1944, "to": 1944, "precision": "year" }, "source": { "locator": "Itô 1944；未见原刊" }, "grade": "S", "attestation": "later_report", "confidence": 0.85 },
+    { "id": "E:PE:ito>contributed_to>TX:ito-1944", "from": "PE:ito", "to": "TX:ito-1944", "type": "contributed_to", "directed": true, "time": { "from": 1944, "to": 1944, "precision": "year" }, "source": { "locator": "论文署名" }, "role": "author", "grade": "S", "attestation": "later_report", "confidence": 0.9 },
+    { "id": "E:PE:ito>contributed_to>TX:ito-1951", "from": "PE:ito", "to": "TX:ito-1951", "type": "contributed_to", "directed": true, "time": { "from": 1951, "to": 1951, "precision": "year" }, "source": { "locator": "论文署名" }, "role": "author", "grade": "S", "attestation": "later_report", "confidence": 0.9 },
+    { "id": "E:TX:ito-1944>supports>PR:stochastic-integral", "from": "TX:ito-1944", "to": "PR:stochastic-integral", "type": "supports", "directed": true, "time": { "from": 1944, "to": 1944, "precision": "year" }, "source": { "locator": "论文正文；本图未见原刊" }, "grade": "S", "attestation": "later_report", "confidence": 0.8 },
+    { "id": "E:TX:ito-1951>supports>TH:ito-formula", "from": "TX:ito-1951", "to": "TH:ito-formula", "type": "supports", "directed": true, "time": { "from": 1951, "to": 1951, "precision": "year" }, "source": { "locator": "论文正文；本图未见原刊" }, "grade": "S", "attestation": "later_report", "confidence": 0.8 },
+    { "id": "E:TP:quadratic-variation>anchors>TH:ito-formula", "from": "TP:quadratic-variation", "to": "TH:ito-formula", "type": "anchors", "directed": true, "time": { "from": null, "to": null, "precision": "unknown" }, "source": { "locator": "课程大纲" }, "grade": "F", "attestation": "textbook_simplification", "confidence": 0.9, "note": "教学挂点只做索引，不承担史学论断。" },
+    { "id": "E:TP:quadratic-variation>anchors>CO:quadratic-variation", "from": "TP:quadratic-variation", "to": "CO:quadratic-variation", "type": "anchors", "directed": true, "time": { "from": null, "to": null, "precision": "unknown" }, "source": { "locator": "课程大纲" }, "grade": "F", "attestation": "textbook_simplification", "confidence": 0.9 },
+    { "id": "E:TP:quadratic-variation>anchors>ME:ito-integral", "from": "TP:quadratic-variation", "to": "ME:ito-integral", "type": "anchors", "directed": true, "time": { "from": null, "to": null, "precision": "unknown" }, "source": { "locator": "课程大纲" }, "grade": "F", "attestation": "textbook_simplification", "confidence": 0.9 }
+  ]
+}

@@ -1,0 +1,323 @@
+{
+  "schema_version": "0.2",
+  "meta": {
+    "title": "李群与李代数（第二批扩建：从连续变换群向过去取景）",
+    "scope": "只验证结构，不是完整条目；节点 14、边 22。",
+    "note": "BR-ALG-LIE 在 branches.json 中为 proposed 扩展槽，不进 62 计数；branch.parents 留空，父关系只写在 edges[]。原始文本定位到著作/论文一级，未见原刊，claim 按 S 或 U 定级。"
+  },
+  "nodes": [
+    {
+      "id": "BR-ALG-LIE",
+      "type": "branch",
+      "schema_version": "0.2",
+      "labels": { "zh": "李群与李代数", "en": "Lie groups and Lie algebras" },
+      "status": "proposed",
+      "summary": "连续变换群及其无穷小代数；把对称性写成可计算的线性对象。",
+      "view_classes": ["代数与数论"],
+      "parents": [],
+      "scope_definition": "以连续（局部）变换群与李代数结构为对象；离散群仍归群论，一般流形结构仍归微分几何。",
+      "affected_layers": { "problem": "high", "failure": "medium", "notation": "high", "text": "medium" },
+      "claims": [],
+      "provenance": { "created_by": "branch-expansion-batch2", "created_at": "2026-11-25", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "PR:continuous-transformation-group",
+      "type": "problem",
+      "schema_version": "0.2",
+      "labels": { "zh": "连续变换群问题", "en": "continuous transformation groups" },
+      "status": "resolved",
+      "summary": "如何用有限个参数描述一族连续变换，并把群结构化为可计算的对象。",
+      "original_formulation": {
+        "text": "给定一族依赖有限个连续参数的变换，求其结构不变量与分类。",
+        "language": "de",
+        "author": "PE:lie",
+        "year": 1874,
+        "source": { "locator": "Sophus Lie 1870s–80s 的变换群论文；据 DSB 条目转述，未见原刊", "grade": "S", "attestation": "later_report" },
+        "grade": "S",
+        "attestation": "later_report"
+      },
+      "problem_kind": "classification",
+      "asked_as": ["连续变换群怎么分类", "参数变换的群结构是什么"],
+      "related_branches": ["BR-ALG-LIE"],
+      "claims": [
+        {
+          "id": "CLM:PR:continuous-transformation-group.1",
+          "statement": "李在 1870s–80s 把连续变换群作为独立对象研究，目标是像置换群那样做结构分类。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "DSB 'Lie, Marius Sophus' 条目与通行数学史；页码待补" }
+        }
+      ],
+      "provenance": { "created_by": "branch-expansion-batch2", "created_at": "2026-11-25", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "TH:lie-fundamental-theorems",
+      "type": "theorem",
+      "schema_version": "0.2",
+      "labels": { "zh": "李的三基本定理", "en": "Lie's three fundamental theorems" },
+      "status": "active",
+      "summary": "局部李群由其李代数决定；结构常数满足反对称与雅可比，且可实现为局部群。",
+      "statement": "局部李群的结构由单位元处的李代数决定；李代数的结构常数满足反对称性与雅可比恒等式，并在局部可实现为变换群。",
+      "assumptions": ["局部李群", "有限维", "实或复系数"],
+      "proof_status": "proved",
+      "namesake_note": "三条定理的编号与表述在不同文献中略有差异；此处取'局部群↔李代数'的合并表述。",
+      "claims": [
+        {
+          "id": "CLM:TH:lie-fundamental-theorems.1",
+          "statement": "李的三基本定理建立了局部李群与其李代数之间的对应，是李群理论的结构基础。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "Lie 1888–1893, Theorie der Transformationsgruppen；据通行教材与数学史转述" }
+        }
+      ],
+      "provenance": { "created_by": "branch-expansion-batch2", "created_at": "2026-11-25", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "TH:cartan-classification",
+      "type": "theorem",
+      "schema_version": "0.2",
+      "labels": { "zh": "复半单李代数的分类", "en": "classification of complex semisimple Lie algebras" },
+      "status": "active",
+      "summary": "复半单李代数由根系（Dynkin 图的前身）分类，归结为 A–G 型。",
+      "statement": "复半单李代数可分解为单理想的直和，单理想由根系分类，对应 A_n、B_n、C_n、D_n 与例外型 E、F、G。",
+      "assumptions": ["复系数", "有限维", "半单"],
+      "proof_status": "proved",
+      "namesake_note": "Killing 1888–1890 给出根系与分类雏形，Cartan 1894 学位论文完成分类；Dynkin 图是 1947 年后的表述。",
+      "claims": [
+        {
+          "id": "CLM:TH:cartan-classification.1",
+          "statement": "Killing 在 1888–1890 年引入根系并给出分类雏形，Cartan 1894 年学位论文完成复半单李代数分类。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "Killing 1888–1890, Math. Ann.；Cartan 1894 学位论文；据通行数学史转述" }
+        }
+      ],
+      "provenance": { "created_by": "branch-expansion-batch2", "created_at": "2026-11-25", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "ME:infinitesimal-transformation",
+      "type": "method",
+      "schema_version": "0.2",
+      "labels": { "zh": "无穷小变换方法", "en": "method of infinitesimal transformations" },
+      "status": "active",
+      "summary": "把连续变换在单位元处展开，用向量场与括号运算研究群结构。",
+      "kind": "proof_method",
+      "input": "含参数的变换族",
+      "output": "无穷小生成元及其括号关系",
+      "first_use": { "by": "PE:lie", "year": 1874, "locator": "Lie 1870s 变换群论文；未见原刊", "grade": "S" },
+      "applies_to": ["PR:continuous-transformation-group"],
+      "claims": [],
+      "provenance": { "created_by": "branch-expansion-batch2", "created_at": "2026-11-25", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "CO:lie-group",
+      "type": "concept",
+      "schema_version": "0.2",
+      "labels": { "zh": "李群", "en": "Lie group" },
+      "status": "active",
+      "summary": "既是群又是光滑流形、群运算光滑的数学对象。",
+      "definition": "一个群 G 同时是光滑流形，且乘法与取逆映射光滑。",
+      "definition_source": { "grade": "F", "locator": "通行教材定义；定义本身不是历史对象" },
+      "occurrences": [
+        { "civilization": "欧洲", "region": "挪威/德国", "language": "de", "year_from": 1880, "precision": "decade", "dating_basis": "李的变换群研究", "independence": "independent" }
+      ],
+      "claims": [
+        {
+          "id": "CLM:CO:lie-group.1",
+          "statement": "'李群'这一名称是后世所加；李本人称之为连续变换群。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "通行数学史与 DSB 条目；页码待补" }
+        }
+      ],
+      "provenance": { "created_by": "branch-expansion-batch2", "created_at": "2026-11-25", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "CO:lie-algebra",
+      "type": "concept",
+      "schema_version": "0.2",
+      "labels": { "zh": "李代数", "en": "Lie algebra" },
+      "status": "active",
+      "summary": "带反对称双线性括号且满足雅可比恒等式的向量空间。",
+      "definition": "向量空间 g 配以双线性括号 [·,·]，满足 [x,x]=0 与雅可比恒等式。",
+      "definition_source": { "grade": "F", "locator": "通行教材定义；定义本身不是历史对象" },
+      "occurrences": [
+        { "civilization": "欧洲", "region": "挪威/德国", "language": "de", "year_from": 1880, "precision": "decade", "dating_basis": "李的无穷小变换与结构常数研究", "independence": "independent" }
+      ],
+      "claims": [
+        {
+          "id": "CLM:CO:lie-algebra.1",
+          "statement": "李代数作为独立代数结构是 20 世纪前期从李的无穷小变换中抽象出来的；'Lie algebra' 名称晚于李。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "通行数学史；具体命名年代待核" }
+        }
+      ],
+      "provenance": { "created_by": "branch-expansion-batch2", "created_at": "2026-11-25", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "CO:structure-constants",
+      "type": "concept",
+      "schema_version": "0.2",
+      "labels": { "zh": "结构常数", "en": "structure constants" },
+      "status": "active",
+      "summary": "李代数在一组基下的括号系数；满足反对称与雅可比。",
+      "definition": "若 [e_i,e_j] = Σ c_{ij}^k e_k，则 c_{ij}^k 为结构常数。",
+      "definition_source": { "grade": "F", "locator": "通行教材定义；定义本身不是历史对象" },
+      "occurrences": [
+        { "civilization": "欧洲", "region": "德国", "language": "de", "year_from": 1888, "precision": "year", "dating_basis": "Killing 1888 年连续变换群论文", "independence": "independent" }
+      ],
+      "claims": [
+        {
+          "id": "CLM:CO:structure-constants.1",
+          "statement": "Killing 1888 年起用结构常数研究连续变换群的分类。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "Killing 1888, Die Zusammensetzung der stetigen endlichen Transformationsgruppen, Math. Ann.；页码待补" }
+        }
+      ],
+      "provenance": { "created_by": "branch-expansion-batch2", "created_at": "2026-11-25", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "CO:root-system",
+      "type": "concept",
+      "schema_version": "0.2",
+      "labels": { "zh": "根系", "en": "root system" },
+      "status": "active",
+      "summary": "半单李代数伴随表示权重的几何配置，是分类的组合数据。",
+      "definition": "欧氏空间中满足反射封闭与整性条件的有限向量集。",
+      "definition_source": { "grade": "F", "locator": "通行教材定义；定义本身不是历史对象" },
+      "occurrences": [
+        { "civilization": "欧洲", "region": "德国", "language": "de", "year_from": 1888, "precision": "decade", "dating_basis": "Killing 1888–1890 的分类工作", "independence": "independent" }
+      ],
+      "claims": [],
+      "provenance": { "created_by": "branch-expansion-batch2", "created_at": "2026-11-25", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "PE:lie",
+      "type": "person",
+      "schema_version": "0.2",
+      "labels": { "zh": "马里乌斯·索弗斯·李", "en": "Marius Sophus Lie" },
+      "status": "historical",
+      "summary": "挪威数学家；连续变换群理论的创立者。",
+      "name_variants": ["Sophus Lie", "M. S. Lie", "李"],
+      "dates": { "birth": 1842, "death": 1899, "precision": "year" },
+      "claims": [
+        {
+          "id": "CLM:PE:lie.1",
+          "statement": "李生卒 1842–1899。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "DSB 'Lie, Marius Sophus' 条目；页码待补" }
+        }
+      ],
+      "provenance": { "created_by": "branch-expansion-batch2", "created_at": "2026-11-25", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "PE:killing",
+      "type": "person",
+      "schema_version": "0.2",
+      "labels": { "zh": "威廉·基灵", "en": "Wilhelm Killing" },
+      "status": "historical",
+      "summary": "德国数学家；引入结构常数与根系，给出半单李代数分类雏形。",
+      "name_variants": ["Wilhelm Killing", "W. Killing", "基灵"],
+      "dates": { "birth": 1847, "death": 1923, "precision": "year" },
+      "claims": [
+        {
+          "id": "CLM:PE:killing.1",
+          "statement": "基灵生卒 1847–1923。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "DSB 'Killing, Wilhelm Karl Joseph' 条目；页码待补" }
+        }
+      ],
+      "provenance": { "created_by": "branch-expansion-batch2", "created_at": "2026-11-25", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "PE:cartan",
+      "type": "person",
+      "schema_version": "0.2",
+      "labels": { "zh": "埃利·嘉当", "en": "Élie Cartan" },
+      "status": "historical",
+      "summary": "法国数学家；1894 年完成复半单李代数分类。",
+      "name_variants": ["Élie Cartan", "Elie Cartan", "嘉当"],
+      "dates": { "birth": 1869, "death": 1951, "precision": "year" },
+      "claims": [
+        {
+          "id": "CLM:PE:cartan.1",
+          "statement": "嘉当生卒 1869–1951。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "DSB 'Cartan, Élie-Joseph' 条目；页码待补" }
+        }
+      ],
+      "provenance": { "created_by": "branch-expansion-batch2", "created_at": "2026-11-25", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "TX:lie-transformationsgruppen",
+      "type": "text",
+      "schema_version": "0.2",
+      "labels": { "zh": "李《变换群理论》三卷（1888–1893）", "en": "Lie, Theorie der Transformationsgruppen I–III (1888–1893)" },
+      "status": "historical",
+      "summary": "连续变换群理论的系统著作，与 Engel 合作完成；本图未见原书。",
+      "title_variants": ["Theorie der Transformationsgruppen", "变换群理论"],
+      "text_type": "treatise",
+      "chains": [
+        { "stemma_branch": "printed", "note": "Leipzig: Teubner，Bd. I 1888、II 1890、III 1893；本图未取得原书影像" }
+      ],
+      "claims": [
+        {
+          "id": "CLM:TX:lie-transformationsgruppen.1",
+          "statement": "《变换群理论》三卷由 Teubner 于 1888、1890、1893 年出版，第三卷与 Engel 合作。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "DSB 'Lie' 条目与通行书目；版次待补" }
+        }
+      ],
+      "provenance": { "created_by": "branch-expansion-batch2", "created_at": "2026-11-25", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "TP:discrete-vs-continuous-symmetry",
+      "type": "teaching_point",
+      "schema_version": "0.2",
+      "labels": { "zh": "离散对称与连续对称不是一回事", "en": "discrete vs continuous symmetry" },
+      "status": "active",
+      "summary": "挂在近世代数或李代数初步；纠正'群论只研究有限群'的课程印象。",
+      "course": "近世代数（或李代数初步）",
+      "textbook": { "title": "近世代数（通行教材）", "edition": "以本校选用版为准" },
+      "chapter": "群论应用或李代数初步",
+      "learning_objective": "能举出连续对称的例子，并说明为什么需要无穷小工具。",
+      "prerequisite_concepts": ["CO:lie-group", "CO:lie-algebra"],
+      "common_misconception": "群论就是有限群；连续对称不需要新的代数结构。",
+      "history_objects": ["PR:continuous-transformation-group", "ME:infinitesimal-transformation", "CO:lie-group"],
+      "output_form": "lecture",
+      "evidence": { "status": "not_applicable", "basis": "curriculum" },
+      "claims": [],
+      "provenance": { "created_by": "branch-expansion-batch2", "created_at": "2026-11-25", "sources_checked": "none", "schema_version": "0.2" }
+    }
+  ],
+  "edges": [
+    { "id": "E:BR-ALG-LIE>concerns>PR:continuous-transformation-group", "from": "BR-ALG-LIE", "to": "PR:continuous-transformation-group", "type": "concerns", "directed": true, "time": { "from": null, "to": null, "precision": "unknown" }, "source": { "locator": "本框架分支定义" }, "grade": "F", "attestation": "textbook_simplification", "confidence": 0.95, "note": "索引边，不参与推理。" },
+    { "id": "E:BR-ALG-LIE>concerns>CO:lie-group", "from": "BR-ALG-LIE", "to": "CO:lie-group", "type": "concerns", "directed": true, "time": { "from": null, "to": null, "precision": "unknown" }, "source": { "locator": "本框架分支定义" }, "grade": "F", "attestation": "textbook_simplification", "confidence": 0.95, "note": "索引边，不参与推理。" },
+    { "id": "E:BR-ALG-LIE>concerns>CO:lie-algebra", "from": "BR-ALG-LIE", "to": "CO:lie-algebra", "type": "concerns", "directed": true, "time": { "from": null, "to": null, "precision": "unknown" }, "source": { "locator": "本框架分支定义" }, "grade": "F", "attestation": "textbook_simplification", "confidence": 0.95, "note": "索引边，不参与推理。" },
+    { "id": "E:TH:lie-fundamental-theorems>resolves>PR:continuous-transformation-group", "from": "TH:lie-fundamental-theorems", "to": "PR:continuous-transformation-group", "type": "resolves", "directed": true, "time": { "from": 1893, "to": 1893, "precision": "year" }, "claimant": "PE:lie", "grade": "S", "attestation": "later_report", "confidence": 0.8, "note": "解决的是结构对应，不是完整分类；分类由 Killing/Cartan 完成。" },
+    { "id": "E:TH:lie-fundamental-theorems>depends_on>CO:lie-algebra", "from": "TH:lie-fundamental-theorems", "to": "CO:lie-algebra", "type": "depends_on", "directed": true, "time": { "from": null, "to": null, "precision": "unknown" }, "source": { "locator": "定理的现代表述" }, "grade": "F", "attestation": "textbook_simplification", "confidence": 0.9 },
+    { "id": "E:TH:lie-fundamental-theorems>depends_on>CO:structure-constants", "from": "TH:lie-fundamental-theorems", "to": "CO:structure-constants", "type": "depends_on", "directed": true, "time": { "from": null, "to": null, "precision": "unknown" }, "source": { "locator": "定理的现代表述" }, "grade": "F", "attestation": "textbook_simplification", "confidence": 0.85 },
+    { "id": "E:TH:cartan-classification>depends_on>CO:lie-algebra", "from": "TH:cartan-classification", "to": "CO:lie-algebra", "type": "depends_on", "directed": true, "time": { "from": null, "to": null, "precision": "unknown" }, "source": { "locator": "定理的现代表述" }, "grade": "F", "attestation": "textbook_simplification", "confidence": 0.9 },
+    { "id": "E:TH:cartan-classification>depends_on>CO:root-system", "from": "TH:cartan-classification", "to": "CO:root-system", "type": "depends_on", "directed": true, "time": { "from": null, "to": null, "precision": "unknown" }, "source": { "locator": "定理的现代表述" }, "grade": "F", "attestation": "textbook_simplification", "confidence": 0.9 },
+    { "id": "E:PR:continuous-transformation-group>uses_method>ME:infinitesimal-transformation", "from": "PR:continuous-transformation-group", "to": "ME:infinitesimal-transformation", "type": "uses_method", "directed": true, "time": { "from": 1874, "to": 1874, "precision": "decade" }, "claimant": "PE:lie", "grade": "S", "attestation": "later_report", "confidence": 0.8 },
+    { "id": "E:ME:infinitesimal-transformation>depends_on>CO:lie-algebra", "from": "ME:infinitesimal-transformation", "to": "CO:lie-algebra", "type": "depends_on", "directed": true, "time": { "from": null, "to": null, "precision": "unknown" }, "source": { "locator": "方法的现代表述" }, "grade": "F", "attestation": "textbook_simplification", "confidence": 0.85, "note": "逻辑前置是后世整理。" },
+    { "id": "E:PE:lie>proved>TH:lie-fundamental-theorems", "from": "PE:lie", "to": "TH:lie-fundamental-theorems", "type": "proved", "directed": true, "time": { "from": 1893, "to": 1893, "precision": "year" }, "source": { "locator": "Lie 1888–1893；未见原书" }, "grade": "S", "attestation": "later_report", "confidence": 0.8 },
+    { "id": "E:PE:lie>poses>PR:continuous-transformation-group", "from": "PE:lie", "to": "PR:continuous-transformation-group", "type": "poses", "directed": true, "time": { "from": 1874, "to": 1874, "precision": "decade" }, "source": { "locator": "Lie 1870s 论文；未见原刊" }, "grade": "S", "attestation": "later_report", "confidence": 0.8 },
+    { "id": "E:PE:lie>introduced>CO:lie-group", "from": "PE:lie", "to": "CO:lie-group", "type": "introduced", "directed": true, "time": { "from": 1874, "to": 1893, "precision": "year" }, "source": { "locator": "Lie 1870s–1893；未见原书" }, "grade": "S", "attestation": "later_report", "confidence": 0.7, "note": "李的对象是'连续变换群'，'李群'名称后出。" },
+    { "id": "E:PE:lie>introduced>ME:infinitesimal-transformation", "from": "PE:lie", "to": "ME:infinitesimal-transformation", "type": "introduced", "directed": true, "time": { "from": 1874, "to": 1893, "precision": "year" }, "source": { "locator": "Lie 1870s–1893；未见原书" }, "grade": "S", "attestation": "later_report", "confidence": 0.75 },
+    { "id": "E:PE:killing>introduced>CO:structure-constants", "from": "PE:killing", "to": "CO:structure-constants", "type": "introduced", "directed": true, "time": { "from": 1888, "to": 1888, "precision": "year" }, "source": { "locator": "Killing 1888, Math. Ann.；未见原刊" }, "grade": "S", "attestation": "later_report", "confidence": 0.8 },
+    { "id": "E:PE:killing>introduced>CO:root-system", "from": "PE:killing", "to": "CO:root-system", "type": "introduced", "directed": true, "time": { "from": 1888, "to": 1890, "precision": "year" }, "source": { "locator": "Killing 1888–1890, Math. Ann.；未见原刊" }, "grade": "S", "attestation": "later_report", "confidence": 0.75, "note": "'根系'名称与现代表述是后世整理。" },
+    { "id": "E:PE:cartan>proved>TH:cartan-classification", "from": "PE:cartan", "to": "TH:cartan-classification", "type": "proved", "directed": true, "time": { "from": 1894, "to": 1894, "precision": "year" }, "source": { "locator": "Cartan 1894 学位论文；未见原刊" }, "grade": "S", "attestation": "later_report", "confidence": 0.8 },
+    { "id": "E:PE:lie>contributed_to>TX:lie-transformationsgruppen", "from": "PE:lie", "to": "TX:lie-transformationsgruppen", "type": "contributed_to", "directed": true, "time": { "from": 1888, "to": 1893, "precision": "year" }, "source": { "locator": "著作署名" }, "role": "author", "grade": "S", "attestation": "later_report", "confidence": 0.9 },
+    { "id": "E:TX:lie-transformationsgruppen>supports>TH:lie-fundamental-theorems", "from": "TX:lie-transformationsgruppen", "to": "TH:lie-fundamental-theorems", "type": "supports", "directed": true, "time": { "from": 1893, "to": 1893, "precision": "year" }, "source": { "locator": "著作正文；本图未见原书" }, "grade": "S", "attestation": "later_report", "confidence": 0.75 },
+    { "id": "E:TP:discrete-vs-continuous-symmetry>anchors>ME:infinitesimal-transformation", "from": "TP:discrete-vs-continuous-symmetry", "to": "ME:infinitesimal-transformation", "type": "anchors", "directed": true, "time": { "from": null, "to": null, "precision": "unknown" }, "source": { "locator": "课程大纲" }, "grade": "F", "attestation": "textbook_simplification", "confidence": 0.9, "note": "教学挂点只做索引，不承担史学论断。" },
+    { "id": "E:TP:discrete-vs-continuous-symmetry>anchors>CO:lie-group", "from": "TP:discrete-vs-continuous-symmetry", "to": "CO:lie-group", "type": "anchors", "directed": true, "time": { "from": null, "to": null, "precision": "unknown" }, "source": { "locator": "课程大纲" }, "grade": "F", "attestation": "textbook_simplification", "confidence": 0.9 },
+    { "id": "E:TP:discrete-vs-continuous-symmetry>anchors>PR:continuous-transformation-group", "from": "TP:discrete-vs-continuous-symmetry", "to": "PR:continuous-transformation-group", "type": "anchors", "directed": true, "time": { "from": null, "to": null, "precision": "unknown" }, "source": { "locator": "课程大纲" }, "grade": "F", "attestation": "textbook_simplification", "confidence": 0.9 }
+  ]
+}

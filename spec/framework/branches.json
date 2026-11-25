@@ -1,7 +1,7 @@
 {
   "schema_version": "0.2",
   "view": "十类 62 分支：从当代数学分支面向过去划出的区域取景轴（本项目自建，源于内容分类方案），只作 view_classes 标签与检索入口，不承担本体结构，不作史学分期。",
-  "counts": { "total": 62, "proposed": 5 },
+  "counts": { "total": 62, "proposed": 8 },
   "notes": "view_classes 可多个；parents 才是结构。kind: taxonomic=分类包含, historical=历史衍生, institutional=建制派生。missing parent BR-ANA-PDE 为 proposed 扩展槽。",
   "edge_projection": {
     "note": "本文件是分支目录（唯一真源），不直接存图。loader 据此生成 BR 节点与 parent_of / cross_class 边，见 spec/object-model.md §8.1。",
@@ -83,6 +83,9 @@
     { "id": "BR-ANA-DYN", "zh": "动力系统", "en": "dynamical systems", "view_classes": ["分析学"], "parents": [{ "id": "BR-ANA-ODE", "kind": "historical" }], "status": "proposed", "reason": "原 62 类缺失；与 ODE 是观点差异" },
     { "id": "BR-STAT-APPL", "zh": "统计学（应用）", "en": "applied statistics", "view_classes": ["概率与统计"], "parents": [{ "id": "BR-STAT-MATH", "kind": "taxonomic" }], "status": "proposed", "reason": "原分类把统计压缩为「数理统计」" },
     { "id": "BR-CS-COMPSCI", "zh": "计算科学（伞）", "en": "computational science", "view_classes": ["计算与算法"], "parents": [], "status": "proposed", "reason": "若确认数值分析与计算数学为同一领域，用此收拢" },
-    { "id": "BR-ANA-VAR", "zh": "变分法", "en": "calculus of variations", "view_classes": ["分析学"], "parents": [{ "id": "BR-ANA-CALC", "kind": "historical" }, { "id": "BR-APP-MECH", "kind": "historical" }], "status": "proposed", "reason": "原 62 类缺失；最速降线/等周问题与欧拉–拉格朗日方程现分散在微积分与力学，无独立挂点" }
+    { "id": "BR-ANA-VAR", "zh": "变分法", "en": "calculus of variations", "view_classes": ["分析学"], "parents": [{ "id": "BR-ANA-CALC", "kind": "historical" }, { "id": "BR-APP-MECH", "kind": "historical" }], "status": "proposed", "reason": "原 62 类缺失；最速降线/等周问题与欧拉–拉格朗日方程现分散在微积分与力学，无独立挂点" },
+    { "id": "BR-ALG-LIE", "zh": "李群与李代数", "en": "Lie groups and Lie algebras", "view_classes": ["代数与数论"], "parents": [{ "id": "BR-ALG-GRP", "kind": "historical" }, { "id": "BR-GEO-DIFF", "kind": "historical" }], "status": "proposed", "reason": "原 62 类缺失；连续变换群与无穷小代数无独立挂点，群论只剩离散群一侧" },
+    { "id": "BR-PROB-ITOCALC", "zh": "随机分析", "en": "stochastic analysis", "view_classes": ["概率与统计"], "parents": [{ "id": "BR-PROB-STOCH", "kind": "historical" }, { "id": "BR-ANA-REAL", "kind": "historical" }], "status": "proposed", "reason": "原 62 类缺失；随机过程只有'过程'没有'分析'，Itô 积分与随机微分方程无挂点" },
+    { "id": "BR-LOG-NCLASSIC", "zh": "非经典逻辑", "en": "non-classical logic", "view_classes": ["逻辑与基础"], "parents": [{ "id": "BR-LOG-MATH", "kind": "historical" }], "status": "proposed", "reason": "原 62 类的'数理逻辑'实际只覆盖经典一阶逻辑；直觉主义、模态、多值逻辑无挂点" }
   ]
 }
