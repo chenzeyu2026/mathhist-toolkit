@@ -7,6 +7,7 @@ All notable changes are recorded here. Format loosely follows Keep a Changelog; 
 
 ### 新增 / Added
 
+- **分支扩建第一批**：新增三个试点图包 `pilots/pde`（15 节点 / 26 边）、`pilots/variational-calculus`（12 节点 / 18 边）、`pilots/dynamical-systems`（13 节点 / 21 边），分别承载偏微分方程、变分法、动力系统；三条分支仍为 `proposed` 扩展槽，不进 62 计数。`branches.json` 的 `proposed` 由 4 条增至 5 条（新增 `BR-ANA-VAR`）。`check-all` 由 4 个图包 / 185 节点 / 291 边变为 7 个图包 / 225 节点 / 356 边，warning 仍为 60 条（全部来自既有图包）。
 - **Issue 结构化**：每条 `Issue` 增加 `rule_id`、`pointer`（RFC 6901 JSON Pointer）与 `severity`；`--json` 输出同步包含，文本输出增加一行 `位置:`。既有 60 条 warning 的 `rule_id` 全部有值。
 - **跨文件 ID 判重**：`check-all` 在单文件检查之外，检查同一节点/边 ID 是否出现在不同图包；报错信息同时给出两个文件与各自的 pointer。
 - **check-all 汇总**：文本与 `--json` 都输出文件数、节点总数、边总数与各严重级计数。

@@ -1,0 +1,544 @@
+{
+  "schema_version": "0.2",
+  "meta": {
+    "title": "动力系统（第一批扩建：从三体问题与运动稳定性向过去取景）",
+    "scope": "只验证结构，不是完整条目；节点 13、边 19。",
+    "note": "BR-ANA-DYN 在 branches.json 中为 proposed 扩展槽，不进 62 计数；branch.parents 留空，父关系只写在 edges[]。史料定位到论文/学位论文一级，未见原刊，claim 按 S 或 U 定级。"
+  },
+  "nodes": [
+    {
+      "id": "BR-ANA-DYN",
+      "type": "branch",
+      "schema_version": "0.2",
+      "labels": { "zh": "动力系统", "en": "dynamical systems" },
+      "status": "proposed",
+      "summary": "以演化观点研究映射与流的不动点、周期轨、稳定性与长期行为。",
+      "view_classes": ["分析学"],
+      "parents": [],
+      "scope_definition": "以解的长期行为与相空间结构为对象；'解出显式表达式'仍归常微分方程。",
+      "affected_layers": { "problem": "high", "failure": "medium", "notation": "high", "text": "medium" },
+      "claims": [],
+      "provenance": { "created_by": "branch-expansion-batch1", "created_at": "2026-11-25", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "PR:three-body-problem",
+      "type": "problem",
+      "schema_version": "0.2",
+      "labels": { "zh": "三体问题", "en": "three-body problem" },
+      "status": "partially_resolved",
+      "summary": "三个质点仅在万有引力下运动的轨道问题；庞加莱 1890 年证明一般情形不可积。",
+      "original_formulation": {
+        "text": "给定三个质点的初始位置与速度，求此后运动；等价于求足够多的运动积分。",
+        "language": "fr",
+        "author": "PE:poincare",
+        "year": 1890,
+        "source": { "locator": "Poincaré 1890, Sur le problème des trois corps et les équations de la dynamique, Acta Mathematica 13", "grade": "S", "attestation": "later_report" },
+        "grade": "S",
+        "attestation": "later_report"
+      },
+      "problem_kind": "existence",
+      "asked_as": ["求三体运动的显式解", "求运动积分"],
+      "related_branches": ["BR-ANA-DYN"],
+      "claims": [
+        {
+          "id": "CLM:PR:three-body-problem.1",
+          "statement": "庞加莱 1890 年的三体问题论文证明该问题一般不可积，并发现同宿缠绕，被视为动力系统与混沌研究的起点之一。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "Poincaré 1890, Acta Mathematica 13；据 DSB 条目与通行数学史转述，未见原刊" }
+        }
+      ],
+      "provenance": { "created_by": "branch-expansion-batch1", "created_at": "2026-11-25", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "PR:stability-of-motion",
+      "type": "problem",
+      "schema_version": "0.2",
+      "labels": { "zh": "运动稳定性问题", "en": "stability of motion" },
+      "status": "resolved",
+      "summary": "判断平衡点或周期轨在初始扰动下是否保持邻近；李雅普诺夫 1892 年给出一般判据。",
+      "original_formulation": {
+        "text": "给定微分方程组的平衡解，判断初始扰动足够小时解是否始终保持在平衡解附近。",
+        "language": "ru",
+        "author": "PE:lyapunov",
+        "year": 1892,
+        "source": { "locator": "Lyapunov 1892, The General Problem of the Stability of Motion（俄文，哈尔科夫）", "grade": "S", "attestation": "later_report" },
+        "grade": "S",
+        "attestation": "later_report"
+      },
+      "problem_kind": "other",
+      "asked_as": ["平衡点稳不稳", "扰动会不会放大"],
+      "related_branches": ["BR-ANA-DYN"],
+      "claims": [],
+      "provenance": { "created_by": "branch-expansion-batch1", "created_at": "2026-11-25", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "TH:lyapunov-stability",
+      "type": "theorem",
+      "schema_version": "0.2",
+      "labels": { "zh": "李雅普诺夫稳定性判据", "en": "Lyapunov stability criterion" },
+      "status": "active",
+      "summary": "用正定函数沿轨线的导数符号判断平衡点稳定性；无需解出方程。",
+      "statement": "若在平衡点邻域存在正定连续可微函数 V，且 V 沿轨线的导数负半定，则平衡点稳定；若负定，则渐近稳定。",
+      "assumptions": ["平衡点邻域内向量场充分光滑", "V 正定", "V 沿轨线可微"],
+      "proof_status": "proved",
+      "namesake_note": "李雅普诺夫 1892 年提出；'直接法'是后世的称法。",
+      "claims": [
+        {
+          "id": "CLM:TH:lyapunov-stability.1",
+          "statement": "李雅普诺夫 1892 年学位论文给出不使用显式解的稳定性判据，后称李雅普诺夫直接法。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "Lyapunov 1892；据 DSB 'Lyapunov' 条目与通行教材转述" }
+        }
+      ],
+      "provenance": { "created_by": "branch-expansion-batch1", "created_at": "2026-11-25", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "CO:phase-space",
+      "type": "concept",
+      "schema_version": "0.2",
+      "labels": { "zh": "相空间", "en": "phase space" },
+      "status": "active",
+      "summary": "以位置与动量为坐标、把系统状态表示为一点的空间；轨线表示演化。",
+      "definition": "对 n 自由度系统，以 (q, p) 为坐标的 2n 维空间；每条轨线对应一组运动。",
+      "definition_source": { "grade": "F", "locator": "通行教材定义；定义本身不是历史对象" },
+      "occurrences": [
+        { "civilization": "欧洲", "region": "法国", "language": "fr", "year_from": 1890, "precision": "decade", "dating_basis": "庞加莱三体问题论文中的相空间表述", "independence": "independent" }
+      ],
+      "claims": [
+        {
+          "id": "CLM:CO:phase-space.1",
+          "statement": "庞加莱在三体问题研究中用相空间中的轨线与截面讨论解的定性行为；'相空间'一词由吉布斯 1902 年确立。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "Poincaré 1890；Gibbs 1902, Elementary Principles in Statistical Mechanics；页码待补" }
+        }
+      ],
+      "provenance": { "created_by": "branch-expansion-batch1", "created_at": "2026-11-25", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "CO:limit-cycle",
+      "type": "concept",
+      "schema_version": "0.2",
+      "labels": { "zh": "极限环", "en": "limit cycle" },
+      "status": "active",
+      "summary": "相平面上孤立的闭轨；邻近轨线盘旋逼近或远离，是自持振荡的几何图像。",
+      "definition": "相平面中一条孤立闭轨，其邻域内除它本身外没有其他闭轨。",
+      "definition_source": { "grade": "F", "locator": "通行教材定义；定义本身不是历史对象" },
+      "occurrences": [
+        { "civilization": "欧洲", "region": "法国", "language": "fr", "year_from": 1880, "precision": "decade", "dating_basis": "庞加莱 1880 年代微分方程定性理论", "independence": "independent" }
+      ],
+      "claims": [
+        {
+          "id": "CLM:CO:limit-cycle.1",
+          "statement": "极限环概念出自庞加莱 1880 年代关于微分方程所定义曲线的定性研究。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "Poincaré 1881–1886, Sur les courbes définies par une équation différentielle；页码待补" }
+        }
+      ],
+      "provenance": { "created_by": "branch-expansion-batch1", "created_at": "2026-11-25", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "ME:phase-space-analysis",
+      "type": "method",
+      "schema_version": "0.2",
+      "labels": { "zh": "相空间定性分析", "en": "qualitative analysis in phase space" },
+      "status": "active",
+      "summary": "不解出显式解，直接在相空间中讨论轨线的存在、稳定性与回归。",
+      "kind": "proof_method",
+      "input": "自治微分方程组",
+      "output": "轨线的定性结构与稳定性结论",
+      "first_use": { "by": "PE:poincare", "year": 1881, "locator": "Poincaré 1881–1886 定性理论系列论文；未见原刊", "grade": "S" },
+      "applies_to": ["PR:three-body-problem"],
+      "claims": [],
+      "provenance": { "created_by": "branch-expansion-batch1", "created_at": "2026-11-25", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "ME:lyapunov-function",
+      "type": "method",
+      "schema_version": "0.2",
+      "labels": { "zh": "李雅普诺夫函数法", "en": "Lyapunov function method" },
+      "status": "active",
+      "summary": "构造一个沿轨线单调的'能量型'函数，以判断稳定性。",
+      "kind": "construction",
+      "input": "平衡点邻域的向量场",
+      "output": "正定且沿轨线导数定号的函数 V",
+      "first_use": { "by": "PE:lyapunov", "year": 1892, "locator": "Lyapunov 1892；未见原刊", "grade": "S" },
+      "applies_to": ["PR:stability-of-motion"],
+      "claims": [],
+      "provenance": { "created_by": "branch-expansion-batch1", "created_at": "2026-11-25", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "PE:poincare",
+      "type": "person",
+      "schema_version": "0.2",
+      "labels": { "zh": "亨利·庞加莱", "en": "Henri Poincaré" },
+      "status": "historical",
+      "summary": "法国数学家；以三体问题、微分方程定性理论与拓扑学著称。",
+      "name_variants": ["Henri Poincaré", "Poincaré", "庞加莱"],
+      "dates": { "birth": 1854, "death": 1912, "precision": "year" },
+      "claims": [
+        {
+          "id": "CLM:PE:poincare.1",
+          "statement": "庞加莱生卒 1854–1912。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "DSB 'Poincaré, Jules-Henri' 条目；页码待补" }
+        }
+      ],
+      "provenance": { "created_by": "branch-expansion-batch1", "created_at": "2026-11-25", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "PE:lyapunov",
+      "type": "person",
+      "schema_version": "0.2",
+      "labels": { "zh": "亚历山大·李雅普诺夫", "en": "Aleksandr Lyapunov" },
+      "status": "historical",
+      "summary": "俄国数学家与力学家；1892 年建立运动稳定性的一般理论。",
+      "name_variants": ["Aleksandr Lyapunov", "A. M. Lyapunov", "李雅普诺夫", "李亚普诺夫"],
+      "dates": { "birth": 1857, "death": 1918, "precision": "year" },
+      "claims": [
+        {
+          "id": "CLM:PE:lyapunov.1",
+          "statement": "李雅普诺夫生卒 1857–1918。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "DSB 'Lyapunov, Aleksandr Mikhailovich' 条目；页码待补" }
+        }
+      ],
+      "provenance": { "created_by": "branch-expansion-batch1", "created_at": "2026-11-25", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "TX:poincare-1890",
+      "type": "text",
+      "schema_version": "0.2",
+      "labels": { "zh": "庞加莱《三体问题与动力学方程》（1890）", "en": "Poincaré, Sur le problème des trois corps et les équations de la dynamique (1890)" },
+      "status": "historical",
+      "summary": "获奥斯卡二世奖的论文，刊于 Acta Mathematica 13；本图未见原刊。",
+      "title_variants": ["Sur le problème des trois corps et les équations de la dynamique"],
+      "text_type": "article",
+      "chains": [
+        { "stemma_branch": "printed", "note": "Acta Mathematica 13（1890）刊本；本图未取得原刊影像" }
+      ],
+      "claims": [
+        {
+          "id": "CLM:TX:poincare-1890.1",
+          "statement": "该论文 1889 年获瑞典国王奥斯卡二世奖，1890 年刊于 Acta Mathematica 第 13 卷。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "DSB 'Poincaré' 条目与 Acta Mathematica 书目；卷页待补" }
+        }
+      ],
+      "provenance": { "created_by": "branch-expansion-batch1", "created_at": "2026-11-25", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "TX:lyapunov-1892",
+      "type": "text",
+      "schema_version": "0.2",
+      "labels": { "zh": "李雅普诺夫《运动稳定性的一般问题》（1892）", "en": "Lyapunov, The General Problem of the Stability of Motion (1892)" },
+      "status": "historical",
+      "summary": "哈尔科夫大学学位论文，俄文；本图未见原文。",
+      "title_variants": ["Общая задача об устойчивости движения", "The General Problem of the Stability of Motion"],
+      "text_type": "treatise",
+      "chains": [
+        { "stemma_branch": "russian", "note": "1892 年哈尔科夫刊本；法译本 1907；本图未取得原文" }
+      ],
+      "claims": [
+        {
+          "id": "CLM:TX:lyapunov-1892.1",
+          "statement": "该文为李雅普诺夫 1892 年在哈尔科夫大学的学位论文，1907 年有法译本。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "DSB 'Lyapunov' 条目；版次与页码待补" }
+        }
+      ],
+      "provenance": { "created_by": "branch-expansion-batch1", "created_at": "2026-11-25", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "TP:dynamical-stability",
+      "type": "teaching_point",
+      "schema_version": "0.2",
+      "labels": { "zh": "稳定不等于有界", "en": "stability is not boundedness" },
+      "status": "active",
+      "summary": "挂在常微分方程定性理论一节；纠正把'解有界'当成'稳定'的误解。",
+      "course": "常微分方程",
+      "textbook": { "title": "常微分方程（通行教材）", "edition": "以本校选用版为准" },
+      "chapter": "定性理论与稳定性",
+      "learning_objective": "能区分稳定、渐近稳定与解有界，并能用李雅普诺夫函数判断一个平衡点。",
+      "prerequisite_concepts": ["CO:phase-space"],
+      "common_misconception": "解有界就是稳定；或以为稳定平衡点一定吸引邻近轨线。",
+      "history_objects": ["TH:lyapunov-stability", "ME:lyapunov-function", "PR:stability-of-motion"],
+      "output_form": "card",
+      "evidence": { "status": "not_applicable", "basis": "curriculum" },
+      "claims": [],
+      "provenance": { "created_by": "branch-expansion-batch1", "created_at": "2026-11-25", "sources_checked": "none", "schema_version": "0.2" }
+    }
+  ],
+  "edges": [
+    {
+      "id": "E:BR-ANA-DYN>concerns>PR:three-body-problem",
+      "from": "BR-ANA-DYN",
+      "to": "PR:three-body-problem",
+      "type": "concerns",
+      "directed": true,
+      "time": { "from": null, "to": null, "precision": "unknown" },
+      "source": { "locator": "本框架分支定义" },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.95,
+      "note": "索引边，不参与推理。"
+    },
+    {
+      "id": "E:BR-ANA-DYN>concerns>PR:stability-of-motion",
+      "from": "BR-ANA-DYN",
+      "to": "PR:stability-of-motion",
+      "type": "concerns",
+      "directed": true,
+      "time": { "from": null, "to": null, "precision": "unknown" },
+      "source": { "locator": "本框架分支定义" },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.95,
+      "note": "索引边，不参与推理。"
+    },
+    {
+      "id": "E:BR-ANA-DYN>concerns>CO:phase-space",
+      "from": "BR-ANA-DYN",
+      "to": "CO:phase-space",
+      "type": "concerns",
+      "directed": true,
+      "time": { "from": null, "to": null, "precision": "unknown" },
+      "source": { "locator": "本框架分支定义" },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.95,
+      "note": "索引边，不参与推理。"
+    },
+    {
+      "id": "E:BR-ANA-DYN>concerns>CO:limit-cycle",
+      "from": "BR-ANA-DYN",
+      "to": "CO:limit-cycle",
+      "type": "concerns",
+      "directed": true,
+      "time": { "from": null, "to": null, "precision": "unknown" },
+      "source": { "locator": "本框架分支定义" },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.9,
+      "note": "索引边，不参与推理。"
+    },
+    {
+      "id": "E:TH:lyapunov-stability>resolves>PR:stability-of-motion",
+      "from": "TH:lyapunov-stability",
+      "to": "PR:stability-of-motion",
+      "type": "resolves",
+      "directed": true,
+      "time": { "from": 1892, "to": 1892, "precision": "year" },
+      "claimant": "PE:lyapunov",
+      "grade": "S",
+      "attestation": "later_report",
+      "confidence": 0.85
+    },
+    {
+      "id": "E:TH:lyapunov-stability>depends_on>CO:phase-space",
+      "from": "TH:lyapunov-stability",
+      "to": "CO:phase-space",
+      "type": "depends_on",
+      "directed": true,
+      "time": { "from": null, "to": null, "precision": "unknown" },
+      "source": { "locator": "定理的现代表述" },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.85,
+      "note": "逻辑前置是后世整理。"
+    },
+    {
+      "id": "E:PR:three-body-problem>uses_method>ME:phase-space-analysis",
+      "from": "PR:three-body-problem",
+      "to": "ME:phase-space-analysis",
+      "type": "uses_method",
+      "directed": true,
+      "time": { "from": 1890, "to": 1890, "precision": "year" },
+      "claimant": "PE:poincare",
+      "grade": "S",
+      "attestation": "later_report",
+      "confidence": 0.85
+    },
+    {
+      "id": "E:PR:stability-of-motion>uses_method>ME:lyapunov-function",
+      "from": "PR:stability-of-motion",
+      "to": "ME:lyapunov-function",
+      "type": "uses_method",
+      "directed": true,
+      "time": { "from": 1892, "to": 1892, "precision": "year" },
+      "claimant": "PE:lyapunov",
+      "grade": "S",
+      "attestation": "later_report",
+      "confidence": 0.85
+    },
+    {
+      "id": "E:ME:phase-space-analysis>depends_on>CO:phase-space",
+      "from": "ME:phase-space-analysis",
+      "to": "CO:phase-space",
+      "type": "depends_on",
+      "directed": true,
+      "time": { "from": null, "to": null, "precision": "unknown" },
+      "source": { "locator": "方法的现代表述" },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.9
+    },
+    {
+      "id": "E:CO:limit-cycle>depends_on>CO:phase-space",
+      "from": "CO:limit-cycle",
+      "to": "CO:phase-space",
+      "type": "depends_on",
+      "directed": true,
+      "time": { "from": null, "to": null, "precision": "unknown" },
+      "source": { "locator": "概念的现代表述" },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.85,
+      "note": "逻辑前置是后世整理；庞加莱原论在相平面中讨论。"
+    },
+    {
+      "id": "E:PE:poincare>poses>PR:three-body-problem",
+      "from": "PE:poincare",
+      "to": "PR:three-body-problem",
+      "type": "poses",
+      "directed": true,
+      "time": { "from": 1890, "to": 1890, "precision": "year" },
+      "source": { "locator": "Poincaré 1890；未见原刊" },
+      "grade": "S",
+      "attestation": "later_report",
+      "confidence": 0.85,
+      "note": "三体问题本身是 18 世纪以来的老问题；庞加莱重新表述并给出不可积结论。"
+    },
+    {
+      "id": "E:PE:poincare>introduced>CO:limit-cycle",
+      "from": "PE:poincare",
+      "to": "CO:limit-cycle",
+      "type": "introduced",
+      "directed": true,
+      "time": { "from": 1881, "to": 1886, "precision": "year" },
+      "source": { "locator": "Poincaré 1881–1886 定性理论系列论文；未见原刊" },
+      "grade": "S",
+      "attestation": "later_report",
+      "confidence": 0.7,
+      "note": "引入年份取系列论文区间；具体首见篇目待核。"
+    },
+    {
+      "id": "E:PE:poincare>introduced>ME:phase-space-analysis",
+      "from": "PE:poincare",
+      "to": "ME:phase-space-analysis",
+      "type": "introduced",
+      "directed": true,
+      "time": { "from": 1881, "to": 1890, "precision": "year" },
+      "source": { "locator": "Poincaré 1881–1890；未见原刊" },
+      "grade": "S",
+      "attestation": "later_report",
+      "confidence": 0.7
+    },
+    {
+      "id": "E:PE:lyapunov>proved>TH:lyapunov-stability",
+      "from": "PE:lyapunov",
+      "to": "TH:lyapunov-stability",
+      "type": "proved",
+      "directed": true,
+      "time": { "from": 1892, "to": 1892, "precision": "year" },
+      "source": { "locator": "Lyapunov 1892；未见原文" },
+      "grade": "S",
+      "attestation": "later_report",
+      "confidence": 0.85
+    },
+    {
+      "id": "E:PE:lyapunov>introduced>ME:lyapunov-function",
+      "from": "PE:lyapunov",
+      "to": "ME:lyapunov-function",
+      "type": "introduced",
+      "directed": true,
+      "time": { "from": 1892, "to": 1892, "precision": "year" },
+      "source": { "locator": "Lyapunov 1892；未见原文" },
+      "grade": "S",
+      "attestation": "later_report",
+      "confidence": 0.8
+    },
+    {
+      "id": "E:PE:poincare>contributed_to>TX:poincare-1890",
+      "from": "PE:poincare",
+      "to": "TX:poincare-1890",
+      "type": "contributed_to",
+      "directed": true,
+      "time": { "from": 1890, "to": 1890, "precision": "year" },
+      "source": { "locator": "论文署名" },
+      "role": "author",
+      "grade": "S",
+      "attestation": "later_report",
+      "confidence": 0.9
+    },
+    {
+      "id": "E:PE:lyapunov>contributed_to>TX:lyapunov-1892",
+      "from": "PE:lyapunov",
+      "to": "TX:lyapunov-1892",
+      "type": "contributed_to",
+      "directed": true,
+      "time": { "from": 1892, "to": 1892, "precision": "year" },
+      "source": { "locator": "学位论文署名" },
+      "role": "author",
+      "grade": "S",
+      "attestation": "later_report",
+      "confidence": 0.9
+    },
+    {
+      "id": "E:TX:poincare-1890>supports>PR:three-body-problem",
+      "from": "TX:poincare-1890",
+      "to": "PR:three-body-problem",
+      "type": "supports",
+      "directed": true,
+      "time": { "from": 1890, "to": 1890, "precision": "year" },
+      "source": { "locator": "论文正文；本图未见原刊" },
+      "grade": "S",
+      "attestation": "later_report",
+      "confidence": 0.8
+    },
+    {
+      "id": "E:TX:lyapunov-1892>supports>TH:lyapunov-stability",
+      "from": "TX:lyapunov-1892",
+      "to": "TH:lyapunov-stability",
+      "type": "supports",
+      "directed": true,
+      "time": { "from": 1892, "to": 1892, "precision": "year" },
+      "source": { "locator": "论文正文；本图未见原文" },
+      "grade": "S",
+      "attestation": "later_report",
+      "confidence": 0.8
+    },
+    {
+      "id": "E:TP:dynamical-stability>anchors>TH:lyapunov-stability",
+      "from": "TP:dynamical-stability",
+      "to": "TH:lyapunov-stability",
+      "type": "anchors",
+      "directed": true,
+      "time": { "from": null, "to": null, "precision": "unknown" },
+      "source": { "locator": "课程大纲" },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.9,
+      "note": "教学挂点只做索引，不承担史学论断。"
+    },
+    {
+      "id": "E:TP:dynamical-stability>anchors>ME:lyapunov-function",
+      "from": "TP:dynamical-stability",
+      "to": "ME:lyapunov-function",
+      "type": "anchors",
+      "directed": true,
+      "time": { "from": null, "to": null, "precision": "unknown" },
+      "source": { "locator": "课程大纲" },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.9
+    }
+  ]
+}

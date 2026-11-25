@@ -26,9 +26,12 @@ spec/
     ├── samples/                         Two minimal bundles
     │   ├── group-theory.json            13 nodes / 15 edges
     │   └── non-euclidean-geometry.json  63 nodes / 94 edges
-    └── pilots/                          Two complete pilots
+    └── pilots/                          Five complete pilots
         ├── group-theory/graph.json      51 nodes / 80 edges
-        └── calculus/graph.json          58 nodes / 102 edges
+        ├── calculus/graph.json          58 nodes / 102 edges
+        ├── pde/graph.json               15 nodes / 26 edges
+        ├── variational-calculus/graph.json  12 nodes / 18 edges
+        └── dynamical-systems/graph.json     13 nodes / 21 edges
 ```
 
 | Artifact | Question it answers | Formal spec? | Machine-readable |
@@ -110,7 +113,7 @@ Common codes: `GRADE_SOURCE_MISMATCH` (grade does not fit source type), `MISSING
 
 - **What it does**: equivalent to `graphlint check spec/framework/samples spec/framework/pilots`, plus a **cross-file ID check**: when the same node/edge ID appears in two bundles, it reports `NODE_ID_DUPLICATE` / `EDGE_ID_DUPLICATE` with both file paths and JSON Pointers.
 - **Input**: none.
-- **Current result**: 4 bundles, 185 nodes, 291 edges, **0 errors / 60 warnings**, exit 0. All 60 warnings are `NODE_REQUIRED`. Cross-bundle IDs are scoped: non-branch entities in the `group-theory` sample carry `.sample`, and `PE:cauchy` / `PE:klein` in the group-theory pilot carry `.group-theory`; `BR-*` nodes and `parent_of` / `cross_class` edges are catalog projections from `branches.json`, exempted by catalog ID.
+- **Current result**: 7 bundles, 225 nodes, 356 edges, **0 errors / 60 warnings**, exit 0. All 60 warnings are `NODE_REQUIRED` and sit in the three pre-existing bundles; the newly added `pde`, `variational-calculus` and `dynamical-systems` report 0 warnings. Cross-bundle IDs are scoped: non-branch entities in the `group-theory` sample carry `.sample`, and `PE:cauchy` / `PE:klein` in the group-theory pilot carry `.group-theory`; `BR-*` nodes and `parent_of` / `cross_class` edges are catalog projections from `branches.json`, exempted by catalog ID. The three new branches (`BR-ANA-PDE`, `BR-ANA-VAR`, `BR-ANA-DYN`) remain `proposed` and do not count toward the 62.
 - **Summary line**: `汇总：error N / warning N · files N / nodes N / edges N`; the `--json` `summary` has the same fields.
 - **`--strict`**: promotes the 60 warnings to errors, for 60 errors in total, exit 1.
 

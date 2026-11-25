@@ -1,0 +1,668 @@
+{
+  "schema_version": "0.2",
+  "meta": {
+    "title": "偏微分方程（第一批扩建：从弦振动与热传导两条原始问题向过去取景）",
+    "scope": "只验证结构，不是完整条目；节点 15、边 26。",
+    "note": "BR-ANA-PDE 在 branches.json 中仍为 proposed 扩展槽，不进 62 计数；本图包是它的图节点投影，branch.parents 留空，父关系只写在 edges[]。史料定位到著作/论文一级，页码与原文页未核，claim 一律按 S 或 U 定级，不冒充一手。"
+  },
+  "nodes": [
+    {
+      "id": "BR-ANA-PDE",
+      "type": "branch",
+      "schema_version": "0.2",
+      "labels": { "zh": "偏微分方程", "en": "partial differential equations" },
+      "status": "proposed",
+      "summary": "以多元未知函数及其偏导数为对象的方程理论；弦振动与热传导是其两个原始问题来源。",
+      "view_classes": ["分析学"],
+      "parents": [],
+      "scope_definition": "以含偏导数的方程及其定解问题为对象；不含只讨论解的长期行为的动力系统（另立扩展槽）。",
+      "affected_layers": { "problem": "high", "failure": "medium", "notation": "high", "text": "medium" },
+      "claims": [],
+      "provenance": { "created_by": "branch-expansion-batch1", "created_at": "2026-11-25", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "CO:wave-equation",
+      "type": "concept",
+      "schema_version": "0.2",
+      "labels": { "zh": "波动方程", "en": "wave equation" },
+      "status": "active",
+      "summary": "描述弦、声、光等扰动传播的二阶线性偏微分方程；一维形式为 u_tt = c²u_xx。",
+      "definition": "一维均匀弦的小振幅横振动满足 u_tt = c²u_xx，其中 c 由张力与线密度决定。",
+      "definition_source": { "grade": "F", "locator": "通行教材定义；定义本身不是历史对象" },
+      "occurrences": [
+        { "civilization": "欧洲", "region": "法国", "language": "fr", "year_from": 1747, "precision": "year", "dating_basis": "达朗贝尔 1747 年弦振动论文", "independence": "independent" }
+      ],
+      "claims": [
+        {
+          "id": "CLM:CO:wave-equation.1",
+          "statement": "18 世纪的弦振动研究以具体弦的位移为对象，'波动方程'作为一般方程名是后世写法。",
+          "grade": "U",
+          "attestation": "later_report",
+          "source": { "locator": "据通行数学史教材转述；原始论文页未核" },
+          "note": "需核对达朗贝尔 1747 原文的方程写法后再升 S。"
+        }
+      ],
+      "provenance": { "created_by": "branch-expansion-batch1", "created_at": "2026-11-25", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "CO:heat-equation",
+      "type": "concept",
+      "schema_version": "0.2",
+      "labels": { "zh": "热传导方程", "en": "heat equation" },
+      "status": "active",
+      "summary": "描述温度随空间与时间扩散的抛物型方程；一维形式为 u_t = αu_xx。",
+      "definition": "均匀杆中的温度 u(x,t) 满足 u_t = αu_xx，α 为热扩散率。",
+      "definition_source": { "grade": "F", "locator": "通行教材定义；定义本身不是历史对象" },
+      "occurrences": [
+        { "civilization": "欧洲", "region": "法国", "language": "fr", "year_from": 1807, "precision": "year", "dating_basis": "傅里叶 1807 年提交热传导论文，1822 年成书", "independence": "independent" }
+      ],
+      "claims": [
+        {
+          "id": "CLM:CO:heat-equation.1",
+          "statement": "傅里叶 1807 年向巴黎科学院提交热传导论文，1822 年出版《热的解析理论》。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "Fourier 1822, Théorie analytique de la chaleur；据 DSB 'Fourier' 条目转述" }
+        }
+      ],
+      "provenance": { "created_by": "branch-expansion-batch1", "created_at": "2026-11-25", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "PR:string-vibration",
+      "type": "problem",
+      "schema_version": "0.2",
+      "labels": { "zh": "弦振动问题", "en": "vibrating string problem" },
+      "status": "resolved",
+      "summary": "给定两端固定弦的初始形状与初速度，求此后各点的位移。",
+      "original_formulation": {
+        "text": "求一条张紧的均匀弦在初始位移与初速度给定时的振动形状。",
+        "language": "fr",
+        "author": "PE:d-alembert",
+        "year": 1747,
+        "source": { "locator": "d'Alembert 1747, Recherches sur la courbe que forme une corde tendue mise en vibration", "grade": "S", "attestation": "later_report" },
+        "grade": "S",
+        "attestation": "later_report"
+      },
+      "problem_kind": "existence",
+      "asked_as": ["求位移函数", "求通解"],
+      "related_branches": ["BR-ANA-PDE"],
+      "claims": [
+        {
+          "id": "CLM:PR:string-vibration.1",
+          "statement": "达朗贝尔 1747 年把弦振动化为偏微分方程并给出通解，是偏微分方程作为独立对象的起点之一。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "d'Alembert 1747；据 DSB 条目与通行数学史转述，未见原刊" }
+        }
+      ],
+      "provenance": { "created_by": "branch-expansion-batch1", "created_at": "2026-11-25", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "PR:heat-conduction",
+      "type": "problem",
+      "schema_version": "0.2",
+      "labels": { "zh": "热传导问题", "en": "heat conduction problem" },
+      "status": "resolved",
+      "summary": "给定杆的初始温度与端点温度，求此后温度分布。",
+      "original_formulation": {
+        "text": "求均匀杆内温度随位置与时间的变化。",
+        "language": "fr",
+        "author": "PE:fourier",
+        "year": 1807,
+        "source": { "locator": "Fourier 1807 提交巴黎科学院论文；1822 年《热的解析理论》成书", "grade": "S", "attestation": "later_report" },
+        "grade": "S",
+        "attestation": "later_report"
+      },
+      "problem_kind": "existence",
+      "asked_as": ["求温度分布", "用三角级数表示解"],
+      "related_branches": ["BR-ANA-PDE"],
+      "claims": [],
+      "provenance": { "created_by": "branch-expansion-batch1", "created_at": "2026-11-25", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "PR:arbitrary-initial-curve",
+      "type": "problem",
+      "schema_version": "0.2",
+      "labels": { "zh": "初始曲线可否任意", "en": "admissibility of arbitrary initial curves" },
+      "status": "partially_resolved",
+      "summary": "弦振动通解中的任意函数是否允许是任意曲线；18 世纪中期的争论推动了函数概念的放宽。",
+      "original_formulation": {
+        "text": "通解中的任意函数 f、g 是否可以是任意画出的曲线，还是必须满足解析式条件。",
+        "language": "fr",
+        "author": null,
+        "year": 1750,
+        "source": { "locator": "达朗贝尔、欧拉、丹尼尔·伯努利在 1740s–1750s 的往返争论；据通行数学史转述", "grade": "U", "attestation": "later_report" },
+        "grade": "U",
+        "attestation": "later_report"
+      },
+      "problem_kind": "other",
+      "asked_as": ["任意函数算不算函数", "解的一般性边界在哪"],
+      "related_branches": ["BR-ANA-PDE"],
+      "claims": [
+        {
+          "id": "CLM:PR:arbitrary-initial-curve.1",
+          "statement": "弦振动解的容许函数之争，把'函数'从解析式放宽到可任意画出的曲线，是函数概念史的关键一环。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "通行函数概念史著作（如 Youschkevitch 1976）；页码待补" }
+        }
+      ],
+      "provenance": { "created_by": "branch-expansion-batch1", "created_at": "2026-11-25", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "TH:d-alembert-wave-solution",
+      "type": "theorem",
+      "schema_version": "0.2",
+      "labels": { "zh": "达朗贝尔弦振动通解", "en": "d'Alembert's solution of the wave equation" },
+      "status": "active",
+      "summary": "一维波动方程的通解可写成两个沿相反方向传播的任意函数之和。",
+      "statement": "u(x,t) = f(x − ct) + g(x + ct)，f、g 由初始位移与初速度确定。",
+      "assumptions": ["均匀弦", "小振幅振动", "无外力", "一维"],
+      "proof_status": "proved",
+      "namesake_note": "'达朗贝尔解'是后世命名；1747 年论文的处理对象是具体弦振动。",
+      "claims": [
+        {
+          "id": "CLM:TH:d-alembert-wave-solution.1",
+          "statement": "达朗贝尔 1747 年给出弦振动方程的通解形式，即两个任意函数之和。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "d'Alembert 1747；据 DSB 条目转述，未见原刊" }
+        }
+      ],
+      "provenance": { "created_by": "branch-expansion-batch1", "created_at": "2026-11-25", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "TH:fourier-heat-series",
+      "type": "theorem",
+      "schema_version": "0.2",
+      "labels": { "zh": "热传导方程的三角级数解", "en": "trigonometric series solution of the heat equation" },
+      "status": "active",
+      "summary": "在齐次边界条件下，热传导方程的解可展开为三角级数；收敛性的严格证明晚于傅里叶。",
+      "statement": "满足齐次边界条件的热传导方程解可写成 Σ b_n sin(nπx/L) e^{−α(nπ/L)²t} 的形式。",
+      "assumptions": ["均匀杆", "齐次边界条件", "初始温度分段连续"],
+      "proof_status": "proved",
+      "namesake_note": "傅里叶 1822 年系统使用；级数收敛性的严格化由 Dirichlet 等人在 19 世纪完成。",
+      "claims": [
+        {
+          "id": "CLM:TH:fourier-heat-series.1",
+          "statement": "傅里叶 1822 年用三角级数表示热传导方程的解；收敛性证明是后续工作。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "Fourier 1822, Théorie analytique de la chaleur；据 DSB 条目转述" }
+        }
+      ],
+      "provenance": { "created_by": "branch-expansion-batch1", "created_at": "2026-11-25", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "ME:separation-of-variables",
+      "type": "method",
+      "schema_version": "0.2",
+      "labels": { "zh": "分离变量法", "en": "separation of variables" },
+      "status": "active",
+      "summary": "把多元函数写成单变量函数之积，将偏微分方程化为若干常微分方程。",
+      "kind": "computational_technique",
+      "input": "线性偏微分方程与齐次边界条件",
+      "output": "按特征函数展开的级数解",
+      "first_use": { "by": "PE:fourier", "year": 1807, "locator": "傅里叶热传导论文；据通行数学史转述", "grade": "S" },
+      "applies_to": ["PR:heat-conduction"],
+      "claims": [
+        {
+          "id": "CLM:ME:separation-of-variables.1",
+          "statement": "分离变量法在傅里叶热传导工作中成为求解线性偏微分方程的标准手段。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "通行数学史与偏微分方程教材；页码待补" }
+        }
+      ],
+      "provenance": { "created_by": "branch-expansion-batch1", "created_at": "2026-11-25", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "ME:traveling-wave",
+      "type": "method",
+      "schema_version": "0.2",
+      "labels": { "zh": "行波法", "en": "traveling-wave method" },
+      "status": "active",
+      "summary": "把波动方程的解写成沿相反方向传播的两个波形叠加。",
+      "kind": "construction",
+      "input": "一维波动方程与初始条件",
+      "output": "两个任意函数之和形式的解",
+      "first_use": { "by": "PE:d-alembert", "year": 1747, "locator": "d'Alembert 1747；未见原刊", "grade": "S" },
+      "applies_to": ["PR:string-vibration"],
+      "claims": [],
+      "provenance": { "created_by": "branch-expansion-batch1", "created_at": "2026-11-25", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "PE:d-alembert",
+      "type": "person",
+      "schema_version": "0.2",
+      "labels": { "zh": "让·勒朗·达朗贝尔", "en": "Jean le Rond d'Alembert" },
+      "status": "historical",
+      "summary": "法国数学家与物理学家；1747 年发表弦振动论文，给出波动方程通解。",
+      "name_variants": ["d'Alembert", "D'Alembert", "达朗贝尔"],
+      "dates": { "birth": 1717, "death": 1783, "precision": "year" },
+      "claims": [
+        {
+          "id": "CLM:PE:d-alembert.1",
+          "statement": "达朗贝尔生卒 1717–1783。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "DSB 'd'Alembert, Jean le Rond' 条目；页码待补" }
+        }
+      ],
+      "provenance": { "created_by": "branch-expansion-batch1", "created_at": "2026-11-25", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "PE:fourier",
+      "type": "person",
+      "schema_version": "0.2",
+      "labels": { "zh": "约瑟夫·傅里叶", "en": "Joseph Fourier" },
+      "status": "historical",
+      "summary": "法国数学家与物理学家；以热传导研究与三角级数著称。",
+      "name_variants": ["Fourier", "J. Fourier", "傅里叶", "傅立叶"],
+      "dates": { "birth": 1768, "death": 1830, "precision": "year" },
+      "claims": [
+        {
+          "id": "CLM:PE:fourier.1",
+          "statement": "傅里叶生卒 1768–1830。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "DSB 'Fourier, Jean-Baptiste-Joseph' 条目；页码待补" }
+        }
+      ],
+      "provenance": { "created_by": "branch-expansion-batch1", "created_at": "2026-11-25", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "TX:d-alembert-1747",
+      "type": "text",
+      "schema_version": "0.2",
+      "labels": { "zh": "达朗贝尔《张紧弦所成曲线的研究》（1747）", "en": "d'Alembert, Recherches sur la courbe que forme une corde tendue mise en vibration (1747)" },
+      "status": "historical",
+      "summary": "弦振动研究的原始论文，载于柏林科学院文集；本图未见原刊。",
+      "title_variants": ["Recherches sur la courbe que forme une corde tendue mise en vibration"],
+      "text_type": "article",
+      "chains": [
+        { "stemma_branch": "printed", "note": "柏林科学院文集刊本；本图未取得原刊影像" }
+      ],
+      "claims": [
+        {
+          "id": "CLM:TX:d-alembert-1747.1",
+          "statement": "该文 1747 年宣读、刊于柏林科学院文集（Histoire de l'Académie Royale des Sciences et Belles-Lettres de Berlin）。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "DSB 'd'Alembert' 条目与通行数学史书目；卷页待补" }
+        }
+      ],
+      "provenance": { "created_by": "branch-expansion-batch1", "created_at": "2026-11-25", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "TX:fourier-1822",
+      "type": "text",
+      "schema_version": "0.2",
+      "labels": { "zh": "傅里叶《热的解析理论》（1822）", "en": "Fourier, Théorie analytique de la chaleur (1822)" },
+      "status": "historical",
+      "summary": "系统建立热传导方程并用三角级数求解的著作；本图未见原书。",
+      "title_variants": ["Théorie analytique de la chaleur", "热的解析理论"],
+      "text_type": "treatise",
+      "chains": [
+        { "stemma_branch": "printed", "note": "巴黎 1822 年初版；本图未取得原书影像" }
+      ],
+      "claims": [
+        {
+          "id": "CLM:TX:fourier-1822.1",
+          "statement": "《热的解析理论》1822 年在巴黎出版。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "DSB 'Fourier' 条目；版次与页码待补" }
+        }
+      ],
+      "provenance": { "created_by": "branch-expansion-batch1", "created_at": "2026-11-25", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "TP:pde-separation",
+      "type": "teaching_point",
+      "schema_version": "0.2",
+      "labels": { "zh": "分离变量法为什么能把偏微分方程拆开", "en": "why separation of variables works" },
+      "status": "active",
+      "summary": "挂在数学物理方程/偏微分方程课程的分离变量一节；用来纠正'解就是通解'的误解。",
+      "course": "数学物理方程",
+      "textbook": { "title": "数学物理方法（通行教材）", "edition": "以本校选用版为准" },
+      "chapter": "分离变量法",
+      "learning_objective": "能说明分离变量为什么需要齐次边界条件，并能区分通解与满足定解条件的特解。",
+      "prerequisite_concepts": ["CO:wave-equation", "CO:heat-equation"],
+      "common_misconception": "把达朗贝尔通解当成弦振动问题的唯一答案，忽略边界与初始条件对 f、g 的限制。",
+      "history_objects": ["ME:separation-of-variables", "PR:heat-conduction", "CO:wave-equation"],
+      "output_form": "card",
+      "evidence": { "status": "not_applicable", "basis": "curriculum" },
+      "claims": [],
+      "provenance": { "created_by": "branch-expansion-batch1", "created_at": "2026-11-25", "sources_checked": "none", "schema_version": "0.2" }
+    }
+  ],
+  "edges": [
+    {
+      "id": "E:BR-ANA-PDE>concerns>PR:string-vibration",
+      "from": "BR-ANA-PDE",
+      "to": "PR:string-vibration",
+      "type": "concerns",
+      "directed": true,
+      "time": { "from": null, "to": null, "precision": "unknown" },
+      "source": { "locator": "本框架分支定义" },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.95,
+      "note": "索引边，不参与推理。"
+    },
+    {
+      "id": "E:BR-ANA-PDE>concerns>PR:heat-conduction",
+      "from": "BR-ANA-PDE",
+      "to": "PR:heat-conduction",
+      "type": "concerns",
+      "directed": true,
+      "time": { "from": null, "to": null, "precision": "unknown" },
+      "source": { "locator": "本框架分支定义" },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.95,
+      "note": "索引边，不参与推理。"
+    },
+    {
+      "id": "E:BR-ANA-PDE>concerns>CO:wave-equation",
+      "from": "BR-ANA-PDE",
+      "to": "CO:wave-equation",
+      "type": "concerns",
+      "directed": true,
+      "time": { "from": null, "to": null, "precision": "unknown" },
+      "source": { "locator": "本框架分支定义" },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.95,
+      "note": "索引边，不参与推理。"
+    },
+    {
+      "id": "E:BR-ANA-PDE>concerns>CO:heat-equation",
+      "from": "BR-ANA-PDE",
+      "to": "CO:heat-equation",
+      "type": "concerns",
+      "directed": true,
+      "time": { "from": null, "to": null, "precision": "unknown" },
+      "source": { "locator": "本框架分支定义" },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.95,
+      "note": "索引边，不参与推理。"
+    },
+    {
+      "id": "E:BR-ANA-PDE>concerns>PR:arbitrary-initial-curve",
+      "from": "BR-ANA-PDE",
+      "to": "PR:arbitrary-initial-curve",
+      "type": "concerns",
+      "directed": true,
+      "time": { "from": null, "to": null, "precision": "unknown" },
+      "source": { "locator": "本框架分支定义；该争论由弦振动问题派生" },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.9,
+      "note": "索引边，不参与推理。"
+    },
+    {
+      "id": "E:TH:d-alembert-wave-solution>resolves>PR:string-vibration",
+      "from": "TH:d-alembert-wave-solution",
+      "to": "PR:string-vibration",
+      "type": "resolves",
+      "directed": true,
+      "time": { "from": 1747, "to": 1747, "precision": "year" },
+      "claimant": "PE:d-alembert",
+      "grade": "S",
+      "attestation": "later_report",
+      "confidence": 0.85,
+      "note": "给出的是通解；边界条件如何限制任意函数是后续争论。"
+    },
+    {
+      "id": "E:TH:fourier-heat-series>resolves>PR:heat-conduction",
+      "from": "TH:fourier-heat-series",
+      "to": "PR:heat-conduction",
+      "type": "resolves",
+      "directed": true,
+      "time": { "from": 1822, "to": 1822, "precision": "year" },
+      "claimant": "PE:fourier",
+      "grade": "S",
+      "attestation": "later_report",
+      "confidence": 0.8,
+      "note": "解的形式给出，收敛性严格化在 19 世纪后续完成。"
+    },
+    {
+      "id": "E:TH:d-alembert-wave-solution>depends_on>CO:wave-equation",
+      "from": "TH:d-alembert-wave-solution",
+      "to": "CO:wave-equation",
+      "type": "depends_on",
+      "directed": true,
+      "time": { "from": null, "to": null, "precision": "unknown" },
+      "source": { "locator": "定理的现代表述" },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.9,
+      "note": "逻辑前置是后世整理，不是 1747 年的写法。"
+    },
+    {
+      "id": "E:TH:fourier-heat-series>depends_on>CO:heat-equation",
+      "from": "TH:fourier-heat-series",
+      "to": "CO:heat-equation",
+      "type": "depends_on",
+      "directed": true,
+      "time": { "from": null, "to": null, "precision": "unknown" },
+      "source": { "locator": "定理的现代表述" },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.9,
+      "note": "逻辑前置是后世整理。"
+    },
+    {
+      "id": "E:PR:string-vibration>uses_method>ME:traveling-wave",
+      "from": "PR:string-vibration",
+      "to": "ME:traveling-wave",
+      "type": "uses_method",
+      "directed": true,
+      "time": { "from": 1747, "to": 1747, "precision": "year" },
+      "claimant": "PE:d-alembert",
+      "grade": "S",
+      "attestation": "later_report",
+      "confidence": 0.85
+    },
+    {
+      "id": "E:PR:heat-conduction>uses_method>ME:separation-of-variables",
+      "from": "PR:heat-conduction",
+      "to": "ME:separation-of-variables",
+      "type": "uses_method",
+      "directed": true,
+      "time": { "from": 1807, "to": 1807, "precision": "year" },
+      "claimant": "PE:fourier",
+      "grade": "S",
+      "attestation": "later_report",
+      "confidence": 0.85
+    },
+    {
+      "id": "E:ME:traveling-wave>depends_on>CO:wave-equation",
+      "from": "ME:traveling-wave",
+      "to": "CO:wave-equation",
+      "type": "depends_on",
+      "directed": true,
+      "time": { "from": null, "to": null, "precision": "unknown" },
+      "source": { "locator": "方法的现代表述" },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.9
+    },
+    {
+      "id": "E:ME:separation-of-variables>depends_on>CO:heat-equation",
+      "from": "ME:separation-of-variables",
+      "to": "CO:heat-equation",
+      "type": "depends_on",
+      "directed": true,
+      "time": { "from": null, "to": null, "precision": "unknown" },
+      "source": { "locator": "方法的现代表述" },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.9
+    },
+    {
+      "id": "E:PR:string-vibration>spawned>PR:arbitrary-initial-curve",
+      "from": "PR:string-vibration",
+      "to": "PR:arbitrary-initial-curve",
+      "type": "spawned",
+      "directed": true,
+      "time": { "from": 1750, "to": 1750, "precision": "decade", "basis": "1740s–1750s 的往返争论" },
+      "source": { "locator": "达朗贝尔、欧拉、丹尼尔·伯努利的争论；据通行数学史转述" },
+      "grade": "S",
+      "attestation": "later_report",
+      "confidence": 0.7
+    },
+    {
+      "id": "E:PE:d-alembert>proved>TH:d-alembert-wave-solution",
+      "from": "PE:d-alembert",
+      "to": "TH:d-alembert-wave-solution",
+      "type": "proved",
+      "directed": true,
+      "time": { "from": 1747, "to": 1747, "precision": "year" },
+      "source": { "locator": "d'Alembert 1747；未见原刊" },
+      "grade": "S",
+      "attestation": "later_report",
+      "confidence": 0.85
+    },
+    {
+      "id": "E:PE:fourier>proved>TH:fourier-heat-series",
+      "from": "PE:fourier",
+      "to": "TH:fourier-heat-series",
+      "type": "proved",
+      "directed": true,
+      "time": { "from": 1822, "to": 1822, "precision": "year" },
+      "source": { "locator": "Fourier 1822；未见原书" },
+      "grade": "S",
+      "attestation": "later_report",
+      "confidence": 0.8,
+      "note": "傅里叶给出解法；严格收敛性证明由后人补足。"
+    },
+    {
+      "id": "E:PE:d-alembert>poses>PR:string-vibration",
+      "from": "PE:d-alembert",
+      "to": "PR:string-vibration",
+      "type": "poses",
+      "directed": true,
+      "time": { "from": 1747, "to": 1747, "precision": "year" },
+      "source": { "locator": "d'Alembert 1747；未见原刊" },
+      "grade": "S",
+      "attestation": "later_report",
+      "confidence": 0.85
+    },
+    {
+      "id": "E:PE:fourier>poses>PR:heat-conduction",
+      "from": "PE:fourier",
+      "to": "PR:heat-conduction",
+      "type": "poses",
+      "directed": true,
+      "time": { "from": 1807, "to": 1807, "precision": "year" },
+      "source": { "locator": "Fourier 1807 提交论文；据 DSB 转述" },
+      "grade": "S",
+      "attestation": "later_report",
+      "confidence": 0.8
+    },
+    {
+      "id": "E:PE:d-alembert>introduced>CO:wave-equation",
+      "from": "PE:d-alembert",
+      "to": "CO:wave-equation",
+      "type": "introduced",
+      "directed": true,
+      "time": { "from": 1747, "to": 1747, "precision": "year" },
+      "source": { "locator": "d'Alembert 1747；未见原刊" },
+      "grade": "S",
+      "attestation": "later_report",
+      "confidence": 0.8,
+      "note": "指以方程形式处理弦振动，不是现代'波动方程'名称。"
+    },
+    {
+      "id": "E:PE:d-alembert>contributed_to>TX:d-alembert-1747",
+      "from": "PE:d-alembert",
+      "to": "TX:d-alembert-1747",
+      "type": "contributed_to",
+      "directed": true,
+      "time": { "from": 1747, "to": 1747, "precision": "year" },
+      "source": { "locator": "论文署名" },
+      "role": "author",
+      "grade": "S",
+      "attestation": "later_report",
+      "confidence": 0.9
+    },
+    {
+      "id": "E:PE:fourier>contributed_to>TX:fourier-1822",
+      "from": "PE:fourier",
+      "to": "TX:fourier-1822",
+      "type": "contributed_to",
+      "directed": true,
+      "time": { "from": 1822, "to": 1822, "precision": "year" },
+      "source": { "locator": "著作署名" },
+      "role": "author",
+      "grade": "S",
+      "attestation": "later_report",
+      "confidence": 0.9
+    },
+    {
+      "id": "E:TX:d-alembert-1747>supports>PR:string-vibration",
+      "from": "TX:d-alembert-1747",
+      "to": "PR:string-vibration",
+      "type": "supports",
+      "directed": true,
+      "time": { "from": 1747, "to": 1747, "precision": "year" },
+      "source": { "locator": "论文正文；本图未见原刊" },
+      "grade": "S",
+      "attestation": "later_report",
+      "confidence": 0.8
+    },
+    {
+      "id": "E:TX:fourier-1822>supports>TH:fourier-heat-series",
+      "from": "TX:fourier-1822",
+      "to": "TH:fourier-heat-series",
+      "type": "supports",
+      "directed": true,
+      "time": { "from": 1822, "to": 1822, "precision": "year" },
+      "source": { "locator": "著作正文；本图未见原书" },
+      "grade": "S",
+      "attestation": "later_report",
+      "confidence": 0.8
+    },
+    {
+      "id": "E:TP:pde-separation>anchors>ME:separation-of-variables",
+      "from": "TP:pde-separation",
+      "to": "ME:separation-of-variables",
+      "type": "anchors",
+      "directed": true,
+      "time": { "from": null, "to": null, "precision": "unknown" },
+      "source": { "locator": "课程大纲" },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.9,
+      "note": "教学挂点只做索引，不承担史学论断。"
+    },
+    {
+      "id": "E:TP:pde-separation>anchors>PR:heat-conduction",
+      "from": "TP:pde-separation",
+      "to": "PR:heat-conduction",
+      "type": "anchors",
+      "directed": true,
+      "time": { "from": null, "to": null, "precision": "unknown" },
+      "source": { "locator": "课程大纲" },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.9
+    },
+    {
+      "id": "E:TP:pde-separation>anchors>CO:wave-equation",
+      "from": "TP:pde-separation",
+      "to": "CO:wave-equation",
+      "type": "anchors",
+      "directed": true,
+      "time": { "from": null, "to": null, "precision": "unknown" },
+      "source": { "locator": "课程大纲" },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.9
+    }
+  ]
+}
