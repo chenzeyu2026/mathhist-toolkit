@@ -1,0 +1,491 @@
+{
+  "schema_version": "0.2",
+  "meta": {
+    "title": "变分法（第一批扩建：从最速降线与等周问题向过去取景）",
+    "scope": "只验证结构，不是完整条目；节点 12、边 18。",
+    "note": "BR-ANA-VAR 在 branches.json 中为 proposed 扩展槽，本轮新增，不进 62 计数；branch.parents 留空，父关系只写在 edges[]。原始文本定位到论文/著作一级，未见原刊，claim 按 S 或 U 定级。"
+  },
+  "nodes": [
+    {
+      "id": "BR-ANA-VAR",
+      "type": "branch",
+      "schema_version": "0.2",
+      "labels": { "zh": "变分法", "en": "calculus of variations" },
+      "status": "proposed",
+      "summary": "在函数空间上求泛函极值的理论；欧拉–拉格朗日方程是其核心判据。",
+      "view_classes": ["分析学"],
+      "parents": [],
+      "scope_definition": "以泛函的极值问题为对象；最优化中的有限维极值与变分法共享必要条件，但不并入本支。",
+      "affected_layers": { "problem": "high", "failure": "medium", "notation": "high", "text": "medium" },
+      "claims": [],
+      "provenance": { "created_by": "branch-expansion-batch1", "created_at": "2026-11-25", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "PR:brachistochrone",
+      "type": "problem",
+      "schema_version": "0.2",
+      "labels": { "zh": "最速降线问题", "en": "brachistochrone problem" },
+      "status": "resolved",
+      "summary": "求重力场中使质点从一点滑到另一点所用时间最短的曲线。",
+      "original_formulation": {
+        "text": "给定不在同一竖直线上的两点，求一条曲线，使质点仅受重力从高点滑到低点所用时间最短。",
+        "language": "la",
+        "author": "PE:jean-bernoulli",
+        "year": 1696,
+        "source": { "locator": "Jean Bernoulli 1696 年在 Acta Eruditorum 公开征解", "grade": "S", "attestation": "later_report" },
+        "grade": "S",
+        "attestation": "later_report"
+      },
+      "problem_kind": "construction",
+      "asked_as": ["求最快的下滑曲线"],
+      "related_branches": ["BR-ANA-VAR"],
+      "claims": [
+        {
+          "id": "CLM:PR:brachistochrone.1",
+          "statement": "1696 年约翰·伯努利在《博学学报》公开征解最速降线，1697 年收到包括牛顿、莱布尼茨、雅各布·伯努利在内的解答。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "Acta Eruditorum 1696/1697；据通行数学史转述，未见原刊" }
+        }
+      ],
+      "provenance": { "created_by": "branch-expansion-batch1", "created_at": "2026-11-25", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "PR:isoperimetric",
+      "type": "problem",
+      "schema_version": "0.2",
+      "labels": { "zh": "等周问题", "en": "isoperimetric problem" },
+      "status": "resolved",
+      "summary": "在给定周长的一切闭曲线中，求所围面积最大者。",
+      "original_formulation": {
+        "text": "给定周长的闭曲线中，哪一种围成的面积最大。",
+        "language": "grc",
+        "author": null,
+        "year": -200,
+        "source": { "locator": "古代等周问题；帕普斯《数学汇编》有讨论，具体首见文本待核", "grade": "U", "attestation": "later_report" },
+        "grade": "U",
+        "attestation": "later_report"
+      },
+      "problem_kind": "other",
+      "asked_as": ["求最大面积曲线"],
+      "related_branches": ["BR-ANA-VAR"],
+      "claims": [
+        {
+          "id": "CLM:PR:isoperimetric.1",
+          "statement": "等周问题在古代已被讨论，1697 年雅各布·伯努利用变分思想给出解答。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "通行数学史；古代来源与 1697 年解答的页码待补" }
+        }
+      ],
+      "provenance": { "created_by": "branch-expansion-batch1", "created_at": "2026-11-25", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "CO:first-variation",
+      "type": "concept",
+      "schema_version": "0.2",
+      "labels": { "zh": "一阶变分", "en": "first variation" },
+      "status": "active",
+      "summary": "泛函在容许曲线微小扰动下的一阶改变量；其为零是极值的必要条件。",
+      "definition": "对泛函 J[y]，若 y 为极值曲线，则对任意容许变分 η 有 δJ[y;η] = 0。",
+      "definition_source": { "grade": "F", "locator": "通行教材定义；定义本身不是历史对象" },
+      "occurrences": [
+        { "civilization": "欧洲", "region": "瑞士", "language": "la", "year_from": 1744, "precision": "year", "dating_basis": "欧拉《求极大极小的新方法》", "independence": "independent" }
+      ],
+      "claims": [
+        {
+          "id": "CLM:CO:first-variation.1",
+          "statement": "把极值条件写成变分为零，是 18 世纪变分法成型的关键一步，欧拉 1744 年的著作是标志性文本。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "Euler 1744, Methodus inveniendi lineas curvas；据通行数学史转述" }
+        }
+      ],
+      "provenance": { "created_by": "branch-expansion-batch1", "created_at": "2026-11-25", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "TH:euler-lagrange-equation",
+      "type": "theorem",
+      "schema_version": "0.2",
+      "labels": { "zh": "欧拉–拉格朗日方程", "en": "Euler–Lagrange equation" },
+      "status": "active",
+      "summary": "泛函极值曲线必须满足的二阶常微分方程；变分法的核心判据。",
+      "statement": "若 J[y] = ∫ L(x, y, y′) dx 在 y 处取极值，则 ∂L/∂y − d/dx(∂L/∂y′) = 0。",
+      "assumptions": ["L 充分光滑", "y 在端点固定", "容许曲线足够光滑"],
+      "proof_status": "proved",
+      "namesake_note": "欧拉 1744 年给出几何形式，拉格朗日 1760 年代给出解析形式；双名是后世合并。",
+      "claims": [
+        {
+          "id": "CLM:TH:euler-lagrange-equation.1",
+          "statement": "欧拉 1744 年与拉格朗日 1760 年代先后给出该方程；'欧拉–拉格朗日'是合并命名。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "Euler 1744；Lagrange 1760–61, Essai d'une nouvelle méthode；据通行数学史转述" }
+        }
+      ],
+      "provenance": { "created_by": "branch-expansion-batch1", "created_at": "2026-11-25", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "ME:calculus-of-variations",
+      "type": "method",
+      "schema_version": "0.2",
+      "labels": { "zh": "变分法", "en": "calculus of variations" },
+      "status": "active",
+      "summary": "把极值问题化为变分为零、再化为微分方程求解的一套方法。",
+      "kind": "construction",
+      "input": "泛函与容许曲线族",
+      "output": "极值曲线满足的微分方程及其解",
+      "first_use": { "by": "PE:euler", "year": 1744, "locator": "Euler 1744；未见原书", "grade": "S" },
+      "applies_to": ["PR:brachistochrone", "PR:isoperimetric"],
+      "claims": [],
+      "provenance": { "created_by": "branch-expansion-batch1", "created_at": "2026-11-25", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "PE:jean-bernoulli",
+      "type": "person",
+      "schema_version": "0.2",
+      "labels": { "zh": "约翰·伯努利", "en": "Johann Bernoulli" },
+      "status": "historical",
+      "summary": "瑞士数学家；1696 年提出最速降线问题并给出解答。",
+      "name_variants": ["Johann Bernoulli", "Jean Bernoulli", "约翰·伯努利"],
+      "dates": { "birth": 1667, "death": 1748, "precision": "year" },
+      "claims": [
+        {
+          "id": "CLM:PE:jean-bernoulli.1",
+          "statement": "约翰·伯努利生卒 1667–1748。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "DSB 'Bernoulli, Johann' 条目；页码待补" }
+        }
+      ],
+      "provenance": { "created_by": "branch-expansion-batch1", "created_at": "2026-11-25", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "PE:euler",
+      "type": "person",
+      "schema_version": "0.2",
+      "labels": { "zh": "莱昂哈德·欧拉", "en": "Leonhard Euler" },
+      "status": "historical",
+      "summary": "瑞士数学家；1744 年系统建立变分法并给出极值曲线方程。",
+      "name_variants": ["Euler", "L. Euler", "欧拉"],
+      "dates": { "birth": 1707, "death": 1783, "precision": "year" },
+      "claims": [
+        {
+          "id": "CLM:PE:euler.1",
+          "statement": "欧拉生卒 1707–1783。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "DSB 'Euler, Leonhard' 条目；页码待补" }
+        }
+      ],
+      "provenance": { "created_by": "branch-expansion-batch1", "created_at": "2026-11-25", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "PE:lagrange",
+      "type": "person",
+      "schema_version": "0.2",
+      "labels": { "zh": "约瑟夫·路易·拉格朗日", "en": "Joseph-Louis Lagrange" },
+      "status": "historical",
+      "summary": "法国数学家；1760 年代以解析方法改写变分法，并引入乘子法。",
+      "name_variants": ["Lagrange", "J.-L. Lagrange", "拉格朗日"],
+      "dates": { "birth": 1736, "death": 1813, "precision": "year" },
+      "claims": [
+        {
+          "id": "CLM:PE:lagrange.1",
+          "statement": "拉格朗日生卒 1736–1813。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "DSB 'Lagrange, Joseph-Louis' 条目；页码待补" }
+        }
+      ],
+      "provenance": { "created_by": "branch-expansion-batch1", "created_at": "2026-11-25", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "TX:bernoulli-1696-acta",
+      "type": "text",
+      "schema_version": "0.2",
+      "labels": { "zh": "约翰·伯努利 1696 年最速降线征解（Acta Eruditorum）", "en": "Johann Bernoulli's 1696 brachistochrone challenge in Acta Eruditorum" },
+      "status": "historical",
+      "summary": "公开征解短文；本图未见原刊。",
+      "title_variants": ["Acta Eruditorum 1696 征解", "Problema novum ad cujus solutionem..."],
+      "text_type": "article",
+      "chains": [
+        { "stemma_branch": "printed", "note": "Acta Eruditorum 1696 年刊；本图未取得原刊影像" }
+      ],
+      "claims": [],
+      "provenance": { "created_by": "branch-expansion-batch1", "created_at": "2026-11-25", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "TX:euler-1744-methodus",
+      "type": "text",
+      "schema_version": "0.2",
+      "labels": { "zh": "欧拉《求极大极小的新方法》（1744）", "en": "Euler, Methodus inveniendi lineas curvas (1744)" },
+      "status": "historical",
+      "summary": "变分法的第一部系统著作；本图未见原书。",
+      "title_variants": ["Methodus inveniendi lineas curvas maximi minimive proprietate gaudentes", "求极大极小的新方法"],
+      "text_type": "treatise",
+      "chains": [
+        { "stemma_branch": "printed", "note": "1744 年刊本；本图未取得原书影像" }
+      ],
+      "claims": [
+        {
+          "id": "CLM:TX:euler-1744-methodus.1",
+          "statement": "该著作 1744 年出版，是变分法成型的标志性文本。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "DSB 'Euler' 条目与通行数学史书目；版次待补" }
+        }
+      ],
+      "provenance": { "created_by": "branch-expansion-batch1", "created_at": "2026-11-25", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "TP:brachistochrone",
+      "type": "teaching_point",
+      "schema_version": "0.2",
+      "labels": { "zh": "最速降线不是直线", "en": "the brachistochrone is not a straight line" },
+      "status": "active",
+      "summary": "挂在高等数学/变分法入门；用最速降线纠正'两点之间直线最快'的直觉。",
+      "course": "高等数学（微分方程或变分法初步）",
+      "textbook": { "title": "高等数学（通行教材）", "edition": "以本校选用版为准" },
+      "chapter": "微分方程应用或变分法初步",
+      "learning_objective": "能说明为什么最短路径不等于最快路径，并能写出时间泛函。",
+      "prerequisite_concepts": ["CO:first-variation"],
+      "common_misconception": "两点之间直线距离最短，所以下滑也最快。",
+      "history_objects": ["PR:brachistochrone", "ME:calculus-of-variations", "TH:euler-lagrange-equation"],
+      "output_form": "lecture",
+      "evidence": { "status": "not_applicable", "basis": "curriculum" },
+      "claims": [],
+      "provenance": { "created_by": "branch-expansion-batch1", "created_at": "2026-11-25", "sources_checked": "none", "schema_version": "0.2" }
+    }
+  ],
+  "edges": [
+    {
+      "id": "E:BR-ANA-VAR>concerns>PR:brachistochrone",
+      "from": "BR-ANA-VAR",
+      "to": "PR:brachistochrone",
+      "type": "concerns",
+      "directed": true,
+      "time": { "from": null, "to": null, "precision": "unknown" },
+      "source": { "locator": "本框架分支定义" },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.95,
+      "note": "索引边，不参与推理。"
+    },
+    {
+      "id": "E:BR-ANA-VAR>concerns>PR:isoperimetric",
+      "from": "BR-ANA-VAR",
+      "to": "PR:isoperimetric",
+      "type": "concerns",
+      "directed": true,
+      "time": { "from": null, "to": null, "precision": "unknown" },
+      "source": { "locator": "本框架分支定义" },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.9,
+      "note": "索引边，不参与推理。"
+    },
+    {
+      "id": "E:BR-ANA-VAR>concerns>CO:first-variation",
+      "from": "BR-ANA-VAR",
+      "to": "CO:first-variation",
+      "type": "concerns",
+      "directed": true,
+      "time": { "from": null, "to": null, "precision": "unknown" },
+      "source": { "locator": "本框架分支定义" },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.95,
+      "note": "索引边，不参与推理。"
+    },
+    {
+      "id": "E:TH:euler-lagrange-equation>resolves>PR:brachistochrone",
+      "from": "TH:euler-lagrange-equation",
+      "to": "PR:brachistochrone",
+      "type": "resolves",
+      "directed": true,
+      "time": { "from": 1744, "to": 1744, "precision": "year" },
+      "claimant": "PE:euler",
+      "grade": "S",
+      "attestation": "later_report",
+      "confidence": 0.8,
+      "note": "方程给出必要条件；具体曲线需再解方程。"
+    },
+    {
+      "id": "E:TH:euler-lagrange-equation>depends_on>CO:first-variation",
+      "from": "TH:euler-lagrange-equation",
+      "to": "CO:first-variation",
+      "type": "depends_on",
+      "directed": true,
+      "time": { "from": null, "to": null, "precision": "unknown" },
+      "source": { "locator": "定理的现代表述" },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.9,
+      "note": "逻辑前置是后世整理。"
+    },
+    {
+      "id": "E:PR:brachistochrone>uses_method>ME:calculus-of-variations",
+      "from": "PR:brachistochrone",
+      "to": "ME:calculus-of-variations",
+      "type": "uses_method",
+      "directed": true,
+      "time": { "from": 1697, "to": 1697, "precision": "year" },
+      "claimant": "PE:jean-bernoulli",
+      "grade": "S",
+      "attestation": "later_report",
+      "confidence": 0.85,
+      "note": "1697 年的解法尚未用后来的变分记号，但方法是变分思想。"
+    },
+    {
+      "id": "E:PR:isoperimetric>uses_method>ME:calculus-of-variations",
+      "from": "PR:isoperimetric",
+      "to": "ME:calculus-of-variations",
+      "type": "uses_method",
+      "directed": true,
+      "time": { "from": 1697, "to": 1697, "precision": "year" },
+      "claimant": "Jacob Bernoulli（1697 年解答者；本图未立人物节点）",
+      "grade": "U",
+      "attestation": "later_report",
+      "confidence": 0.65,
+      "source": { "locator": "雅各布·伯努利 1697 年解答；据通行数学史转述" },
+      "note": "使用者的归属与年份需核对原始文献后升 S。"
+    },
+    {
+      "id": "E:ME:calculus-of-variations>depends_on>CO:first-variation",
+      "from": "ME:calculus-of-variations",
+      "to": "CO:first-variation",
+      "type": "depends_on",
+      "directed": true,
+      "time": { "from": null, "to": null, "precision": "unknown" },
+      "source": { "locator": "方法的现代表述" },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.9
+    },
+    {
+      "id": "E:PE:jean-bernoulli>poses>PR:brachistochrone",
+      "from": "PE:jean-bernoulli",
+      "to": "PR:brachistochrone",
+      "type": "poses",
+      "directed": true,
+      "time": { "from": 1696, "to": 1696, "precision": "year" },
+      "source": { "locator": "Acta Eruditorum 1696 征解；未见原刊" },
+      "grade": "S",
+      "attestation": "later_report",
+      "confidence": 0.9
+    },
+    {
+      "id": "E:PE:euler>proved>TH:euler-lagrange-equation",
+      "from": "PE:euler",
+      "to": "TH:euler-lagrange-equation",
+      "type": "proved",
+      "directed": true,
+      "time": { "from": 1744, "to": 1744, "precision": "year" },
+      "source": { "locator": "Euler 1744；未见原书" },
+      "grade": "S",
+      "attestation": "later_report",
+      "confidence": 0.85
+    },
+    {
+      "id": "E:PE:lagrange>proved>TH:euler-lagrange-equation",
+      "from": "PE:lagrange",
+      "to": "TH:euler-lagrange-equation",
+      "type": "proved",
+      "directed": true,
+      "time": { "from": 1760, "to": 1760, "precision": "year" },
+      "source": { "locator": "Lagrange 1760–61, Essai d'une nouvelle méthode；未见原刊" },
+      "grade": "S",
+      "attestation": "later_report",
+      "confidence": 0.75,
+      "note": "拉格朗日给出解析形式的推导，与欧拉的几何形式不同。"
+    },
+    {
+      "id": "E:PE:euler>introduced>ME:calculus-of-variations",
+      "from": "PE:euler",
+      "to": "ME:calculus-of-variations",
+      "type": "introduced",
+      "directed": true,
+      "time": { "from": 1744, "to": 1744, "precision": "year" },
+      "source": { "locator": "Euler 1744；未见原书" },
+      "grade": "S",
+      "attestation": "later_report",
+      "confidence": 0.8
+    },
+    {
+      "id": "E:PE:jean-bernoulli>contributed_to>TX:bernoulli-1696-acta",
+      "from": "PE:jean-bernoulli",
+      "to": "TX:bernoulli-1696-acta",
+      "type": "contributed_to",
+      "directed": true,
+      "time": { "from": 1696, "to": 1696, "precision": "year" },
+      "source": { "locator": "征解署名" },
+      "role": "author",
+      "grade": "S",
+      "attestation": "later_report",
+      "confidence": 0.9
+    },
+    {
+      "id": "E:PE:euler>contributed_to>TX:euler-1744-methodus",
+      "from": "PE:euler",
+      "to": "TX:euler-1744-methodus",
+      "type": "contributed_to",
+      "directed": true,
+      "time": { "from": 1744, "to": 1744, "precision": "year" },
+      "source": { "locator": "著作署名" },
+      "role": "author",
+      "grade": "S",
+      "attestation": "later_report",
+      "confidence": 0.9
+    },
+    {
+      "id": "E:TX:bernoulli-1696-acta>supports>PR:brachistochrone",
+      "from": "TX:bernoulli-1696-acta",
+      "to": "PR:brachistochrone",
+      "type": "supports",
+      "directed": true,
+      "time": { "from": 1696, "to": 1696, "precision": "year" },
+      "source": { "locator": "征解正文；本图未见原刊" },
+      "grade": "S",
+      "attestation": "later_report",
+      "confidence": 0.8
+    },
+    {
+      "id": "E:TX:euler-1744-methodus>supports>TH:euler-lagrange-equation",
+      "from": "TX:euler-1744-methodus",
+      "to": "TH:euler-lagrange-equation",
+      "type": "supports",
+      "directed": true,
+      "time": { "from": 1744, "to": 1744, "precision": "year" },
+      "source": { "locator": "著作正文；本图未见原书" },
+      "grade": "S",
+      "attestation": "later_report",
+      "confidence": 0.8
+    },
+    {
+      "id": "E:TP:brachistochrone>anchors>ME:calculus-of-variations",
+      "from": "TP:brachistochrone",
+      "to": "ME:calculus-of-variations",
+      "type": "anchors",
+      "directed": true,
+      "time": { "from": null, "to": null, "precision": "unknown" },
+      "source": { "locator": "课程大纲" },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.9,
+      "note": "教学挂点只做索引，不承担史学论断。"
+    },
+    {
+      "id": "E:TP:brachistochrone>anchors>PR:brachistochrone",
+      "from": "TP:brachistochrone",
+      "to": "PR:brachistochrone",
+      "type": "anchors",
+      "directed": true,
+      "time": { "from": null, "to": null, "precision": "unknown" },
+      "source": { "locator": "课程大纲" },
+      "grade": "F",
+      "attestation": "textbook_simplification",
+      "confidence": 0.9
+    }
+  ]
+}

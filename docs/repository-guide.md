@@ -26,9 +26,15 @@ spec/
     ├── samples/                         两个最小图包
     │   ├── group-theory.json            13 节点 / 15 边
     │   └── non-euclidean-geometry.json  63 节点 / 94 边
-    └── pilots/                          两个完整试点
+    └── pilots/                          八个完整试点
         ├── group-theory/graph.json      51 节点 / 80 边
-        └── calculus/graph.json          58 节点 / 102 边
+        ├── calculus/graph.json          58 节点 / 102 边
+        ├── pde/graph.json               15 节点 / 26 边
+        ├── variational-calculus/graph.json  12 节点 / 18 边
+        ├── dynamical-systems/graph.json     13 节点 / 21 边
+        ├── lie-groups/graph.json            14 节点 / 22 边
+        ├── stochastic-analysis/graph.json   12 节点 / 20 边
+        └── non-classical-logic/graph.json   13 节点 / 19 边
 ```
 
 | 产物 | 回答什么 | 是否正式规范 | 机器可读 |
@@ -110,7 +116,7 @@ $ py -3 -m mathlint check tests/fixtures/invalid.md
 
 - **做什么**：等价于 `graphlint check spec/framework/samples spec/framework/pilots`，并额外做**跨文件 ID 判重**：同一节点/边 ID 出现在两个图包时，报 `NODE_ID_DUPLICATE` / `EDGE_ID_DUPLICATE`，消息给出两个文件与各自的 JSON Pointer。
 - **输入**：无。
-- **当前结果**：4 个图包、185 个节点、291 条边，**0 error / 60 warning**，退出码 0。60 条 warning 全部是 `NODE_REQUIRED`。跨图 ID 已按作用域区分：样例 `group-theory` 的非分支实体带 `.sample`，群论试点中的 `PE:cauchy`、`PE:klein` 带 `.group-theory`；`BR-*` 与 `parent_of`/`cross_class` 是 `branches.json` 的目录投影，按目录 ID 豁免判重。
+- **当前结果**：10 个图包、264 个节点、417 条边，**0 error / 60 warning**，退出码 0。60 条 warning 全部是 `NODE_REQUIRED`，集中在既有三个图包；本轮新增的 `pde`、`variational-calculus`、`dynamical-systems`、`lie-groups`、`stochastic-analysis`、`non-classical-logic` 均为 0 warning。跨图 ID 已按作用域区分：样例 `group-theory` 的非分支实体带 `.sample`，群论试点中的 `PE:cauchy`、`PE:klein` 带 `.group-theory`；`BR-*` 与 `parent_of`/`cross_class` 是 `branches.json` 的目录投影，按目录 ID 豁免判重。新增的六条分支（`BR-ANA-PDE`、`BR-ANA-VAR`、`BR-ANA-DYN`、`BR-ALG-LIE`、`BR-PROB-ITOCALC`、`BR-LOG-NCLASSIC`）仍为 `proposed`，不进 62 计数。
 - **汇总行**：`汇总：error N / warning N · files N / nodes N / edges N`；`--json` 的 `summary` 同名字段。
 - **`--strict`**：60 条 warning 升为 error，合计 60 error，退出码 1。
 

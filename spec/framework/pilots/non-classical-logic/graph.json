@@ -1,0 +1,306 @@
+{
+  "schema_version": "0.2",
+  "meta": {
+    "title": "非经典逻辑（第二批扩建：从直觉主义基础到可能世界语义）",
+    "scope": "只验证结构，不是完整条目；节点 13、边 19。",
+    "note": "BR-LOG-NCLASSIC 在 branches.json 中为 proposed 扩展槽，不进 62 计数；branch.parents 留空，父关系只写在 edges[]。原始文本定位到学位论文/院刊论文一级，未见原刊，claim 按 S 或 U 定级。"
+  },
+  "nodes": [
+    {
+      "id": "BR-LOG-NCLASSIC",
+      "type": "branch",
+      "schema_version": "0.2",
+      "labels": { "zh": "非经典逻辑", "en": "non-classical logic" },
+      "status": "proposed",
+      "summary": "不把排中律等经典原则当作普遍法则的逻辑系统：直觉主义、模态、多值等。",
+      "view_classes": ["逻辑与基础"],
+      "parents": [],
+      "scope_definition": "以经典一阶逻辑之外的逻辑系统为对象；证明论与模型论的一般方法仍归各自分支。",
+      "affected_layers": { "problem": "high", "failure": "high", "notation": "medium", "text": "medium" },
+      "claims": [],
+      "provenance": { "created_by": "branch-expansion-batch2", "created_at": "2026-11-25", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "PR:intuitionistic-foundations",
+      "type": "problem",
+      "schema_version": "0.2",
+      "labels": { "zh": "直觉主义基础问题", "en": "intuitionistic foundations" },
+      "status": "resolved",
+      "summary": "若数学对象必须可构造，排中律与双重否定消去是否仍然合法。",
+      "original_formulation": {
+        "text": "在'存在即构造'的要求下，如何重建逻辑与数学，哪些经典推理不再合法。",
+        "language": "nl",
+        "author": "PE:brouwer",
+        "year": 1907,
+        "source": { "locator": "Brouwer 1907, Over de grondslagen der wiskunde（阿姆斯特丹学位论文）", "grade": "S", "attestation": "later_report" },
+        "grade": "S",
+        "attestation": "later_report"
+      },
+      "problem_kind": "foundational",
+      "asked_as": ["排中律能不能用", "构造性数学的逻辑是什么"],
+      "related_branches": ["BR-LOG-NCLASSIC"],
+      "claims": [
+        {
+          "id": "CLM:PR:intuitionistic-foundations.1",
+          "statement": "布劳威尔 1907 年学位论文系统提出直觉主义纲领，拒绝把排中律当作普遍有效的推理原则。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "Brouwer 1907；据 DSB 'Brouwer' 条目与通行逻辑史转述，未见原刊" }
+        }
+      ],
+      "provenance": { "created_by": "branch-expansion-batch2", "created_at": "2026-11-25", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "TH:heyting-formalization",
+      "type": "theorem",
+      "schema_version": "0.2",
+      "labels": { "zh": "直觉主义逻辑的海廷形式化", "en": "Heyting's formalization of intuitionistic logic" },
+      "status": "active",
+      "summary": "把直觉主义命题逻辑与谓词逻辑写成公理系统，使'构造性有效'可精确定义。",
+      "statement": "直觉主义命题逻辑可由不含排中律的公理与推理规则刻画；其定理类严格弱于经典命题逻辑。",
+      "assumptions": ["命题语言", "构造性证明解释"],
+      "proof_status": "proved",
+      "namesake_note": "海廷 1930 年给出形式化；BHK 解释是后续归纳命名的语义说明。",
+      "claims": [
+        {
+          "id": "CLM:TH:heyting-formalization.1",
+          "statement": "海廷 1930 年在普鲁士科学院院刊发表三篇论文，给出直觉主义逻辑的形式公理系统。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "Heyting 1930, Die formalen Regeln der intuitionistischen Logik, Sitzungsber. Preuß. Akad. Wiss." }
+        }
+      ],
+      "provenance": { "created_by": "branch-expansion-batch2", "created_at": "2026-11-25", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "ME:bhk-interpretation",
+      "type": "method",
+      "schema_version": "0.2",
+      "labels": { "zh": "BHK 解释", "en": "Brouwer–Heyting–Kolmogorov interpretation" },
+      "status": "active",
+      "summary": "用'证明是什么'解释逻辑联结词：证明 A→B 就是给出把 A 的证明变为 B 的证明的方法。",
+      "kind": "proof_method",
+      "input": "直觉主义逻辑公式",
+      "output": "构造性证明解释",
+      "first_use": { "by": "PE:heyting", "year": 1930, "locator": "Heyting 1930；BHK 名称晚出", "grade": "S" },
+      "applies_to": ["PR:intuitionistic-foundations"],
+      "claims": [
+        {
+          "id": "CLM:ME:bhk-interpretation.1",
+          "statement": "用证明解释联结词的做法可追溯到布劳威尔与海廷，'BHK'是后来（Kolmogorov 加入后）的合称。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "通行直觉主义逻辑教材；原始文献页码待补" }
+        }
+      ],
+      "provenance": { "created_by": "branch-expansion-batch2", "created_at": "2026-11-25", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "CO:intuitionistic-logic",
+      "type": "concept",
+      "schema_version": "0.2",
+      "labels": { "zh": "直觉主义逻辑", "en": "intuitionistic logic" },
+      "status": "active",
+      "summary": "以构造性证明为语义核心、不含排中律的逻辑系统。",
+      "definition": "由海廷公理系统刻画的命题与谓词逻辑；其定理在经典逻辑中可证，反之不然。",
+      "definition_source": { "grade": "F", "locator": "通行教材定义；定义本身不是历史对象" },
+      "occurrences": [
+        { "civilization": "欧洲", "region": "荷兰", "language": "nl", "year_from": 1907, "precision": "year", "dating_basis": "布劳威尔 1907 学位论文", "independence": "independent" }
+      ],
+      "claims": [],
+      "provenance": { "created_by": "branch-expansion-batch2", "created_at": "2026-11-25", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "CO:law-of-excluded-middle",
+      "type": "concept",
+      "schema_version": "0.2",
+      "labels": { "zh": "排中律", "en": "law of excluded middle" },
+      "status": "active",
+      "summary": "对任意命题 A，A 或非 A 必有一真；直觉主义逻辑不接受其为普遍原则。",
+      "definition": "命题模式 A ∨ ¬A。",
+      "definition_source": { "grade": "F", "locator": "通行教材定义；定义本身不是历史对象" },
+      "occurrences": [
+        { "civilization": "欧洲", "region": "荷兰", "language": "nl", "year_from": 1907, "precision": "year", "dating_basis": "布劳威尔对排中律的批评", "independence": "independent" }
+      ],
+      "claims": [
+        {
+          "id": "CLM:CO:law-of-excluded-middle.1",
+          "statement": "直觉主义逻辑不接受排中律为普遍原则，但也不把它当作假命题；它只是不可普遍断言。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "通行直觉主义逻辑教材；页码待补" }
+        }
+      ],
+      "provenance": { "created_by": "branch-expansion-batch2", "created_at": "2026-11-25", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "CO:kripke-semantics",
+      "type": "concept",
+      "schema_version": "0.2",
+      "labels": { "zh": "克里普克语义", "en": "Kripke semantics" },
+      "status": "active",
+      "summary": "用可能世界与可达关系解释模态与直觉主义逻辑的语义框架。",
+      "definition": "由世界集 W、可达关系 R 与赋值 V 组成的三元组；公式在世界的真值按 R 递归定义。",
+      "definition_source": { "grade": "F", "locator": "通行教材定义；定义本身不是历史对象" },
+      "occurrences": [
+        { "civilization": "欧洲", "region": "美国", "language": "en", "year_from": 1959, "precision": "year", "dating_basis": "Kripke 1959 模态逻辑完备性论文", "independence": "independent" }
+      ],
+      "claims": [
+        {
+          "id": "CLM:CO:kripke-semantics.1",
+          "statement": "克里普克 1959 年给出模态逻辑的可能世界语义；1965 年将其用于直觉主义逻辑。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "Kripke 1959, J. Symbolic Logic 24, 1–14；Kripke 1965, Semantical analysis of intuitionistic logic I" }
+        }
+      ],
+      "provenance": { "created_by": "branch-expansion-batch2", "created_at": "2026-11-25", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "PE:brouwer",
+      "type": "person",
+      "schema_version": "0.2",
+      "labels": { "zh": "鲁伊兹·布劳威尔", "en": "L. E. J. Brouwer" },
+      "status": "historical",
+      "summary": "荷兰数学家；直觉主义数学与拓扑学的奠基者之一。",
+      "name_variants": ["L. E. J. Brouwer", "Brouwer", "布劳威尔"],
+      "dates": { "birth": 1881, "death": 1966, "precision": "year" },
+      "claims": [
+        {
+          "id": "CLM:PE:brouwer.1",
+          "statement": "布劳威尔生卒 1881–1966。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "DSB 'Brouwer, Luitzen Egbertus Jan' 条目；页码待补" }
+        }
+      ],
+      "provenance": { "created_by": "branch-expansion-batch2", "created_at": "2026-11-25", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "PE:heyting",
+      "type": "person",
+      "schema_version": "0.2",
+      "labels": { "zh": "阿伦德·海廷", "en": "Arend Heyting" },
+      "status": "historical",
+      "summary": "荷兰数学家与逻辑学家；1930 年给出直觉主义逻辑的形式公理系统。",
+      "name_variants": ["Arend Heyting", "A. Heyting", "海廷"],
+      "dates": { "birth": 1898, "death": 1980, "precision": "year" },
+      "claims": [
+        {
+          "id": "CLM:PE:heyting.1",
+          "statement": "海廷生卒 1898–1980。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "通行传记资料；DSB 未收，页码待补" }
+        }
+      ],
+      "provenance": { "created_by": "branch-expansion-batch2", "created_at": "2026-11-25", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "PE:kripke",
+      "type": "person",
+      "schema_version": "0.2",
+      "labels": { "zh": "索尔·克里普克", "en": "Saul Kripke" },
+      "status": "historical",
+      "summary": "美国逻辑学家与哲学家；可能世界语义的提出者。",
+      "name_variants": ["Saul Kripke", "S. A. Kripke", "克里普克"],
+      "dates": { "birth": 1940, "death": 2022, "precision": "year" },
+      "claims": [
+        {
+          "id": "CLM:PE:kripke.1",
+          "statement": "克里普克生卒 1940–2022。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "通行传记资料；页码待补" }
+        }
+      ],
+      "provenance": { "created_by": "branch-expansion-batch2", "created_at": "2026-11-25", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "TX:brouwer-1907",
+      "type": "text",
+      "schema_version": "0.2",
+      "labels": { "zh": "布劳威尔《论数学的基础》（1907）", "en": "Brouwer, Over de grondslagen der wiskunde (1907)" },
+      "status": "historical",
+      "summary": "直觉主义纲领的奠基性学位论文，荷兰文；本图未见原文。",
+      "title_variants": ["Over de grondslagen der wiskunde", "论数学的基础"],
+      "text_type": "treatise",
+      "chains": [
+        { "stemma_branch": "dutch", "note": "阿姆斯特丹大学 1907 年学位论文；英译见 Collected Works I（1975）；本图未取得原文" }
+      ],
+      "claims": [
+        {
+          "id": "CLM:TX:brouwer-1907.1",
+          "statement": "该文为布劳威尔 1907 年在阿姆斯特丹大学的学位论文，荷兰文。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "DSB 'Brouwer' 条目与 Collected Works I 书目；版次待补" }
+        }
+      ],
+      "provenance": { "created_by": "branch-expansion-batch2", "created_at": "2026-11-25", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "TX:heyting-1930",
+      "type": "text",
+      "schema_version": "0.2",
+      "labels": { "zh": "海廷《直觉主义逻辑的形式规则》（1930）", "en": "Heyting, Die formalen Regeln der intuitionistischen Logik (1930)" },
+      "status": "historical",
+      "summary": "三篇连载论文，给出直觉主义逻辑的公理系统；本图未见原刊。",
+      "title_variants": ["Die formalen Regeln der intuitionistischen Logik", "直觉主义逻辑的形式规则"],
+      "text_type": "article",
+      "chains": [
+        { "stemma_branch": "printed", "note": "Sitzungsberichte der Preußischen Akademie der Wissenschaften, phys.-math. Klasse (1930), 42–56、57–71、158–169；本图未取得原刊影像" }
+      ],
+      "claims": [
+        {
+          "id": "CLM:TX:heyting-1930.1",
+          "statement": "该文分三部分刊于普鲁士科学院院刊 1930 年卷。",
+          "grade": "S",
+          "attestation": "later_report",
+          "source": { "locator": "Sitzungsber. Preuß. Akad. Wiss. (1930)；卷页据通行书目，待核原刊" }
+        }
+      ],
+      "provenance": { "created_by": "branch-expansion-batch2", "created_at": "2026-11-25", "sources_checked": "partial", "schema_version": "0.2" }
+    },
+    {
+      "id": "TP:excluded-middle",
+      "type": "teaching_point",
+      "schema_version": "0.2",
+      "labels": { "zh": "排中律不是逻辑的普遍法则", "en": "excluded middle is not universal" },
+      "status": "active",
+      "summary": "挂在数理逻辑课程；纠正'没有排中律就无法推理'的直觉。",
+      "course": "数理逻辑",
+      "textbook": { "title": "数理逻辑（通行教材）", "edition": "以本校选用版为准" },
+      "chapter": "直觉主义逻辑或非经典逻辑",
+      "learning_objective": "能说明直觉主义为什么不接受排中律，并举出一个经典可证而直觉主义不可证的例子。",
+      "prerequisite_concepts": ["CO:intuitionistic-logic", "CO:law-of-excluded-middle"],
+      "common_misconception": "排中律是逻辑的普遍法则，去掉它就无法推理。",
+      "history_objects": ["PR:intuitionistic-foundations", "TH:heyting-formalization", "CO:law-of-excluded-middle"],
+      "output_form": "card",
+      "evidence": { "status": "not_applicable", "basis": "curriculum" },
+      "claims": [],
+      "provenance": { "created_by": "branch-expansion-batch2", "created_at": "2026-11-25", "sources_checked": "none", "schema_version": "0.2" }
+    }
+  ],
+  "edges": [
+    { "id": "E:BR-LOG-NCLASSIC>concerns>PR:intuitionistic-foundations", "from": "BR-LOG-NCLASSIC", "to": "PR:intuitionistic-foundations", "type": "concerns", "directed": true, "time": { "from": null, "to": null, "precision": "unknown" }, "source": { "locator": "本框架分支定义" }, "grade": "F", "attestation": "textbook_simplification", "confidence": 0.95, "note": "索引边，不参与推理。" },
+    { "id": "E:BR-LOG-NCLASSIC>concerns>CO:intuitionistic-logic", "from": "BR-LOG-NCLASSIC", "to": "CO:intuitionistic-logic", "type": "concerns", "directed": true, "time": { "from": null, "to": null, "precision": "unknown" }, "source": { "locator": "本框架分支定义" }, "grade": "F", "attestation": "textbook_simplification", "confidence": 0.95, "note": "索引边，不参与推理。" },
+    { "id": "E:BR-LOG-NCLASSIC>concerns>CO:law-of-excluded-middle", "from": "BR-LOG-NCLASSIC", "to": "CO:law-of-excluded-middle", "type": "concerns", "directed": true, "time": { "from": null, "to": null, "precision": "unknown" }, "source": { "locator": "本框架分支定义" }, "grade": "F", "attestation": "textbook_simplification", "confidence": 0.9, "note": "索引边，不参与推理。" },
+    { "id": "E:TH:heyting-formalization>resolves>PR:intuitionistic-foundations", "from": "TH:heyting-formalization", "to": "PR:intuitionistic-foundations", "type": "resolves", "directed": true, "time": { "from": 1930, "to": 1930, "precision": "year" }, "claimant": "PE:heyting", "grade": "S", "attestation": "later_report", "confidence": 0.8, "note": "解决的是形式化问题，不是直觉主义纲领的全部哲学主张。" },
+    { "id": "E:TH:heyting-formalization>depends_on>CO:intuitionistic-logic", "from": "TH:heyting-formalization", "to": "CO:intuitionistic-logic", "type": "depends_on", "directed": true, "time": { "from": null, "to": null, "precision": "unknown" }, "source": { "locator": "定理的现代表述" }, "grade": "F", "attestation": "textbook_simplification", "confidence": 0.85, "note": "形式化对象与概念在历史上同步成型。" },
+    { "id": "E:PR:intuitionistic-foundations>uses_method>ME:bhk-interpretation", "from": "PR:intuitionistic-foundations", "to": "ME:bhk-interpretation", "type": "uses_method", "directed": true, "time": { "from": 1930, "to": 1930, "precision": "year" }, "claimant": "PE:heyting", "grade": "S", "attestation": "later_report", "confidence": 0.75 },
+    { "id": "E:ME:bhk-interpretation>depends_on>CO:intuitionistic-logic", "from": "ME:bhk-interpretation", "to": "CO:intuitionistic-logic", "type": "depends_on", "directed": true, "time": { "from": null, "to": null, "precision": "unknown" }, "source": { "locator": "方法的现代表述" }, "grade": "F", "attestation": "textbook_simplification", "confidence": 0.85 },
+    { "id": "E:PE:brouwer>poses>PR:intuitionistic-foundations", "from": "PE:brouwer", "to": "PR:intuitionistic-foundations", "type": "poses", "directed": true, "time": { "from": 1907, "to": 1907, "precision": "year" }, "source": { "locator": "Brouwer 1907；未见原文" }, "grade": "S", "attestation": "later_report", "confidence": 0.85 },
+    { "id": "E:PE:brouwer>introduced>CO:intuitionistic-logic", "from": "PE:brouwer", "to": "CO:intuitionistic-logic", "type": "introduced", "directed": true, "time": { "from": 1907, "to": 1907, "precision": "year" }, "source": { "locator": "Brouwer 1907；未见原文" }, "grade": "S", "attestation": "later_report", "confidence": 0.8, "note": "指纲领性提出；形式系统由海廷 1930 年给出。" },
+    { "id": "E:PE:brouwer>contributed_to>TX:brouwer-1907", "from": "PE:brouwer", "to": "TX:brouwer-1907", "type": "contributed_to", "directed": true, "time": { "from": 1907, "to": 1907, "precision": "year" }, "source": { "locator": "学位论文署名" }, "role": "author", "grade": "S", "attestation": "later_report", "confidence": 0.9 },
+    { "id": "E:PE:heyting>proved>TH:heyting-formalization", "from": "PE:heyting", "to": "TH:heyting-formalization", "type": "proved", "directed": true, "time": { "from": 1930, "to": 1930, "precision": "year" }, "source": { "locator": "Heyting 1930；未见原刊" }, "grade": "S", "attestation": "later_report", "confidence": 0.85 },
+    { "id": "E:PE:heyting>introduced>ME:bhk-interpretation", "from": "PE:heyting", "to": "ME:bhk-interpretation", "type": "introduced", "directed": true, "time": { "from": 1930, "to": 1930, "precision": "year" }, "source": { "locator": "Heyting 1930；未见原刊" }, "grade": "S", "attestation": "later_report", "confidence": 0.7, "note": "海廷给出形式化与证明解释；BHK 合称是后世的。" },
+    { "id": "E:PE:heyting>contributed_to>TX:heyting-1930", "from": "PE:heyting", "to": "TX:heyting-1930", "type": "contributed_to", "directed": true, "time": { "from": 1930, "to": 1930, "precision": "year" }, "source": { "locator": "论文署名" }, "role": "author", "grade": "S", "attestation": "later_report", "confidence": 0.9 },
+    { "id": "E:PE:kripke>introduced>CO:kripke-semantics", "from": "PE:kripke", "to": "CO:kripke-semantics", "type": "introduced", "directed": true, "time": { "from": 1959, "to": 1959, "precision": "year" }, "source": { "locator": "Kripke 1959, J. Symbolic Logic 24" }, "grade": "S", "attestation": "later_report", "confidence": 0.8, "note": "1959 年用于模态逻辑；直觉主义语义在 1965 年论文中给出。" },
+    { "id": "E:TX:brouwer-1907>supports>PR:intuitionistic-foundations", "from": "TX:brouwer-1907", "to": "PR:intuitionistic-foundations", "type": "supports", "directed": true, "time": { "from": 1907, "to": 1907, "precision": "year" }, "source": { "locator": "论文正文；本图未见原文" }, "grade": "S", "attestation": "later_report", "confidence": 0.8 },
+    { "id": "E:TX:heyting-1930>supports>TH:heyting-formalization", "from": "TX:heyting-1930", "to": "TH:heyting-formalization", "type": "supports", "directed": true, "time": { "from": 1930, "to": 1930, "precision": "year" }, "source": { "locator": "论文正文；本图未见原刊" }, "grade": "S", "attestation": "later_report", "confidence": 0.8 },
+    { "id": "E:TP:excluded-middle>anchors>PR:intuitionistic-foundations", "from": "TP:excluded-middle", "to": "PR:intuitionistic-foundations", "type": "anchors", "directed": true, "time": { "from": null, "to": null, "precision": "unknown" }, "source": { "locator": "课程大纲" }, "grade": "F", "attestation": "textbook_simplification", "confidence": 0.9, "note": "教学挂点只做索引，不承担史学论断。" },
+    { "id": "E:TP:excluded-middle>anchors>CO:law-of-excluded-middle", "from": "TP:excluded-middle", "to": "CO:law-of-excluded-middle", "type": "anchors", "directed": true, "time": { "from": null, "to": null, "precision": "unknown" }, "source": { "locator": "课程大纲" }, "grade": "F", "attestation": "textbook_simplification", "confidence": 0.9 },
+    { "id": "E:TP:excluded-middle>anchors>TH:heyting-formalization", "from": "TP:excluded-middle", "to": "TH:heyting-formalization", "type": "anchors", "directed": true, "time": { "from": null, "to": null, "precision": "unknown" }, "source": { "locator": "课程大纲" }, "grade": "F", "attestation": "textbook_simplification", "confidence": 0.9 }
+  ]
+}
