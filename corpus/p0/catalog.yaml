@@ -12,6 +12,8 @@
 #   6. 17–20 世纪条目记的是原刊/原书，不是后人编订本；页码与卷期仍待核，故 edition_statement 为 null。
 #   7. 形态：本文件是 P0 单文件种子目录；每条 item 即未来 corpus/<id>/manifest.yaml 的内容。
 #      P1 开始时按 §2 逐条拆成目录，届时 source/ 只进本地，不进 git。
+#   8. 十条样板的核验结果另见 corpus/p0/verified-samples.yaml 与
+#      docs/evidence-corpus-p0-a-samples.md（0 条 A、1 条 B+、8 条 B、1 条 B−）。
 
 catalog_version: p0
 generated: "2026-11-27"

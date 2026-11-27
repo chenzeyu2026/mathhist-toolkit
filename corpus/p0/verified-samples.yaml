@@ -1,0 +1,530 @@
+# P0 十个样板的核验结果（B 级）
+# 依据：docs/evidence-corpus-design.md §2 / §14.1 / §15.2（P1 验收）
+# 方法：解析 e-rara DOI 落地页 → 取 IIIF manifest（画布数=扫描页数、馆藏、版次）
+#       → 试下全本 PDF（受带宽限制）→ 记录已核字段与卡点。
+# 纪律：未核实的字段仍为 null；预览件单独记在 held_files，绝不当作整件副本。
+# 结论：0 条 A、1 条 B+（Gauss 节选）、8 条 B、1 条 B-（Euler 1769 节选，卷次不符）；
+#       A 需完整字节＋清单哈希＋逐页核过的 page_map，见 docs/evidence-corpus-p0-a-samples.md。
+
+sample_version: p0-b
+checked_at: "2026-11-27"
+item_count: 10
+items:
+
+  # ---------- 1. Euler 1748 ----------
+  - id: euler-1748-introductio
+    title: "Introductio in analysin infinitorum"
+    creator: "Leonhard Euler"
+    date: "1748"
+    kind: book
+    language: la
+    provenance:
+      is_contemporary_publication: true
+      is_scholarly_edition: false
+      editor: null
+      edition_statement: "Lausannae : apud Marcum-Michaelem Bousquet & socios, 1748. 2 Bände (XVI, 320 S.; 398 S.), 40 gef. Kupfertaf. ; 25 cm (4°)"
+      translation: null
+      witness_note: "e-rara 条目即此版；据 ETH-Bibliothek Zürich 藏本 Rar 5512 的数字化件，未见纸本"
+    source:
+      url: "https://doi.org/10.3931/e-rara-8740"
+      retrieved: "2026-11-27"
+      sha256: null
+      bytes: null
+      page_count: 799
+      page_map: []
+      page_map_gaps: null
+      note: "page_count 为 IIIF manifest 画布数（两卷合计）；全本 154,149,660 B 未下载"
+    license:
+      status: public-domain
+      basis: "e-rara 条目页标示 Public Domain Mark；作品 1748 年刊行"
+      public_copy_allowed: false
+      note: "e-rara「Nutzung」（使用条款）未逐条核，影像再分发按 P-2 保守处理"
+    visibility: public-metadata
+    verification_status: metadata-verified
+    verification:
+      level: B
+      level_reason: "版次/馆藏/DOI/扫描页数/许可已核；缺完整字节与清单哈希，page_map 为空"
+      provider: e-rara
+      holding_institution: "ETH-Bibliothek Zürich"
+      shelf_mark: "Rar 5512"
+      record_id: "2447176"
+      manifest: "https://www.e-rara.ch/i3f/v20/2447176/manifest"
+      full_source_bytes: 154149660
+      full_source_downloaded: false
+      held_files:
+        - path: "corpus/euler-1748-introductio/source/scan.pdf"
+          role: preview
+          bytes: 2304303
+          pages: 11
+          sha256: "05eb80735e6e419c0f51b517e5b4a668a72e1ce85a6b1dcccd18feb43e7c9119"
+          note: "e-rara 预览件（Liber Secundus 节选），非全本，不得当整件副本"
+      blockers:
+        - "全本 PDF 154 MB，实测 e-rara 下行 ~22 KB/s，约 1.9 小时"
+        - "page_map 需逐页对扫描页与印刷页；预览仅 11 页"
+    missing_fields: [source.sha256, source.bytes, source.page_map]
+    needs: [在快网络或机构代理下取全本并算清单哈希, 逐页建 page_map, 核 e-rara 使用条款]
+
+  # ---------- 2. Euler 1755 ----------
+  - id: euler-1755-institutiones-differentialis
+    title: "Institutiones calculi differentialis cum eius usu in analysi finitorum ac doctrina serierum"
+    creator: "Leonhard Euler"
+    date: "1755"
+    kind: book
+    language: la
+    provenance:
+      is_contemporary_publication: true
+      is_scholarly_edition: false
+      editor: null
+      edition_statement: "Sankt Petersburg : Academiae Imperialis Scientiarum Petropolitanae ; Berolini : Ex Officina Michaelis, 1755"
+      translation: null
+      witness_note: "e-rara 条目即此版；据 ETH-Bibliothek Zürich 藏本 Rar 5132 的数字化件"
+    source:
+      url: "https://doi.org/10.3931/e-rara-3788"
+      retrieved: "2026-11-27"
+      sha256: null
+      bytes: null
+      page_count: 916
+      page_map: []
+      page_map_gaps: null
+      note: "page_count 为 IIIF manifest 画布数；全本 164,165,841 B 未下载"
+    license:
+      status: public-domain
+      basis: "e-rara 条目页标示 Public Domain Mark；作品 1755 年刊行"
+      public_copy_allowed: false
+      note: "e-rara 使用条款未逐条核"
+    visibility: public-metadata
+    verification_status: metadata-verified
+    verification:
+      level: B
+      level_reason: "版次/馆藏/DOI/扫描页数/许可已核；缺完整字节与哈希、page_map"
+      provider: e-rara
+      holding_institution: "ETH-Bibliothek Zürich"
+      shelf_mark: "Rar 5132"
+      record_id: "1173932"
+      manifest: "https://www.e-rara.ch/i3f/v20/1173932/manifest"
+      full_source_bytes: 164165841
+      full_source_downloaded: false
+      held_files: []
+      blockers:
+        - "全本 PDF 164 MB，实测 ~22 KB/s"
+        - "本轮只下到 6.98/7.10 MB 的预览片段，已删，不记哈希"
+    missing_fields: [source.sha256, source.bytes, source.page_map]
+    needs: [取全本并算清单哈希, 逐页建 page_map]
+
+  # ---------- 3. Newton 1687 ----------
+  - id: newton-1687-principia-1st
+    title: "Philosophiae naturalis principia mathematica"
+    creator: "Isaac Newton"
+    date: "1687"
+    kind: book
+    language: la
+    provenance:
+      is_contemporary_publication: true
+      is_scholarly_edition: false
+      editor: null
+      edition_statement: "Londini [i.e. London] : Jussu Societatis Regiae ac Typis Josephi Streater, Anno 1687"
+      translation: null
+      witness_note: "e-rara 条目即 1687 年初版；据 ETH-Bibliothek Zürich 藏本 Rar 4011"
+    source:
+      url: "https://doi.org/10.3931/e-rara-440"
+      retrieved: "2026-11-27"
+      sha256: "10cf3e723c95baa1cdf093033316568771e7debd2524d75a3bb0674b4c869b49"
+      bytes: 8921470
+      page_count: 41
+      page_map: []
+      page_map_gaps: "仅 Propositiones XXXI–XL 节选；全本 515 个画布未取"
+      note: "字节与哈希只对 41 页节选成立；全书 515 页未下载"
+    license:
+      status: public-domain
+      basis: "e-rara 条目页标示 Public Domain Mark；作品 1687 年刊行"
+      public_copy_allowed: false
+      note: "e-rara 使用条款未逐条核"
+    visibility: public-metadata
+    verification_status: metadata-verified
+    verification:
+      level: B
+      level_reason: "初版版次/馆藏/DOI/扫描页数/许可已核；缺字节、哈希、page_map"
+      provider: e-rara
+      holding_institution: "ETH-Bibliothek Zürich"
+      shelf_mark: "Rar 4011"
+      record_id: "129833"
+      manifest: "https://www.e-rara.ch/i3f/v20/129833/manifest"
+      full_source_bytes: 106426548
+      full_source_downloaded: false
+      held_files:
+        - path: "corpus/newton-1687-principia-1st/source/scan.pdf"
+          role: excerpt
+          bytes: 8921470
+          pages: 41
+          sha256: "10cf3e723c95baa1cdf093033316568771e7debd2524d75a3bb0674b4c869b49"
+          note: "e-rara 节选：Propositiones XXXI–XL；封面为 e-rara 页，非正文。起页 44 已核，终点页未核"
+      blockers:
+        - "全本 PDF 106 MB，实测 ~22 KB/s"
+    missing_fields: [source.sha256, source.bytes, source.page_map]
+    needs: [取全本并算清单哈希, 逐页建 page_map]
+
+  # ---------- 4. l'Hôpital 1696 ----------
+  - id: lhopital-1696-analyse
+    title: "Analyse des infiniment petits, pour l'intelligence des lignes courbes"
+    creator: "Guillaume François Antoine de L'Hôpital"
+    date: "1696"
+    kind: book
+    language: fr
+    provenance:
+      is_contemporary_publication: true
+      is_scholarly_edition: false
+      editor: null
+      edition_statement: "A Paris : De L'Imprimerie Royale, M. DC. XCVI [1696]. 9 ungez. Bl., 181 S., 11 gef. Taf. ; 26 cm (4°)"
+      translation: null
+      witness_note: "e-rara 条目即 1696 年初版；据 ETH-Bibliothek Zürich 藏本 Rar 5065"
+    source:
+      url: "https://doi.org/10.3931/e-rara-10415"
+      retrieved: "2026-11-27"
+      sha256: null
+      bytes: null
+      page_count: 221
+      page_map: []
+      page_map_gaps: null
+      note: "page_count 为 IIIF manifest 画布数；全本 44,888,449 B 未下载"
+    license:
+      status: public-domain
+      basis: "IIIF manifest 直接给出 Public Domain Mark 许可 URL（全部十条中唯一显式声明的一条）"
+      public_copy_allowed: false
+      note: "e-rara 使用条款未逐条核"
+    visibility: public-metadata
+    verification_status: metadata-verified
+    verification:
+      level: B
+      level_reason: "版次/馆藏/DOI/扫描页数/许可（manifest 显式 PDM）已核；缺字节、哈希、page_map"
+      provider: e-rara
+      holding_institution: "ETH-Bibliothek Zürich"
+      shelf_mark: "Rar 5065"
+      record_id: "3041507"
+      manifest: "https://www.e-rara.ch/i3f/v20/3041507/manifest"
+      full_source_bytes: 44888449
+      full_source_downloaded: false
+      held_files:
+        - path: "corpus/lhopital-1696-analyse/source/scan.pdf"
+          role: preview
+          bytes: 6916644
+          pages: 33
+          sha256: "157df33bbf8a27018c4ef1e9e89ed81b840e375821be02e65bc9c27c07481eff"
+          note: "e-rara 预览件（Section II 节选），非全本"
+      blockers:
+        - "全本 PDF 44.9 MB，实测 ~22 KB/s，约 35 分钟"
+        - "预览 33 页只覆盖 Section II 一节"
+    missing_fields: [source.sha256, source.bytes, source.page_map]
+    needs: [取全本并算清单哈希, 逐页建 page_map]
+
+  # ---------- 5. Legendre 1798 ----------
+  - id: legendre-1798-essai-theorie-nombres
+    title: "Essai sur la théorie des nombres"
+    creator: "Adrien-Marie Legendre"
+    date: "1798"
+    kind: book
+    language: fr
+    provenance:
+      is_contemporary_publication: true
+      is_scholarly_edition: false
+      editor: null
+      edition_statement: "Paris : Duprat, an VI [1798]. 472 S., 56 Taf. ; 28 cm"
+      translation: null
+      witness_note: "e-rara 条目即 1798 年初版；据 ETH-Bibliothek Zürich 藏本 Rar 5000"
+    source:
+      url: "https://doi.org/10.3931/e-rara-3663"
+      retrieved: "2026-11-27"
+      sha256: null
+      bytes: null
+      page_count: 560
+      page_map: []
+      page_map_gaps: null
+      note: "page_count 为 IIIF manifest 画布数；全本 93,088,940 B 未下载"
+    license:
+      status: public-domain
+      basis: "e-rara 条目页标示 Public Domain Mark；作品 1798 年刊行"
+      public_copy_allowed: false
+      note: "e-rara 使用条款未逐条核"
+    visibility: public-metadata
+    verification_status: metadata-verified
+    verification:
+      level: B
+      level_reason: "版次/馆藏/DOI/扫描页数/许可已核；缺字节、哈希、page_map"
+      provider: e-rara
+      holding_institution: "ETH-Bibliothek Zürich"
+      shelf_mark: "Rar 5000"
+      record_id: "1089237"
+      manifest: "https://www.e-rara.ch/i3f/v20/1089237/manifest"
+      full_source_bytes: 93088940
+      full_source_downloaded: false
+      held_files:
+        - path: "corpus/legendre-1798-essai-theorie-nombres/source/scan.pdf"
+          role: preview
+          bytes: 1461425
+          pages: 9
+          sha256: "2dbb7e3e31ad38a293669a0106427775d95462886ac2990dcd61eb16f316aab7"
+          note: "e-rara 预览件，非全本"
+      blockers:
+        - "全本 PDF 93 MB，实测 ~22 KB/s，约 1.2 小时"
+    missing_fields: [source.sha256, source.bytes, source.page_map]
+    needs: [取全本并算清单哈希, 逐页建 page_map]
+
+  # ---------- 6. Cauchy 1821 ----------
+  - id: cauchy-1821-cours-analyse
+    title: "Cours d'analyse de l'École Royale Polytechnique. Première partie: Analyse algébrique"
+    creator: "Augustin-Louis Cauchy"
+    date: "1821"
+    kind: book
+    language: fr
+    provenance:
+      is_contemporary_publication: true
+      is_scholarly_edition: false
+      editor: null
+      edition_statement: "[Paris] : de l'Imprimerie Royale ; chez Debure frères, 1821. XIV, 576 S. ; 21 cm (8°)"
+      translation: null
+      witness_note: "e-rara 条目即 1821 年初版第一分册；据 ETH-Bibliothek Zürich 藏本 Rar 10366"
+    source:
+      url: "https://doi.org/10.3931/e-rara-26182"
+      retrieved: "2026-11-27"
+      sha256: null
+      bytes: null
+      page_count: 604
+      page_map: []
+      page_map_gaps: null
+      note: "page_count 为 IIIF manifest 画布数；全本 149,343,450 B 未下载"
+    license:
+      status: public-domain
+      basis: "e-rara 条目页标示 Public Domain Mark；作品 1821 年刊行"
+      public_copy_allowed: false
+      note: "e-rara 使用条款未逐条核"
+    visibility: public-metadata
+    verification_status: metadata-verified
+    verification:
+      level: B
+      level_reason: "版次/馆藏/DOI/扫描页数/许可已核；缺字节、哈希、page_map"
+      provider: e-rara
+      holding_institution: "ETH-Bibliothek Zürich"
+      shelf_mark: "Rar 10366"
+      record_id: "8442794"
+      manifest: "https://www.e-rara.ch/i3f/v20/8442794/manifest"
+      full_source_bytes: 149343450
+      full_source_downloaded: false
+      held_files:
+        - path: "corpus/cauchy-1821-cours-analyse/source/scan.pdf"
+          role: preview
+          bytes: 4733316
+          pages: 19
+          sha256: "aebe47f754da15ee9ad892f1356961023ca9f8e23421584f1a64a6c500564a52"
+          note: "e-rara 预览件（Préliminaires 节选），非全本"
+      blockers:
+        - "全本 PDF 149 MB，实测 ~22 KB/s，约 1.9 小时"
+    missing_fields: [source.sha256, source.bytes, source.page_map]
+    needs: [取全本并算清单哈希, 逐页建 page_map]
+
+  # ---------- 7. Jakob Bernoulli 1713 ----------
+  - id: jbernoulli-1713-ars-conjectandi
+    title: "Ars conjectandi, opus posthumum"
+    creator: "Jakob Bernoulli"
+    date: "1713"
+    kind: book
+    language: la
+    provenance:
+      is_contemporary_publication: true
+      is_scholarly_edition: false
+      editor: null
+      edition_statement: "Basileae : Impensis Thurnisiorum [Tournes] fratrum, 1713. 306, 36 S. : 2 Tab., 1 Taf. ; 21 cm"
+      translation: null
+      witness_note: "作者 1705 年卒后由 Brucker/Hermann 编印，非本人经手；据 ETH-Bibliothek Zürich 藏本 Rar 4983"
+    source:
+      url: "https://doi.org/10.3931/e-rara-9001"
+      retrieved: "2026-11-27"
+      sha256: null
+      bytes: null
+      page_count: 357
+      page_map: []
+      page_map_gaps: null
+      note: "page_count 为 IIIF manifest 画布数；全本 70,517,632 B 未下载"
+    license:
+      status: public-domain
+      basis: "e-rara 条目页标示 Public Domain Mark；作品 1713 年刊行"
+      public_copy_allowed: false
+      note: "e-rara 使用条款未逐条核"
+    visibility: public-metadata
+    verification_status: metadata-verified
+    verification:
+      level: B
+      level_reason: "版次/馆藏/DOI/扫描页数/许可已核；缺字节、哈希、page_map"
+      provider: e-rara
+      holding_institution: "ETH-Bibliothek Zürich"
+      shelf_mark: "Rar 4983"
+      record_id: "2600091"
+      manifest: "https://www.e-rara.ch/i3f/v20/2600091/manifest"
+      full_source_bytes: 70517632
+      full_source_downloaded: false
+      held_files: []
+      blockers:
+        - "全本 PDF 70.5 MB，实测 ~22 KB/s，约 55 分钟"
+        - "1713 年身后刊行（本人 1705 年卒），引用时须注明编印者，勿当本人经手本"
+    missing_fields: [source.sha256, source.bytes, source.page_map]
+    needs: [取全本并算清单哈希, 逐页建 page_map, 引用时注明身后编印]
+
+  # ---------- 8. Newton 1704 Opticks ----------
+  - id: newton-1704-opticks
+    title: "Opticks: or, a treatise of the reflexions, refractions, inflexions and colours of light"
+    creator: "Isaac Newton"
+    date: "1704"
+    kind: book
+    language: en
+    provenance:
+      is_contemporary_publication: true
+      is_scholarly_edition: false
+      editor: null
+      edition_statement: "London : Printed for S. Smith and B. Walford, 1704. 144, 211 (i.e. 213) p., folded plates ; (4to)"
+      translation: null
+      witness_note: "Wellcome 藏本（b30412316）即 1704 年初版；ESTC T82019"
+    source:
+      url: "https://wellcomecollection.org/works/d445akky"
+      retrieved: "2026-11-27"
+      sha256: null
+      bytes: null
+      page_count: 406
+      page_map: []
+      page_map_gaps: null
+      note: "page_count 为 Wellcome IIIF manifest items 数；未下载全本"
+    license:
+      status: public-domain
+      basis: "Wellcome manifest metadata 明示 Public Domain Mark 1.0，并声明可复制、修改、再分发（含商业用途）"
+      public_copy_allowed: true
+      note: "本条是十条中唯一同时满足作品 PD 与提供方明示可再分发的；但页数/页码映射未建，仍不入 public-fulltext"
+    visibility: public-metadata
+    verification_status: metadata-verified
+    verification:
+      level: B
+      level_reason: "版次/馆藏/扫描页数/许可（PDM + 明示可再分发）已核；缺字节、哈希、page_map"
+      provider: "Wellcome Collection"
+      holding_institution: "Wellcome Collection"
+      shelf_mark: null
+      record_id: "b30412316"
+      manifest: "https://iiif.wellcomecollection.org/presentation/b30412316"
+      full_source_bytes: null
+      full_source_downloaded: false
+      held_files: []
+      blockers:
+        - "Wellcome 全本 PDF 无 Content-Length，需整流传；实测图片下行 ~67 KB/s（比 e-rara 快约 3 倍）"
+        - "page_map 需逐页核对；manifest 画布 label 为图序，不含印刷页码"
+    missing_fields: [source.sha256, source.bytes, source.page_map]
+    needs: [逐页取影像并算清单哈希, 逐页建 page_map, 核对 1704 初版与 Wellcome 数字化件一致]
+
+  # ---------- 9. Gauss 1801 ----------
+  - id: gauss-1801-disquisitiones
+    title: "Disquisitiones arithmeticae"
+    creator: "Carl Friedrich Gauss"
+    date: "1801"
+    kind: book
+    language: la
+    provenance:
+      is_contemporary_publication: true
+      is_scholarly_edition: false
+      editor: null
+      edition_statement: "Lipsiae : Fleischer, 1801（本轮取得 Sectio septima 节选，印刷页 593–665；全书未下载）"
+      translation: null
+      witness_note: "e-rara 条目（DOI 10.3931/e-rara-4025）即此版；据 ETH-Bibliothek Zürich 藏本 Rar 5186 的 Sectio septima 数字化节选"
+    source:
+      url: "https://doi.org/10.3931/e-rara-4025"
+      retrieved: "2026-11-27"
+      sha256: "b1f446d1f983f9433fc51f24f221d918f31b91d994eae3ab5cc3f4432455b2a7"
+      bytes: 19824265
+      page_count: 75
+      page_map: []
+      page_map_gaps: "仅覆盖 Sectio septima（印刷页 593–665）；其余章节未取"
+      note: "字节与哈希仅对本次持有的 75 页节选成立，不是整书；全书页数未核"
+    license:
+      status: public-domain
+      basis: "e-rara 条目页（DOI 10.3931/e-rara-4025）标示 Public Domain Mark；作品 1801 年刊行"
+      public_copy_allowed: false
+      note: "e-rara 使用条款未逐条核"
+    visibility: public-metadata
+    verification_status: metadata-verified
+    verification:
+      level: "B+"
+      level_reason: "有完整节选的字节与哈希、DOI、版次、许可；页码偏移区间已定位（26/73 页 OCR 命中），但未逐页核，且全书未全"
+      provider: e-rara
+      holding_institution: "ETH-Bibliothek Zürich"
+      shelf_mark: "Rar 5186"
+      record_id: null
+      doi: "10.3931/e-rara-4025"
+      manifest: null
+      full_source_bytes: null
+      full_source_downloaded: false
+      held_files:
+        - path: "corpus/gauss-1801-disquisitiones/source/scan.pdf"
+          role: excerpt
+          bytes: 19824265
+          pages: 75
+          sha256: "b1f446d1f983f9433fc51f24f221d918f31b91d994eae3ab5cc3f4432455b2a7"
+          note: "Sectio septima 完整节选（扫描页 3–75 ↔ 印刷页 593–665）；封面为 e-rara 页，非正文"
+      page_map_candidate:
+        scan_start: 3
+        scan_end: 75
+        printed_start: 593
+        printed_end: 665
+        step: 1
+        verified_pages: "26/73（OCR 页眉页码命中）"
+        method: "端点页码在 OCR 文本中直接读到；区间长度 73 与印刷页数 665-593+1 相等，故按 1:1 推定；未逐页人工核"
+      blockers:
+        - "仅取得 Sectio septima，全书其余部分未下载"
+        - "page_map 为推定，26/73 页有 OCR 复核，不能算逐页已核"
+    missing_fields: [source.page_map]
+    needs: [逐页核 73 页页码（人工或图像 OCR）, 取全书其余章节, 全书页数与版次总目核对]
+
+  # ---------- 10. Euler 1768 ----------
+  - id: euler-1768-institutionum-integralis
+    title: "Institutionum calculi integralis"
+    creator: "Leonhard Euler"
+    date: "1768"
+    kind: book
+    language: la
+    provenance:
+      is_contemporary_publication: true
+      is_scholarly_edition: false
+      editor: null
+      edition_statement: "Petropoli, 1769（Inst. calculi integralis 第 2 卷，Caput II 节选；与目录所记 1768 年卷次不同）"
+      translation: null
+      witness_note: "e-rara 条目 DOI 10.3931/e-rara-29420，标题记「2 (1769)」；本轮只持 31 页节选，非目录所记 1768 年卷"
+    source:
+      url: "https://doi.org/10.3931/e-rara-29420"
+      retrieved: "2026-11-27"
+      sha256: "0f7f2e8c2118fe35e056ef56f1f272996a0cd32b4b181c58cd4d5db535ca05dc"
+      bytes: 5843886
+      page_count: 31
+      page_map: []
+      page_map_gaps: "仅 Caput II 节选；其余未取"
+      note: "字节与哈希只对 31 页节选成立；卷次/年份与目录条目不一致，引用前须先定用哪一卷"
+    license:
+      status: public-domain
+      basis: "e-rara 条目页（DOI 10.3931/e-rara-29420）标示 Public Domain Mark；作品 1769 年刊行"
+      public_copy_allowed: false
+      note: "e-rara 使用条款未逐条核"
+    visibility: public-metadata
+    verification_status: metadata-verified
+    verification:
+      level: "B-"
+      level_reason: "DOI、版次、许可已核；只有 31 页节选，无 page_map，且卷次与目录的 1768 年条目不符"
+      provider: e-rara
+      holding_institution: "ETH-Bibliothek Zürich"
+      shelf_mark: "Rar 10406"
+      record_id: null
+      manifest: null
+      full_source_bytes: null
+      full_source_downloaded: false
+      held_files:
+        - path: "corpus/euler-1768-institutionum-integralis/source/scan.pdf"
+          role: excerpt
+          bytes: 5843886
+          pages: 31
+          sha256: "0f7f2e8c2118fe35e056ef56f1f272996a0cd32b4b181c58cd4d5db535ca05dc"
+          note: "Caput II 节选（封面为 e-rara 页）；对应 1769 年第 2 卷"
+      blockers:
+        - "目录条目写 1768 年，本轮取到的是 1769 年第 2 卷节选；须先确认基准卷"
+        - "无 page_map；全本未下"
+    missing_fields: [source.page_map, provenance.edition_statement（1768 卷）]
+    needs: [确认引用 1768 年第 1 卷还是 1769 年第 2 卷, 取对应卷全本, 建 page_map]
