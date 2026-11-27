@@ -13,8 +13,8 @@
 
 ## v0.2.0 的公开内容
 
-- **14 类节点**：概念、方法、定理、问题、文本、人物、事件、机构、地点、时期、分支、教学点、主张、见证等（以 `spec/object-model.md` 为准）。
-- **31 类边**：每类边的端点定义域/值域、方向、属性、条件必填、等级上限与释义，集中保存在 `spec/framework/edge-signatures.yaml`。
+- **16 类节点**：概念、方法、定理、问题、理论、失败路线、记号、文本、见证、人物、事件、机构、期刊、分支、教学点、主张（以 `spec/object-model.md` 为准）。
+- **36 类边**：每类边的端点定义域/值域、方向、属性、条件必填、等级上限与释义，集中保存在 `spec/framework/edge-signatures.yaml`。
 - **两个试点**：`pilots/group-theory/`（51 节点 / 80 边）与 `pilots/calculus/`（58 节点 / 102 边）。
 - **边签名单源**：`graph.schema.json` 的边枚举与 `spec/object-model.md` §5.2 / §5.6 的表格均由 `edge-signatures.yaml` 生成。
 - **`graphlint`**：提供 `check`、`check-all`、`generate [--check]`；校验端点类型与方向、条件必填、证据等级上限、环、权重和、互斥关系、孤立节点与 `claims` 引用。

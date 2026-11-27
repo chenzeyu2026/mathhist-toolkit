@@ -12,6 +12,10 @@ literature/
 reports/literature/
 *.pdf
 
+# 证据库原文：只进本地，不进仓库；manifest/书目可提交
+corpus/*/source/
+corpus/*/source/**
+
 # 二进制办公文件与临时产物
 *.docx
 ~$*

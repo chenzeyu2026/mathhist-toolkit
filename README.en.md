@@ -5,7 +5,7 @@
 Two layers for writing the history of mathematics: **an evidence-tagging specification with a linter**, and **a graph-structured ontology with a validator**.
 
 - Document level (v0.1, usable): tag claims with `A / S / U / F`; `mathlint` checks tag syntax and whether grade and source type agree.
-- Graph level (v0.2, structure frozen, content still being filled): write concepts, theorems, problems, texts, people and events as `{nodes, edges}`; `graphlint` checks 31 edge types, 7 invariants and node completeness.
+- Graph level (v0.2, structure frozen, content still being filled): write concepts, theorems, problems, texts, people and events as `{nodes, edges}`; `graphlint` checks 36 edge types, 7 invariants and node completeness.
 
 > 中文版：[README.md](README.md)
 
@@ -64,8 +64,8 @@ Without installing, `py -3 -m mathlint` / `py -3 -m graphlint` are equivalent to
 | Path | What it is | Status |
 |---|---|---|
 | [`spec/evidence-tags.md`](spec/evidence-tags.md) / [`.en.md`](spec/evidence-tags.en.md) | Evidence-tag specification: syntax, rules, conflicts, open clauses | Formal spec |
-| [`spec/object-model.md`](spec/object-model.md) | Graph ontology: 14 node types, 31 edge types, constraints, storage | Formal spec |
-| [`spec/framework/edge-signatures.yaml`](spec/framework/edge-signatures.yaml) | **Single source** for 31 edge signatures, 7 invariants and glosses | Formal, machine-readable |
+| [`spec/object-model.md`](spec/object-model.md) | Graph ontology: 16 node types, 36 edge types, constraints, storage | Formal spec |
+| [`spec/framework/edge-signatures.yaml`](spec/framework/edge-signatures.yaml) | **Single source** for 36 edge signatures, 7 invariants and glosses | Formal, machine-readable |
 | [`spec/framework/graph.schema.json`](spec/framework/graph.schema.json) | Bundle schema; edge enum and conditional rules generated from the YAML | Generated, do not hand-edit |
 | [`spec/framework/object-model.schema.json`](spec/framework/object-model.schema.json) | Per-node structure constraints | Formal, machine-readable |
 | [`spec/framework/branches.json`](spec/framework/branches.json) | 62-branch directory plus extension slots | Formal, machine-readable |

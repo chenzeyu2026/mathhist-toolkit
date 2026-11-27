@@ -1,6 +1,6 @@
 # 边签名与不变量：mathhist-toolkit 的唯一真源
 #
-# 本文件是 31 类边的签名、专属属性、简短释义，以及 7 类全局不变量的唯一真源。
+# 本文件是 36 类边的签名、专属属性、简短释义，以及 7 类全局不变量的唯一真源。
 # 下游三件产物由它生成或驱动，禁止手改：
 #   1. spec/framework/graph.schema.json 的边 type 枚举与条件约束（generate 子命令写入）
 #   2. spec/object-model.md §5.2 边类型表、§5.6 约束表（generate 子命令写入，带 GENERATED 标记）
@@ -30,10 +30,14 @@ node_classes:
   event:           {abbr: "EV", prefix: "EV:", pattern: "^EV:[a-z0-9][a-z0-9.-]*$",     label: 事件}
   teaching_point:  {abbr: "TP", prefix: "TP:", pattern: "^TP:[a-z0-9][a-z0-9.-]*$",     label: 教学挂点}
   statement:       {abbr: "ST", prefix: "ST:", pattern: "^ST:[a-z0-9][a-z0-9.-]*$",     label: 观点}
+  org:             {abbr: "ORG", prefix: "ORG:", pattern: "^ORG:[a-z0-9][a-z0-9.-]*$",  label: 机构}
+  journal:         {abbr: "JRN", prefix: "JRN:", pattern: "^JRN:[a-z0-9][a-z0-9.-]*$",  label: 期刊}
 
 # 所有边共有的信封字段。缺任一项即为 error（不属于节点完整性的历史欠账）。
 edge_envelope:
   required: [id, from, to, type, directed, time, grade, attestation, confidence]
+  # 非证据边（evidence: false）只要求结构字段；不得带证据字段。
+  non_evidence_required: [id, from, to, type, directed]
 
 # 写进 graph.schema.json 的边级规则，按此顺序进入 allOf 的前段。
 # 每项引用 invariants.conditional_required.rules 里的 id；
@@ -414,6 +418,106 @@ edges:
     symmetric: false
     acyclic: false
     forbid: "TP 作为 to；TP 发出非 anchors 的边"
+
+  - type: member_of
+    gloss: 人物在机构中的成员身份；不等于雇佣关系
+    direction: 人物→机构
+    from: [person]
+    to: [org]
+    directed: true
+    same_class: false
+    symmetric: false
+    acyclic: false
+    attributes:
+      role:
+        required: true
+        enum: [member, fellow, president, foreign-member, corresponding-member]
+    forbid: "自环；用 employed_by 代替雇佣"
+
+  - type: employed_by
+    gloss: 人物的受雇/教职关系；与成员身份分开
+    direction: 人物→机构
+    from: [person]
+    to: [org]
+    directed: true
+    same_class: false
+    symmetric: false
+    acyclic: false
+    attributes:
+      role:
+        required: true
+        enum: [professor, lecturer, assistant, privatdozent, director]
+    forbid: "自环；用 member_of 代替成员身份"
+
+  - type: publishes_in
+    gloss: 人物级发表渠道；不代替具体篇目的 text→journal 书目边
+    direction: 人物→期刊
+    from: [person]
+    to: [journal]
+    directed: true
+    same_class: false
+    symmetric: false
+    acyclic: false
+    attributes:
+      role:
+        required: true
+        enum: [principal_channel, contributor, editor]
+    forbid: "自环；用 published_in 记录具体篇目"
+
+  - type: published_in
+    gloss: 具体文本/篇目发表于哪家期刊；与人物级 publishes_in 分开
+    direction: 文本→期刊
+    from: [text]
+    to: [journal]
+    directed: true
+    same_class: false
+    symmetric: false
+    acyclic: false
+    attributes:
+      role:
+        required: false
+        enum: [article, review, note, letter, other]
+    forbid: "反向（JRN→TX）；人物级渠道用 publishes_in"
+
+  - type: resembles
+    gloss: 两段论证的骨架相似；非证据边，不入证据链
+    direction: 无向（字典序存一条）
+    from: [theorem, method]
+    to: [theorem, method]
+    directed: false
+    same_class: false
+    symmetric: true
+    acyclic: false
+    evidence: false
+    provisional: true
+    gate: "连续三对 N1–N7 稳定 + 视图口径修订；当前 0/3，不得写入 samples/ 或 pilots/"
+    attributes:
+      skeleton_kind:
+        required: true
+        enum: [direct, contradiction, construction, induction, descent, exhaustion,
+               algebraic_identity, case_split, extremal, limit, other]
+      similarity:
+        required: true
+        type: number
+        minimum: 0
+        maximum: 1
+      conclusion_match:
+        required: false
+        type: boolean
+      specificity:
+        required: false
+        type: number
+        minimum: 0
+        maximum: 1
+      trace_refs:
+        required: false
+        type: array
+        items: {type: string, pattern: "^doc:.+#.+$"}
+      note:
+        required: false
+        type: string
+        maxLength: 280
+    forbid: "grade/attestation/confidence/time/claims/weight；反向写两条；provisional 期间写入图包"
 
   - type: exemplifies
     gloss: 理论的核心概念与代表结果

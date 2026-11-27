@@ -7,8 +7,8 @@
   "required": ["id", "type", "schema_version", "labels", "status", "claims", "provenance"],
   "additionalProperties": true,
   "properties": {
-    "id": { "type": "string", "pattern": "^(BR-[A-Z0-9-]+|(CO|TH|PR|ME|TY|FA|NO|PE|TX|TW|EV|TP|ST):[a-z0-9][a-z0-9.-]*)$" },
-    "type": { "enum": ["branch", "concept", "theorem", "problem", "method", "theory", "failure", "notation", "person", "text", "witness", "event", "teaching_point", "statement"] },
+    "id": { "type": "string", "pattern": "^(BR-[A-Z0-9-]+|(CO|TH|PR|ME|TY|FA|NO|PE|TX|TW|EV|TP|ST|ORG|JRN):[a-z0-9][a-z0-9.-]*)$" },
+    "type": { "enum": ["branch", "concept", "theorem", "problem", "method", "theory", "failure", "notation", "person", "text", "witness", "event", "teaching_point", "statement", "org", "journal"] },
     "schema_version": { "const": "0.2" },
     "labels": { "$ref": "#/$defs/labels" },
     "status": { "enum": ["active", "historical", "superseded", "disputed", "open", "resolved", "partially_resolved", "reformulated", "abandoned", "proposed", "deprecated", "umbrella", "current", "contested", "misattributed"] },
@@ -19,6 +19,12 @@
     "tags": { "type": "array", "items": { "type": "string" } },
     "text_type": { "enum": ["original", "compilation", "commentary", "translation", "textbook", "article", "letter", "treatise", "standard", "manual", "errata", "release_note", "spec_change", "source_repository", "commit", "mailing_list"] },
     "witness_kind": { "enum": ["original", "copy", "critical_edition", "translation", "modern_collation", "excerpt", "reconstruction", "manuscript", "printed_edition", "web_snapshot", "commit"] },
+    "org_kind": { "enum": ["academy", "university", "society", "institute", "government_body", "publisher", "other"] },
+    "journal_kind": { "enum": ["journal", "proceedings", "transactions", "magazine", "review", "other"] },
+    "founded_year": { "type": ["integer", "null"] },
+    "place": { "type": ["string", "null"] },
+    "publisher": { "type": ["string", "null"] },
+    "issn": { "type": ["string", "null"] },
     "provenance": { "$ref": "#/$defs/provenance" }
   },
   "allOf": [
@@ -35,7 +41,9 @@
     { "if": { "properties": { "type": { "const": "witness" } } }, "then": { "required": ["witness_kind", "extant", "date", "holding"] } },
     { "if": { "properties": { "type": { "const": "event" } } }, "then": { "required": ["date", "place", "actors"] } },
     { "if": { "properties": { "type": { "const": "teaching_point" } } }, "then": { "required": ["course", "chapter", "learning_objective", "history_objects", "evidence"] } },
-    { "if": { "properties": { "type": { "const": "statement" } } }, "then": { "required": ["claim_text", "about", "stance", "status", "text_ref"] } }
+    { "if": { "properties": { "type": { "const": "statement" } } }, "then": { "required": ["claim_text", "about", "stance", "status", "text_ref"] } },
+    { "if": { "properties": { "type": { "const": "org" } } }, "then": { "required": ["org_kind", "founded_year", "place"] } },
+    { "if": { "properties": { "type": { "const": "journal" } } }, "then": { "required": ["journal_kind", "founded_year", "place"] } }
   ],
   "$defs": {
     "labels": {

@@ -136,11 +136,7 @@
         "from",
         "to",
         "type",
-        "directed",
-        "time",
-        "grade",
-        "attestation",
-        "confidence"
+        "directed"
       ],
       "additionalProperties": false,
       "properties": {
@@ -188,6 +184,11 @@
             "derived_from",
             "supports",
             "anchors",
+            "member_of",
+            "employed_by",
+            "publishes_in",
+            "published_in",
+            "resembles",
             "exemplifies"
           ]
         },
@@ -249,13 +250,9 @@
           ]
         },
         "role": {
-          "enum": [
-            "author",
-            "editor",
-            "translator",
-            "commentator",
-            "compiler",
-            null
+          "type": [
+            "string",
+            "null"
           ]
         },
         "text_ref": {
@@ -275,97 +272,44 @@
             "type": "string",
             "pattern": "^CLM:[A-Za-z0-9:._-]+\\.[0-9]+$"
           }
+        },
+        "skeleton_kind": {
+          "enum": [
+            "direct",
+            "contradiction",
+            "construction",
+            "induction",
+            "descent",
+            "exhaustion",
+            "algebraic_identity",
+            "case_split",
+            "extremal",
+            "limit",
+            "other"
+          ]
+        },
+        "similarity": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "conclusion_match": {
+          "type": "boolean"
+        },
+        "specificity": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "trace_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^doc:.+#.+$"
+          }
         }
       },
       "allOf": [
-        {
-          "anyOf": [
-            {
-              "required": [
-                "source"
-              ]
-            },
-            {
-              "properties": {
-                "claimant": {
-                  "type": "string",
-                  "minLength": 1
-                }
-              },
-              "required": [
-                "claimant"
-              ]
-            }
-          ]
-        },
-        {
-          "if": {
-            "properties": {
-              "attestation": {
-                "const": "textbook_simplification"
-              }
-            },
-            "required": [
-              "attestation"
-            ]
-          },
-          "then": {
-            "properties": {
-              "grade": {
-                "enum": [
-                  "F",
-                  "U"
-                ]
-              }
-            }
-          }
-        },
-        {
-          "if": {
-            "properties": {
-              "attestation": {
-                "const": "later_report"
-              }
-            },
-            "required": [
-              "attestation"
-            ]
-          },
-          "then": {
-            "properties": {
-              "grade": {
-                "enum": [
-                  "S",
-                  "U",
-                  "F"
-                ]
-              }
-            }
-          }
-        },
-        {
-          "if": {
-            "properties": {
-              "grade": {
-                "const": "U"
-              }
-            },
-            "required": [
-              "grade"
-            ]
-          },
-          "then": {
-            "properties": {
-              "note": {
-                "type": "string",
-                "minLength": 1
-              }
-            },
-            "required": [
-              "note"
-            ]
-          }
-        },
         {
           "if": {
             "properties": {
@@ -1439,6 +1383,231 @@
           "if": {
             "properties": {
               "type": {
+                "const": "member_of"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "directed": {
+                "const": true
+              },
+              "from": {
+                "pattern": "^PE:[a-z0-9][a-z0-9.-]*$"
+              },
+              "to": {
+                "pattern": "^ORG:[a-z0-9][a-z0-9.-]*$"
+              },
+              "role": {
+                "enum": [
+                  "member",
+                  "fellow",
+                  "president",
+                  "foreign-member",
+                  "corresponding-member"
+                ]
+              }
+            },
+            "required": [
+              "role"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "employed_by"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "directed": {
+                "const": true
+              },
+              "from": {
+                "pattern": "^PE:[a-z0-9][a-z0-9.-]*$"
+              },
+              "to": {
+                "pattern": "^ORG:[a-z0-9][a-z0-9.-]*$"
+              },
+              "role": {
+                "enum": [
+                  "professor",
+                  "lecturer",
+                  "assistant",
+                  "privatdozent",
+                  "director"
+                ]
+              }
+            },
+            "required": [
+              "role"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "publishes_in"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "directed": {
+                "const": true
+              },
+              "from": {
+                "pattern": "^PE:[a-z0-9][a-z0-9.-]*$"
+              },
+              "to": {
+                "pattern": "^JRN:[a-z0-9][a-z0-9.-]*$"
+              },
+              "role": {
+                "enum": [
+                  "principal_channel",
+                  "contributor",
+                  "editor"
+                ]
+              }
+            },
+            "required": [
+              "role"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "published_in"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "directed": {
+                "const": true
+              },
+              "from": {
+                "pattern": "^TX:[a-z0-9][a-z0-9.-]*$"
+              },
+              "to": {
+                "pattern": "^JRN:[a-z0-9][a-z0-9.-]*$"
+              },
+              "role": {
+                "enum": [
+                  "article",
+                  "review",
+                  "note",
+                  "letter",
+                  "other"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "resembles"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "directed": {
+                "const": false
+              },
+              "from": {
+                "anyOf": [
+                  {
+                    "pattern": "^TH:[a-z0-9][a-z0-9.-]*$"
+                  },
+                  {
+                    "pattern": "^ME:[a-z0-9][a-z0-9.-]*$"
+                  }
+                ]
+              },
+              "to": {
+                "anyOf": [
+                  {
+                    "pattern": "^TH:[a-z0-9][a-z0-9.-]*$"
+                  },
+                  {
+                    "pattern": "^ME:[a-z0-9][a-z0-9.-]*$"
+                  }
+                ]
+              },
+              "skeleton_kind": {
+                "enum": [
+                  "direct",
+                  "contradiction",
+                  "construction",
+                  "induction",
+                  "descent",
+                  "exhaustion",
+                  "algebraic_identity",
+                  "case_split",
+                  "extremal",
+                  "limit",
+                  "other"
+                ]
+              },
+              "similarity": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              "conclusion_match": {
+                "type": "boolean"
+              },
+              "specificity": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              "trace_refs": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "pattern": "^doc:.+#.+$"
+                }
+              },
+              "note": {
+                "type": "string",
+                "maxLength": 280
+              }
+            },
+            "required": [
+              "skeleton_kind",
+              "similarity"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
                 "const": "exemplifies"
               }
             },
@@ -1464,6 +1633,200 @@
               "to": {
                 "pattern": "^TY:[a-z0-9][a-z0-9.-]*$"
               }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "enum": [
+                  "parent_of",
+                  "cross_class",
+                  "prerequisite_of",
+                  "concerns",
+                  "generalizes",
+                  "depends_on",
+                  "resolves",
+                  "reformulates",
+                  "spawned",
+                  "poses",
+                  "asserted_by",
+                  "about",
+                  "claimed_in",
+                  "contradicts",
+                  "competes_with",
+                  "denotes",
+                  "supersedes",
+                  "uses_notation",
+                  "uses_method",
+                  "targets",
+                  "corrected_by",
+                  "contributed_to",
+                  "proved",
+                  "introduced",
+                  "participates_in",
+                  "part_of",
+                  "witness_of",
+                  "derived_from",
+                  "supports",
+                  "anchors",
+                  "member_of",
+                  "employed_by",
+                  "publishes_in",
+                  "published_in",
+                  "exemplifies"
+                ]
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "allOf": [
+              {
+                "anyOf": [
+                  {
+                    "required": [
+                      "source"
+                    ]
+                  },
+                  {
+                    "properties": {
+                      "claimant": {
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    },
+                    "required": [
+                      "claimant"
+                    ]
+                  }
+                ]
+              },
+              {
+                "if": {
+                  "properties": {
+                    "attestation": {
+                      "const": "textbook_simplification"
+                    }
+                  },
+                  "required": [
+                    "attestation"
+                  ]
+                },
+                "then": {
+                  "properties": {
+                    "grade": {
+                      "enum": [
+                        "F",
+                        "U"
+                      ]
+                    }
+                  }
+                }
+              },
+              {
+                "if": {
+                  "properties": {
+                    "attestation": {
+                      "const": "later_report"
+                    }
+                  },
+                  "required": [
+                    "attestation"
+                  ]
+                },
+                "then": {
+                  "properties": {
+                    "grade": {
+                      "enum": [
+                        "S",
+                        "U",
+                        "F"
+                      ]
+                    }
+                  }
+                }
+              },
+              {
+                "if": {
+                  "properties": {
+                    "grade": {
+                      "const": "U"
+                    }
+                  },
+                  "required": [
+                    "grade"
+                  ]
+                },
+                "then": {
+                  "properties": {
+                    "note": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  },
+                  "required": [
+                    "note"
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "enum": [
+                  "resembles"
+                ]
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "required": [
+              "skeleton_kind",
+              "similarity"
+            ],
+            "not": {
+              "anyOf": [
+                {
+                  "required": [
+                    "grade"
+                  ]
+                },
+                {
+                  "required": [
+                    "attestation"
+                  ]
+                },
+                {
+                  "required": [
+                    "confidence"
+                  ]
+                },
+                {
+                  "required": [
+                    "time"
+                  ]
+                },
+                {
+                  "required": [
+                    "claims"
+                  ]
+                },
+                {
+                  "required": [
+                    "weight"
+                  ]
+                }
+              ]
             }
           }
         },

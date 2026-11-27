@@ -83,7 +83,7 @@ py -3 -m graphlint check-all         # 是否有新增错误（当前基线：0 
 5. **同步计数与文档**：`README.md`、`README.en.md`、`docs/repository-guide.md` / `.en.md` 中的边类型数量、`check-all` 计数若变化，一并更新；`CHANGELOG.md` 记一条。
 6. **最后再跑一遍** `py -3 -m unittest discover -s tests` 与 `py -3 scripts/selfcheck.py`。
 
-判据：新边必须能回答“它比现有 31 类边多表达了什么关系”。只是换个说法的边不加；先开 issue 说明缺口与两个真实图包中的用例。
+判据：新边必须能回答“它比现有 36 类边多表达了什么关系”。只是换个说法的边不加；先开 issue 说明缺口与两个真实图包中的用例。
 
 ## 新增或修改边级规则 / Adding or changing edge-level rules
 

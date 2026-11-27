@@ -51,6 +51,9 @@ class EdgeSig:
     require_note_when_to: tuple[str, ...]
     excluded_to: tuple[str, ...]
     reverse_alias: str | None
+    evidence: bool = True
+    provisional: bool = False
+    gate: str = ""
 
     def accepts(self, from_type: str, to_type: str) -> bool:
         if from_type not in self.domains:
@@ -67,6 +70,7 @@ class Signatures:
     edges: dict[str, EdgeSig]
     invariants: tuple[dict[str, Any], ...]
     envelope_required: tuple[str, ...]
+    non_evidence_required: tuple[str, ...]
     structural_checks: tuple[dict[str, Any], ...]
     node_completeness: dict[str, Any]
 
@@ -148,6 +152,9 @@ def load(path: Path = SIGNATURES_PATH) -> Signatures:
             require_note_when_to=tuple(item.get("require_note_when_to") or ()),
             excluded_to=tuple(item.get("excluded_to") or ()),
             reverse_alias=item.get("reverse_alias"),
+            evidence=bool(item.get("evidence", True)),
+            provisional=bool(item.get("provisional", False)),
+            gate=str(item.get("gate") or ""),
         )
 
     invariants = tuple(raw.get("invariants") or ())
@@ -164,6 +171,10 @@ def load(path: Path = SIGNATURES_PATH) -> Signatures:
         edges=edges,
         invariants=invariants,
         envelope_required=tuple((raw.get("edge_envelope") or {}).get("required") or ()),
+        non_evidence_required=tuple(
+            (raw.get("edge_envelope") or {}).get("non_evidence_required")
+            or ("id", "from", "to", "type", "directed")
+        ),
         structural_checks=tuple(raw.get("structural_checks") or ()),
         node_completeness=raw.get("node_completeness") or {"default_level": "warning",
                                                            "strict_level": "error"},

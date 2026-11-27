@@ -18,6 +18,13 @@ EDGE_ID_RE = re.compile(r"^E:[^>]+>[a-z_]+>[^>]+(#[0-9]+)?$")
 
 # 目录投影边：两端都是 branches.json 里的分支时，边由目录生成，可跨图包同名。
 CATALOG_EDGE_TYPES = frozenset({"parent_of", "cross_class"})
+NON_EVIDENCE_FORBIDDEN = ("grade", "attestation", "confidence", "time", "claims", "weight")
+
+
+def _is_graph_bundle(file: str) -> bool:
+    """check-all 只扫 samples/ 与 pilots/；这两处的 provisional 边一律拦截。"""
+    f = file.replace("\\", "/").lower()
+    return "/samples/" in f or "/pilots/" in f or f.startswith("samples/") or f.startswith("pilots/")
 
 
 @dataclass
@@ -408,7 +415,7 @@ def check_graph(graph: dict[str, Any], sig: Signatures, file: str,
         if cls is None:
             result.add(Issue(level="error", code="NODE_TYPE_UNKNOWN", file=file, node=nid,
                              message=f"节点 {nid} 的类型 `{ntype}` 未登记",
-                             actual=str(ntype), expected="14 类节点之一"))
+                             actual=str(ntype), expected=f"{len(sig.node_classes)} 类节点之一"))
         elif not re.match(cls["pattern"], nid or ""):
             result.add(Issue(level="error", code="NODE_ID_PREFIX", file=file, node=nid,
                              message=f"节点 ID 前缀与 type 不一致：{nid} 的类型是 {ntype}",
@@ -429,13 +436,39 @@ def check_graph(graph: dict[str, Any], sig: Signatures, file: str,
                              actual="重复", expected="同一图包内唯一；跨文件由 check-all 判定"))
         else:
             edge_ids.add(eid)
-        missing = [f for f in sig.envelope_required if edge.get(f) is None]
+        esig = sig.edges.get(edge.get("type"))
+        if esig is None:
+            result.add(Issue(level="error", code="EDGE_TYPE_UNKNOWN", file=file, edge=eid,
+                             message=f"边类型 `{edge.get('type')}` 未登记",
+                             actual=str(edge.get("type")),
+                             expected=f"edge-signatures.yaml 中 {len(sig.edges)} 类之一"))
+            continue
+
+        required = sig.envelope_required if esig.evidence else sig.non_evidence_required
+        missing = [f for f in required if edge.get(f) is None]
         if missing:
             result.add(Issue(level="error", code="EDGE_REQUIRED", file=file, edge=eid,
                              message=f"边缺少信封字段：{'、'.join(missing)}",
                              actual=f"缺失 {len(missing)} 项",
-                             expected=f"必填：{'、'.join(sig.envelope_required)}"))
+                             expected=f"必填：{'、'.join(required)}"))
             continue
+
+        if not esig.evidence:
+            forbidden = [f for f in NON_EVIDENCE_FORBIDDEN if edge.get(f) is not None]
+            if forbidden:
+                result.add(Issue(
+                    level="error", code="NON_EVIDENCE_FIELD", file=file, edge=eid,
+                    message=f"非证据边 `{esig.type}` 不得携带证据字段：{'、'.join(forbidden)}",
+                    actual="、".join(forbidden),
+                    expected=f"不得出现：{'、'.join(NON_EVIDENCE_FORBIDDEN)}",
+                ))
+            if esig.provisional and _is_graph_bundle(file):
+                result.add(Issue(
+                    level="error", code="EDGE_PROVISIONAL", file=file, edge=eid,
+                    message=f"`{esig.type}` 仍是 provisional，未过入图闸门，不得写入 samples/ 或 pilots/",
+                    actual="出现在图包中",
+                    expected=esig.gate or "先满足入图闸门，再把 provisional 改为 false",
+                ))
 
         id_issue = _check_edge_id(edge, file)
         if id_issue:
@@ -448,14 +481,6 @@ def check_graph(graph: dict[str, Any], sig: Signatures, file: str,
                              message=f"端点不在图包内：from={_describe_node(frm, ft)}；"
                                      f"to={_describe_node(to, tt)}",
                              actual=f"{frm} / {to}", expected="两端都必须是本图包节点"))
-            continue
-
-        esig = sig.edges.get(edge.get("type"))
-        if esig is None:
-            result.add(Issue(level="error", code="EDGE_TYPE_UNKNOWN", file=file, edge=eid,
-                             message=f"边类型 `{edge.get('type')}` 未登记",
-                             actual=str(edge.get("type")),
-                             expected="edge-signatures.yaml 中 31 类之一"))
             continue
 
         if frm == to:
@@ -526,6 +551,28 @@ def check_graph(graph: dict[str, Any], sig: Signatures, file: str,
                                      message=f"`{attr.name}` 必须是数值",
                                      actual=repr(value), expected="number"))
                     continue
+                if wanted == "boolean" and not isinstance(value, bool):
+                    result.add(Issue(level="error", code="ATTR_TYPE", file=file, edge=eid,
+                                     message=f"`{attr.name}` 必须是布尔值",
+                                     actual=repr(value), expected="boolean"))
+                    continue
+                if wanted == "string" and not isinstance(value, str):
+                    result.add(Issue(level="error", code="ATTR_TYPE", file=file, edge=eid,
+                                     message=f"`{attr.name}` 必须是字符串",
+                                     actual=repr(value), expected="string"))
+                    continue
+                if wanted == "array":
+                    if not isinstance(value, list):
+                        result.add(Issue(level="error", code="ATTR_TYPE", file=file, edge=eid,
+                                         message=f"`{attr.name}` 必须是数组",
+                                         actual=repr(value), expected="array"))
+                        continue
+                    items = attr.constraint.get("items") or {}
+                    if items.get("type") == "string" and any(not isinstance(v, str) for v in value):
+                        result.add(Issue(level="error", code="ATTR_TYPE", file=file, edge=eid,
+                                         message=f"`{attr.name}` 的每个元素必须是字符串",
+                                         actual=repr(value), expected="array[string]"))
+                        continue
             if "enum" in attr.constraint and value not in attr.constraint["enum"]:
                 result.add(Issue(
                     level="error", code="ATTR_ENUM", file=file, edge=eid,
@@ -571,8 +618,9 @@ def check_graph(graph: dict[str, Any], sig: Signatures, file: str,
                     expected="TP 只能作为 anchors 的 from",
                 ))
 
-        for issue in _check_attestation(edge, file):
-            result.add(issue)
+        if esig.evidence:
+            for issue in _check_attestation(edge, file):
+                result.add(issue)
 
     for (etype, pair), group in symmetric_pairs.items():
         if len(group) > 1:
