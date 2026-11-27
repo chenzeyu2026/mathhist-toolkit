@@ -372,6 +372,83 @@ class FailureFixtureTests(unittest.TestCase):
                 self.assertIn(code, [i.code for i in result.errors])
 
 
+class ResemblesAndSocialHistoryTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.sig = load()
+
+    def theorem(self, tag):
+        return node(f"TH:fixture-{tag}", "theorem",
+                    statement="fixture statement", assumptions=[], proof_status="proved")
+
+    def org(self, tag):
+        return node(f"ORG:fixture-{tag}", "org", org_kind="university",
+                    founded_year=1700, place="fixture")
+
+    def journal(self, tag):
+        return node(f"JRN:fixture-{tag}", "journal", journal_kind="journal",
+                    founded_year=1700, place="fixture")
+
+    def resembles(self, **extra):
+        data = {
+            "id": "E:TH:fixture-a>resembles>TH:fixture-b",
+            "from": "TH:fixture-a",
+            "to": "TH:fixture-b",
+            "type": "resembles",
+            "directed": False,
+            "skeleton_kind": "direct",
+            "similarity": 0.5,
+        }
+        data.update(extra)
+        return data
+
+    def test_resembles_is_non_evidence_and_provisional(self):
+        esig = self.sig.edges["resembles"]
+        self.assertFalse(esig.evidence)
+        self.assertTrue(esig.provisional)
+        self.assertTrue(esig.symmetric)
+        self.assertIn("N1", esig.gate)
+
+    def test_non_evidence_edge_accepts_minimal_envelope(self):
+        graph = {"nodes": [self.theorem("a"), self.theorem("b")],
+                 "edges": [self.resembles()]}
+        result = check_graph(graph, self.sig, "fixture.json")
+        self.assertNotIn("NON_EVIDENCE_FIELD", codes(result))
+        self.assertNotIn("EDGE_PROVISIONAL", codes(result))
+
+    def test_non_evidence_edge_rejects_evidence_fields(self):
+        graph = {"nodes": [self.theorem("a"), self.theorem("b")],
+                 "edges": [self.resembles(grade="F", confidence=0.5)]}
+        result = check_graph(graph, self.sig, "fixture.json")
+        self.assertIn("NON_EVIDENCE_FIELD", codes(result))
+
+    def test_resembles_blocked_inside_bundle(self):
+        graph = {"nodes": [self.theorem("a"), self.theorem("b")],
+                 "edges": [self.resembles()]}
+        result = check_graph(graph, self.sig, "spec/framework/pilots/x/graph.json")
+        self.assertIn("EDGE_PROVISIONAL", codes(result))
+
+    def test_social_history_endpoints(self):
+        self.assertTrue(self.sig.edges["member_of"].accepts("person", "org"))
+        self.assertTrue(self.sig.edges["employed_by"].accepts("person", "org"))
+        self.assertTrue(self.sig.edges["publishes_in"].accepts("person", "journal"))
+        self.assertTrue(self.sig.edges["published_in"].accepts("text", "journal"))
+        graph = {"nodes": [self.theorem("a"), self.org("academy"), self.journal("acta")],
+                 "edges": [
+                     {"id": "E:PE:fixture>member_of>ORG:fixture-academy",
+                      "from": "PE:fixture", "to": "ORG:fixture-academy",
+                      "type": "member_of", "directed": True, "role": "member",
+                      "time": {"from": 1700, "to": 1700, "precision": "year"},
+                      "source": {"locator": "fixture"}, "grade": "F",
+                      "attestation": "textbook_simplification", "confidence": 0.5},
+                 ]}
+        # 只验证 ORG/JRN 节点类型与 ID 前缀，不要求 person 节点齐全
+        result = check_graph({"nodes": [self.org("academy"), self.journal("acta")],
+                              "edges": []}, self.sig, "fixture.json")
+        self.assertNotIn("NODE_TYPE_UNKNOWN", codes(result))
+        self.assertNotIn("NODE_ID_PREFIX", codes(result))
+
+
 class MissingPyYAMLTests(unittest.TestCase):
     def test_load_explains_missing_pyyaml(self):
         with mock.patch.object(signatures, "yaml", None):

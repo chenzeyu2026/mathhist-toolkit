@@ -19,7 +19,7 @@ spec/
 ├── evidence-tags.md / .en.md            Document-level evidence-tag spec (v0.1)
 ├── object-model.md                      Graph ontology (v0.2; includes generated edge tables)
 └── framework/
-    ├── edge-signatures.yaml             ★ single source: 31 edge types + 7 invariants
+    ├── edge-signatures.yaml             ★ single source: 36 edge types + 7 invariants
     ├── graph.schema.json                ← generated from edge-signatures.yaml
     ├── object-model.schema.json         Node-structure constraints (hand-written)
     ├── branches.json                    62-branch directory plus extension slots

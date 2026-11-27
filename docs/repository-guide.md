@@ -19,7 +19,7 @@ spec/
 ├── evidence-tags.md / .en.md            文档级证据标记规范（v0.1）
 ├── object-model.md                      图结构本体（v0.2，含生成的边表）
 └── framework/
-    ├── edge-signatures.yaml             ★ 唯一真源：31 类边 + 7 类不变量
+    ├── edge-signatures.yaml             ★ 唯一真源：36 类边 + 7 类不变量
     ├── graph.schema.json                ← 由 edge-signatures.yaml 生成
     ├── object-model.schema.json         节点结构约束（手写）
     ├── branches.json                    62 分支目录 + 扩展槽

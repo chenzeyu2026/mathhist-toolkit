@@ -1,0 +1,1576 @@
+# P0 元数据目录
+# 依据：docs/evidence-corpus-design.md §2（manifest 字段）、§14.5（DEC-1：点校本只收元数据，不进全文库）、§15.2（P0：50 条）
+#
+# 约定：
+#   1. 全部条目 visibility: public-metadata、verification_status: unverified；没有一条见过原件。
+#   2. 未核实的字段一律 null 或 []。不记页码、ISBN、URL、哈希、卷期——这几类一律留空。
+#   3. 每条 missing_fields 列出仍缺的字段，needs 列出下一步要做的事。
+#   4. 中国古籍 modern 点校/整理本按 DEC-1 处理：is_scholarly_edition: true、editor: null、
+#      witness_note 固定写「点校本，仅元数据，原文页码待核」，license.status: unknown。
+#   5. 中国古籍 id 第三段：有通行成书/刊行年的写年份（如 1247、1607），成书年有争议或未定的写 nd，
+#      不编具体年份。date 字段同此原则。
+#   6. 17–20 世纪条目记的是原刊/原书，不是后人编订本；页码与卷期仍待核，故 edition_statement 为 null。
+#   7. 形态：本文件是 P0 单文件种子目录；每条 item 即未来 corpus/<id>/manifest.yaml 的内容。
+#      P1 开始时按 §2 逐条拆成目录，届时 source/ 只进本地，不进 git。
+#   8. 十条样板的核验结果另见 corpus/p0/verified-samples.yaml 与
+#      docs/evidence-corpus-p0-a-samples.md（0 条 A、1 条 B+、8 条 B、1 条 B−）。
+
+catalog_version: p0
+generated: "2026-11-27"
+item_count: 50
+items:
+  # ===== 一、中国古籍（20 条）=====
+
+  - id: zhoubi-suanjing-nd-zhoubi
+    title: "周髀算经"
+    creator: null
+    date: null
+    kind: book
+    language: lzh
+    provenance:
+      is_contemporary_publication: false
+      is_scholarly_edition: true
+      editor: null
+      edition_statement: null
+      translation: null
+      witness_note: "点校本，仅元数据，原文页码待核"
+    source:
+      url: null
+      retrieved: null
+      sha256: null
+      bytes: null
+      page_count: null
+      page_map: []
+      page_map_gaps: null
+    license:
+      status: unknown
+      basis: null
+      public_copy_allowed: false
+      note: "现代点校本/整理本，点校、校注、导言另有版权"
+    visibility: public-metadata
+    verification_status: unverified
+    missing_fields: [creator, date, provenance.editor, provenance.edition_statement, provenance.translation, source.url, source.retrieved, source.sha256, source.bytes, source.page_count, source.page_map, license.status, license.basis]
+    needs: [核撰人（旧题周公，一说佚名）, 核成书年（战国至西汉说并存）, 定引用底本（原刻影印 or 点校本）, 补卷次叶码]
+
+  - id: jiuzhang-suanshu-nd-jiuzhang
+    title: "九章算术"
+    creator: null
+    date: null
+    kind: book
+    language: lzh
+    provenance:
+      is_contemporary_publication: false
+      is_scholarly_edition: true
+      editor: null
+      edition_statement: null
+      translation: null
+      witness_note: "点校本，仅元数据，原文页码待核"
+    source:
+      url: null
+      retrieved: null
+      sha256: null
+      bytes: null
+      page_count: null
+      page_map: []
+      page_map_gaps: null
+    license:
+      status: unknown
+      basis: null
+      public_copy_allowed: false
+      note: "现代点校本/整理本，点校、校注、导言另有版权"
+    visibility: public-metadata
+    verification_status: unverified
+    missing_fields: [creator, date, provenance.editor, provenance.edition_statement, provenance.translation, source.url, source.retrieved, source.sha256, source.bytes, source.page_count, source.page_map, license.status, license.basis]
+    needs: [核撰人与成书年（西汉说为主，待核）, 核刘徽注、李淳风注的层位, 定引用底本, 补卷次叶码]
+
+  - id: haidao-suanjing-nd-haidao
+    title: "海岛算经"
+    creator: "刘徽（Liu Hui）"
+    date: null
+    kind: book
+    language: lzh
+    provenance:
+      is_contemporary_publication: false
+      is_scholarly_edition: true
+      editor: null
+      edition_statement: null
+      translation: null
+      witness_note: "点校本，仅元数据，原文页码待核"
+    source:
+      url: null
+      retrieved: null
+      sha256: null
+      bytes: null
+      page_count: null
+      page_map: []
+      page_map_gaps: null
+    license:
+      status: unknown
+      basis: null
+      public_copy_allowed: false
+      note: "现代点校本/整理本，点校、校注、导言另有版权"
+    visibility: public-metadata
+    verification_status: unverified
+    missing_fields: [date, provenance.editor, provenance.edition_statement, provenance.translation, source.url, source.retrieved, source.sha256, source.bytes, source.page_count, source.page_map, license.status, license.basis]
+    needs: [核附《九章》的卷次与单行本关系, 核成书年, 定引用底本, 补叶码]
+
+  - id: sunzi-suanjing-nd-sunzi
+    title: "孙子算经"
+    creator: null
+    date: null
+    kind: book
+    language: lzh
+    provenance:
+      is_contemporary_publication: false
+      is_scholarly_edition: true
+      editor: null
+      edition_statement: null
+      translation: null
+      witness_note: "点校本，仅元数据，原文页码待核"
+    source:
+      url: null
+      retrieved: null
+      sha256: null
+      bytes: null
+      page_count: null
+      page_map: []
+      page_map_gaps: null
+    license:
+      status: unknown
+      basis: null
+      public_copy_allowed: false
+      note: "现代点校本/整理本，点校、校注、导言另有版权"
+    visibility: public-metadata
+    verification_status: unverified
+    missing_fields: [creator, date, provenance.editor, provenance.edition_statement, provenance.translation, source.url, source.retrieved, source.sha256, source.bytes, source.page_count, source.page_map, license.status, license.basis]
+    needs: [核撰人与成书年（旧题孙子，年代有争议）, 核「物不知数」条在底本中的位置, 定引用底本, 补叶码]
+
+  - id: zhangqiujian-suanjing-nd-zhangqiujian
+    title: "张丘建算经"
+    creator: "张丘建（Zhang Qiujian）"
+    date: null
+    kind: book
+    language: lzh
+    provenance:
+      is_contemporary_publication: false
+      is_scholarly_edition: true
+      editor: null
+      edition_statement: null
+      translation: null
+      witness_note: "点校本，仅元数据，原文页码待核"
+    source:
+      url: null
+      retrieved: null
+      sha256: null
+      bytes: null
+      page_count: null
+      page_map: []
+      page_map_gaps: null
+    license:
+      status: unknown
+      basis: null
+      public_copy_allowed: false
+      note: "现代点校本/整理本，点校、校注、导言另有版权"
+    visibility: public-metadata
+    verification_status: unverified
+    missing_fields: [date, provenance.editor, provenance.edition_statement, provenance.translation, source.url, source.retrieved, source.sha256, source.bytes, source.page_count, source.page_map, license.status, license.basis]
+    needs: [核成书年（通行系北魏，待核）, 核「百鸡」问的位置, 定引用底本, 补叶码]
+
+  - id: xiahouyang-suanjing-nd-xiahouyang
+    title: "夏侯阳算经"
+    creator: null
+    date: null
+    kind: book
+    language: lzh
+    provenance:
+      is_contemporary_publication: false
+      is_scholarly_edition: true
+      editor: null
+      edition_statement: null
+      translation: null
+      witness_note: "点校本，仅元数据，原文页码待核"
+    source:
+      url: null
+      retrieved: null
+      sha256: null
+      bytes: null
+      page_count: null
+      page_map: []
+      page_map_gaps: null
+    license:
+      status: unknown
+      basis: null
+      public_copy_allowed: false
+      note: "现代点校本/整理本，点校、校注、导言另有版权"
+    visibility: public-metadata
+    verification_status: unverified
+    missing_fields: [creator, date, provenance.editor, provenance.edition_statement, provenance.translation, source.url, source.retrieved, source.sha256, source.bytes, source.page_count, source.page_map, license.status, license.basis]
+    needs: [核传本性质（今本是否唐时改题，待核）, 核撰人与成书年, 定引用底本, 补叶码]
+
+  - id: wucao-suanjing-nd-wucao
+    title: "五曹算经"
+    creator: null
+    date: null
+    kind: book
+    language: lzh
+    provenance:
+      is_contemporary_publication: false
+      is_scholarly_edition: true
+      editor: null
+      edition_statement: null
+      translation: null
+      witness_note: "点校本，仅元数据，原文页码待核"
+    source:
+      url: null
+      retrieved: null
+      sha256: null
+      bytes: null
+      page_count: null
+      page_map: []
+      page_map_gaps: null
+    license:
+      status: unknown
+      basis: null
+      public_copy_allowed: false
+      note: "现代点校本/整理本，点校、校注、导言另有版权"
+    visibility: public-metadata
+    verification_status: unverified
+    missing_fields: [creator, date, provenance.editor, provenance.edition_statement, provenance.translation, source.url, source.retrieved, source.sha256, source.bytes, source.page_count, source.page_map, license.status, license.basis]
+    needs: [核撰人（旧题甄鸾，待核）, 核五曹分卷, 定引用底本, 补叶码]
+
+  - id: wujing-suanshu-nd-wujing
+    title: "五经算术"
+    creator: "甄鸾（Zhen Luan）"
+    date: null
+    kind: book
+    language: lzh
+    provenance:
+      is_contemporary_publication: false
+      is_scholarly_edition: true
+      editor: null
+      edition_statement: null
+      translation: null
+      witness_note: "点校本，仅元数据，原文页码待核"
+    source:
+      url: null
+      retrieved: null
+      sha256: null
+      bytes: null
+      page_count: null
+      page_map: []
+      page_map_gaps: null
+    license:
+      status: unknown
+      basis: null
+      public_copy_allowed: false
+      note: "现代点校本/整理本，点校、校注、导言另有版权"
+    visibility: public-metadata
+    verification_status: unverified
+    missing_fields: [date, provenance.editor, provenance.edition_statement, provenance.translation, source.url, source.retrieved, source.sha256, source.bytes, source.page_count, source.page_map, license.status, license.basis]
+    needs: [核成书年, 核李淳风注释层位, 定引用底本, 补叶码]
+
+  - id: jigu-suanjing-nd-jigu
+    title: "缉古算经"
+    creator: "王孝通（Wang Xiaotong）"
+    date: null
+    kind: book
+    language: lzh
+    provenance:
+      is_contemporary_publication: false
+      is_scholarly_edition: true
+      editor: null
+      edition_statement: null
+      translation: null
+      witness_note: "点校本，仅元数据，原文页码待核"
+    source:
+      url: null
+      retrieved: null
+      sha256: null
+      bytes: null
+      page_count: null
+      page_map: []
+      page_map_gaps: null
+    license:
+      status: unknown
+      basis: null
+      public_copy_allowed: false
+      note: "现代点校本/整理本，点校、校注、导言另有版权"
+    visibility: public-metadata
+    verification_status: unverified
+    missing_fields: [date, provenance.editor, provenance.edition_statement, provenance.translation, source.url, source.retrieved, source.sha256, source.bytes, source.page_count, source.page_map, license.status, license.basis]
+    needs: [核成书年（通行系唐初，待核）, 核二十问的卷次, 定引用底本, 补叶码]
+
+  - id: shushu-jiyi-nd-shushu
+    title: "数术记遗"
+    creator: null
+    date: null
+    kind: book
+    language: lzh
+    provenance:
+      is_contemporary_publication: false
+      is_scholarly_edition: true
+      editor: null
+      edition_statement: null
+      translation: null
+      witness_note: "点校本，仅元数据，原文页码待核"
+    source:
+      url: null
+      retrieved: null
+      sha256: null
+      bytes: null
+      page_count: null
+      page_map: []
+      page_map_gaps: null
+    license:
+      status: unknown
+      basis: null
+      public_copy_allowed: false
+      note: "现代点校本/整理本，点校、校注、导言另有版权"
+    visibility: public-metadata
+    verification_status: unverified
+    missing_fields: [creator, date, provenance.editor, provenance.edition_statement, provenance.translation, source.url, source.retrieved, source.sha256, source.bytes, source.page_count, source.page_map, license.status, license.basis]
+    needs: [核撰人（旧题徐岳撰、甄鸾注，真伪有争议）, 核成书年代, 定引用底本, 补叶码]
+
+  - id: shushu-jiuzhang-1247-jiuzhang
+    title: "数书九章"
+    creator: "秦九韶（Qin Jiushao）"
+    date: "1247"
+    kind: book
+    language: lzh
+    provenance:
+      is_contemporary_publication: false
+      is_scholarly_edition: true
+      editor: null
+      edition_statement: null
+      translation: null
+      witness_note: "点校本，仅元数据，原文页码待核"
+    source:
+      url: null
+      retrieved: null
+      sha256: null
+      bytes: null
+      page_count: null
+      page_map: []
+      page_map_gaps: null
+    license:
+      status: unknown
+      basis: null
+      public_copy_allowed: false
+      note: "现代点校本/整理本，点校、校注、导言另有版权"
+    visibility: public-metadata
+    verification_status: unverified
+    missing_fields: [provenance.editor, provenance.edition_statement, provenance.translation, source.url, source.retrieved, source.sha256, source.bytes, source.page_count, source.page_map, license.status, license.basis]
+    needs: [核成书年与初刻（通行系 1247，待核）, 核九章十八卷的分卷与叶码, 核「大衍总数术」所在卷, 定引用底本]
+
+  - id: ceyuan-haijing-1248-ceyuan
+    title: "测圆海镜"
+    creator: "李冶（Li Ye）"
+    date: "1248"
+    kind: book
+    language: lzh
+    provenance:
+      is_contemporary_publication: false
+      is_scholarly_edition: true
+      editor: null
+      edition_statement: null
+      translation: null
+      witness_note: "点校本，仅元数据，原文页码待核"
+    source:
+      url: null
+      retrieved: null
+      sha256: null
+      bytes: null
+      page_count: null
+      page_map: []
+      page_map_gaps: null
+    license:
+      status: unknown
+      basis: null
+      public_copy_allowed: false
+      note: "现代点校本/整理本，点校、校注、导言另有版权"
+    visibility: public-metadata
+    verification_status: unverified
+    missing_fields: [provenance.editor, provenance.edition_statement, provenance.translation, source.url, source.retrieved, source.sha256, source.bytes, source.page_count, source.page_map, license.status, license.basis]
+    needs: [核成书年与卷数（通行十二卷，待核）, 核「天元术」条目的卷次叶码, 定引用底本]
+
+  - id: yigu-yanduan-1259-yigu
+    title: "益古演段"
+    creator: "李冶（Li Ye）"
+    date: "1259"
+    kind: book
+    language: lzh
+    provenance:
+      is_contemporary_publication: false
+      is_scholarly_edition: true
+      editor: null
+      edition_statement: null
+      translation: null
+      witness_note: "点校本，仅元数据，原文页码待核"
+    source:
+      url: null
+      retrieved: null
+      sha256: null
+      bytes: null
+      page_count: null
+      page_map: []
+      page_map_gaps: null
+    license:
+      status: unknown
+      basis: null
+      public_copy_allowed: false
+      note: "现代点校本/整理本，点校、校注、导言另有版权"
+    visibility: public-metadata
+    verification_status: unverified
+    missing_fields: [provenance.editor, provenance.edition_statement, provenance.translation, source.url, source.retrieved, source.sha256, source.bytes, source.page_count, source.page_map, license.status, license.basis]
+    needs: [核成书年（通行系 1259，待核）, 核三卷分卷, 定引用底本, 补叶码]
+
+  - id: siyuan-yujian-1303-siyuan
+    title: "四元玉鉴"
+    creator: "朱世杰（Zhu Shijie）"
+    date: "1303"
+    kind: book
+    language: lzh
+    provenance:
+      is_contemporary_publication: false
+      is_scholarly_edition: true
+      editor: null
+      edition_statement: null
+      translation: null
+      witness_note: "点校本，仅元数据，原文页码待核"
+    source:
+      url: null
+      retrieved: null
+      sha256: null
+      bytes: null
+      page_count: null
+      page_map: []
+      page_map_gaps: null
+    license:
+      status: unknown
+      basis: null
+      public_copy_allowed: false
+      note: "现代点校本/整理本，点校、校注、导言另有版权"
+    visibility: public-metadata
+    verification_status: unverified
+    missing_fields: [provenance.editor, provenance.edition_statement, provenance.translation, source.url, source.retrieved, source.sha256, source.bytes, source.page_count, source.page_map, license.status, license.basis]
+    needs: [核成书年与卷数（通行三卷二十四门，待核）, 核「四元术」条目的叶码, 定引用底本]
+
+  - id: suanxue-qimeng-1299-suanxue
+    title: "算学启蒙"
+    creator: "朱世杰（Zhu Shijie）"
+    date: "1299"
+    kind: book
+    language: lzh
+    provenance:
+      is_contemporary_publication: false
+      is_scholarly_edition: true
+      editor: null
+      edition_statement: null
+      translation: null
+      witness_note: "点校本，仅元数据，原文页码待核"
+    source:
+      url: null
+      retrieved: null
+      sha256: null
+      bytes: null
+      page_count: null
+      page_map: []
+      page_map_gaps: null
+    license:
+      status: unknown
+      basis: null
+      public_copy_allowed: false
+      note: "现代点校本/整理本，点校、校注、导言另有版权"
+    visibility: public-metadata
+    verification_status: unverified
+    missing_fields: [provenance.editor, provenance.edition_statement, provenance.translation, source.url, source.retrieved, source.sha256, source.bytes, source.page_count, source.page_map, license.status, license.basis]
+    needs: [核成书年（通行系 1299，待核）, 核三卷分卷与总括条目, 核底本（中土失传、日本传本，待核）, 定引用底本]
+
+  - id: xiangjie-jiuzhang-suanfa-1261-xiangjie
+    title: "详解九章算法"
+    creator: "杨辉（Yang Hui）"
+    date: "1261"
+    kind: book
+    language: lzh
+    provenance:
+      is_contemporary_publication: false
+      is_scholarly_edition: true
+      editor: null
+      edition_statement: null
+      translation: null
+      witness_note: "点校本，仅元数据，原文页码待核"
+    source:
+      url: null
+      retrieved: null
+      sha256: null
+      bytes: null
+      page_count: null
+      page_map: []
+      page_map_gaps: null
+    license:
+      status: unknown
+      basis: null
+      public_copy_allowed: false
+      note: "现代点校本/整理本，点校、校注、导言另有版权"
+    visibility: public-metadata
+    verification_status: unverified
+    missing_fields: [provenance.editor, provenance.edition_statement, provenance.translation, source.url, source.retrieved, source.sha256, source.bytes, source.page_count, source.page_map, license.status, license.basis]
+    needs: [核成书年（通行系 1261，待核）, 核今存本是否残卷及残卷范围, 核「开方作法本源」图所在位置, 定引用底本]
+
+  - id: suanfa-tongzong-1592-tongzong
+    title: "算法统宗"
+    creator: "程大位（Cheng Dawei）"
+    date: "1592"
+    kind: book
+    language: lzh
+    provenance:
+      is_contemporary_publication: false
+      is_scholarly_edition: true
+      editor: null
+      edition_statement: null
+      translation: null
+      witness_note: "点校本，仅元数据，原文页码待核"
+    source:
+      url: null
+      retrieved: null
+      sha256: null
+      bytes: null
+      page_count: null
+      page_map: []
+      page_map_gaps: null
+    license:
+      status: unknown
+      basis: null
+      public_copy_allowed: false
+      note: "现代点校本/整理本，点校、校注、导言另有版权"
+    visibility: public-metadata
+    verification_status: unverified
+    missing_fields: [provenance.editor, provenance.edition_statement, provenance.translation, source.url, source.retrieved, source.sha256, source.bytes, source.page_count, source.page_map, license.status, license.basis]
+    needs: [核初刻年与卷数（通行十七卷，待核）, 核「算盘」与珠算口诀条目叶码, 核后世增补本系统, 定引用底本]
+
+  - id: jihe-yuanben-1607-xuguangqi
+    title: "几何原本"
+    creator: "徐光启（Xu Guangqi）、利玛窦（Matteo Ricci）"
+    date: "1607"
+    kind: book
+    language: lzh
+    provenance:
+      is_contemporary_publication: false
+      is_scholarly_edition: true
+      editor: null
+      edition_statement: null
+      translation: "利玛窦口译、徐光启笔受；自拉丁文（克拉维乌斯注释本系统）译出；1607 年初刻（版次待核）"
+      witness_note: "点校本，仅元数据，原文页码待核"
+    source:
+      url: null
+      retrieved: null
+      sha256: null
+      bytes: null
+      page_count: null
+      page_map: []
+      page_map_gaps: null
+    license:
+      status: unknown
+      basis: null
+      public_copy_allowed: false
+      note: "明刻底本或可属公有领域，但现代整理本的点校、注释另有版权"
+    visibility: public-metadata
+    verification_status: unverified
+    missing_fields: [provenance.editor, provenance.edition_statement, source.url, source.retrieved, source.sha256, source.bytes, source.page_count, source.page_map, license.status, license.basis]
+    needs: [核 1607 初刻与后续翻刻的版次差异, 核所译底本（克拉维乌斯《欧几里得原本》版本）, 核前六卷的范围, 定引用底本（原刻影印 or 点校本）]
+
+  - id: tongwen-suanzhi-1614-tongwen
+    title: "同文算指"
+    creator: "李之藻（Li Zhizao）、利玛窦（Matteo Ricci）"
+    date: "1614"
+    kind: book
+    language: lzh
+    provenance:
+      is_contemporary_publication: false
+      is_scholarly_edition: true
+      editor: null
+      edition_statement: null
+      translation: "利玛窦口译、李之藻笔受；据克拉维乌斯《实用算术概论》系统编译；1614 刊（版次待核）"
+      witness_note: "点校本，仅元数据，原文页码待核"
+    source:
+      url: null
+      retrieved: null
+      sha256: null
+      bytes: null
+      page_count: null
+      page_map: []
+      page_map_gaps: null
+    license:
+      status: unknown
+      basis: null
+      public_copy_allowed: false
+      note: "明刻底本或可属公有领域，但现代整理本的点校、注释另有版权"
+    visibility: public-metadata
+    verification_status: unverified
+    missing_fields: [provenance.editor, provenance.edition_statement, source.url, source.retrieved, source.sha256, source.bytes, source.page_count, source.page_map, license.status, license.basis]
+    needs: [核前编、通编、别编的分卷, 核所据西文底本版本, 核「笔算」引入条目的叶码, 定引用底本]
+
+  - id: shuli-jingyun-nd-shuli
+    title: "数理精蕴"
+    creator: null
+    date: null
+    kind: book
+    language: lzh
+    provenance:
+      is_contemporary_publication: false
+      is_scholarly_edition: true
+      editor: null
+      edition_statement: null
+      translation: null
+      witness_note: "点校本，仅元数据，原文页码待核"
+    source:
+      url: null
+      retrieved: null
+      sha256: null
+      bytes: null
+      page_count: null
+      page_map: []
+      page_map_gaps: null
+    license:
+      status: unknown
+      basis: null
+      public_copy_allowed: false
+      note: "清内府刻本或可属公有领域，但现代整理本的点校、注释另有版权"
+    visibility: public-metadata
+    verification_status: unverified
+    missing_fields: [creator, date, provenance.editor, provenance.edition_statement, provenance.translation, source.url, source.retrieved, source.sha256, source.bytes, source.page_count, source.page_map, license.status, license.basis]
+    needs: [核编纂者署名（康熙敕撰、梅瑴成等汇编，待核）, 核编成与刊行年, 核上编五卷、下编四十卷、表的分卷, 定引用底本]
+
+  # ===== 二、17–18 世纪期刊/原刊（15 条）=====
+
+  - id: leibniz-1684-nova-methodus
+    title: "Nova methodus pro maximis et minimis"
+    creator: "Gottfried Wilhelm Leibniz"
+    date: "1684-10"
+    kind: periodical-article
+    language: la
+    provenance:
+      is_contemporary_publication: true
+      is_scholarly_edition: false
+      editor: null
+      edition_statement: null
+      translation: null
+      witness_note: "同时代期刊原刊文章；未见原件，刊名卷期与页码待核"
+    source:
+      url: null
+      retrieved: null
+      sha256: null
+      bytes: null
+      page_count: null
+      page_map: []
+      page_map_gaps: null
+    license:
+      status: unknown
+      basis: null
+      public_copy_allowed: false
+      note: "作品本身当属公有领域；数字化件提供方条款未核"
+    visibility: public-metadata
+    verification_status: unverified
+    missing_fields: [provenance.edition_statement, source.url, source.retrieved, source.sha256, source.bytes, source.page_count, source.page_map, license.status, license.basis]
+    needs: [核刊名与 1684 年 10 月号的卷期页, 找可核副本或馆藏, 记提供方条款]
+
+  - id: leibniz-1686-de-geometria-recondita
+    title: "De geometria recondita et analysi indivisibilium atque infinitorum"
+    creator: "Gottfried Wilhelm Leibniz"
+    date: "1686"
+    kind: periodical-article
+    language: la
+    provenance:
+      is_contemporary_publication: true
+      is_scholarly_edition: false
+      editor: null
+      edition_statement: null
+      translation: null
+      witness_note: "同时代期刊原刊文章；未见原件，篇题原文与卷期页待核"
+    source:
+      url: null
+      retrieved: null
+      sha256: null
+      bytes: null
+      page_count: null
+      page_map: []
+      page_map_gaps: null
+    license:
+      status: unknown
+      basis: null
+      public_copy_allowed: false
+      note: "作品本身当属公有领域；数字化件提供方条款未核"
+    visibility: public-metadata
+    verification_status: unverified
+    missing_fields: [provenance.edition_statement, source.url, source.retrieved, source.sha256, source.bytes, source.page_count, source.page_map, license.status, license.basis]
+    needs: [核 1686 年所刊篇题原文, 核刊名卷期页, 找可核副本, 记提供方条款]
+
+  - id: newton-1687-principia-1st
+    title: "Philosophiæ Naturalis Principia Mathematica"
+    creator: "Isaac Newton"
+    date: "1687"
+    kind: book
+    language: la
+    provenance:
+      is_contemporary_publication: true
+      is_scholarly_edition: false
+      editor: null
+      edition_statement: null
+      translation: null
+      witness_note: "1687 年初版；未见原件，版次与页码待核"
+    source:
+      url: null
+      retrieved: null
+      sha256: null
+      bytes: null
+      page_count: null
+      page_map: []
+      page_map_gaps: null
+    license:
+      status: unknown
+      basis: null
+      public_copy_allowed: false
+      note: "作品本身当属公有领域；数字化件提供方条款未核"
+    visibility: public-metadata
+    verification_status: unverified
+    missing_fields: [provenance.edition_statement, source.url, source.retrieved, source.sha256, source.bytes, source.page_count, source.page_map, license.status, license.basis]
+    needs: [核初版三编的卷册与页码体系, 核后续版次（1713、1726）差异, 找可核副本, 记提供方条款]
+
+  - id: newton-1704-opticks
+    title: "Opticks: or, A Treatise of the Reflexions, Refractions, Inflexions and Colours of Light"
+    creator: "Isaac Newton"
+    date: "1704"
+    kind: book
+    language: en
+    provenance:
+      is_contemporary_publication: true
+      is_scholarly_edition: false
+      editor: null
+      edition_statement: null
+      translation: null
+      witness_note: "1704 年英文初版；未见原件，版次与页码待核"
+    source:
+      url: null
+      retrieved: null
+      sha256: null
+      bytes: null
+      page_count: null
+      page_map: []
+      page_map_gaps: null
+    license:
+      status: unknown
+      basis: null
+      public_copy_allowed: false
+      note: "作品本身当属公有领域；数字化件提供方条款未核"
+    visibility: public-metadata
+    verification_status: unverified
+    missing_fields: [provenance.edition_statement, source.url, source.retrieved, source.sha256, source.bytes, source.page_count, source.page_map, license.status, license.basis]
+    needs: [核初版与 1717/1730 增订版的差异, 核拉丁译本关系, 找可核副本, 记提供方条款]
+
+  - id: newton-1711-analysis
+    title: "Analysis per quantitatum series, fluxiones, ac differentias"
+    creator: "Isaac Newton"
+    date: "1711"
+    kind: book
+    language: la
+    provenance:
+      is_contemporary_publication: true
+      is_scholarly_edition: false
+      editor: null
+      edition_statement: null
+      translation: null
+      witness_note: "1711 年刊本（身后由他人编印）；未见原件，编者与页码待核"
+    source:
+      url: null
+      retrieved: null
+      sha256: null
+      bytes: null
+      page_count: null
+      page_map: []
+      page_map_gaps: null
+    license:
+      status: unknown
+      basis: null
+      public_copy_allowed: false
+      note: "作品本身当属公有领域；数字化件提供方条款未核"
+    visibility: public-metadata
+    verification_status: unverified
+    missing_fields: [provenance.editor, provenance.edition_statement, source.url, source.retrieved, source.sha256, source.bytes, source.page_count, source.page_map, license.status, license.basis]
+    needs: [核 1711 年编印者（通行记为 W. Jones，待核）, 核所收篇目范围, 找可核副本, 记提供方条款]
+
+  - id: lhopital-1696-analyse
+    title: "Analyse des infiniment petits, pour l'intelligence des lignes courbes"
+    creator: "Guillaume de l'Hôpital"
+    date: "1696"
+    kind: book
+    language: fr
+    provenance:
+      is_contemporary_publication: true
+      is_scholarly_edition: false
+      editor: null
+      edition_statement: null
+      translation: null
+      witness_note: "1696 年巴黎初版；未见原件，版次与页码待核"
+    source:
+      url: null
+      retrieved: null
+      sha256: null
+      bytes: null
+      page_count: null
+      page_map: []
+      page_map_gaps: null
+    license:
+      status: unknown
+      basis: null
+      public_copy_allowed: false
+      note: "作品本身当属公有领域；数字化件提供方条款未核"
+    visibility: public-metadata
+    verification_status: unverified
+    missing_fields: [provenance.edition_statement, source.url, source.retrieved, source.sha256, source.bytes, source.page_count, source.page_map, license.status, license.basis]
+    needs: [核初版与 1715/1716 增订版差异, 核与 Bernoulli 通信的归属争议（待核）, 找可核副本, 记提供方条款]
+
+  - id: euler-1736-mechanica
+    title: "Mechanica sive motus scientia analytice exposita"
+    creator: "Leonhard Euler"
+    date: "1736"
+    kind: book
+    language: la
+    provenance:
+      is_contemporary_publication: true
+      is_scholarly_edition: false
+      editor: null
+      edition_statement: null
+      translation: null
+      witness_note: "1736 年刊本；未见原件，卷册与页码待核"
+    source:
+      url: null
+      retrieved: null
+      sha256: null
+      bytes: null
+      page_count: null
+      page_map: []
+      page_map_gaps: null
+    license:
+      status: unknown
+      basis: null
+      public_copy_allowed: false
+      note: "作品本身当属公有领域；数字化件提供方条款未核"
+    visibility: public-metadata
+    verification_status: unverified
+    missing_fields: [provenance.edition_statement, source.url, source.retrieved, source.sha256, source.bytes, source.page_count, source.page_map, license.status, license.basis]
+    needs: [核两卷本的分卷与页码, 核与《欧拉全集》影印的对应, 找可核副本, 记提供方条款]
+
+  - id: euler-1748-introductio
+    title: "Introductio in analysin infinitorum"
+    creator: "Leonhard Euler"
+    date: "1748"
+    kind: book
+    language: la
+    provenance:
+      is_contemporary_publication: true
+      is_scholarly_edition: false
+      editor: null
+      edition_statement: null
+      translation: null
+      witness_note: "1748 年刊本；未见原件，卷册与页码待核"
+    source:
+      url: null
+      retrieved: null
+      sha256: null
+      bytes: null
+      page_count: null
+      page_map: []
+      page_map_gaps: null
+    license:
+      status: unknown
+      basis: null
+      public_copy_allowed: false
+      note: "作品本身当属公有领域；数字化件提供方条款未核"
+    visibility: public-metadata
+    verification_status: unverified
+    missing_fields: [provenance.edition_statement, source.url, source.retrieved, source.sha256, source.bytes, source.page_count, source.page_map, license.status, license.basis]
+    needs: [核两卷本分卷与章节编号, 核函数记号相关条目的页码, 找可核副本, 记提供方条款]
+
+  - id: euler-1755-institutiones-differentialis
+    title: "Institutiones calculi differentialis"
+    creator: "Leonhard Euler"
+    date: "1755"
+    kind: book
+    language: la
+    provenance:
+      is_contemporary_publication: true
+      is_scholarly_edition: false
+      editor: null
+      edition_statement: null
+      translation: null
+      witness_note: "1755 年刊本；未见原件，版次与页码待核"
+    source:
+      url: null
+      retrieved: null
+      sha256: null
+      bytes: null
+      page_count: null
+      page_map: []
+      page_map_gaps: null
+    license:
+      status: unknown
+      basis: null
+      public_copy_allowed: false
+      note: "作品本身当属公有领域；数字化件提供方条款未核"
+    visibility: public-metadata
+    verification_status: unverified
+    missing_fields: [provenance.edition_statement, source.url, source.retrieved, source.sha256, source.bytes, source.page_count, source.page_map, license.status, license.basis]
+    needs: [核刊行地与版次, 核章节编号体系, 找可核副本, 记提供方条款]
+
+  - id: euler-1768-institutionum-integralis
+    title: "Institutionum calculi integralis"
+    creator: "Leonhard Euler"
+    date: "1768"
+    kind: book
+    language: la
+    provenance:
+      is_contemporary_publication: true
+      is_scholarly_edition: false
+      editor: null
+      edition_statement: null
+      translation: null
+      witness_note: "1768 年起刊行（多卷）；未见原件，卷次与页码待核"
+    source:
+      url: null
+      retrieved: null
+      sha256: null
+      bytes: null
+      page_count: null
+      page_map: []
+      page_map_gaps: null
+    license:
+      status: unknown
+      basis: null
+      public_copy_allowed: false
+      note: "作品本身当属公有领域；数字化件提供方条款未核"
+    visibility: public-metadata
+    verification_status: unverified
+    missing_fields: [provenance.edition_statement, source.url, source.retrieved, source.sha256, source.bytes, source.page_count, source.page_map, license.status, license.basis]
+    needs: [核三卷（1768–1770）各卷刊年, 核多卷本页码标注方式（T-10 未决）, 找可核副本, 记提供方条款]
+
+  - id: dalembert-1743-traite-dynamique
+    title: "Traité de dynamique"
+    creator: "Jean le Rond d'Alembert"
+    date: "1743"
+    kind: book
+    language: fr
+    provenance:
+      is_contemporary_publication: true
+      is_scholarly_edition: false
+      editor: null
+      edition_statement: null
+      translation: null
+      witness_note: "1743 年巴黎初版；未见原件，版次与页码待核"
+    source:
+      url: null
+      retrieved: null
+      sha256: null
+      bytes: null
+      page_count: null
+      page_map: []
+      page_map_gaps: null
+    license:
+      status: unknown
+      basis: null
+      public_copy_allowed: false
+      note: "作品本身当属公有领域；数字化件提供方条款未核"
+    visibility: public-metadata
+    verification_status: unverified
+    missing_fields: [provenance.edition_statement, source.url, source.retrieved, source.sha256, source.bytes, source.page_count, source.page_map, license.status, license.basis]
+    needs: [核初版与 1758 增订版差异, 核「达朗贝尔原理」表述所在页, 找可核副本, 记提供方条款]
+
+  - id: jbernoulli-1713-ars-conjectandi
+    title: "Ars conjectandi"
+    creator: "Jakob Bernoulli"
+    date: "1713"
+    kind: book
+    language: la
+    provenance:
+      is_contemporary_publication: true
+      is_scholarly_edition: false
+      editor: null
+      edition_statement: null
+      translation: null
+      witness_note: "1713 年身后刊本；未见原件，编者与页码待核"
+    source:
+      url: null
+      retrieved: null
+      sha256: null
+      bytes: null
+      page_count: null
+      page_map: []
+      page_map_gaps: null
+    license:
+      status: unknown
+      basis: null
+      public_copy_allowed: false
+      note: "作品本身当属公有领域；数字化件提供方条款未核"
+    visibility: public-metadata
+    verification_status: unverified
+    missing_fields: [provenance.editor, provenance.edition_statement, source.url, source.retrieved, source.sha256, source.bytes, source.page_count, source.page_map, license.status, license.basis]
+    needs: [核身后编印者（通行记为 J. Bernoulli 之侄，待核）, 核四部分的分部与页, 找可核副本, 记提供方条款]
+
+  - id: lagrange-1788-mecanique-analytique
+    title: "Mécanique analytique"
+    creator: "Joseph-Louis Lagrange"
+    date: "1788"
+    kind: book
+    language: fr
+    provenance:
+      is_contemporary_publication: true
+      is_scholarly_edition: false
+      editor: null
+      edition_statement: null
+      translation: null
+      witness_note: "1788 年巴黎初版；未见原件，版次与页码待核"
+    source:
+      url: null
+      retrieved: null
+      sha256: null
+      bytes: null
+      page_count: null
+      page_map: []
+      page_map_gaps: null
+    license:
+      status: unknown
+      basis: null
+      public_copy_allowed: false
+      note: "作品本身当属公有领域；数字化件提供方条款未核"
+    visibility: public-metadata
+    verification_status: unverified
+    missing_fields: [provenance.edition_statement, source.url, source.retrieved, source.sha256, source.bytes, source.page_count, source.page_map, license.status, license.basis]
+    needs: [核初版与 1811/1853 版差异, 核分析力学公理化表述所在页, 找可核副本, 记提供方条款]
+
+  - id: legendre-1798-essai-theorie-nombres
+    title: "Essai sur la théorie des nombres"
+    creator: "Adrien-Marie Legendre"
+    date: "1798"
+    kind: book
+    language: fr
+    provenance:
+      is_contemporary_publication: true
+      is_scholarly_edition: false
+      editor: null
+      edition_statement: null
+      translation: null
+      witness_note: "1798 年巴黎初版；未见原件，版次与页码待核"
+    source:
+      url: null
+      retrieved: null
+      sha256: null
+      bytes: null
+      page_count: null
+      page_map: []
+      page_map_gaps: null
+    license:
+      status: unknown
+      basis: null
+      public_copy_allowed: false
+      note: "作品本身当属公有领域；数字化件提供方条款未核"
+    visibility: public-metadata
+    verification_status: unverified
+    missing_fields: [provenance.edition_statement, source.url, source.retrieved, source.sha256, source.bytes, source.page_count, source.page_map, license.status, license.basis]
+    needs: [核初版与 1808 修订版（改题《数论》）差异, 核二次互反律条目的页, 找可核副本, 记提供方条款]
+
+  - id: laplace-1799-traite-mecanique-celeste
+    title: "Traité de mécanique céleste"
+    creator: "Pierre-Simon Laplace"
+    date: "1799"
+    kind: book
+    language: fr
+    provenance:
+      is_contemporary_publication: true
+      is_scholarly_edition: false
+      editor: null
+      edition_statement: null
+      translation: null
+      witness_note: "1799 年起刊行（多卷）；未见原件，卷次与页码待核"
+    source:
+      url: null
+      retrieved: null
+      sha256: null
+      bytes: null
+      page_count: null
+      page_map: []
+      page_map_gaps: null
+    license:
+      status: unknown
+      basis: null
+      public_copy_allowed: false
+      note: "作品本身当属公有领域；数字化件提供方条款未核"
+    visibility: public-metadata
+    verification_status: unverified
+    missing_fields: [provenance.edition_statement, source.url, source.retrieved, source.sha256, source.bytes, source.page_count, source.page_map, license.status, license.basis]
+    needs: [核 1799 年所出卷次与后续各卷刊年, 核多卷本页码标注（T-10 未决）, 找可核副本, 记提供方条款]
+
+  # ===== 三、19–20 世纪专著/论文（15 条）=====
+
+  - id: gauss-1801-disquisitiones
+    title: "Disquisitiones Arithmeticae"
+    creator: "Carl Friedrich Gauss"
+    date: "1801"
+    kind: book
+    language: la
+    provenance:
+      is_contemporary_publication: true
+      is_scholarly_edition: false
+      editor: null
+      edition_statement: null
+      translation: null
+      witness_note: "1801 年莱比锡初版；未见原件，版次与页码待核"
+    source:
+      url: null
+      retrieved: null
+      sha256: null
+      bytes: null
+      page_count: null
+      page_map: []
+      page_map_gaps: null
+    license:
+      status: unknown
+      basis: null
+      public_copy_allowed: false
+      note: "作品本身当属公有领域；数字化件提供方条款未核"
+    visibility: public-metadata
+    verification_status: unverified
+    missing_fields: [provenance.edition_statement, source.url, source.retrieved, source.sha256, source.bytes, source.page_count, source.page_map, license.status, license.basis]
+    needs: [核初版分卷与章节编号（art. 编号）, 核同余理论段落的编号定位, 找可核副本, 记提供方条款]
+
+  - id: cauchy-1821-cours-analyse
+    title: "Cours d'analyse de l'École royale polytechnique"
+    creator: "Augustin-Louis Cauchy"
+    date: "1821"
+    kind: book
+    language: fr
+    provenance:
+      is_contemporary_publication: true
+      is_scholarly_edition: false
+      editor: null
+      edition_statement: null
+      translation: null
+      witness_note: "1821 年巴黎刊本（第一部：分析代数）；未见原件，页码待核"
+    source:
+      url: null
+      retrieved: null
+      sha256: null
+      bytes: null
+      page_count: null
+      page_map: []
+      page_map_gaps: null
+    license:
+      status: unknown
+      basis: null
+      public_copy_allowed: false
+      note: "作品本身当属公有领域；数字化件提供方条款未核"
+    visibility: public-metadata
+    verification_status: unverified
+    missing_fields: [provenance.edition_statement, source.url, source.retrieved, source.sha256, source.bytes, source.page_count, source.page_map, license.status, license.basis]
+    needs: [核计划中的多部是否出齐, 核极限与连续定义的页码定位, 找可核副本, 记提供方条款]
+
+  - id: cauchy-1823-resume-calcul
+    title: "Résumé des leçons données à l'École royale polytechnique sur le calcul infinitésimal"
+    creator: "Augustin-Louis Cauchy"
+    date: "1823"
+    kind: book
+    language: fr
+    provenance:
+      is_contemporary_publication: true
+      is_scholarly_edition: false
+      editor: null
+      edition_statement: null
+      translation: null
+      witness_note: "1823 年巴黎刊本；未见原件，版次与页码待核"
+    source:
+      url: null
+      retrieved: null
+      sha256: null
+      bytes: null
+      page_count: null
+      page_map: []
+      page_map_gaps: null
+    license:
+      status: unknown
+      basis: null
+      public_copy_allowed: false
+      note: "作品本身当属公有领域；数字化件提供方条款未核"
+    visibility: public-metadata
+    verification_status: unverified
+    missing_fields: [provenance.edition_statement, source.url, source.retrieved, source.sha256, source.bytes, source.page_count, source.page_map, license.status, license.basis]
+    needs: [核讲义的授课年与刊行年关系, 核积分定义所在页, 找可核副本, 记提供方条款]
+
+  - id: riemann-1854-habilitationsvortrag
+    title: "Ueber die Hypothesen, welche der Geometrie zu Grunde liegen"
+    creator: "Bernhard Riemann"
+    date: "1854"
+    kind: lecture-notes
+    language: de
+    provenance:
+      is_contemporary_publication: false
+      is_scholarly_edition: false
+      editor: null
+      edition_statement: null
+      translation: null
+      witness_note: "1854 年就职演讲，身后刊行；未见原件，刊行年与页码待核"
+    source:
+      url: null
+      retrieved: null
+      sha256: null
+      bytes: null
+      page_count: null
+      page_map: []
+      page_map_gaps: null
+    license:
+      status: unknown
+      basis: null
+      public_copy_allowed: false
+      note: "作品本身当属公有领域；数字化件提供方条款未核"
+    visibility: public-metadata
+    verification_status: unverified
+    missing_fields: [provenance.edition_statement, source.url, source.retrieved, source.sha256, source.bytes, source.page_count, source.page_map, license.status, license.basis]
+    needs: [核身后刊行的年与载体（待核）, 核讲稿是否经他人整理, 找可核副本, 记提供方条款]
+
+  - id: riemann-1857-abelsche-functionen
+    title: "Theorie der Abel'schen Functionen"
+    creator: "Bernhard Riemann"
+    date: "1857"
+    kind: periodical-article
+    language: de
+    provenance:
+      is_contemporary_publication: true
+      is_scholarly_edition: false
+      editor: null
+      edition_statement: null
+      translation: null
+      witness_note: "同时代期刊论文；未见原件，刊名卷期与页码待核"
+    source:
+      url: null
+      retrieved: null
+      sha256: null
+      bytes: null
+      page_count: null
+      page_map: []
+      page_map_gaps: null
+    license:
+      status: unknown
+      basis: null
+      public_copy_allowed: false
+      note: "作品本身当属公有领域；数字化件提供方条款未核"
+    visibility: public-metadata
+    verification_status: unverified
+    missing_fields: [provenance.edition_statement, source.url, source.retrieved, source.sha256, source.bytes, source.page_count, source.page_map, license.status, license.basis]
+    needs: [核期刊名与卷期页, 核与《黎曼全集》版本的对应, 找可核副本, 记提供方条款]
+
+  - id: dedekind-1871-supplement-dirichlet
+    title: null
+    creator: "Richard Dedekind"
+    date: "1871"
+    kind: book
+    language: de
+    provenance:
+      is_contemporary_publication: true
+      is_scholarly_edition: false
+      editor: null
+      edition_statement: null
+      translation: null
+      witness_note: "为 Dirichlet《数论讲义》第二版所作补编（理想论）；未见原件，篇题与页码待核"
+    source:
+      url: null
+      retrieved: null
+      sha256: null
+      bytes: null
+      page_count: null
+      page_map: []
+      page_map_gaps: null
+    license:
+      status: unknown
+      basis: null
+      public_copy_allowed: false
+      note: "作品本身当属公有领域；数字化件提供方条款未核"
+    visibility: public-metadata
+    verification_status: unverified
+    missing_fields: [title, provenance.edition_statement, source.url, source.retrieved, source.sha256, source.bytes, source.page_count, source.page_map, license.status, license.basis]
+    needs: [核补编的确切篇题与编号, 核所附 Dirichlet 书版次, 核理想论条目的页码, 找可核副本]
+
+  - id: dedekind-1888-was-sind-zahlen
+    title: "Was sind und was sollen die Zahlen?"
+    creator: "Richard Dedekind"
+    date: "1888"
+    kind: book
+    language: de
+    provenance:
+      is_contemporary_publication: true
+      is_scholarly_edition: false
+      editor: null
+      edition_statement: null
+      translation: null
+      witness_note: "1888 年不伦瑞克刊本；未见原件，版次与页码待核"
+    source:
+      url: null
+      retrieved: null
+      sha256: null
+      bytes: null
+      page_count: null
+      page_map: []
+      page_map_gaps: null
+    license:
+      status: unknown
+      basis: null
+      public_copy_allowed: false
+      note: "作品本身当属公有领域；数字化件提供方条款未核"
+    visibility: public-metadata
+    verification_status: unverified
+    missing_fields: [provenance.edition_statement, source.url, source.retrieved, source.sha256, source.bytes, source.page_count, source.page_map, license.status, license.basis]
+    needs: [核初版与 1893 第二版差异, 核自然数公理段落的编号定位, 找可核副本, 记提供方条款]
+
+  - id: cantor-1874-eigenschaft
+    title: "Über eine Eigenschaft des Inbegriffes aller reellen algebraischen Zahlen"
+    creator: "Georg Cantor"
+    date: "1874"
+    kind: periodical-article
+    language: de
+    provenance:
+      is_contemporary_publication: true
+      is_scholarly_edition: false
+      editor: null
+      edition_statement: null
+      translation: null
+      witness_note: "同时代期刊论文；未见原件，刊名卷期与页码待核"
+    source:
+      url: null
+      retrieved: null
+      sha256: null
+      bytes: null
+      page_count: null
+      page_map: []
+      page_map_gaps: null
+    license:
+      status: unknown
+      basis: null
+      public_copy_allowed: false
+      note: "作品本身当属公有领域；数字化件提供方条款未核"
+    visibility: public-metadata
+    verification_status: unverified
+    missing_fields: [provenance.edition_statement, source.url, source.retrieved, source.sha256, source.bytes, source.page_count, source.page_map, license.status, license.basis]
+    needs: [核期刊名与卷期页, 核不可数性论证所在段, 找可核副本, 记提供方条款]
+
+  - id: cantor-1883-grundlagen
+    title: "Grundlagen einer allgemeinen Mannigfaltigkeitslehre"
+    creator: "Georg Cantor"
+    date: "1883"
+    kind: book
+    language: de
+    provenance:
+      is_contemporary_publication: true
+      is_scholarly_edition: false
+      editor: null
+      edition_statement: null
+      translation: null
+      witness_note: "1883 年莱比锡刊本；未见原件，版次与页码待核"
+    source:
+      url: null
+      retrieved: null
+      sha256: null
+      bytes: null
+      page_count: null
+      page_map: []
+      page_map_gaps: null
+    license:
+      status: unknown
+      basis: null
+      public_copy_allowed: false
+      note: "作品本身当属公有领域；数字化件提供方条款未核"
+    visibility: public-metadata
+    verification_status: unverified
+    missing_fields: [provenance.edition_statement, source.url, source.retrieved, source.sha256, source.bytes, source.page_count, source.page_map, license.status, license.basis]
+    needs: [核单行本与期刊分载的关系, 核超限数理论的章节与页, 找可核副本, 记提供方条款]
+
+  - id: hilbert-1899-grundlagen-geometrie
+    title: "Grundlagen der Geometrie"
+    creator: "David Hilbert"
+    date: "1899"
+    kind: book
+    language: de
+    provenance:
+      is_contemporary_publication: true
+      is_scholarly_edition: false
+      editor: null
+      edition_statement: null
+      translation: null
+      witness_note: "1899 年莱比锡初版；未见原件，版次与页码待核"
+    source:
+      url: null
+      retrieved: null
+      sha256: null
+      bytes: null
+      page_count: null
+      page_map: []
+      page_map_gaps: null
+    license:
+      status: unknown
+      basis: null
+      public_copy_allowed: false
+      note: "作品本身当属公有领域；数字化件提供方条款未核"
+    visibility: public-metadata
+    verification_status: unverified
+    missing_fields: [provenance.edition_statement, source.url, source.retrieved, source.sha256, source.bytes, source.page_count, source.page_map, license.status, license.basis]
+    needs: [核初版与后续多版差异（公理系统改动）, 核五组公理的编号定位, 找可核副本, 记提供方条款]
+
+  - id: lebesgue-1902-integrale
+    title: "Intégrale, longueur, aire"
+    creator: "Henri Lebesgue"
+    date: "1902"
+    kind: periodical-article
+    language: fr
+    provenance:
+      is_contemporary_publication: true
+      is_scholarly_edition: false
+      editor: null
+      edition_statement: null
+      translation: null
+      witness_note: "1902 年期刊论文（亦为博士论文）；未见原件，刊名卷期与页码待核"
+    source:
+      url: null
+      retrieved: null
+      sha256: null
+      bytes: null
+      page_count: null
+      page_map: []
+      page_map_gaps: null
+    license:
+      status: unknown
+      basis: null
+      public_copy_allowed: false
+      note: "作品本身当属公有领域；数字化件提供方条款未核"
+    visibility: public-metadata
+    verification_status: unverified
+    missing_fields: [provenance.edition_statement, source.url, source.retrieved, source.sha256, source.bytes, source.page_count, source.page_map, license.status, license.basis]
+    needs: [核刊名卷期页, 核测度定义所在段, 找可核副本, 记提供方条款]
+
+  - id: lebesgue-1904-lecons
+    title: "Leçons sur l'intégration et la recherche des fonctions primitives"
+    creator: "Henri Lebesgue"
+    date: "1904"
+    kind: book
+    language: fr
+    provenance:
+      is_contemporary_publication: true
+      is_scholarly_edition: false
+      editor: null
+      edition_statement: null
+      translation: null
+      witness_note: "1904 年巴黎刊本；未见原件，版次与页码待核"
+    source:
+      url: null
+      retrieved: null
+      sha256: null
+      bytes: null
+      page_count: null
+      page_map: []
+      page_map_gaps: null
+    license:
+      status: unknown
+      basis: null
+      public_copy_allowed: false
+      note: "作品本身当属公有领域；数字化件提供方条款未核"
+    visibility: public-metadata
+    verification_status: unverified
+    missing_fields: [provenance.edition_statement, source.url, source.retrieved, source.sha256, source.bytes, source.page_count, source.page_map, license.status, license.basis]
+    needs: [核初版与 1916/1928 再版差异, 核讲义章次与页, 找可核副本, 记提供方条款]
+
+  - id: vanderwaerden-1930-moderne-algebra
+    title: "Moderne Algebra"
+    creator: "Bartel Leendert van der Waerden"
+    date: "1930"
+    kind: book
+    language: de
+    provenance:
+      is_contemporary_publication: true
+      is_scholarly_edition: false
+      editor: null
+      edition_statement: null
+      translation: null
+      witness_note: "1930–31 年两卷本初版；未见原件，卷次与页码待核"
+    source:
+      url: null
+      retrieved: null
+      sha256: null
+      bytes: null
+      page_count: null
+      page_map: []
+      page_map_gaps: null
+    license:
+      status: unknown
+      basis: null
+      public_copy_allowed: false
+      note: "1930 年刊本，多数辖区仍在版权期内或刚过；数字化件条款未核"
+    visibility: public-metadata
+    verification_status: unverified
+    missing_fields: [provenance.edition_statement, source.url, source.retrieved, source.sha256, source.bytes, source.page_count, source.page_map, license.status, license.basis]
+    needs: [核两卷刊年与分卷, 核版次沿革（据 van der Waerden 讲义与 Artin、Noether 关系）, 核版权状态, 找可核副本]
+
+  - id: bourbaki-1939-elements
+    title: "Éléments de mathématique"
+    creator: "Nicolas Bourbaki（集体笔名）"
+    date: "1939"
+    kind: book
+    language: fr
+    provenance:
+      is_contemporary_publication: true
+      is_scholarly_edition: false
+      editor: null
+      edition_statement: null
+      translation: null
+      witness_note: "1939 年起分册刊行；未见原件，首分册篇题与页码待核"
+    source:
+      url: null
+      retrieved: null
+      sha256: null
+      bytes: null
+      page_count: null
+      page_map: []
+      page_map_gaps: null
+    license:
+      status: unknown
+      basis: null
+      public_copy_allowed: false
+      note: "在版权期内；仅记书目"
+    visibility: public-metadata
+    verification_status: unverified
+    missing_fields: [provenance.edition_statement, source.url, source.retrieved, source.sha256, source.bytes, source.page_count, source.page_map, license.status, license.basis]
+    needs: [核 1939 年首分册的篇题（通行记为集合论分册，待核）, 核分册编号体系与页码, 核版权状态, 找可核副本]
+
+  - id: hardy-wright-1938-introduction
+    title: "An Introduction to the Theory of Numbers"
+    creator: "G. H. Hardy、E. M. Wright"
+    date: "1938"
+    kind: book
+    language: en
+    provenance:
+      is_contemporary_publication: true
+      is_scholarly_edition: false
+      editor: null
+      edition_statement: null
+      translation: null
+      witness_note: "1938 年牛津初版；未见原件，版次与页码待核"
+    source:
+      url: null
+      retrieved: null
+      sha256: null
+      bytes: null
+      page_count: null
+      page_map: []
+      page_map_gaps: null
+    license:
+      status: unknown
+      basis: null
+      public_copy_allowed: false
+      note: "1938 年刊本，版权状态未核；仅记书目"
+    visibility: public-metadata
+    verification_status: unverified
+    missing_fields: [provenance.edition_statement, source.url, source.retrieved, source.sha256, source.bytes, source.page_count, source.page_map, license.status, license.basis]
+    needs: [核初版与后续版次的章次变动, 核版权状态, 找可核副本, 记提供方条款]

@@ -1,8 +1,8 @@
 # 证据库（evidence corpus）设计草案
 
-> **状态：v0.2 提案，未实现。** 本文件只写设计，不包含代码，也不承诺时间表。
+> **状态：v0.3 提案，未实现。** v0.2 的私有索引设计保留；v0.3 在 §6 之上增加「公开层」，把可对外共享的部分单独划出。§6 对 `local-only` 的默认仍然有效。
 > 现行 v0.1 的工具不认识 `corpus/` 引用；草案里的检查项均为待实现。
-> Status: v0.2 proposal, not implemented. Design only — no code, no schedule. The v0.1 linter does not understand `corpus/` locators yet.
+> Status: v0.3 proposal, not implemented. v0.2 private-index design retained; v0.3 adds a public tier on top of §6.
 
 ## 0. 问题与改法
 
@@ -207,3 +207,193 @@ rights_note: "数字化影像由巴伐利亚州立图书馆提供，其使用条
 4. 全程不写"下载"功能：抓取与合规由人负责，工具只校验已有副本。
 
 第 4 条是硬约束。一旦工具开始自动下载，版权责任就从"使用者判断"滑向"工具默认"。
+
+---
+
+# v0.3　公开层：可共享、可引用、可长期积累
+
+## 10. 三种对象，不是一个仓库
+
+公开层不是把私有库整个推出去，而是按**权利状态**分三档。每档一个 `visibility` 值，写在 manifest 里。
+
+| 档 | `visibility` | 公开什么 | 不公开什么 | 谁能拿到全文 |
+|---|---|---|---|---|
+| 元数据档 | `public-metadata` | 书目、版本、页码映射、哈希、许可声明、短引 | 扫描件、转录全文 | 按 `source.url` 或馆际互借自行获取 |
+| 公有领域全文档 | `public-fulltext` | 扫描件或转录、`page_map`、校读记录 | 他人添加的导言、校注、译文（另有版权） | 任何人 |
+| 授权链接档 | `link-only` | 书目、DOI/URL、许可状态 | 任何字节 | 通过出版社/图书馆 |
+
+**硬规则：`public-fulltext` 必须同时满足**：
+
+1. 作品本身已进入公有领域（§14 的判定）；
+2. 数字化提供方没有另附使用条款，或条款允许再分发；
+3. manifest 写明 `license.basis` 与判定日期；
+4. 该条目放在 `corpus-public/`，与私有 `corpus/` **物理分开**。
+
+四条缺一，退回 `public-metadata` 或 `link-only`。**默认不是公开**。
+
+## 11. 收什么，不收什么
+
+| 类型 | 收 | 公开档 | 说明 |
+|---|---|---|---|
+| 原始文献影印（公有领域） | 收 | `public-fulltext` | 需 `page_map` 与哈希；提供方条款另计 |
+| 自建转录（公有领域底本） | 收 | `public-fulltext` | 注明转录者、日期、校对程度；转录本身以 CC BY 4.0 或 CC0 释出 |
+| 书目与版本元数据 | 收 | `public-metadata` | 作者、书名、版次、DOI、馆藏号属事实，可公开 |
+| 二手研究 | 只收书目与短引 | `public-metadata` | **不存全文**；需要全文走图书馆 |
+| 代码与工具 | 收 | 随仓库 | Apache-2.0，见 `LICENSE` |
+| 预印本 | 只收链接 | `link-only` | 除非作者明确授权再分发 |
+| 在版书、校勘本、译本 | 只收书目 | `public-metadata` | 编者的导言、校注、标点、译文另有版权 |
+| 无 LICENSE 的民间文本库 | 只收书目/链接 | `link-only` | 例：殆知阁无 LICENSE，不得转存全文 |
+| 来源不明的 PDF | **不收** | — | 不进入公开仓库，也不进入 git 历史 |
+| 档案影像（馆方声明权利） | 只收元数据 | `public-metadata` | 逐件看馆方条款，不赌 |
+
+## 12. 标注：在 v0.2 manifest 上加字段
+
+保留 v0.2 的全部字段（`provenance`、`source.sha256`、`page_map`、`license`），新增：
+
+```yaml
+visibility: public-metadata        # public-metadata | public-fulltext | link-only | private
+
+source_type: scan                  # scan | transcription | ocr | hybrid
+readability: L1                    # L1 原文可读 | L2 只有英译 | L3 只有再译 | L0 不可得
+
+transcription:                     # 有转录时必填
+  by: "chenzeyu"
+  date: "2026-11-26"
+  engine: "none"                   # none | tesseract-5 | 其他
+  human_checked: true              # 是否逐页对过扫描
+  accuracy_note: "第 3 页两字缺，已用方框标"
+
+translation: null                  # 有译本时：译者、语种、版次、权利状态
+social:                            # 社会史层可选字段，见规划 Part 5
+  institution: ["BR-ORG-..."]
+  journal: ["BR-JRN-..."]
+  funding: []
+  school: []
+
+related:
+  same_work_as: null               # 同著作的其他版本/印次
+  reprint_of: null                 # 选集中重印时指向原刊条目
+  supersedes: null                 # 替换旧条目时指向旧 id
+```
+
+规则：
+
+- `visibility` 缺省为 `private`；公开是**主动声明**，不是默认。
+- `readability` 与规划 Part 1.5 的 L1–L0 对齐；它描述"读者能否读原文"，不描述版本好坏。
+- `supersedes` 只用于"同一件换了更好的影像"，**不删旧条目**；旧 id 永久保留，引用不失效。
+- `transcription.human_checked: false` 的条目，正文引用仍须回扫描页；转录只作检索。
+
+## 13. 可引用：三层标识
+
+| 层 | 形式 | 断言 | 失效风险 |
+|---|---|---|---|
+| 条目定位 | `corpus/<id>#p467` | 我读的是这一页，哈希可核 | 仓库在则有效 |
+| 版本快照 | `10.5281/zenodo.<版本号>` | 这一版字节固定 | 低 |
+| 项目整体 | `10.5281/zenodo.<概念号>` | 始终指向最新版 | 低 |
+
+做法：
+
+1. **每个 Release 打 tag**（如 `corpus-v0.1.0`），Zenodo 自动归档并给版本 DOI；概念 DOI 指向最新版。操作见 `docs/zenodo-doi.md`。
+2. **快照三件套**：git tag ＋ Zenodo deposit ＋ `manifest.sha256`；三者的日期写进 `index/snapshot.yaml`。
+3. **时间戳**：MVP 用 Zenodo 的 deposit 时间＋git commit 时间；需要更强证明时，对 `index/items.jsonl` 的哈希加 RFC 3161 时间戳文件（可选，不进 MVP）。
+4. **引用示例**：
+
+```
+〔A｜原始文献:corpus/leibniz-1684-nova-methodus#p467（doi:10.5281/zenodo.XXXXXXX）〕
+〔S｜二手研究:corpus/grabiner-1981#p45〕
+```
+
+5. **DOI 断言的是字节，不是真理**。它证明"这一版没变"，不证明"这条史料是真的"；等级判定仍按 §4 与规划 Part 1.5。
+
+## 14. 合规：先判权利，再谈共享
+
+### 14.1 公有领域判定（三项都要过）
+
+| 项 | 判据 | 注意 |
+|---|---|---|
+| 作品版权期 | 中国：作者逝世满 50 年；美国：2026 年时 1930 年前出版；欧盟：作者逝世满 70 年 | 逐件按最保守辖区判，别只看中国 |
+| 数字化件 | 扫描/照片是否产生新权利 | 美国 *Bridgeman v. Corel* 倾向无；欧盟数据库权利、馆方条款另计 |
+| 提供方条款 | 是否允许再分发 | 有条款就按 `local-only`，不赌 |
+
+### 14.2 在版与无授权
+
+- **在版书**：只存书目、短引、页码；全文走出版社或馆际互借。**不因为"只用于研究"就上传。**
+- **无 LICENSE 的库**（殆知阁等）：只存元数据与链接；不转存全文，不打包进 Release。
+- **《中华大典·数学典》《中国数学典籍集成》及一切现代点校本**：不进全文库，只作引用定位；见 §14.5（已决定，不再讨论）。
+- **孤儿作品**：只存元数据；不公开全文。
+- **他人给的扫描件**：默认 `local-only`，不进入公开仓库。
+
+### 14.3 许可矩阵
+
+| 内容 | 许可 |
+|---|---|
+| 代码（`tools/`） | Apache-2.0 |
+| 规范、文档、索引 | CC BY 4.0 |
+| 公有领域原文/影像 | Public Domain Mark（或 CC0，若由本项目释放） |
+| 本项目自建转录 | CC BY 4.0（可选择 CC0） |
+| 有授权的译文 | 按授权书写，manifest 记 `permission-granted` |
+| 第三方短引 | 原权利人不因引用而被再许可 |
+
+### 14.4 治理
+
+- **贡献者声明**：提交即声明"我有权提交这些字节"，并在 `CONTRIBUTING.md` 写明；不采用口头授权。
+- **下架流程**：收到权利主张 → 先把条目降为 `public-metadata` → 核验 → 恢复或永久移除；移除不删 id，标 `withdrawn` 并保留书目。
+- **不做自动下载**：工具只校验已有副本；抓取与合规由人负责（沿用 §9 第 4 条）。
+
+### 14.5 已决定：点校本不进全文库（DEC-1）
+
+**这条是既定规则，不是待议项。** 适用对象包括《中华大典·数学典》《中国数学典籍集成》，以及任何现代点校、校勘、注释、今译、整理本。
+
+1. **只收元数据**：书名、卷次、页码、版次、出版社、ISBN、短引；manifest 的 `visibility` 固定为 `public-metadata`。
+2. **不做**：不扫描、不 OCR、不转录、不上传全文。
+3. **不因底本过版权期而放行**：点校、标点、校注、导言、译文另有版权；底本属公有领域，不等于整理本可再分发。
+4. **引用写法**：按规划 Part 1.5 记 `A（编订本）` 或 `S`，注明「据点校本，原文页码待核」；不得把点校本 PDF 当原文影像引用。
+5. **《集成》的例外也不成立**：即使某册含影印原刊，也只引书目与页码；影印页的再分发权另判，不自动进入 `corpus-public/`。
+6. **工具落点**：`visibility: public-metadata`；许可状态记 `unknown`（在版权期），或在 v0.3 schema 增 `in-copyright`；`CORPUS_LICENSE_LEAK` 负责挡「声明不可公开却被公开」的低级错误。
+
+## 15. 组织与 MVP
+
+### 15.1 目录
+
+```
+corpus/                     # 私有：manifest + notes，source/ 不进 git
+corpus-public/              # 公开：仅 public-fulltext 条目，物理分开
+  <id>/
+    manifest.yaml
+    source/                 # 允许公开的扫描/转录
+    notes.md
+index/
+  items.jsonl               # 一行一条，供检索与快照
+  snapshot.yaml             # tag、DOI、哈希、日期
+```
+
+- 先用**扁平文件＋JSONL 索引**，不建数据库、不起服务；
+- 条目过千后再考虑 SQLite（只读镜像），仍不改变 manifest 为唯一真源；
+- `index/items.jsonl` 由脚本从 manifest 生成，禁止手改。
+
+### 15.2 最小可行版本（四步，不排时间表）
+
+| 步 | 做什么 | 验收 |
+|---|---|---|
+| P0 元数据 | 50 条：中国古籍 20、17–18 世纪期刊/原刊 15、19–20 世纪专著 15；只写 manifest 与书目 | 50 条通过 schema；`visibility` 全部有值；无 `source/` 进 git |
+| P1 公版全文 | 选 10 条公有领域件：扫描＋转录＋`page_map`＋哈希 | 任取 5 条，`#p<n>` 能定位到扫描页；哈希可复算 |
+| P2 可引用 | 打 tag `corpus-v0.1.0`，Zenodo 归档，回填 DOI 与 `CITATION.cff` | 5 条引用在外部文档中可解析；DOI 可打开 |
+| P3 检索 | 生成 `items.jsonl`，做按作者/年代/分支/许可的静态检索 | 不连数据库也能查；索引与 manifest 一致 |
+
+### 15.3 不在 MVP 里
+
+- OCR 自动流水线、众包校对、逐条 DOI、全文搜索服务、机构合作馆藏对接。
+- 这些等到 P1 的 10 条跑通、证明 `page_map` 真能用，再谈。
+
+## 16. 未决
+
+| 编号 | 问题 | 现状 |
+|---|---|---|
+| P-2 | 馆方扫描条款与公有领域冲突时如何取证 | 逐件记录条款 URL 与日期，unknown 不放 |
+| P-3 | 逐条 DOI 还是批次 DOI | MVP 用批次 DOI；条目多后再评估 DataCite |
+| P-4 | 多卷本页码 `#v3-p12` 与单卷 `#p12` 是否统一 | 沿用 v0.2 T-10，暂不统一 |
+| P-5 | 转录文本的校对等级如何分级 | 暂用 `human_checked: true/false`，不设更多级 |
+| P-6 | 条目废弃后是否保留字节 | 保留元数据，字节按权利状态处理；id 永不复用 |
+
+> 原 P-1（点校本版权）已升级为 §14.5 的既定规则 DEC-1，不再列为未决项。
+

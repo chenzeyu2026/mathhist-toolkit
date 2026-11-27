@@ -7,6 +7,8 @@ All notable changes are recorded here. Format loosely follows Keep a Changelog; 
 
 ### 新增 / Added
 
+- **社会史 schema 与 `resembles` 非证据边**：节点类型由 14 增至 16（新增 `org` / `journal`，前缀 `ORG:` / `JRN:`）；边类型由 31 增至 36。新增 `member_of`、`employed_by`、`publishes_in`（person→journal）、`published_in`（text→journal）与 `resembles`（TH/ME，无向、非证据、provisional）。`resembles` 当前闸门为 0/3，`check` 在 `samples/` 与 `pilots/` 中遇到它直接报 `EDGE_PROVISIONAL`，不写入任何实例。`publishes_in` 是人物级渠道，`published_in` 是具体篇目，两者不可混用。测试 102 → 107。
+
 - **分支扩建第二批（P1）**：新增 `pilots/lie-groups`（14 节点 / 22 边）、`pilots/stochastic-analysis`（12 节点 / 20 边）、`pilots/non-classical-logic`（13 节点 / 19 边），分别承载李群与李代数、随机分析、非经典逻辑；三条分支仍为 `proposed`。`branches.json` 的 `proposed` 由 5 条增至 8 条。`check-all` 现为 10 个图包 / 264 节点 / 417 边，warning 仍为 60 条（全部来自既有图包）。
 - **分支扩建第一批**：新增三个试点图包 `pilots/pde`（15 节点 / 26 边）、`pilots/variational-calculus`（12 节点 / 18 边）、`pilots/dynamical-systems`（13 节点 / 21 边），分别承载偏微分方程、变分法、动力系统；三条分支仍为 `proposed` 扩展槽，不进 62 计数。`branches.json` 的 `proposed` 由 4 条增至 5 条（新增 `BR-ANA-VAR`）。`check-all` 由 4 个图包 / 185 节点 / 291 边变为 7 个图包 / 225 节点 / 356 边，warning 仍为 60 条（全部来自既有图包）。
 - **Issue 结构化**：每条 `Issue` 增加 `rule_id`、`pointer`（RFC 6901 JSON Pointer）与 `severity`；`--json` 输出同步包含，文本输出增加一行 `位置:`。既有 60 条 warning 的 `rule_id` 全部有值。

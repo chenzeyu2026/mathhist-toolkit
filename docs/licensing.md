@@ -18,6 +18,7 @@
 | `prompts/` | 是 | CC BY 4.0 | 作者撰写的 P1–P9 提示词 |
 | `tools/` | 是 | Apache-2.0 | 作者编写的检查器、生成器与测试 |
 | `corpus/` | 是 | CC BY 4.0 | **作者本人撰写的验收文章**（原稿与最小修补稿），不是收集的原文汇编 |
+| `corpus-public/` | 是 | **逐条见 manifest**（Public Domain Mark／CC0／CC BY 4.0／授权书） | 仅 `visibility: public-fulltext` 的条目；公有领域原文、本项目自建转录；第三方权利另计 |
 | `reports/` | 是 | CC BY 4.0 | 作者本人的基线/修补报告、发布自检、文献缺口与传递申请记录；见下节 |
 | `research/` | 是 | CC BY 4.0 | 作者本人的本体映射与工具选型研究记录 |
 | `spec/framework/samples/`、`pilots/` | 是 | CC BY 4.0 | 作者编写的示例图包与试点；引用史实时只保留书目信息与短引 |
@@ -29,6 +30,12 @@
 `corpus/` 里的《微积分起源》原稿与 `.patched.md` 是作者本人写作的验收文章。文中的引文为短引并标注出处，属于引用，不改变被引文献的版权；文章本身由作者以 CC BY 4.0 提供。
 
 如果后续把他人文章的全文、扫描件或大段转录放进 `corpus/`，该文件**不再适用**本条，必须单独取得授权或移出仓库。
+
+## `corpus-public/` 的判断
+
+`corpus-public/` 只收 `visibility: public-fulltext` 的条目，且必须同时满足：作品已进入公有领域、数字化提供方未另附禁止再分发的条款、manifest 写明 `license.basis` 与判定日期。许可逐条写在 manifest 的 `license` 字段，不在本文件做统一许可。公有领域原文用 Public Domain Mark；本项目自建转录用 CC BY 4.0（或 CC0）；有授权的译文按授权书。
+
+**不进入 `corpus-public/`**：在版书、点校本正文、无 LICENSE 的民间文本库全文、来源不明的 PDF、馆方声明权利的档案影像。详见 `docs/evidence-corpus-design.md` §14。
 
 ## `reports/` 的判断
 

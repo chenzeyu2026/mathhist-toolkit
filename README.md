@@ -5,7 +5,7 @@
 写数学史、数学思想演化时用的两件套：**证据标记规范 + 检查器**，以及**图结构本体 + 校验器**。
 
 - 文档级（v0.1，可用）：给论断挂 `A / S / U / F` 证据标记，`mathlint` 检查标记语法、来源类型与等级是否自洽。
-- 图级（v0.2，结构定稿、内容待填）：把概念、定理、问题、文本、人物、事件写成 `{nodes, edges}`，`graphlint` 校验 31 类边、7 类不变量与节点完整性。
+- 图级（v0.2，结构定稿、内容待填）：把概念、定理、问题、文本、人物、事件写成 `{nodes, edges}`，`graphlint` 校验 36 类边、7 类不变量与节点完整性。
 
 > English: [README.en.md](README.en.md)
 
@@ -64,8 +64,8 @@ graphlint check-all
 | 路径 | 是什么 | 性质 |
 |---|---|---|
 | [`spec/evidence-tags.md`](spec/evidence-tags.md) / [`.en.md`](spec/evidence-tags.en.md) | 证据标记规范：语法、判定规则、冲突处理、待议条款 | 正式规范 |
-| [`spec/object-model.md`](spec/object-model.md) | 图结构本体：14 类节点、31 类边、约束、存储与挂载 | 正式规范 |
-| [`spec/framework/edge-signatures.yaml`](spec/framework/edge-signatures.yaml) | 31 类边签名、7 类不变量、释义的**唯一真源** | 正式规范（机读） |
+| [`spec/object-model.md`](spec/object-model.md) | 图结构本体：16 类节点、36 类边、约束、存储与挂载 | 正式规范 |
+| [`spec/framework/edge-signatures.yaml`](spec/framework/edge-signatures.yaml) | 36 类边签名、7 类不变量、释义的**唯一真源** | 正式规范（机读） |
 | [`spec/framework/graph.schema.json`](spec/framework/graph.schema.json) | 图包 JSON Schema；边枚举与条件约束由上面 YAML 生成 | 生成物，勿手改 |
 | [`spec/framework/object-model.schema.json`](spec/framework/object-model.schema.json) | 单条节点记录的结构约束 | 正式规范（机读） |
 | [`spec/framework/branches.json`](spec/framework/branches.json) | 62 分支目录与扩展槽 | 正式规范（机读） |

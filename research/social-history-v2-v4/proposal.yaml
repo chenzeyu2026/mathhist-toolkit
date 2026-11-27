@@ -1,0 +1,563 @@
+# 社会史最小动作：V2（Leibniz/Newton）＋ V4（Cauchy/Riemann）
+#
+# 状态：schema-registered。`ORG` / `JRN` 节点与
+# `member_of` / `employed_by` / `publishes_in` / `published_in` 已在
+# `spec/framework/edge-signatures.yaml` 登记；本文件**仍不能**直接进 samples/
+# 或 pilots/，因为边缺 `attestation` / `confidence` 等信封字段，等迁移时补齐。
+#
+# 规模：10 人、5 机构、3 期刊、16 条边。
+# 原则：边只记「谁在哪个机构、谁在哪家期刊发表」这类可核事实；
+#       「制度导致某路线胜出」不写成边，只写在 note 里并标待证。
+
+schema_version: "0.3-proposed"
+proposal_status: "schema-registered; instances not migrated"
+scope: "V2 1635–1687；V4 1823–1854；只做载体，不做通史"
+created_at: "2026-11-26"
+created_by: "social-history-pilot"
+
+# ---------------------------------------------------------------------------
+# 一、节点
+# ---------------------------------------------------------------------------
+nodes:
+
+  # ---------------- 人物：V2 ----------------
+  - id: PE:leibniz
+    type: person
+    schema_version: "0.3-proposed"
+    labels: { zh: 戈特弗里德·威廉·莱布尼茨, en: Gottfried Wilhelm Leibniz }
+    status: historical
+    summary: 微积分独立发明者之一；以微分符号与 Acta Eruditorum 通道扩散。
+    name_variants: ["Leibniz", "Leibnitz", "G. W. Leibniz", "莱布尼兹"]
+    birth_year: 1646
+    death_year: 1716
+    places: [Leipzig, Jena, Paris, Hanover]
+    forks: [V2]
+    claims: []
+    provenance: { created_by: social-history-pilot, created_at: "2026-11-26", sources_checked: partial, schema_version: "0.3-proposed" }
+
+  - id: PE:newton
+    type: person
+    schema_version: "0.3-proposed"
+    labels: { zh: 艾萨克·牛顿, en: Isaac Newton }
+    status: historical
+    summary: 微积分另一独立发明者；以终极比与皇家学会通道确立优先权。
+    name_variants: ["Newton", "I. Newton", "牛顿"]
+    birth_year: 1642
+    death_year: 1727
+    places: [Woolsthorpe, Cambridge, London]
+    forks: [V2]
+    claims: []
+    provenance: { created_by: social-history-pilot, created_at: "2026-11-26", sources_checked: partial, schema_version: "0.3-proposed" }
+
+  - id: PE:bernoulli-jakob
+    type: person
+    schema_version: "0.3-proposed"
+    labels: { zh: 雅各布·伯努利, en: Jakob Bernoulli }
+    status: historical
+    summary: 巴塞尔数学家；早期在 Acta Eruditorum 发表无穷级数与概率工作，扩大 Leibniz 符号的使用面。
+    name_variants: ["Jakob Bernoulli", "Jacob Bernoulli", "Jacques Bernoulli"]
+    birth_year: 1655
+    death_year: 1705
+    places: [Basel]
+    forks: [V2]
+    claims: []
+    provenance: { created_by: social-history-pilot, created_at: "2026-11-26", sources_checked: partial, schema_version: "0.3-proposed" }
+
+  - id: PE:bernoulli-johann
+    type: person
+    schema_version: "0.3-proposed"
+    labels: { zh: 约翰·伯努利, en: Johann Bernoulli }
+    status: historical
+    summary: Leibniz 微分术最早的教学者与传播者之一；与 l'Hôpital 的通信形成教材来源。
+    name_variants: ["Johann Bernoulli", "Jean Bernoulli", "John Bernoulli"]
+    birth_year: 1667
+    death_year: 1748
+    places: [Basel, Groningen]
+    forks: [V2]
+    claims: []
+    provenance: { created_by: social-history-pilot, created_at: "2026-11-26", sources_checked: partial, schema_version: "0.3-proposed" }
+
+  - id: PE:lhospital
+    type: person
+    schema_version: "0.3-proposed"
+    labels: { zh: 洛必达侯爵, en: Guillaume de l'Hôpital }
+    status: historical
+    summary: 1696 年《无穷小分析》把 Leibniz 微分术写成可复制教材，是符号进入课堂的关键载体。
+    name_variants: ["l'Hôpital", "L'Hospital", "Guillaume François Antoine de l'Hôpital"]
+    birth_year: 1661
+    death_year: 1704
+    places: [Paris]
+    forks: [V2]
+    claims: []
+    provenance: { created_by: social-history-pilot, created_at: "2026-11-26", sources_checked: partial, schema_version: "0.3-proposed" }
+
+  # ---------------- 人物：V4 ----------------
+  - id: PE:cauchy
+    type: person
+    schema_version: "0.3-proposed"
+    labels: { zh: 奥古斯丁-路易·柯西, en: Augustin-Louis Cauchy }
+    status: historical
+    summary: 以 École Polytechnique 教材与巴黎科学院论文把极限语言制度化；其积分定义面向连续函数。
+    name_variants: ["Cauchy", "A.-L. Cauchy", "柯西"]
+    birth_year: 1789
+    death_year: 1857
+    places: [Paris, Turin, Prague]
+    forks: [V4]
+    claims:
+      - id: "CLM:PE:cauchy.1"
+        statement: "1816 年起在 École Polytechnique 任助理教授／教授，分析课程成为其严格化文本的试验场。"
+        grade: S
+        attestation: later_report
+        source: { locator: "据 École Polytechnique 校史与 Cauchy 传记（待档案核）" }
+        note: "任教起始年与职称在不同传记中略有差异，需以校方档案定。"
+    provenance: { created_by: social-history-pilot, created_at: "2026-11-26", sources_checked: partial, schema_version: "0.3-proposed" }
+
+  - id: PE:riemann
+    type: person
+    schema_version: "0.3-proposed"
+    labels: { zh: 伯恩哈德·黎曼, en: Bernhard Riemann }
+    status: historical
+    summary: 以有界函数的分割和定义积分，并把复分析、几何论文送入 Crelle 与哥廷根渠道。
+    name_variants: ["Riemann", "G. F. B. Riemann", "黎曼"]
+    birth_year: 1826
+    death_year: 1866
+    places: [Breselenz, Göttingen, Berlin]
+    forks: [V4]
+    claims: []
+    provenance: { created_by: social-history-pilot, created_at: "2026-11-26", sources_checked: partial, schema_version: "0.3-proposed" }
+
+  - id: PE:dirichlet
+    type: person
+    schema_version: "0.3-proposed"
+    labels: { zh: 彼得·古斯塔夫·勒热纳·狄利克雷, en: Peter Gustav Lejeune Dirichlet }
+    status: historical
+    summary: 柏林与哥廷根之间的分析传递者；函数概念与傅里叶级数工作直接影响 Riemann。
+    name_variants: ["Dirichlet", "P. G. L. Dirichlet", "狄利克雷"]
+    birth_year: 1805
+    death_year: 1859
+    places: [Düren, Paris, Berlin, Göttingen]
+    forks: [V4]
+    claims: []
+    provenance: { created_by: social-history-pilot, created_at: "2026-11-26", sources_checked: partial, schema_version: "0.3-proposed" }
+
+  - id: PE:weierstrass
+    type: person
+    schema_version: "0.3-proposed"
+    labels: { zh: 卡尔·魏尔斯特拉斯, en: Karl Weierstrass }
+    status: historical
+    summary: 柏林的教学与讨论班把 ε-δ 严格化变成可传授的课程；其论文经 Crelle 进入流通。
+    name_variants: ["Weierstrass", "K. Weierstrass", "魏尔斯特拉斯"]
+    birth_year: 1815
+    death_year: 1897
+    places: [Ostenfelde, Münster, Berlin]
+    forks: [V4]
+    claims: []
+    provenance: { created_by: social-history-pilot, created_at: "2026-11-26", sources_checked: partial, schema_version: "0.3-proposed" }
+
+  - id: PE:dedekind
+    type: person
+    schema_version: "0.3-proposed"
+    labels: { zh: 理查德·戴德金, en: Richard Dedekind }
+    status: historical
+    summary: 哥廷根出身；编辑 Riemann 全集使未刊稿进入公共流通，并把连续性写成算术定义。
+    name_variants: ["Dedekind", "J. W. R. Dedekind", "戴德金"]
+    birth_year: 1831
+    death_year: 1916
+    places: [Braunschweig, Göttingen, Zürich]
+    forks: [V4]
+    claims: []
+    provenance: { created_by: social-history-pilot, created_at: "2026-11-26", sources_checked: partial, schema_version: "0.3-proposed" }
+
+  # ---------------- 机构 ----------------
+  - id: ORG:ecole-polytechnique
+    type: org
+    schema_version: "0.3-proposed"
+    labels: { zh: 巴黎综合理工学院, en: École Polytechnique }
+    status: historical
+    summary: 1794 年建校；以工程数学课程与教材生产分析文本，Cauchy 的严格化在此成形。
+    org_kind: university
+    founded_year: 1794
+    place: Paris
+    forks: [V4]
+    claims:
+      - id: "CLM:ORG:ecole-polytechnique.1"
+        statement: "该校 1794 年由国民公会设立，以培养工程师与军官为目标。"
+        grade: S
+        attestation: later_report
+        source: { locator: "据校史通说（待校方档案核）" }
+    provenance: { created_by: social-history-pilot, created_at: "2026-11-26", sources_checked: partial, schema_version: "0.3-proposed" }
+
+  - id: ORG:academie-sciences
+    type: org
+    schema_version: "0.3-proposed"
+    labels: { zh: 法国皇家科学院, en: Académie royale des sciences }
+    status: historical
+    summary: 巴黎的院士制度与《纪要》构成 17–19 世纪法国分析的主要认证与发表场。
+    org_kind: academy
+    founded_year: 1666
+    place: Paris
+    forks: [V2, V4]
+    claims: []
+    provenance: { created_by: social-history-pilot, created_at: "2026-11-26", sources_checked: partial, schema_version: "0.3-proposed" }
+
+  - id: ORG:royal-society
+    type: org
+    schema_version: "0.3-proposed"
+    labels: { zh: 英国皇家学会, en: Royal Society of London }
+    status: historical
+    summary: 1660 年成立；会议、《哲学汇刊》与优先权仲裁构成 Newton 路线的公共场。
+    org_kind: society
+    founded_year: 1660
+    place: London
+    forks: [V2]
+    claims: []
+    provenance: { created_by: social-history-pilot, created_at: "2026-11-26", sources_checked: partial, schema_version: "0.3-proposed" }
+
+  - id: ORG:university-goettingen
+    type: org
+    schema_version: "0.3-proposed"
+    labels: { zh: 哥廷根大学, en: Georg-August-Universität Göttingen }
+    status: historical
+    summary: 1737 年建校；19 世纪成为德国分析与几何的研究与编辑中心，Riemann、Dedekind 在此活动。
+    org_kind: university
+    founded_year: 1737
+    place: Göttingen
+    forks: [V4]
+    claims: []
+    provenance: { created_by: social-history-pilot, created_at: "2026-11-26", sources_checked: partial, schema_version: "0.3-proposed" }
+
+  - id: ORG:university-berlin
+    type: org
+    schema_version: "0.3-proposed"
+    labels: { zh: 柏林大学, en: Friedrich-Wilhelms-Universität zu Berlin }
+    status: historical
+    summary: 1810 年建校；讨论班与教席把严格化变成课程，Weierstrass、Dirichlet 在此任教。
+    org_kind: university
+    founded_year: 1810
+    place: Berlin
+    forks: [V4]
+    claims: []
+    provenance: { created_by: social-history-pilot, created_at: "2026-11-26", sources_checked: partial, schema_version: "0.3-proposed" }
+
+  # ---------------- 期刊 ----------------
+  - id: JRN:acta-eruditorum
+    type: journal
+    schema_version: "0.3-proposed"
+    labels: { zh: 博学学报, en: Acta Eruditorum }
+    status: historical
+    summary: 1682 年莱比锡创刊；Leibniz 与伯努利兄弟的主要发表渠道，微分符号由此获得连续印刷形态。
+    journal_kind: journal
+    founded_year: 1682
+    place: Leipzig
+    publisher: null
+    issn: null
+    forks: [V2]
+    claims: []
+    provenance: { created_by: social-history-pilot, created_at: "2026-11-26", sources_checked: partial, schema_version: "0.3-proposed" }
+
+  - id: JRN:philosophical-transactions
+    type: journal
+    schema_version: "0.3-proposed"
+    labels: { zh: 哲学汇刊, en: Philosophical Transactions }
+    status: historical
+    summary: 1665 年伦敦创刊；皇家学会的公共发表渠道，Newton 早期论文经此进入优先权竞争。
+    journal_kind: journal
+    founded_year: 1665
+    place: London
+    publisher: "Royal Society"
+    issn: null
+    forks: [V2]
+    claims: []
+    provenance: { created_by: social-history-pilot, created_at: "2026-11-26", sources_checked: partial, schema_version: "0.3-proposed" }
+
+  - id: JRN:crelle
+    type: journal
+    schema_version: "0.3-proposed"
+    labels: { zh: 克雷尔杂志, en: Journal für die reine und angewandte Mathematik }
+    status: historical
+    summary: 1826 年柏林创刊；德国分析、数论与复分析的主要发表渠道，Riemann 与 Weierstrass 的关键论文在此。
+    journal_kind: journal
+    founded_year: 1826
+    place: Berlin
+    publisher: null
+    issn: null
+    forks: [V4]
+    claims:
+      - id: "CLM:JRN:crelle.1"
+        statement: "该刊 1826 年由 August Leopold Crelle 在柏林创办。"
+        grade: S
+        attestation: later_report
+        source: { locator: "据创刊史通说（待原刊卷首核）" }
+    provenance: { created_by: social-history-pilot, created_at: "2026-11-26", sources_checked: partial, schema_version: "0.3-proposed" }
+
+# ---------------------------------------------------------------------------
+# 二、边（16 条）
+# ---------------------------------------------------------------------------
+edges:
+
+  # ---------------- V2：莱布尼茨侧 ----------------
+  - id: "E:PE:leibniz>publishes_in>JRN:acta-eruditorum"
+    from: PE:leibniz
+    to: JRN:acta-eruditorum
+    type: publishes_in
+    directed: true
+    fork: V2
+    role: principal_channel
+    time: { from: 1684, to: 1716, precision: year, basis: "1684 年 10 月号起；后续投稿延续至去世" }
+    source: { locator: "Acta Eruditorum, Oct. 1684, pp. 467–473（Nova methodus）" }
+    grade: A
+    attestation: direct
+    confidence: 0.95
+    note: "微分符号获得连续印刷通道；1684 一文是可教学的算法样板。"
+
+  - id: "E:PE:bernoulli-jakob>publishes_in>JRN:acta-eruditorum"
+    from: PE:bernoulli-jakob
+    to: JRN:acta-eruditorum
+    type: publishes_in
+    directed: true
+    fork: V2
+    role: contributor
+    time: { from: 1682, to: 1705, precision: year, basis: "1680 年代起在该刊发表级数与概率工作" }
+    source: { locator: "据 Acta Eruditorum 各期篇目（具体卷期待核）" }
+    grade: S
+    attestation: later_report
+    confidence: 0.75
+    note: "把 Leibniz 符号用于级数与概率，扩大读者面；具体篇目未逐条核。"
+
+  - id: "E:PE:bernoulli-johann>publishes_in>JRN:acta-eruditorum"
+    from: PE:bernoulli-johann
+    to: JRN:acta-eruditorum
+    type: publishes_in
+    directed: true
+    fork: V2
+    role: contributor
+    time: { from: 1690, to: 1748, precision: year, basis: "1690 年代起在该刊发表" }
+    source: { locator: "据 Acta Eruditorum 各期篇目（具体卷期待核）" }
+    grade: S
+    attestation: later_report
+    confidence: 0.7
+    note: "与 l'Hôpital 的通信／教材形成符号教学链；本边只记发表渠道。"
+
+  - id: "E:PE:lhospital>member_of>ORG:academie-sciences"
+    from: PE:lhospital
+    to: ORG:academie-sciences
+    type: member_of
+    directed: true
+    fork: V2
+    role: member
+    time: { from: 1693, to: 1704, precision: year, basis: "1693 年当选院士" }
+    source: { locator: "据科学院院士名录（待原档核）" }
+    grade: S
+    attestation: later_report
+    confidence: 0.75
+    note: "院士身份为其 1696 教材提供认证；教材本身另见 text 条目（本试点未建）。"
+
+  # ---------------- V2：牛顿侧 ----------------
+  - id: "E:PE:newton>member_of>ORG:royal-society"
+    from: PE:newton
+    to: ORG:royal-society
+    type: member_of
+    directed: true
+    fork: V2
+    role: president
+    time: { from: 1672, to: 1727, precision: year, basis: "1672 年当选会士；1703–1727 任会长" }
+    source: { locator: "据 Royal Society 会士与会长名录（待原档核）" }
+    grade: S
+    attestation: later_report
+    confidence: 0.85
+    note: "学会会议与优先权仲裁是 Newton 路线的制度场。"
+
+  - id: "E:PE:newton>publishes_in>JRN:philosophical-transactions"
+    from: PE:newton
+    to: JRN:philosophical-transactions
+    type: publishes_in
+    directed: true
+    fork: V2
+    role: contributor
+    time: { from: 1672, to: 1675, precision: year, basis: "1672 年光学论文起" }
+    source: { locator: "Philosophical Transactions, 1672（光学论文）；非微积分文本" }
+    grade: A
+    attestation: direct
+    confidence: 0.9
+    note: "只证明皇家学会的公共发表渠道；微积分优先权文本另见 1711/1712 书，不在本试点。"
+
+  - id: "E:PE:leibniz>member_of>ORG:royal-society"
+    from: PE:leibniz
+    to: ORG:royal-society
+    type: member_of
+    directed: true
+    fork: V2
+    role: fellow
+    time: { from: 1673, to: 1716, precision: year, basis: "1673 年当选会士" }
+    source: { locator: "据 Royal Society 会士名录（待原档核）" }
+    grade: S
+    attestation: later_report
+    confidence: 0.8
+    note: "两条路线共享同一认证机构，说明分叉不是简单的国别对立。"
+
+  # ---------------- V4：Cauchy 侧 ----------------
+  - id: "E:PE:cauchy>employed_by>ORG:ecole-polytechnique"
+    from: PE:cauchy
+    to: ORG:ecole-polytechnique
+    type: employed_by
+    directed: true
+    fork: V4
+    role: professor
+    time: { from: 1816, to: 1830, precision: year, basis: "1816 年起任教；1830 年流亡后中断" }
+    source: { locator: "据校史与传记（待校方档案核）" }
+    grade: S
+    attestation: later_report
+    confidence: 0.8
+    note: "教材与课堂把极限语言标准化；这是 Cauchy 选项可教、可复制的主因。"
+
+  - id: "E:PE:cauchy>member_of>ORG:academie-sciences"
+    from: PE:cauchy
+    to: ORG:academie-sciences
+    type: member_of
+    directed: true
+    fork: V4
+    role: member
+    time: { from: 1816, to: 1857, precision: year, basis: "1816 年当选院士" }
+    source: { locator: "据科学院院士名录（待原档核）" }
+    grade: S
+    attestation: later_report
+    confidence: 0.8
+    note: "科学院《纪要》是其严格化论文的认证与发表场。"
+
+  # ---------------- V4：Riemann 侧 ----------------
+  - id: "E:PE:riemann>publishes_in>JRN:crelle"
+    from: PE:riemann
+    to: JRN:crelle
+    type: publishes_in
+    directed: true
+    fork: V4
+    role: contributor
+    time: { from: 1857, to: 1866, precision: year, basis: "1857 年 Abel 函数论文起" }
+    source: { locator: "Journal für die reine und angewandte Mathematik, Bd. 54 (1857)" }
+    grade: A
+    attestation: direct
+    confidence: 0.9
+    note: "德国期刊网络给复分析与几何论文提供发表渠道；积分论文本身是 1854 讲义，未在此刊。"
+
+  - id: "E:PE:weierstrass>publishes_in>JRN:crelle"
+    from: PE:weierstrass
+    to: JRN:crelle
+    type: publishes_in
+    directed: true
+    fork: V4
+    role: contributor
+    time: { from: 1854, to: 1897, precision: year, basis: "1854 年 Abel 函数论文起" }
+    source: { locator: "Journal für die reine und angewandte Mathematik, Bd. 47 (1854)" }
+    grade: A
+    attestation: direct
+    confidence: 0.9
+    note: "严格化论文经此进入研究共同体；课堂传播另由 Berlin 教席承担。"
+
+  - id: "E:PE:riemann>employed_by>ORG:university-goettingen"
+    from: PE:riemann
+    to: ORG:university-goettingen
+    type: employed_by
+    directed: true
+    fork: V4
+    role: lecturer
+    time: { from: 1854, to: 1866, precision: year, basis: "1854 年取得任教资格；1857 年编外教授" }
+    source: { locator: "据哥廷根大学档案／传记（待原档核）" }
+    grade: S
+    attestation: later_report
+    confidence: 0.85
+    note: "哥廷根的教学与编辑环境使 Riemann 的讲义在身后继续流通。"
+
+  - id: "E:PE:dirichlet>employed_by>ORG:university-berlin"
+    from: PE:dirichlet
+    to: ORG:university-berlin
+    type: employed_by
+    directed: true
+    fork: V4
+    role: professor
+    time: { from: 1828, to: 1855, precision: year, basis: "1828 年起任教柏林" }
+    source: { locator: "据柏林大学教职记录／传记（待原档核）" }
+    grade: S
+    attestation: later_report
+    confidence: 0.85
+    note: "把巴黎的分析传统带入德国，连接 Cauchy 与 Riemann 两代。"
+
+  - id: "E:PE:dirichlet>employed_by>ORG:university-goettingen"
+    from: PE:dirichlet
+    to: ORG:university-goettingen
+    type: employed_by
+    directed: true
+    fork: V4
+    role: professor
+    time: { from: 1855, to: 1859, precision: year, basis: "1855 年接任哥廷根教授" }
+    source: { locator: "据哥廷根大学教职记录／传记（待原档核）" }
+    grade: S
+    attestation: later_report
+    confidence: 0.85
+    note: "Riemann 的直接制度上级；本边说明两代人的机构连续性。"
+
+  - id: "E:PE:weierstrass>employed_by>ORG:university-berlin"
+    from: PE:weierstrass
+    to: ORG:university-berlin
+    type: employed_by
+    directed: true
+    fork: V4
+    role: professor
+    time: { from: 1856, to: 1897, precision: year, basis: "1856 年起任教柏林" }
+    source: { locator: "据柏林大学教职记录／传记（待原档核）" }
+    grade: S
+    attestation: later_report
+    confidence: 0.85
+    note: "讨论班把 ε-δ 变成可传授课程；这是严格化路线胜出的教学条件。"
+
+  - id: "E:PE:dedekind>employed_by>ORG:university-goettingen"
+    from: PE:dedekind
+    to: ORG:university-goettingen
+    type: employed_by
+    directed: true
+    fork: V4
+    role: lecturer
+    time: { from: 1854, to: 1858, precision: year, basis: "1854 年起在哥廷根任教" }
+    source: { locator: "据哥廷根大学教职记录／传记（待原档核）" }
+    grade: S
+    attestation: later_report
+    confidence: 0.8
+    note: "与 Riemann 同校；后编辑 Riemann 全集，使未刊稿进入公共流通。"
+
+# ---------------------------------------------------------------------------
+# 三、要让这份数据可加载，需要先做的登记（本次不改 edge-signatures.yaml）
+# ---------------------------------------------------------------------------
+schema_requirements:
+
+  node_classes:
+    - { abbr: ORG, prefix: "ORG:", pattern: "^ORG:[a-z0-9][a-z0-9.-]*$", label: 机构, required_fields: [org_kind, founded_year, place] }
+    - { abbr: JRN, prefix: "JRN:", pattern: "^JRN:[a-z0-9][a-z0-9.-]*$", label: 期刊／丛书, required_fields: [journal_kind, founded_year, place] }
+
+  edges:
+    - type: member_of
+      from: [person]
+      to: [org]
+      attributes:
+        role: { required: true, enum: [member, fellow, president, foreign-member, corresponding-member] }
+    - type: employed_by
+      from: [person]
+      to: [org]
+      attributes:
+        role: { required: true, enum: [professor, lecturer, assistant, privatdozent, director] }
+    - type: publishes_in
+      from: [person]
+      to: [journal]
+      gloss: "人物级发表渠道；不代替具体篇目的 text→journal 书目边"
+      attributes:
+        role: { required: true, enum: [principal_channel, contributor, editor] }
+
+  constraints:
+    - "三条边均必带 time.from / time.to；缺失即 error"
+    - "禁止自环；member_of 与 employed_by 可并存（身份不同）"
+    - "publishes_in 不是书目证据：具体篇目仍须 text→journal 的 published_in 边（尚未登记）"
+    - "本条数据未进 samples/ 与 pilots/，避免 graphlint v0.2 check-all 误报"
+
+  registration_steps:
+    - "在 spec/framework/edge-signatures.yaml 增加 node_classes 与 3 条 edges"
+    - "cd tools && py -3 -m graphlint generate"
+    - "cd tools && py -3 -m graphlint check-all"
+    - "通过后再把本文件拆成 nodes.json / edges.json 迁入 samples/ 或独立图包"

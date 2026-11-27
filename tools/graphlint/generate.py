@@ -182,10 +182,58 @@ def build_schema(sig: Signatures) -> dict[str, Any]:
     edge_def = data.setdefault("$defs", {}).setdefault("edge", {})
     edge_def["$comment"] = SCHEMA_COMMENT
     edge_def.setdefault("properties", {}).setdefault("type", {})["enum"] = list(sig.edges)
+    edge_def["required"] = ["id", "from", "to", "type", "directed"]
+    props = edge_def.setdefault("properties", {})
+    props.clear()
+    props.update({
+        "id": {"type": "string", "pattern": "^E:[^>]+>[a-z_]+>[^>]+(#[0-9]+)?$"},
+        "from": {"type": "string", "minLength": 1},
+        "to": {"type": "string", "minLength": 1},
+        "type": {"enum": list(sig.edges)},
+        "directed": {"type": "boolean"},
+        "time": {"$ref": "#/$defs/time"},
+        "source": {"$ref": "#/$defs/source"},
+        "claimant": {"type": ["string", "null"]},
+        "grade": {"enum": ["A", "S", "U", "F"]},
+        "attestation": {"enum": ["direct", "contemporary_report", "later_report",
+                                 "textbook_simplification", "unknown"]},
+        "confidence": {"type": "number", "minimum": 0, "maximum": 1},
+        "weight": {"type": ["number", "null"], "exclusiveMinimum": 0, "maximum": 1},
+        "kind": {"enum": ["taxonomic", "historical", "institutional", "overlaps",
+                          "prerequisite", "method_source", "shared_object", None]},
+        "role": {"type": ["string", "null"]},
+        "text_ref": {"type": ["string", "null"], "pattern": "^doc:.+#.+$"},
+        "note": {"type": "string", "maxLength": 280},
+        "claims": {"type": "array", "items": {"type": "string",
+                  "pattern": "^CLM:[A-Za-z0-9:._-]+\\.[0-9]+$"}},
+        "skeleton_kind": {"enum": ["direct", "contradiction", "construction", "induction",
+                                   "descent", "exhaustion", "algebraic_identity", "case_split",
+                                   "extremal", "limit", "other"]},
+        "similarity": {"type": "number", "minimum": 0, "maximum": 1},
+        "conclusion_match": {"type": "boolean"},
+        "specificity": {"type": "number", "minimum": 0, "maximum": 1},
+        "trace_refs": {"type": "array", "items": {"type": "string", "pattern": "^doc:.+#.+$"}},
+    })
 
     base_rules = _base_schema_rules(sig)
     per_edge = [_edge_rule(sig, esig) for esig in sig.edges.values()]
+    evidence_types = [e.type for e in sig.edges.values() if e.evidence]
+    non_evidence_types = [e.type for e in sig.edges.values() if not e.evidence]
     conditional = []
+    if evidence_types:
+        conditional.append({
+            "if": {"properties": {"type": {"enum": evidence_types}}, "required": ["type"]},
+            "then": {"allOf": base_rules},
+        })
+    if non_evidence_types:
+        conditional.append({
+            "if": {"properties": {"type": {"enum": non_evidence_types}}, "required": ["type"]},
+            "then": {
+                "required": ["skeleton_kind", "similarity"],
+                "not": {"anyOf": [{"required": [f]} for f in
+                                  ("grade", "attestation", "confidence", "time", "claims", "weight")]},
+            },
+        })
     for esig in sig.edges.values():
         if esig.require_note_when_to:
             patterns = [sig.node_classes[c]["pattern"] for c in esig.require_note_when_to]
@@ -198,7 +246,7 @@ def build_schema(sig: Signatures) -> dict[str, Any]:
                 "then": {"required": ["note"],
                          "properties": {"note": {"type": "string", "minLength": 1}}},
             })
-    edge_def["allOf"] = base_rules + per_edge + conditional
+    edge_def["allOf"] = per_edge + conditional
 
     desc = data.get("description", "")
     note = "边 type 枚举与 if/then 条件约束由 spec/framework/edge-signatures.yaml 生成（tools/graphlint generate），勿手改。"

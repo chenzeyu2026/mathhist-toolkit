@@ -63,7 +63,7 @@ ID 一旦分配永不复用；改名只改 `labels`，不改 ID。所有 ID 为 
 
 ## 2. 对象类型与判定标准
 
-共 14 类。判定用"三问"，避免概念与定理混用。
+共 16 类。判定用"三问"，避免概念与定理混用。
 
 | 类型 | 它回答什么 | 判定三问（全过才归此类） | 粒度 |
 |---|---|---|---|
@@ -81,6 +81,8 @@ ID 一旦分配永不复用；改名只改 `labels`，不改 ID。所有 ID 为 
 | 事件 `event` | 何时何地发生了什么 | ① 有可定位的时间（至少年）？② 有行为者与地点？③ 不是"长期存在"而是离散发生？ | 离散事件；持续性用 `occurrences[]` |
 | 教学挂点 `teaching_point` | 挂到课程哪一节、解决什么误会 | ① 能定位到课程/教材/章节？② 有学习目标与常见误解？③ 不主张历史真假？ | 教学单元级，不承担史学论断 |
 | 观点 `statement` | 谁在何时主张什么 | ① 是一个可归属的断言？② 有主张者或来源文本？③ 能与被主张的对象分开？ | 一条主张一个节点；长论证放 `text_ref`，不进图 |
+| 机构 `org` | 哪个学院/学会/出版社 | ① 是可指认的建制实体？② 有成立年或可考活动期？③ 能与人物成员/雇佣关系分开？ | 机构级；`ORG:` 前缀，不写人物传记 |
+| 期刊 `journal` | 哪份期刊/连续出版物 | ① 是独立可引用的连续出版物？② 有创刊年/出版地或可考卷期？③ 能与具体篇目分开？ | 期刊级；`JRN:` 前缀，具体篇目用 `TX:` + `published_in` |
 
 **易混边界**：
 
@@ -438,6 +440,29 @@ doc:corpus/01-微积分起源.md#sec-2-2-cavalieri
 - 归属错误的说法（如把后世结论安到前人头上）用 `status: misattributed`，并建一条 `contradicts` 边指向正确归属的观点节点，不直接删。
 - 互斥说法用 `contradicts` 边显式化；并存说法（都成立）用平行边，见 §5.3。
 
+### 4.14 机构 `org`
+
+| 字段 | 必/选 | 约束 |
+|---|---|---|
+| `org_kind` | 必 | `academy` / `university` / `society` / `institute` / `government_body` / `publisher` / `other` |
+| `founded_year` | 必 | 整数；不确定写 `null` 并在 `claims[]` 说明 |
+| `place` | 必 | 城市/国家；不确定写 `null` |
+| `parent_org` | 选 | 上级 `ORG:`；无则省略 |
+
+**规则**：成员身份用 `member_of`，雇佣/教职用 `employed_by`；两者不可互相代替。
+
+### 4.15 期刊 `journal`
+
+| 字段 | 必/选 | 约束 |
+|---|---|---|
+| `journal_kind` | 必 | `journal` / `proceedings` / `transactions` / `magazine` / `review` / `other` |
+| `founded_year` | 必 | 整数；不确定写 `null` 并在 `claims[]` 说明 |
+| `place` | 必 | 出版地；不确定写 `null` |
+| `publisher` | 选 | 出版社/学会名 |
+| `issn` | 选 | 有则写，不臆造 |
+
+**规则**：人物级发表渠道用 `publishes_in`（person→journal）；具体篇目用 `published_in`（text→journal）。两者不可合并。
+
 ---
 
 ## 5. 图：边模型与约束
@@ -496,7 +521,7 @@ doc:corpus/01-微积分起源.md#sec-2-2-cavalieri
 
 ### 5.2 边类型表
 
-> **由单一真源生成，勿手改。** 本表与 [`framework/edge-signatures.yaml`](framework/edge-signatures.yaml) 同步；该 YAML 是 31 类边的签名、专属属性与释义的**唯一真源**。修改边类型请改 YAML，然后在 `tools/` 目录运行 `py -3 -m graphlint generate`。手改本表视为错误。
+> **由单一真源生成，勿手改。** 本表与 [`framework/edge-signatures.yaml`](framework/edge-signatures.yaml) 同步；该 YAML 是 36 类边的签名、专属属性与释义的**唯一真源**。修改边类型请改 YAML，然后在 `tools/` 目录运行 `py -3 -m graphlint generate`。手改本表视为错误。
 
 <!-- GENERATED:edge-table BEGIN (source: framework/edge-signatures.yaml) -->
 | # | `type` | 方向 | from → to | 专属属性 | 用途 |
@@ -531,8 +556,15 @@ doc:corpus/01-微积分起源.md#sec-2-2-cavalieri
 | 28 | `derived_from` | 子→母 | TW → TW | — | 允许一节点多子，表达并行传承 |
 | 29 | `supports` | 证据→对象 | TX / TW → 任意对象（不含 TP） | — | 该见证或文本支撑了哪些断言/对象 |
 | 30 | `anchors` | 挂点→对象 | TP → CO / TH / PR / ME / NO | — | 教学挂点唯一的出边类型 |
-| 31 | `exemplifies` | 例→理论 | CO / TH → TY | — | 理论的核心概念与代表结果 |
+| 31 | `member_of` | 人物→机构 | PE → ORG | `role` ∈ `member` / `fellow` / `president` / `foreign-member` / `corresponding-member`（必填） | 人物在机构中的成员身份；不等于雇佣关系 |
+| 32 | `employed_by` | 人物→机构 | PE → ORG | `role` ∈ `professor` / `lecturer` / `assistant` / `privatdozent` / `director`（必填） | 人物的受雇/教职关系；与成员身份分开 |
+| 33 | `publishes_in` | 人物→期刊 | PE → JRN | `role` ∈ `principal_channel` / `contributor` / `editor`（必填） | 人物级发表渠道；不代替具体篇目的 text→journal 书目边 |
+| 34 | `published_in` | 文本→期刊 | TX → JRN | `role` ∈ `article` / `review` / `note` / `letter` / `other` | 具体文本/篇目发表于哪家期刊；与人物级 publishes_in 分开 |
+| 35 | `resembles` | 无向（字典序存一条） | TH / ME → TH / ME | `skeleton_kind` ∈ `direct` / `contradiction` / `construction` / `induction` / `descent` / `exhaustion` / `algebraic_identity` / `case_split` / `extremal` / `limit` / `other`（必填）；`similarity`（必填）；`conclusion_match`；`specificity`；`trace_refs`；`note` | 两段论证的骨架相似；非证据边，不入证据链 |
+| 36 | `exemplifies` | 例→理论 | CO / TH → TY | — | 理论的核心概念与代表结果 |
 <!-- GENERATED:edge-table END -->
+
+**非证据边**：`resembles` 不携带 `grade` / `attestation` / `confidence` / `time` / `claims` / `weight`，只用 `skeleton_kind`、`similarity`、可选的 `trace_refs`。它当前是 `provisional`（入图闸门 0/3），`check` 在 `samples/` 与 `pilots/` 中遇到实例直接报 `EDGE_PROVISIONAL`；状态见 [`research/proof-normalization/resembles-gate.md`](../research/proof-normalization/resembles-gate.md)。
 
 ### 5.3 平行边与观点节点
 
@@ -606,6 +638,11 @@ doc:corpus/01-微积分起源.md#sec-2-2-cavalieri
 | `derived_from` | TW | TW | 从 TX 出发；自环；成环 |
 | `supports` | TX / TW | 任意对象（不含 TP） | 从 FA/ST/TP 出发（失败与观点不提供证据）；指向 TP |
 | `anchors` | TP | CO / TH / PR / ME / NO | TP 作为 to；TP 发出非 anchors 的边 |
+| `member_of` | PE | ORG | 自环；用 employed_by 代替雇佣 |
+| `employed_by` | PE | ORG | 自环；用 member_of 代替成员身份 |
+| `publishes_in` | PE | JRN | 自环；用 published_in 记录具体篇目 |
+| `published_in` | TX | JRN | 反向（JRN→TX）；人物级渠道用 publishes_in |
+| `resembles` | TH / ME | TH / ME | grade/attestation/confidence/time/claims/weight；反向写两条；provisional 期间写入图包 |
 | `exemplifies` | CO / TH | TY | 从 TY 出发；指向非 TY |
 <!-- GENERATED:edge-constraints END -->
 
